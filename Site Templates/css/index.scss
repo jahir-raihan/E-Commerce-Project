@@ -1,11 +1,18 @@
 // We should use this markup template in every css file
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap');
+
 *{
     box-sizing: border-box;
     margin:0;
-    padding:0
+    padding:0;
+    font-family:'Poppins', sans-serif;
+    
 }
 
 // Header  Section
+
+
+// initial header 
 
 header{
     width:100%;
@@ -80,7 +87,7 @@ header{
                 }
                 
                 div{
-                    padding-top:9px;
+                    padding-top:8px;
                     display: flex;
                     width:fit-content;
                     align-items: center;
@@ -88,12 +95,16 @@ header{
                     p{
                         font-weight: 500;
                         padding-left:5px;
+                        font-size:14px;
                         color:rgb(72 72 72);
                         
                     }
                     
                     
                     
+                }
+                .wish-list{
+                    padding-top:9px;
                 }
                 
             }
@@ -106,5 +117,226 @@ header{
     }
 }
 
+// Nav-2
+
+.nav-2{
+    
+    width:80%;
+    margin:1em auto;
+    .nav2-links{
+        display: flex;
+        align-items: center;
+        .nav2-link{
+            cursor: pointer;
+            margin-right:1.5em;
+            p{
+                font-weight:500;
+                opacity: .8;
+                
+            }
+        }
+        .category-link{
+            display: flex;
+            align-items: center;
+            .menu{
+                margin-right:.3em;
+                img{
+                    
+                    display:block;
+                }
+            }
+        }
+
+    }
+    
+}
+// responsive header
+
+
 
 // End Header Section
+
+
+// Hero Section
+
+.hero{
+    background-image: url('/img/bg-3d.png');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-color: #0D6EFD;
+    height:70vh;
+    margin-bottom: 2em;
+    .hero-contents{
+        padding-top:17em;
+        width:80%;
+        
+        margin:auto;
+        
+        
+        
+        h1{
+            width:320px;
+            color:white;
+            
+        }
+        p{
+            margin:1em 0;
+            color:white;
+        }
+        .hero-btns{
+            button{
+                cursor: pointer;
+                height:40px;
+                border:none;
+                border-radius: 4px;
+            }
+            .discover{
+                width:100px;
+                background:#FF9017;
+                color:white;
+
+            }
+            .learn-more{
+                width:150px;
+                margin-left:1em;
+                background:white;
+                color:#0D6EFD;
+            }
+        }
+    }
+}
+
+// End Hero Section
+
+
+// New Products
+
+.new-products{
+    width:80%;
+    margin:auto;
+
+
+    .section-title{
+        font-size:22px;
+        font-weight:500;
+        opacity:.8;
+        margin-bottom: 1.4em;
+    }
+
+    .product-lists{
+
+
+        .product-card{
+            width:250px;
+            height:fit-content;
+            border-radius: 6px;
+            border:.5px solid rgba(0, 0, 0, 0.142);
+            box-shadow: -1px 3px 57px -46px rgba(0,0,0,1);
+            -webkit-box-shadow: -1px 3px 57px -46px rgba(0,0,0,1);
+            -moz-box-shadow: -1px 3px 57px -46px rgba(0,0,0,1);
+
+
+            .p-c-img{
+                width:fit-content;
+                height:220px;
+                padding-top:1em;
+                position: relative;
+                margin: auto;
+                img{
+                    display: block;
+                    width:200px;
+                    height:200px;
+                    
+                }
+
+                
+            }
+            
+
+            .price{
+                font-weight: 500;
+                width:90%;
+                margin:1em auto 0 auto;
+                
+            }
+            .title{
+                font-size:14px;
+                width:90%;
+                margin:.5em auto;
+                height:60px;
+            }
+            .p-c-btns{
+                width:90%;
+                display: flex;
+                align-items: center;
+                margin:0 auto 1em auto;
+                button{
+                    height:40px;
+                    border:none;
+                    border-radius: 8px;
+                    margin-right:.5em;
+                    cursor: pointer;
+                }
+                .add-to-cart{
+                    width:120px;
+                    background:#0D6EFD;
+                    color:white;
+                }
+                .add-to-wishlist{
+                    width:40px;
+                    padding-top:.3em;
+                    background:white;
+                    border:.5px solid rgba(0, 0, 0, 0.142);
+                    
+                }
+                
+            }
+
+            .product-card-and-view-mask{
+                position: relative;
+                width:100%;
+
+                .view-mask{
+                    position: absolute;
+                    height:220px;
+                    background-color: rgba(0, 0, 0, 0.337);
+                    width:100%;
+                    border-radius:6px 6px 0 0;
+                    z-index:2;
+                    cursor: pointer;
+                    p{
+                        width:fit-content;
+                        margin:6em auto;
+                        color:white;
+                    }
+                    
+                    display: none;
+                }
+            }
+            .product-card-and-view-mask:hover{
+               
+                .view-mask{
+                    
+                    display: block !important;
+                    
+                }
+            }
+
+        }
+    }
+}
+
+// End New Products
+
+// Container
+
+.container{
+    height:140em;
+}
+
+.line{
+    height:1px;
+
+    width:100%;
+    border-top:.5px solid rgba(0, 0, 0, 0.142);
+}
