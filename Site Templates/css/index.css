@@ -269,6 +269,7 @@ header nav .nav-buttons .nav-btns:hover {
   height: -moz-fit-content;
   height: fit-content;
   padding: 1em;
+  padding-bottom: 3em;
   margin-bottom: 1.4em;
 }
 .top-reviews .t-r-bg-img img {
@@ -404,7 +405,7 @@ header nav .nav-buttons .nav-btns:hover {
 .blog-posts {
   width: 80%;
   margin: auto;
-  margin-bottom: 1.4em;
+  margin-bottom: 4.4em;
 }
 .blog-posts .section-title {
   font-size: 22px;
@@ -412,13 +413,19 @@ header nav .nav-buttons .nav-btns:hover {
   opacity: 0.8;
   margin-bottom: 1.4em;
 }
+.blog-posts .post-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%;
+}
 .blog-posts .post-list .post {
-  width: 250px;
+  width: 24%;
   border: var(--border);
   border-radius: 6px;
 }
 .blog-posts .post-list .post .post-top {
-  height: 150px;
+  height: -moz-fit-content;
+  height: fit-content;
   background: rgba(13, 109, 253, 0.8);
   border-radius: 6px 6px 0 0;
 }
@@ -426,11 +433,117 @@ header nav .nav-buttons .nav-btns:hover {
   display: block;
   width: 50%;
   margin: auto;
-  padding-top: 1em;
+  padding-top: 10%;
+}
+.blog-posts .post-list .post .date {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  padding: 1em 1em 0 0.75em;
+}
+.blog-posts .post-list .post .date img {
+  display: block;
+  margin-right: 0.3em;
+}
+.blog-posts .post-list .post .date p {
+  font-size: 11px;
+  opacity: 0.7;
+  padding-top: 0.3em;
+}
+.blog-posts .post-list .post .title {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 0.5em;
+  padding: 0 1em 0 1em;
+}
+.blog-posts .post-list .post small {
+  display: block;
+  padding: 0 1em 1em 1em;
 }
 
-.container {
-  height: 240em;
+footer {
+  background-color: #458fff;
+}
+footer .footer-contents {
+  width: 80%;
+  margin: auto;
+  padding: 3em 0;
+}
+footer .footer-contents .brand-details p {
+  opacity: 0.8;
+  color: white;
+  font-size: 15px;
+}
+footer .footer-contents .brand-details img {
+  display: block;
+  margin-bottom: 0.5em;
+}
+footer .footer-contents .footer-flex-items {
+  display: flex;
+  justify-content: space-between;
+}
+footer .footer-contents .footer-flex-items .f-links .title {
+  font-weight: 500;
+  color: white;
+  margin-bottom: 0.5em;
+}
+footer .footer-contents .footer-flex-items .f-links .links a, footer .footer-contents .footer-flex-items .f-links .txt {
+  display: block;
+  color: white;
+  opacity: 0.8;
+  text-decoration: none;
+  font-weight: 300;
+}
+footer .footer-contents .footer-flex-items .f-links a:hover {
+  text-decoration: underline;
+}
+footer .footer-contents .footer-flex-items .newsletter .newsletter-input {
+  margin-top: 1em;
+  display: flex;
+}
+footer .footer-contents .footer-flex-items .newsletter .newsletter-input input {
+  height: 40px;
+  padding-left: 1em;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  border: none;
+  width: 70%;
+}
+footer .footer-contents .footer-flex-items .newsletter .newsletter-input button {
+  height: 40px;
+  width: 25%;
+  border-left: none;
+  border: none;
+  background-color: #accdff;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+}
+footer .footer-bottom {
+  margin-top: 2em;
+  background-color: #0D6EFD;
+}
+footer .footer-bottom .f-b-contents {
+  padding: 2em 0;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .footer-bottom .payment-methods {
+  padding-top: 0.5em;
+}
+footer .footer-bottom .links a {
+  text-decoration: none;
+  display: block;
+  margin-left: 1em;
+  color: white;
+}
+footer .footer-bottom a:hover {
+  text-decoration: underline;
+}
+footer .footer-bottom .links {
+  display: flex;
 }
 
 .line {

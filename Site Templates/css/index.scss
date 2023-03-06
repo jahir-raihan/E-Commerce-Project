@@ -350,6 +350,7 @@ header{
     overflow: hidden;
     height:fit-content;
     padding:1em;
+    padding-bottom: 3em;
     margin-bottom: 1.4em;
     
     .t-r-bg-img img{
@@ -508,7 +509,8 @@ header{
 .blog-posts{
     width:80%;
     margin:auto;
-    margin-bottom: 1.4em;
+    margin-bottom: 4.4em;
+    
 
     .section-title{
         font-size:22px;
@@ -518,13 +520,17 @@ header{
     }
 
     .post-list{
+        display:flex;
+        flex-wrap:wrap;
+        gap:1%;
 
         .post{
-            width:250px;
+
+            width:24%;
             border:var(--border);
             border-radius: 6px;
             .post-top{
-                height:150px;
+                height:fit-content;
                 background:#0d6dfdcc;
                 border-radius: 6px 6px 0 0;
                 
@@ -532,9 +538,35 @@ header{
                     display: block;
                     width:50%;
                     margin:auto;
-                    padding-top:1em;
+                    padding-top:10%;
                     
                 }
+            }
+            .date{
+                display: flex;
+                align-items: center;
+                margin-bottom: .5em;
+                padding:1em 1em 0 .75em;
+                img{
+                    display: block;
+                    margin-right:.3em;
+
+                }
+                p{
+                    font-size:11px;
+                    opacity:.7;
+                    padding-top:.3em;
+                }
+            }
+            .title{
+                font-weight: 500;
+                font-size:14px;
+                margin-bottom: .5em;
+                padding:0 1em 0 1em;
+            }
+            small{
+                display: block;
+                padding:0 1em 1em 1em;
             }
         }
     }
@@ -544,11 +576,131 @@ header{
 // End Blog Posts
 
 
+// Footer 
+
+footer{
+    background-color: #458fff;
+
+
+    .footer-contents{
+        width:80%;
+        margin:auto;
+        padding:3em 0;
+
+        
+
+        .brand-details{
+            
+            p{
+                opacity:.8;
+                color:white;
+                font-size:15px;
+                
+            }
+            img{
+                display:block;
+                margin-bottom: .5em;
+            }
+            
+        }
+        .footer-flex-items{
+            display: flex;
+            justify-content: space-between;
+            
+
+            .f-links{
+                .title{
+                    font-weight:500;
+                    color:white;
+                    margin-bottom: .5em;
+
+                }
+                .links a, .txt{
+                    display: block;
+                    color:white;
+                    opacity:.8;
+                    text-decoration: none;
+                    font-weight:300;
+                }
+                a:hover{
+                    text-decoration: underline;
+                }
+            }
+
+            .newsletter{
+                
+                .newsletter-input{
+                    margin-top:1em;
+                    display: flex;
+                    input{
+                        height:40px;
+                        padding-left:1em;
+                        border-radius: 6px 0 0 6px;
+                        outline:none;
+                        border:none;
+                        width:70%;
+                    }
+                    button{
+                        height:40px;
+                        width:25%;
+                        border-left:none;
+                        border:none;
+                        background-color: #accdff;
+                        border-radius: 0 6px 6px 0;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+
+        }
+       
+
+
+
+    }
+    .footer-bottom{
+        margin-top:2em;
+        
+        background-color: #0D6EFD;
+
+        .f-b-contents{
+            padding:2em 0;
+            width:80%;
+            margin:auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+
+        .payment-methods{
+            
+           padding-top:.5em;
+            
+        }
+        .links a{
+            text-decoration: none;
+            display: block;
+            margin-left:1em;
+            color:white;
+
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        .links{
+            display: flex;
+
+        }
+    }
+}
+
+// End Footer
+
 // Container
 
-.container{
-    height:240em;
-}
+
 
 .line{
     height:1px;
