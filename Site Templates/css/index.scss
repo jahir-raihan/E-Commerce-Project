@@ -8,6 +8,9 @@
     font-family:'Poppins', sans-serif;
     
 }
+:root{
+    --border:.5px solid rgba(0, 0, 0, 0.142);
+}
 
 // Header  Section
 
@@ -224,11 +227,21 @@ header{
     }
 
     .product-lists{
+        display: grid;
+        grid-template-columns: 19% 19% 19% 19% 19%;
+        gap:1%;
+        flex-wrap:wrap;
+        margin-bottom: 1.4em;
+        
 
 
         .product-card{
-            width:250px;
+            width:100%;
+            margin-right:.5em;
+            margin-bottom: .5em;
+            //min-width:220px;
             height:fit-content;
+            
             border-radius: 6px;
             border:.5px solid rgba(0, 0, 0, 0.142);
             box-shadow: -1px 3px 57px -46px rgba(0,0,0,1);
@@ -238,14 +251,14 @@ header{
 
             .p-c-img{
                 width:fit-content;
-                height:220px;
-                padding-top:1em;
+                
+                padding:1em;
                 position: relative;
                 margin: auto;
                 img{
                     display: block;
-                    width:200px;
-                    height:200px;
+                    width:100%;
+                    height:100%;
                     
                 }
 
@@ -298,7 +311,7 @@ header{
 
                 .view-mask{
                     position: absolute;
-                    height:220px;
+                    height:100%;
                     background-color: rgba(0, 0, 0, 0.337);
                     width:100%;
                     border-radius:6px 6px 0 0;
@@ -328,10 +341,213 @@ header{
 
 // End New Products
 
+
+// Top Reviews
+
+.top-reviews{
+    background-color:#EDEDED;
+    position: relative;
+    overflow: hidden;
+    height:fit-content;
+    padding:1em;
+    margin-bottom: 1.4em;
+    
+    .t-r-bg-img img{
+        width:200px;
+        position:absolute;
+        opacity: .4;
+    }
+    .img1 img{
+        right:0px;
+        top:-80px;
+
+    }
+    .img2 img{
+        left:-10px;
+        transform:rotate(90deg);
+        top:-80px;
+    }
+    .img4 img{
+        right:-50px;
+        bottom:-50px;
+    }
+    .img3 img{
+        left:-50px;
+        bottom:-50px;
+    }
+
+    .top-reviews-contents{
+        margin-top:5em;
+        .head{
+            text-align: center;
+            h1{
+                color:#0D6EFD;
+                opacity: .8;
+            }
+            p{
+               width:50%;
+               margin:2em auto;
+               opacity: .6;
+            }
+        }
+        .t-r-content{
+            width:80%;
+            margin:auto;
+            .d-flex-t-r-content{
+                display: flex;
+                img{
+                    width:600px;
+                }
+                .user-reviews{
+                    opacity: .7;
+                    margin-left:2em;
+                    .reviews{
+                        display:flex;
+                        justify-content: space-between;
+                        margin-bottom: 1em;
+                        
+
+                        
+                        .user{
+                            width:60px;
+                            height:60px;
+                            border:.5px solid rgba(0, 0, 0, 0.22);
+                            border-radius: 50%;
+                            margin-right:.5em;
+                        }
+                        .texts{
+                            width:90%;
+                            .name{
+                                font-weight: 500;
+                                margin-bottom: .5em;
+                            }
+                            small{
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .add-review-button{
+                width:fit-content;
+                margin:auto;
+                margin-top:5em;
+                button{
+                    width:200px;
+                    height:40px;
+                    background-color: #0D6EFD;
+                    color:white;
+                    border:none;
+                    border-radius: 4px;
+                    cursor: pointer;
+
+                }
+            }
+
+        }
+    }
+
+}
+
+// End Top Reviews
+
+
+// Why Choose Us
+
+.why-choose-us{
+    width:80%;
+    margin:auto;
+    margin-bottom: 1.4em;
+    .section-title{
+        font-size:22px;
+        font-weight:500;
+        opacity:.8;
+        margin-bottom: 1.4em;
+    }
+    .why-choose-us-grid{
+        display: grid;
+        grid-template-columns: 32% 32% 32%;
+        gap:3%;
+
+        .w-c-content{
+            margin-bottom: 3em;
+            display: flex;
+
+            .icon{
+                width:60px;
+                height:60px;
+                border-radius: 50%;
+                border:var(--border);
+                img{
+                    display: block;
+                    width:fit-content;
+                    margin:.9em auto;
+                    
+                }
+            }
+            .text{
+                margin-left:.5em;
+                width:90%;
+                opacity: .8;
+                .title{
+                    font-weight: 500;
+
+                }
+                
+            }
+        }
+    }
+}
+
+// End Why Choose Us
+
+
+// Blog Posts
+
+.blog-posts{
+    width:80%;
+    margin:auto;
+    margin-bottom: 1.4em;
+
+    .section-title{
+        font-size:22px;
+        font-weight:500;
+        opacity:.8;
+        margin-bottom: 1.4em;
+    }
+
+    .post-list{
+
+        .post{
+            width:250px;
+            border:var(--border);
+            border-radius: 6px;
+            .post-top{
+                height:150px;
+                background:#0d6dfdcc;
+                border-radius: 6px 6px 0 0;
+                
+                img{
+                    display: block;
+                    width:50%;
+                    margin:auto;
+                    padding-top:1em;
+                    
+                }
+            }
+        }
+    }
+    
+}
+
+// End Blog Posts
+
+
 // Container
 
 .container{
-    height:140em;
+    height:240em;
 }
 
 .line{
