@@ -336,10 +336,10 @@
   opacity: 0.8;
 }
 .details-bottom .more-items .more-items-container .item:hover {
-  transition-duration: 0.2s;
-  box-shadow: -1px 1px 5px -1px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: -1px 1px 5px -1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+  transition-duration: 0.1s;
+  box-shadow: 0 0 4px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 0 4px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 0 4px -1px rgba(0, 0, 0, 0.75);
   opacity: 1;
 }
 .details-bottom .more-items .more-items-container .item:hover .left {
