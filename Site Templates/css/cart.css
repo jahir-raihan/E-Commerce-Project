@@ -237,4 +237,8 @@
 .cart-bottom .cart-bottom-container .suggested-product-list {
   display: flex;
   justify-content: space-between;
+}
+
+.container {
+  margin-bottom: 0;
 }/*# sourceMappingURL=cart.css.map */
