@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/login.css">
+
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-logo">
+                <img src="/img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+            <form>
+                <div class="nav-search">
+                    <input type="text" name="search" class="nav-search-input" placeholder="Search a product . . .">
+                    <div class="nav-search-button">
+                        <img src="/img/search.png" alt="search icon" draggable="false" class="icon">
+                    </div>
+                </div>
+            </form>
+
+            <div class="nav-buttons">
+
+                <div class="nav-btns">
+                    <a href="#" draggable="false">
+                        <div class="sign-in">
+                            <img src="/img/person.png" draggable="false" alt="sign-in icon" class="icon">
+                            <p>Sign in</p>
+                        </div>
+                    </a>
+                </div>
+
+                
+                <div class="nav-btns">
+                    <a href="#" draggable="false">
+                        <div class="wish-list">
+                            <img src="/img/favorite.png" draggable="false" alt="wishlist icon" class="icon">
+                            <p>Wishlist</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="nav-btns">
+                    <a href="#" draggable="false">
+                        <div class="my-cart">
+                            <img src="/img/shopping-basket.png" draggable="false" alt="my cart icon" class="icon">
+                            <p>My cart</p>
+                        </div>
+                    </a>
+                </div>
+                
+
+            </div>
+        </nav>
+
+    </header>
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <form action="">
+
+                <p class="title">Register</p>
+
+                <div class="input">
+                    <span>Full Name</span>
+                    <input type="text" placeholder="Enter name">
+                </div>
+
+                <div class="input">
+                    <span>E-mail</span>
+                    <input type="text" placeholder="Enter email">
+                </div>
+
+                <div class="input">
+                    <span>Phone</span>
+                    <input type="number" placeholder="Enter phone number">
+                </div>
+
+                <div class="input login-password">
+                    
+                    <div class="pass-and-forgot-pass">
+                        <span>Password</span>
+                    </div>
+
+                    <div class="password-container input">
+                        <input type="password" id="password-input" placeholder="Enter password">
+                        <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
+                          <i class="fa fa-eye-slash" id="password-toggle-icon"></i>
+                        </span>
+                    </div>
+                    <script>
+                        function togglePasswordVisibility() {
+                            var passwordInput = document.getElementById("password-input");
+                            var passwordToggleIcon = document.getElementById("password-toggle-icon");
+
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                                passwordToggleIcon.className = "fa fa-eye";
+                            } else {
+                                passwordInput.type = "password";
+                                passwordToggleIcon.className = "fa fa-eye-slash";
+                            }
+                        }
+                    </script>
+                     <div class="input">
+                        <span>Confirm Password</span>
+                        <input type="password" placeholder="Confirm password">
+                    </div>
+                    
+
+
+                </div>
+
+                <button class="login-btn">
+                    Register
+                </button>
+
+            </form>
+
+            <div class="or-border">
+                <div class="line"></div>
+                <small>OR</small>
+                <div class="line"></div>
+            </div>
+
+            <button class="sign-with-google">
+
+                <div class="icon">
+                    <img src="/img/google-logo.png" alt="">
+                </div>
+
+                <p>Continue with Google</p>
+
+                <div></div>
+
+            </button>
+            <button class="sign-with-facebook">
+
+                <div class="icon">
+                    <i class="fab fa-facebook"></i>
+                </div>
+
+                <p>Continue with Facebook</p>
+
+                <div></div>
+
+            </button>
+
+            <div class="register-link">
+                <p>Already have an account? </p>
+                <a href="#"> Login</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+      
+        <div class="footer-bottom">
+
+            <div class="f-b-contents">
+
+            
+                <div class="payment-methods">
+                    <img src="/img/Payment-methods.png" alt="">
+                </div>
+
+                <div class="links">
+                    <a href="#">Support</a>
+                    <a href="#">Privacy & Cookies</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
