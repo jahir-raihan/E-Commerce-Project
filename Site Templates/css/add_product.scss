@@ -1,0 +1,168 @@
+// Container
+
+.m-1{
+    margin-bottom: 1em;
+}
+
+.profile-content{
+    padding:1.5em;
+}
+
+p{
+    font-weight: 400;
+    font-size:14px;
+    opacity: .8;
+    margin-bottom: .3em;
+}
+
+input, select{
+    height:40px;
+    border-radius: 4px;
+    border:var(--border);
+    padding:0 1em;
+    opacity: .8;
+    width:100%;
+    outline-color:#0D6EFD;
+    
+}
+
+select{
+    appearance: none;
+}
+
+.p-name-and-code{
+    display: grid;
+    grid-template-columns: 68% 30%;
+    gap:2%
+}
+
+.p-price-and-category{
+    @extend .p-name-and-code;
+    grid-template-columns: 32% 32% 32%;
+    
+
+}
+
+.p-color-and-yarn-type{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap:2%;
+    
+}
+
+.p-yarn-brand-status{
+    display: grid;
+    grid-template-columns: 20% 38% 38%;
+    gap:2%;
+
+}
+
+.p-images-and-preview{
+    margin-bottom: 1em;
+    padding:0;
+
+    input{
+        border:none;
+        padding-top:9px;
+        padding-left:0;
+        cursor: pointer;
+        
+    }
+
+    .input-and-preview{
+        border:var(--border);
+        border-radius:4px;
+        padding:0 1em;
+
+        img{
+            margin-right:.5em;
+            border-radius: 4px;
+            padding:.3em;
+            border:var(--border);
+            border-radius: 4px;
+            opacity: .8;
+            cursor: pointer;
+
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+    
+}
+
+.p-search-keywords{
+    textarea{
+        padding: 1em;
+        width:100%;
+        height:200px;
+        max-width:100%;
+        max-height:200px;
+        min-width:100%;
+        min-height:200px;
+        border:var(--border);
+        border-radius: 4px;
+        outline-color:#0D6EFD;
+    }
+}
+
+.on-discount-checkbox{
+    display: flex;
+    align-items: center;
+    input{
+        width:20px;
+        height:20px;
+        margin-right:.5em;
+        border:var(--border);
+        cursor: pointer;
+    }
+    span{
+        font-weight: 400;
+        font-size:15px;
+        opacity:.8;
+    }
+
+}
+
+.discount-price-and-expiry{
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap:2%;
+
+    .discount-expiry{
+        input{
+
+            cursor: pointer;
+        }
+        
+    }
+}
+
+.save-and-clear-btn{
+    margin-top: 3em;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    gap:2%;
+
+    button{
+        height:40px;
+        border:var(--border);
+        border-radius: 4px;
+        font-weight: 500;
+
+    }
+    .clear{
+        background:white;
+        color:#FF7A00;
+        &:hover{
+            border:.5px solid #ff7b0083 ;
+        }
+    }
+    .save{
+        background:#0D6EFD;
+        color:white;
+
+    }
+}
+
+// End Container
