@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"staff_pending_orders.css"}
+{"version":3,"sources":["staff_pending_orders.scss","staff_pending_orders.css"],"names":[],"mappings":"AAEA;EACI,kBAAA;EACA,aAAA;ACDJ;ADEI;EACI,cAAA;EACA,UAAA;EACA,YAAA;EACA,qBAAA;EACA,0BAAA;EACA,cAAA;EACA,kBAAA;EACA,sBAAA;ACAR;ADGI;EACI,UAAA;EACA,YAAA;EACA,YAAA;EACA,mBAAA;EACA,0BAAA;EACA,YAAA;EACA,gBAAA;ACDR","file":"staff_pending_orders.css"}
