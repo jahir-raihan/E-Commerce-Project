@@ -69,4 +69,93 @@
 
 .order-util-btns button {
   padding: 0 2.5em !important;
+}
+
+.item {
+  border-top: var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 1em;
+}
+.item .trash {
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+.item .trash i {
+  font-size: 22px;
+}
+.item .trash i:hover {
+  color: red;
+}
+.item .img-and-details {
+  display: flex;
+  align-items: center;
+}
+.item .img-and-details img {
+  width: 70px;
+  height: 70px;
+}
+.item .img-and-details div {
+  margin-left: 0.5em;
+}
+.item .img-and-details .wish-item-title {
+  font-weight: 300;
+  font-size: 14px;
+  width: 80%;
+}
+.item .img-and-details small {
+  font-size: 13px;
+  opacity: 0.8;
+}
+.item .status {
+  font-weight: 400;
+  color: green;
+  font-size: 13px;
+}
+.item .add-to-cart-and-datetime {
+  text-align: center;
+}
+.item .add-to-cart-and-datetime small {
+  display: block;
+  font-size: 11px;
+}
+.item .add-to-cart-and-datetime button {
+  border: none;
+  background: #0D6EFD;
+  height: 30px;
+  padding: 0 1.5em;
+  border-radius: 22px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pen:hover i {
+  color: #0D6EFD;
+  cursor: pointer;
+}
+
+.search-facility {
+  margin-bottom: 1em;
+  display: flex;
+}
+.search-facility input {
+  display: block;
+  width: 80%;
+  height: 40px;
+  border: var(--border);
+  border-radius: 4px 0 0 4px;
+  padding: 0 1em;
+  border-right: none;
+  outline-color: #0D6EFD;
+}
+.search-facility button {
+  width: 20%;
+  height: 40px;
+  border: none;
+  background: #0D6EFD;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  font-weight: 500;
 }/*# sourceMappingURL=staff_main.css.map */
