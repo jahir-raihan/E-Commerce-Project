@@ -1,0 +1,72 @@
+.nav-buttons .nav-btns {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  position: relative;
+}
+.nav-buttons .nav-btns a {
+  display: block;
+  padding: 0 1em;
+}
+.nav-buttons .nav-btns .pending-orders-btn {
+  display: flex;
+}
+.nav-buttons .nav-btns .pending-orders-btn img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  display: block;
+}
+.nav-buttons .nav-btns .p-o-cnt {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  font-weight: 500;
+  font-size: 11px;
+  background: rgb(255, 115, 0);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.2em;
+  color: white;
+}
+
+.name-email-phone .staff-title {
+  position: relative;
+}
+.name-email-phone .staff-title .name {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+}
+.name-email-phone .staff-title .abs-tag {
+  position: absolute;
+  left: 140px;
+  top: -5px;
+  font-weight: 300;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.address {
+  width: 100%;
+}
+.address .icon-and-info .img i {
+  font-size: 25px;
+}
+.address .icon-and-info .img .confirmed-icon {
+  color: green;
+}
+.address .icon-and-info .img .cancelled-order {
+  color: rgb(255, 115, 0);
+}
+.address .address-details {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+
+.order-util-btns button {
+  padding: 0 2.5em !important;
+}/*# sourceMappingURL=staff_main.css.map */
