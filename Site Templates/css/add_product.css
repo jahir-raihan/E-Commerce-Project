@@ -51,6 +51,10 @@ select {
   gap: 2%;
 }
 
+.p-primary-image input {
+  padding-top: 8px;
+}
+
 .p-images-and-preview {
   margin-bottom: 1em;
   padding: 0;

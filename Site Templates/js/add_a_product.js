@@ -26,4 +26,4 @@ function previewImages() {
     }
 }
 
-document.querySelector('input[type="file"]').addEventListener("change", previewImages);
+document.querySelector('#images').addEventListener("change", previewImages);
