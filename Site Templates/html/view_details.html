@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/products.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/view_details.css">
-    <title>Document</title>
+    <title>View details</title>
 </head>
 <body>
 
@@ -90,7 +90,40 @@
         <div class="details-top">
 
             <div class="img">
-                <img src="/img/image 17.png" alt="">
+
+                <div class="details-main-img">
+                    <img id="selected-image" src="/img/image 17.png" alt="primary image">
+                </div>
+                
+
+
+                <div class="image-gallery">
+
+                    <div class="img-gallery-img" id="img-gallery-img1"onclick="showImage('1')" >
+                        <img id="1" class="gallery-image "  src="/img/image 17.png" alt="primary image" >
+                    </div>
+                    
+                    <div class="img-gallery-img" id="img-gallery-img2" onclick="showImage('2')">
+                        <img id="2" class="gallery-image" src="/img/cash-on-delivery.png" alt="" >
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img3"  onclick="showImage('3')" >
+                        <img id="3" class="gallery-image" src="/img/1656227518bkash-logo-png.png" alt="" >
+
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img4" onclick="showImage('4')">
+                         <img id="4" class="gallery-image" src="/img/cash-on-delivery.png" alt="" >
+
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img5" onclick="showImage('5')">
+                        <img id="5" class="gallery-image" src="/img/cash-on-delivery.png" alt="" >
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img6" onclick="showImage('6')">
+                        <img id="6" class="gallery-image" src="/img/olive.png" alt="" >
+                    </div>
+                    
+                    
+                </div>
+
             </div>
 
             <div class="details">
@@ -251,10 +284,41 @@
                                 Reviews & Rating
                             </p>
                         </div>
-                        <button class="write-a-review">
+                        <button class="write-a-review" 
+                        onclick="document.getElementById('w-a-r-p-s').style.display='block';">
                             Wrtie a review
                             <p>+</p>
                         </button>
+
+                    </div>
+
+
+                    <div class="write-a-review-popup-section" id="w-a-r-p-s">
+
+                         <div class="rating-box">
+                            <div class="title-and-cross">
+                                <p class="title">Rate</p>
+                                <i class="fas fa-times" onclick="document.getElementById('w-a-r-p-s').style.display='none';"></i>
+                            </div>
+                            
+                            <form action="">
+                                <div class="stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <div class="feedback-input-btn">
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter your feedback"></textarea>
+
+                                    <button class="submit-review-and-feedback">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                          </div>
 
                     </div>
 
@@ -279,7 +343,12 @@
 
                                 <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officia praesentium officiis hic quidem consequuntur!</small>
 
-                                <button class="reply">Reply</button>
+                                <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
+
+                                <div class="write-reply" id="write-reply">
+                                    <input type="text" placeholder="Write your reply">
+                                    <button>Submit</button>
+                                </div>
 
                                 <div class="replys-container">
                                     <p class="title">
@@ -370,6 +439,8 @@
                                 
                             </div>
                         </div>
+
+                        <button class="show-all-reviews">Show all</button>
 
                     </div>
 

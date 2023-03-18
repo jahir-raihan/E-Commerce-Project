@@ -9,28 +9,88 @@
     width:80%;
     margin:2em auto;
     
-    
+    // Details  main image container css
 
     .img{
         height:100%;
-        
         padding:2em;
-        //background-color: #F7F7F7;
         border-radius: 6px;
-        display: flex;
         align-items: center;
-       
         margin-bottom: 1.4em;
+
+        .details-main-img{
+            width:80%;
+            height:80%;
+            margin:auto;
+            border:var(--border);
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img{
+                width:auto;
+                height:auto;
+                max-width: 400px;
+                max-height: 400px;
+            
+
+            }
+        }
         img{
             display: block;
             width:70%;
-            min-width:350px;
-            min-height:370px;
-            max-height:80%;
+            
             margin:auto;
+            //border:var(--border);
+            padding:.5em;
+            border-radius: 4px;
+        }
+
+        .image-gallery{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            width:fit-content;
+            margin:auto;
+            margin-top:2em;
+
+            .img-gallery-img{
+                width:80px;
+                height:80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right:.5em;
+                align-items: center;
+                border:var(--border);
+                border-radius: 4px;
+                cursor: pointer;
+                &:hover{
+                    border:1px solid #0D6EFD;
+                }
+                
+            }
+
+            img{
+                
+                width: auto;
+                height: auto;
+                max-width: 50px;
+                max-height: 50px;
+                
+
+                
+            }
+            .selected{
+                background:none;
+                border:1px solid #0D6EFD;
+            }
         }
 
     }
+    // End Details  main image container css
+
 
     .details{
         background-color: white;
@@ -243,6 +303,117 @@
 // Details bottom
 
 
+// Rating and Review
+
+
+
+.rating-box .stars {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.stars i {
+    font-size: 20px;
+    color: #b5b8b1;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+.stars i.active {
+    color: #ffb851;
+    transform: scale(1.2);
+}
+
+
+.write-a-review-popup-section{
+    display: none;
+    transition: all 0.2s;
+    border:var(--border);
+    padding:1em;
+    border-radius: 4px;
+    margin-bottom: 1em;
+
+    .title{
+        margin-bottom: .3em;
+    }
+
+    .title-and-cross{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        i{
+            opacity: .8;
+            cursor: pointer;
+
+            &:hover{
+                opacity:1;
+                color:#0da9fd;
+            }
+        }
+    }
+
+    .feedback-input-btn{
+        margin-top:1em;
+        textarea{
+            padding:1em;
+            width:100%;
+            max-width:100%;
+            min-width:100%;
+            max-height:100px;
+            min-height:100px;
+            border:var(--border);
+            border-radius: 4px;
+            outline-color:#0da9fd;
+        }
+
+        button{
+            margin-top:1em;
+            display: block;
+            height:40px;
+            width:100px;
+            border:none;
+            border-radius: 4px;
+            background:#0da9fd;
+            color:white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        
+    }
+}
+
+.write-reply{
+    margin:1em 0;
+    display: none;
+    
+    
+
+    input{
+        height:40px;
+        padding:0 1em;
+        border:var(--border);
+        border-radius: 4px 0 0 4px;
+        border-right:none;
+        width:80%;
+        outline-color: #0da9fd;
+    }
+    button{
+        width:20%;
+        background:#0da9fd;
+        border:none;
+        color:white;
+        font-weight: 500;
+        border-radius: 0 4px 4px 0;
+
+
+    }
+
+
+}
+
+// End Rating and Review
+
 .details-bottom{
 
     background:#f7f7f7;
@@ -341,7 +512,7 @@
                             opacity: .8;
                             font-weight: 500;
                             padding:.3em 0;
-                            border-bottom: 1px solid #0D6EFD;
+                            border-bottom: 1px solid #0da9fd;
                             margin-bottom: 1em;
                         }
                         .replys{
@@ -360,11 +531,11 @@
 
     .more-items{
         margin-left:2em;
-        box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
-        -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
-        -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        // box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        // -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        // -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
         background: white;
-        border:var(--border);
+        // border:var(--border);
         border-radius: 4px;
 
         .more-items-container{
@@ -386,7 +557,7 @@
                 display: flex;
                 margin-bottom: 1em;
                 padding:.5em;
-                opacity: .9;
+                opacity: .8;
                 border-radius: 2px;
                 .left{
                     margin-right:.5em;
@@ -420,14 +591,12 @@
 
             .item:hover{
                 transition-duration: .1s;
-                box-shadow: 0 0 4px -1px rgba(0,0,0,0.75);
-                -webkit-box-shadow: 0 0 4px -1px rgba(0,0,0,0.75);
-                -moz-box-shadow: 0 0 4px -1px rgba(0,0,0,0.75);
+                // box-shadow: 0 0 4px -1px rgba(0,0,0,0.75);
+                // -webkit-box-shadow: 0 0 4px -1px rgba(0,0,0,0.75);
+                // -moz-box-shadow: 0 0 4px -1px rgba(0,0,0,0.75);
                 opacity: 1;
 
-                .left{
-                    border:1px solid white;
-                }
+                
                 
             }
 
@@ -437,6 +606,24 @@
 
     
  
+}
+
+.show-all-reviews{
+    height:20px;
+    width:80px;
+    font-size:9px;
+    border:none;
+    border-radius: 2px;
+    opacity: .7;
+    color:white;
+    cursor: pointer;
+    background:#0da9fd;
+
+    &:hover{
+        opacity: 1;
+    }
+
+
 }
 
 // End Details Bottom
