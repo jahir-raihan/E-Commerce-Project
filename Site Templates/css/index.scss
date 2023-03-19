@@ -151,6 +151,61 @@ header{
         }
 
     }
+
+    .category-link{
+        position: relative;
+
+        .hover-menu-category-menu{
+            display: none;
+            position: absolute;
+            background:white;
+            border-radius: 2px;
+            box-shadow: -1px 12px 57px -46px rgba(0,0,0,1);
+            -webkit-box-shadow: -1px 12px 57px -46px rgba(0,0,0,1);
+            -moz-box-shadow: -1px 12px 57px -46px rgba(0,0,0,1);
+            padding:.5em;
+            top:25px;
+            width:600px;
+            //display: flex;
+            cursor: default;
+            justify-content: space-between;
+            
+
+            .cat-menu{
+                padding:.5em 1em;
+                .title{
+                    font-weight: 500;
+                    margin-bottom: .5em;
+                    text-transform: uppercase;
+
+                }
+                a{
+                    color:black;
+                    opacity: .8;
+                    text-decoration:  none;
+                    display: block;
+                    font-size: 14px;
+                    width:fit-content;
+                    margin-bottom: .3em;
+                    &:hover{
+                        opacity: 1;
+                        
+                    }
+                }
+                &:nth-child(even){
+                    background:#f7f7f7;
+                }
+            }
+
+
+        }
+
+        &:hover{
+            .hover-menu-category-menu{
+                display: flex;
+            }
+        }
+    }
     
 }
 // responsive header

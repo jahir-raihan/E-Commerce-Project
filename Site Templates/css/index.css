@@ -122,6 +122,50 @@ header nav .nav-buttons .nav-btns:hover {
 .nav-2 .nav2-links .category-link .menu img {
   display: block;
 }
+.nav-2 .category-link {
+  position: relative;
+}
+.nav-2 .category-link .hover-menu-category-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  border-radius: 2px;
+  box-shadow: -1px 12px 57px -46px rgb(0, 0, 0);
+  -webkit-box-shadow: -1px 12px 57px -46px rgb(0, 0, 0);
+  -moz-box-shadow: -1px 12px 57px -46px rgb(0, 0, 0);
+  padding: 0.5em;
+  top: 25px;
+  width: 600px;
+  cursor: default;
+  justify-content: space-between;
+}
+.nav-2 .category-link .hover-menu-category-menu .cat-menu {
+  padding: 0.5em 1em;
+}
+.nav-2 .category-link .hover-menu-category-menu .cat-menu .title {
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+.nav-2 .category-link .hover-menu-category-menu .cat-menu a {
+  color: black;
+  opacity: 0.8;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 0.3em;
+}
+.nav-2 .category-link .hover-menu-category-menu .cat-menu a:hover {
+  opacity: 1;
+}
+.nav-2 .category-link .hover-menu-category-menu .cat-menu:nth-child(even) {
+  background: #f7f7f7;
+}
+.nav-2 .category-link:hover .hover-menu-category-menu {
+  display: flex;
+}
 
 .hero {
   background-image: url("/img/bg-3d.png");
