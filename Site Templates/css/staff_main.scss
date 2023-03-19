@@ -37,7 +37,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding-left:.2em;
+            padding-top:2px;
             color:white;
         }
     }
@@ -48,6 +48,9 @@
 
 // Container
 
+.staff-main-order-list-container{
+    margin-top:0 !important;
+}
 
 .name-email-phone{
 
@@ -96,6 +99,52 @@
     .address-details{
         width:fit-content !important;
     }
+
+    .address-info:hover{
+        box-shadow: unset !important;
+    }
+}
+
+
+
+.three-dots{
+    position: relative;
+    ///border:1px solid red;
+    .three-dots-popup{
+        display: none;
+        z-index: 2;
+        position:absolute;
+        background: white;
+        
+        border:var(--border);
+        padding:1px 10px;
+        padding-bottom: 2px;
+        border-radius: 4px;
+        box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        right:-107px;
+        top:-4px;
+
+        
+        button{
+            padding:.3em 1em;
+            width:80px;
+            font-size:10px;
+            border-radius: 2px;
+            border:none;
+            
+            background: white;
+            &:hover{
+                color:#0D6EFD;
+                
+            }
+
+        }
+
+    }
+
+
 }
 
 .order-util-btns{
@@ -189,6 +238,7 @@
 .search-facility{
     margin-bottom: 1em;
     display: flex;
+    position: relative;
     input{
         display: block;
         width:80%;
@@ -214,4 +264,26 @@
 
 // End Added products list
 
+
+// Loader
+
+.search-loader-stf-main{
+    display: none;
+    position: absolute;
+    left:48.1%;
+    bottom:-40px;
+
+    i{
+        font-size:18px;
+    }
+}
+
+// End Loader
 // End Container
+.d-none{
+    display: block !important;
+}
+
+.a-i-c-o{
+    margin:0 !important;
+}

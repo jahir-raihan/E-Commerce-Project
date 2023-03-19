@@ -135,7 +135,13 @@
                                 
 
                                 <div class="three-dots">
-                                    <i class="fa fa-ellipsis-v t-dots" ></i>
+                                    <i class="fa fa-ellipsis-v t-dots"
+                                        onclick="document.getElementById('show-all-p-a').classList.toggle('d-none');"></i>
+
+                                    <div class="three-dots-popup" id="show-all-p-a">
+                                        <button class="show-all-btn-added-products" >Show all</button>
+                                        
+                                    </div>
                                 </div>
                             </div>
                            
@@ -160,6 +166,10 @@
                         <div class="search-facility">
                             <input type="search" placeholder="search by anything">
                             <button>Search</button>
+
+                            <div class="search-loader-stf-main" id="search-loader-staff-main">
+                                <i class="fas fa-cog fa-spin"></i>
+                            </div>
                         </div>
                     </form>
 

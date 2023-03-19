@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hover Menu Example</title>
+    <style>
+      .hover-element {
+        position: relative;
+        display: inline-block;
+      }
+
+      .hover-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: none;
+        z-index: 1;
+      }
+
+      .hover-element:hover .hover-menu {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hover-element">
+      Hover over me to see the menu!
+      <div class="hover-menu">
+        <ul>
+          <li><a href="#">Menu Item 1</a></li>
+          <li><a href="#">Menu Item 2</a></li>
+          <li><a href="#">Menu Item 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

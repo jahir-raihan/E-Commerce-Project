@@ -29,8 +29,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 0.2em;
+  padding-top: 2px;
   color: white;
+}
+
+.staff-main-order-list-container {
+  margin-top: 0 !important;
 }
 
 .name-email-phone .staff-title {
@@ -65,6 +69,39 @@
 .address .address-details {
   width: -moz-fit-content !important;
   width: fit-content !important;
+}
+.address .address-info:hover {
+  box-shadow: unset !important;
+}
+
+.three-dots {
+  position: relative;
+}
+.three-dots .three-dots-popup {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  background: white;
+  border: var(--border);
+  padding: 1px 10px;
+  padding-bottom: 2px;
+  border-radius: 4px;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  right: -107px;
+  top: -4px;
+}
+.three-dots .three-dots-popup button {
+  padding: 0.3em 1em;
+  width: 80px;
+  font-size: 10px;
+  border-radius: 2px;
+  border: none;
+  background: white;
+}
+.three-dots .three-dots-popup button:hover {
+  color: #0D6EFD;
 }
 
 .order-util-btns button {
@@ -139,6 +176,7 @@
 .search-facility {
   margin-bottom: 1em;
   display: flex;
+  position: relative;
 }
 .search-facility input {
   display: block;
@@ -158,4 +196,22 @@
   border-radius: 0 4px 4px 0;
   color: white;
   font-weight: 500;
+}
+
+.search-loader-stf-main {
+  display: none;
+  position: absolute;
+  left: 48.1%;
+  bottom: -40px;
+}
+.search-loader-stf-main i {
+  font-size: 18px;
+}
+
+.d-none {
+  display: block !important;
+}
+
+.a-i-c-o {
+  margin: 0 !important;
 }/*# sourceMappingURL=staff_main.css.map */
