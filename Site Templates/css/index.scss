@@ -211,6 +211,45 @@ header{
 // responsive header
 
 
+// search suggestion list
+
+.search-container-global{
+    position: relative;
+
+    .search-result-suggestion{
+        z-index: 2;
+        position: absolute;
+        border:var(--border);
+        background:white;
+        border-top:none;
+        
+
+        width:85%;
+        border-radius: 6px;
+        top:38px;
+        
+
+        a{
+            color:black;
+            text-decoration: none;
+            display: block;
+            
+            padding: .5em;
+            border-top:var(--border);
+            &:hover{
+                background:rgba(192, 192, 192, 0.367);
+            }
+            
+            
+            
+
+        }
+    }
+}
+
+
+// End search suggestion list
+
 
 // End Header Section
 
@@ -762,4 +801,8 @@ footer{
 
     width:100%;
     border-top:.5px solid rgba(0, 0, 0, 0.142);
+}
+
+.d-none{
+    display: none;
 }

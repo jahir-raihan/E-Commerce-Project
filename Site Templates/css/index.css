@@ -167,6 +167,30 @@ header nav .nav-buttons .nav-btns:hover {
   display: flex;
 }
 
+.search-container-global {
+  position: relative;
+}
+.search-container-global .search-result-suggestion {
+  z-index: 2;
+  position: absolute;
+  border: var(--border);
+  background: white;
+  border-top: none;
+  width: 85%;
+  border-radius: 6px;
+  top: 38px;
+}
+.search-container-global .search-result-suggestion a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  padding: 0.5em;
+  border-top: var(--border);
+}
+.search-container-global .search-result-suggestion a:hover {
+  background: rgba(192, 192, 192, 0.367);
+}
+
 .hero {
   background-image: url("/img/bg-3d.png");
   background-repeat: no-repeat;
@@ -594,4 +618,8 @@ footer .footer-bottom .links {
   height: 1px;
   width: 100%;
   border-top: 0.5px solid rgba(0, 0, 0, 0.142);
+}
+
+.d-none {
+  display: none;
 }/*# sourceMappingURL=index.css.map */

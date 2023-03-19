@@ -1,39 +1,47 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Hover Menu Example</title>
-    <style>
-      .hover-element {
-        position: relative;
-        display: inline-block;
-      }
+<head>
+  <title>Search Bar Example</title>
+  <style>
+    #myList li {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <label for="search-input">Search:</label>
+  <input type="text" id="search-input" placeholder="Type something...">
+  <ul id="myList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Dragonfruit</li>
+    <li>Elderberry</li>
+  </ul>
 
-      .hover-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 10px;
-        display: none;
-        z-index: 1;
-      }
+  <script>
+    const searchInput = document.querySelector("#search-input");
+    const listItems = document.querySelectorAll("#myList li");
 
-      .hover-element:hover .hover-menu {
-        display: block;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="hover-element">
-      Hover over me to see the menu!
-      <div class="hover-menu">
-        <ul>
-          <li><a href="#">Menu Item 1</a></li>
-          <li><a href="#">Menu Item 2</a></li>
-          <li><a href="#">Menu Item 3</a></li>
-        </ul>
-      </div>
-    </div>
-  </body>
+    searchInput.addEventListener("input", function() {
+      const searchTerm = searchInput.value.toLowerCase();
+      
+      listItems.forEach(function(item) {
+        if (item.textContent.toLowerCase().includes(searchTerm)) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+
+    // Show all list items on blur event
+    searchInput.addEventListener("blur", function() {
+      listItems.forEach(function(item) {
+        item.style.display = "none";
+      });
+    });
+  </script>
+</body>
 </html>

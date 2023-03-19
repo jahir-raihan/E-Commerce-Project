@@ -396,6 +396,42 @@
 // Product list 
 
 
+// search suggestion list
+
+.search-container-global{
+  position: relative;
+
+  .search-result-suggestion{
+      z-index: 2;
+      position: absolute;
+      border:var(--border);
+      background:white;
+      border-top:none;
+      
+
+      width:85%;
+      border-radius: 6px;
+      top:38px;
+      
+
+      a{
+          color:black;
+          text-decoration: none;
+          display: block;
+          
+          padding: .5em;
+          border-top:var(--border);
+          &:hover{
+              background:rgba(192, 192, 192, 0.367);
+          }
+          
+          
+          
+
+      }
+  }
+}
+
 .product-list{
 
   .product-list-top{
