@@ -581,13 +581,6 @@
   height: fit-content !important;
 }
 
-header {
-  background-color: white;
-  z-index: 10;
-  position: sticky;
-  top: 0;
-}
-
 .filter-container {
   position: relative;
   width: 100%;

@@ -5,24 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Ecommerce</title>
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+   
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
 </head>
 <body>
 
     <!-- Navigation bar -->
 
     <header>
-        <nav>
-            <div class="nav-logo">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
                 <img src="/img/ logo.png" alt="Logo" class="logo">
             </div>
             
             <form>
                 <div class="nav-search search-container-global">
-                    <input type="text" name="search" id="nav-search" class="nav-search-input" placeholder="Search by tags, names anything">
-                    <div class="nav-search-button">
-                        <img src="/img/search.png" alt="search icon" draggable="false" class="icon">
-                    </div>
+                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
+                    <button class="nav-search-button">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-search-button snd-nav-srch-btn d-none"
+                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
 
                     <div class="search-result-suggestion d-none" id="s-r-s">
                         <ul id="s-list">
@@ -100,39 +113,64 @@
 
             <div class="nav-buttons">
 
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="sign-in">
-                            <img src="/img/person.png" draggable="false" alt="sign-in icon" class="icon">
-                            <p>Sign in</p>
-                        </div>
-                    </a>
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons ">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="cart-item-count d-none">1</span>
                 </div>
 
-                
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="wish-list">
-                            <img src="/img/favorite.png" draggable="false" alt="wishlist icon" class="icon">
-                            <p>Wishlist</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="my-cart">
-                            <img src="/img/shopping-basket.png" draggable="false" alt="my cart icon" class="icon">
-                            <p>My cart</p>
-                        </div>
-                    </a>
-                </div>
-                
+                <button class="nav-btns wishlist-btn">
+                    <i class="fas fa-heart"></i></i> Wishlist
+                </button>
+                <button class="nav-btns my-cart-btn">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="cart-item-count d-none">1</span>
+                </button>
 
             </div>
         </nav>
 
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                <a href="#">
+                    <div >
+                        <p>Shop</p>
+                        <small>Ready made products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>Hot offers</p>
+                        <small>Get offer deals</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>New arrivals</p>
+                        <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
     </header>
+    <div class="nav-search-hidden d-none" id="n-srch-hidden">
+        <input type="text" class="nav-search-input" placeholder="search by anything">
+    </div>
 
     <!-- Navigation 2 , I don't know , but its in the design -->
 
@@ -143,7 +181,7 @@
                 <div class="menu">
                     <img src="/img/menu.png" alt="">
                 </div>
-                <p>Categories</p>
+                <p>Shop</p>
 
                 <div class="hover-menu-category-menu">
 
@@ -229,7 +267,7 @@
 
         <!-- Hero Section -->
 
-        <div class="hero">
+        <div class="hero" id="hero">
             <div class="hero-contents">
                 <h1>Best products & brands in our store</h1>
 
@@ -252,7 +290,76 @@
             </p>
 
             <div class="product-lists">
+                
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/image 17.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
 
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/1656227518bkash-logo-png.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/test_image.jpeg" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">
@@ -272,11 +379,79 @@
                     <div class="p-c-btns">
                         <button class="add-to-cart">Add to cart</button>
                         <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/image 17.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
 
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/1656227518bkash-logo-png.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/test_image.jpeg" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">
@@ -296,11 +471,79 @@
                     <div class="p-c-btns">
                         <button class="add-to-cart">Add to cart</button>
                         <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/image 17.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
 
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/1656227518bkash-logo-png.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/test_image.jpeg" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">
@@ -320,11 +563,79 @@
                     <div class="p-c-btns">
                         <button class="add-to-cart">Add to cart</button>
                         <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/image 17.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
 
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/1656227518bkash-logo-png.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/test_image.jpeg" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">
@@ -344,11 +655,79 @@
                     <div class="p-c-btns">
                         <button class="add-to-cart">Add to cart</button>
                         <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/image 17.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
 
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/1656227518bkash-logo-png.png" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
+                <div class="product-card">
+                    <div class="product-card-and-view-mask">
+                        <div class="view-mask">
+                            <p>View Details</p>
+                        </div>
+                        <div class="p-c-img">
+                            <img draggable="false" src="/img/test_image.jpeg" alt="">
+                        </div>
+                       
+                    </div>
+                   
+                    
+                    <div class="line"></div>
+                    <p class="price">$99.99</p>
+                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+
+                    <div class="p-c-btns">
+                        <button class="add-to-cart">Add to cart</button>
+                        <button class="add-to-wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div> 
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">
@@ -368,205 +747,68 @@
                     <div class="p-c-btns">
                         <button class="add-to-cart">Add to cart</button>
                         <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div> 
 
-                <div class="product-card">
-                    <div class="product-card-and-view-mask">
-                        <div class="view-mask">
-                            <p>View Details</p>
-                        </div>
-                        <div class="p-c-img">
-                            <img draggable="false" src="/img/go-pro.png" alt="">
-                        </div>
-                       
-                    </div>
-                   
-                    
-                    <div class="line"></div>
-                    <p class="price">$99.99</p>
-                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+               
 
-                    <div class="p-c-btns">
-                        <button class="add-to-cart">Add to cart</button>
-                        <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
-                        </button>
-                    </div>
-                </div> 
-
-                <div class="product-card">
-                    <div class="product-card-and-view-mask">
-                        <div class="view-mask">
-                            <p>View Details</p>
-                        </div>
-                        <div class="p-c-img">
-                            <img draggable="false" src="/img/go-pro.png" alt="">
-                        </div>
-                       
-                    </div>
-                   
-                    
-                    <div class="line"></div>
-                    <p class="price">$99.99</p>
-                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
-
-                    <div class="p-c-btns">
-                        <button class="add-to-cart">Add to cart</button>
-                        <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
-                        </button>
-                    </div>
-                </div> 
-
-                <div class="product-card">
-                    <div class="product-card-and-view-mask">
-                        <div class="view-mask">
-                            <p>View Details</p>
-                        </div>
-                        <div class="p-c-img">
-                            <img draggable="false" src="/img/go-pro.png" alt="">
-                        </div>
-                       
-                    </div>
-                   
-                    
-                    <div class="line"></div>
-                    <p class="price">$99.99</p>
-                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
-
-                    <div class="p-c-btns">
-                        <button class="add-to-cart">Add to cart</button>
-                        <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
-                        </button>
-                    </div>
-                </div> 
-
-                <div class="product-card">
-                    <div class="product-card-and-view-mask">
-                        <div class="view-mask">
-                            <p>View Details</p>
-                        </div>
-                        <div class="p-c-img">
-                            <img draggable="false" src="/img/go-pro.png" alt="">
-                        </div>
-                       
-                    </div>
-                   
-                    
-                    <div class="line"></div>
-                    <p class="price">$99.99</p>
-                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
-
-                    <div class="p-c-btns">
-                        <button class="add-to-cart">Add to cart</button>
-                        <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
-                        </button>
-                    </div>
-                </div> 
-
-                <div class="product-card">
-                    <div class="product-card-and-view-mask">
-                        <div class="view-mask">
-                            <p>View Details</p>
-                        </div>
-                        <div class="p-c-img">
-                            <img draggable="false" src="/img/go-pro.png" alt="">
-                        </div>
-                       
-                    </div>
-                   
-                    
-                    <div class="line"></div>
-                    <p class="price">$99.99</p>
-                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
-
-                    <div class="p-c-btns">
-                        <button class="add-to-cart">Add to cart</button>
-                        <button class="add-to-wishlist">
-                            <img draggable="false" src="/img/heart-blue.png" alt="">
-                        </button>
-                    </div>
-                </div> 
-
+                
 
 
             </div>
 
         </div>
-
+        
         <!-- Top Reviews Section -->
 
         <div class="top-reviews">
 
             <div class="img1 t-r-bg-img">
-                <img draggable="false" src="/img/chilli (1).png" alt="">
+                <i class="fa-solid fa-shirt"></i>
             </div>
 
             <div class="img2 t-r-bg-img">
-                <img draggable="false" src="/img/mango.png" alt="">
+                <i class="fa-solid fa-socks"></i>
             </div>
 
             <div class="img3 t-r-bg-img">
-                <img draggable="false" src="/img/mango (1).png" alt="">
+                <i class="fa fa-glasses"></i>
             </div>
 
             <div class="img4 t-r-bg-img">
-                <img draggable="false" src="/img/olive.png" alt="">
+                <i class="fa-solid fa-poo"></i>
             </div>
 
             <div class="top-reviews-contents">
 
                 <div class="head">
                     <h1>Customer Top Reviews</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam voluptates autem soluta beatae a nesciunt minima dolores fugiat doloribus enim? Ratione amet asperiores ab consequatur nostrum quia voluptas, quod aperiam.</p>
+                    <p>Lorquia voluptas, quod aperiam. Lorem ipsum dolor sit amet.lorem5 Lorem ipsum dolor sit amet.</p>
 
                 </div>
 
                 <div class="t-r-content">
                     
                     <div class="d-flex-t-r-content">
-                        <img draggable="false" src="/img/982045.jpg" alt="">
+                        <img draggable="false" src="/img/towfiqu-barbhuiya-0ZUoBtLw3y4-unsplash.jpg" alt="">
 
                         <div class="user-reviews">
 
+                            
                             <div class="reviews">
 
                                 <div class="user">  
                                 </div>
                                 <div class="texts">
                                     <p class="name">Jahir Raihan</p>
-                                    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore illo facilis hic facere temporibus ullam molestiae sit odio, laudantium nulla soluta unde similique totam nemo eligendi optio perspiciatis iusto? Libero qui, odit hic earum dolores at deleniti adipisci excepturi porro consequuntur ducimus! Eius laborum, voluptatibus vitae omnis aspernatur sed cumque.</small>
+                                    <small>Lorem e Lorem, Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. ipsum dolor sit amet consectetur adipisicing elit. Harum, quas?.</small>
 
                                 </div>
 
                             </div>
-                            <div class="reviews">
-
-                                <div class="user">  
-                                </div>
-                                <div class="texts">
-                                    <p class="name">Jahir Raihan</p>
-                                    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore illo facilis hic facere temporibus ullam molestiae sit odio, laudantium nulla soluta unde similique totam nemo eligendi optio perspiciatis iusto? Libero qui, odit hic earum dolores at deleniti adipisci excepturi porro consequuntur ducimus! Eius laborum, voluptatibus vitae omnis aspernatur sed cumque.</small>
-
-                                </div>
-
-                            </div>
-                            <div class="reviews">
-
-                                <div class="user">  
-                                </div>
-                                <div class="texts">
-                                    <p class="name">Jahir Raihan</p>
-                                    <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore illo facilis hic facere temporibus ullam molestiae sit odio, laudantium nulla soluta unde similique totam nemo eligendi optio perspiciatis iusto? Libero qui, odit hic earum dolores at deleniti adipisci excepturi porro consequuntur ducimus! Eius laborum, voluptatibus vitae omnis aspernatur sed cumque.</small>
-
-                                </div>
-
-                            </div>
+                           
 
 
                         </div>
@@ -779,7 +1021,10 @@
             <div class="footer-flex-items">
 
                 <div class="brand-details">
-                    <img src="/img/logo-white.png" alt="Logo" class="logo">
+                    <div class="img">
+                        <img src="/img/logo-white.png" alt="Logo" class="logo">
+                    </div>
+                    
                     <p>Company name. </p>
                     <p>c 2018-2021 Templatemount.</p>
                     <p>All rights reserved.</p>

@@ -1,47 +1,42 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
-  <title>Search Bar Example</title>
+  <meta charset="UTF-8">
+  <title>Background Color Change Example</title>
   <style>
-    #myList li {
-      display: none;
+    body {
+        transition-duration:2s ;
+      height: 100vh;
+      margin: 0;
+    }
+    h1{
+        color:white;
     }
   </style>
 </head>
 <body>
-  <label for="search-input">Search:</label>
-  <input type="text" id="search-input" placeholder="Type something...">
-  <ul id="myList">
-    <li>Apple</li>
-    <li>Banana</li>
-    <li>Cherry</li>
-    <li>Dragonfruit</li>
-    <li>Elderberry</li>
-  </ul>
 
+  <h1>Hello World</h1>
+  
   <script>
-    const searchInput = document.querySelector("#search-input");
-    const listItems = document.querySelectorAll("#myList li");
+    // array of background colors to cycle through
+    const bgColors = ['#7286D3', '#8EA7E9', '#E5E0FF', 'pink', '#F8CBA6', '#AACB73'];
 
-    searchInput.addEventListener("input", function() {
-      const searchTerm = searchInput.value.toLowerCase();
-      
-      listItems.forEach(function(item) {
-        if (item.textContent.toLowerCase().includes(searchTerm)) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
-    });
+    // get reference to the body element
+    const body = document.querySelector('body');
 
-    // Show all list items on blur event
-    searchInput.addEventListener("blur", function() {
-      listItems.forEach(function(item) {
-        item.style.display = "none";
-      });
-    });
+    // initialize color index
+    let colorIndex = 0;
+
+    // set interval to change background color every 1 minute
+    setInterval(() => {
+      // change background color to next color in array
+      body.style.backgroundColor = bgColors[colorIndex];
+
+      // increment color index, reset to 0 if end of array is reached
+      colorIndex = (colorIndex + 1) % bgColors.length;
+    }, 2000);
   </script>
+  
 </body>
 </html>
