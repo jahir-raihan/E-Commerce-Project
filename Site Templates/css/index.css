@@ -740,6 +740,10 @@ footer .footer-bottom .links {
   display: flex;
 }
 
+.fade-out {
+  opacity: 0.5;
+}
+
 .line {
   height: 1px;
   width: 100%;

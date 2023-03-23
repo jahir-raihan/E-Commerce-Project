@@ -41,13 +41,16 @@ listItems.forEach(function(item) {
 function toggle_nav_menu(){
     var obj = document.getElementById('nav-ham-menu');
     var obj2 = document.getElementById('cross-icon-nav-ham')
+    var obj3 = document.getElementById('container')
     var toggle_nav = document.getElementById('toggle-nav')
     if (obj.contains(obj2)){
         obj.innerHTML = '<img src="/img/menu.png" alt="">'
         toggle_nav.style.display = 'none'
+        obj3.classList.remove('fade-out')
     }else{
         obj.innerHTML = '<i id="cross-icon-nav-ham" class="fa fa-times"></i>'
         toggle_nav.style.display = 'block'
+        obj3.classList.add('fade-out')
 
 
     }
@@ -71,7 +74,10 @@ function toggle_nav_menu(){
  // set interval to change background color every 1 minute
  setInterval(() => {
    // change background color to next color in array
-   body.style.backgroundColor = bgColors[colorIndex];
+   try{
+    body.style.backgroundColor = bgColors[colorIndex];
+   }catch{}
+   
 
    // increment color index, reset to 0 if end of array is reached
    colorIndex = (colorIndex + 1) % bgColors.length;

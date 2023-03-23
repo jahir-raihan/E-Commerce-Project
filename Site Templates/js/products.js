@@ -43,3 +43,23 @@ rangeInput.forEach((input) => {
   });
 
 // End Price Range
+
+
+// Hidden filter 
+
+function enable_hidden_filter(action){
+  var obj = document.getElementById('hidden-filter-mobile') 
+  var obj3 = document.getElementById('container')
+  if (action==true){
+    obj.style.display = 'block';
+    obj3.classList.add('fade-out')
+  }
+  else{
+    obj.style.display = 'none'
+    obj3.classList.remove('fade-out')
+  }
+ 
+
+}
+
+// End Hidden filter
