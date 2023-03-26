@@ -1,10 +1,11 @@
 // All Responsiveness will be done here
 
+// Disable things when screen width > 775 px 
 
 
 // Header Navigation -- Home page
 
-@media screen and (max-width:1370px){
+@media only screen and (max-width:1370px){
     .nav-search{
         transition-duration: .5s;
         width:400px !important;
@@ -729,3 +730,25 @@
 
 // }
 
+
+
+// For all
+
+
+@media only screen and (min-width:775px){
+    .toggle-nav{
+        display: none !important;
+    }
+
+    .hidden-filter-mobile{
+        display: none !important;
+    }
+
+    .fade-out{
+        height:fit-content !important;
+        overflow: auto !important;
+        opacity:1 !important;
+    }
+
+
+}

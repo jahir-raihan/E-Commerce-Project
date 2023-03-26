@@ -199,7 +199,13 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+.reverse-checkmark{
+  background-color:#eee !important;
 
+  &::after{
+    border: none !important;
+  }
+}
 
 
 // End Custom Checkbox
@@ -286,7 +292,6 @@
 //  Price Range
 
 .price-range{
-  
   .range{
 
     .range-price{
@@ -533,32 +538,12 @@
     
     margin-top:1em;
     padding-left:.1em;
+
     .refinements{
       margin-bottom: .5em;
       .refinements-filters{
         display: flex;
         flex-wrap: wrap;
-
-        .tag-btn{
-          margin-right:.3em;
-          background-color: #495588;
-          width:fit-content;
-          padding:.1em .3em;
-          border-radius: 2px;
-          color:white;
-          opacity: .9;
-          
-          display: flex;
-          align-items: center;
-          p{
-            margin-right:1em;
-            font-size:12px;
-          }
-          .cross{
-            cursor: pointer;
-            font-size:12px;
-          }
-        }
       }
 
       button{
@@ -573,31 +558,57 @@
       }
     }
 
+
     .tags{
       
       display: flex;
       flex-wrap: wrap;
       margin-bottom: 1em;
-      .tag-btn{
-        margin-right:.3em;
-        background-color: #dfdfdf;
-        width:fit-content;
-        padding:.1em .3em;
-        border-radius: 2px;
-        cursor: pointer;
-        opacity: .8;
-        display: flex;
-        align-items: center;
-        p{
+      // .tag-btn{
+      //   margin-right:.3em;
+      //   background-color: #dfdfdf;
+      //   width:fit-content;
+      //   padding:.1em .3em;
+      //   border-radius: 2px;
+      //   cursor: pointer;
+      //   opacity: .8;
+      //   display: flex;
+      //   align-items: center;
+      //   margin-bottom: .5em;
+      //   p{
           
-          font-size:12px;
-        }
+      //     font-size:12px;
+      //   }
         
-      }
+      // }
       .main-tag{
         color:white;
 
-        background:rgb(85, 85, 85);
+        background:rgb(85, 85, 85) !important;
+      }
+      .tag-btn{
+        background:rgb(135, 135, 135);
+      }
+    }
+    .tag-btn{
+      margin-right:.3em;
+      background-color: #495588;
+      width:fit-content;
+      padding:.1em .3em;
+      border-radius: 2px;
+      color:white;
+      opacity: .9;
+      margin-bottom: .5em;
+      
+      display: flex;
+      align-items: center;
+      p{
+        margin-right:1em;
+        font-size:12px;
+      }
+      .cross{
+        cursor: pointer;
+        font-size:12px;
       }
     }
   }
@@ -861,7 +872,7 @@
     top:140px;
     height:90vh;
     overflow-y: auto;
-    padding-bottom: 2em;
+ 
   }
 }
 
@@ -946,4 +957,15 @@
   overflow: hidden;
   opacity:.5;
  
+}
+
+
+
+.loader{
+
+  position: absolute;
+  bottom:-50%;
+  right:50%;
+  font-size:18px;
+  display: none;
 }

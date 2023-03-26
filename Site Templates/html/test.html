@@ -1,42 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Background Color Change Example</title>
-  <style>
-    body {
-        transition-duration:2s ;
-      height: 100vh;
-      margin: 0;
-    }
-    h1{
-        color:white;
-    }
-  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
+  <form action="">
 
-  <h1>Hello World</h1>
-  
+    <input type="checkbox" checked id="checkbox">
+  </form>
+
   <script>
-    // array of background colors to cycle through
-    const bgColors = ['#7286D3', '#8EA7E9', '#E5E0FF', 'pink', '#F8CBA6', '#AACB73'];
-
-    // get reference to the body element
-    const body = document.querySelector('body');
-
-    // initialize color index
-    let colorIndex = 0;
-
-    // set interval to change background color every 1 minute
-    setInterval(() => {
-      // change background color to next color in array
-      body.style.backgroundColor = bgColors[colorIndex];
-
-      // increment color index, reset to 0 if end of array is reached
-      colorIndex = (colorIndex + 1) % bgColors.length;
-    }, 2000);
+    var box = document.getElementById('checkbox')
   </script>
-  
 </body>
 </html>

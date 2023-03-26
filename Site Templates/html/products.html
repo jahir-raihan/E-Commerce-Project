@@ -16,7 +16,7 @@
 
     <!-- Navigation Bar -->
 
-    <header>
+    <header id="header">
         <nav class="nav">
             <div class="nav-logo nav-ham-logo">
                 <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
@@ -85,247 +85,9 @@
             </ul>
         </div>
 
-        <div class="filter-container-mobile hidden-filter-mobile" id="hidden-filter-mobile">
-            <div class="filter" >
-                <div class="close-filter">
-                    <div></div>
-                    <i id="cross-icon-nav-ham" class="fa fa-times close-filter" 
-                    onclick="enable_hidden_filter(false)"></i>
-                </div>
-                
-                <div class="line"></div>
-
-                <div class="category filter-item">
-                    <div class="filter-item-top">
-                        <p>Related categroy</p>
-                        <i style="font-size:24px" class="fa">&#xf107;</i>
-                    </div>
-
-                    <p class="category selected" id="category_id">Winter cloths</p>
-                    <p class="category" id="category_id">Summer cloths</p>
-                    <p class="category" id="category_id">Footwere</p>
-                    <p class="category" id="category_id">Jeans jackets</p>
-                    <p class="category" id="category_id">Underwears</p>
-                </div>
-
-                <div class="meterial filter-item">
-
-                    <div class="filter-item-top">
-                        <p>Meterial</p>
-                        <i style="font-size:24px" class="fa">&#xf107;</i>
-                    </div>
-
-                    <form>
-
-                        <div class="filter-box">
-                            <label class="custom-check-container">
-                                
-                                <p>Check all</p>
-                                <p>244</p>
-                                <input type="checkbox" id="" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                            
-                        </div>
-                        <div class="filter-box">
-                            <label class="custom-check-container">
-                                
-                                <p>Check all</p>
-                                <p>244</p>
-                                <input type="checkbox" id="" >
-                                <span class="checkmark"></span>
-                            </label>
-                            
-                        </div>
-                        <div class="filter-box">
-                            <label class="custom-check-container">
-                                
-                                <p>Check all</p>
-                                <p>244</p>
-                                <input type="checkbox" id="">
-                                <span class="checkmark"></span>
-                            </label>
-                            
-                        </div>
-                        <div class="filter-box">
-                            <label class="custom-check-container">
-                                
-                                <p>Check all</p>
-                                <p>244</p>
-                                <input type="checkbox" id="" >
-                                <span class="checkmark"></span>
-                            </label>
-                            
-                        </div>
-                        <div class="filter-box">
-                            <label class="custom-check-container">
-                                
-                                <p>Check all</p>
-                                <p>244</p>
-                                <input type="checkbox" id="" checked="checked">
-                                <span class="checkmark"></span>
-                            </label>
-                            
-                        </div>
-                            
-
-                    </form>
-
-
-                </div>
-
-                <div class="condition filter-item">
-                    <div class="filter-item-top">
-                        <p>Condition</p>
-                        <i style="font-size:24px" class="fa">&#xf107;</i>
-                    </div>
-
-                    <form action="">
-
-                        
-                        <label class="radio-container">
-                            <p>Radio Box</p>
-                            <input type="radio" id="" checked="radio">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="radio-container">
-                            <p>Radio Box</p>
-                            <input type="radio" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="radio-container">
-                            <p>Radio Box</p>
-                            <input type="radio" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="radio-container">
-                            <p>Radio Box</p>
-                            <input type="radio" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="radio-container">
-                            <p>Radio Box</p>
-                            <input type="radio" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-
-                    </form>
-
-                </div>
-
-                <div class="price-range filter-item">
-                    <div class="filter-item-top">
-                        <p>Price</p>
-                        <i style="font-size:24px" class="fa">&#xf107;</i>
-                    </div>
-
-                    <div class="range">
-                        <div class="range-slider">
-                        <span class="range-selected"></span>
-                        </div>
-                        <div class="range-input">
-                        <input type="range" class="min" min="0" max="1000" value="300" step="10">
-                        <input type="range" class="max" min="0" max="1000" value="700" step="10">
-                        </div>
-                        <div class="range-price">      
-                        <label for="min">Min</label>
-                        <input type="number" name="min" value="300" class="min-max">      
-                        <label for="max">Max</label>
-                        <input type="number" name="max" value="700" class="min-max">      
-                        </div>
-                    </div> 
-
-                    
-                    <button id="apply" class="apply">Apply</button>
-                    
-
-                    
-
-                </div>
-
-                <div class="rating filter-item">
-
-                    <div class="filter-item-top">
-                        <p>Rating</p>
-                        <i style="font-size:24px" class="fa">&#xf107;</i>
-                    </div>
-
-
-                    <label class="custom-check-container">
-                                
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                        </div>
-                        <input type="checkbox" id="" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class="custom-check-container">
-                                
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                        </div>
-                        <input type="checkbox" id="">
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class="custom-check-container">
-                                
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                        </div>
-                        <input type="checkbox" id="" >
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class="custom-check-container">
-                                
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                        </div>
-                        <input type="checkbox" id="" >
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class="custom-check-container">
-                                
-                        <div class="stars">
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                            <span class="fa fa-star "></span>
-                        </div>
-                        <input type="checkbox" id="" >
-                        <span class="checkmark"></span>
-                    </label>
-
-                
-
-                </div>
-                
-
+        <div class="mobile-filter-container">
+            <div class="hidden-filter-mobile" id="hidden-filter-mobile">
+ 
             </div>
         </div>
         
@@ -358,79 +120,156 @@
 
             <!-- Filter Container -->
 
-            <div class="filter-container">
+            <div class="filter-container" id="main-filter-container">
 
-                <div class="filter">
-                    
+                <div class="filter" id="filter-contents">
+                    <div class="close-filter d-none" id="close-filter">
+                        <div></div>
+                        <i class="fa fa-times" onclick="enable_hidden_filter(false)"></i>
+                        
+                    </div>
+                    <div class="line"></div>
 
-                    <div class="category filter-item">
+                    <div class="category-container filter-item">
                         <div class="filter-item-top">
-                            <p>Related categroy</p>
+                            <p>Categories</p>
                             <i style="font-size:24px" class="fa">&#xf107;</i>
                         </div>
 
-                        <p class="category selected" id="category_id">Winter cloths</p>
-                        <p class="category" id="category_id">Summer cloths</p>
-                        <p class="category" id="category_id">Footwere</p>
-                        <p class="category" id="category_id">Jeans jackets</p>
-                        <p class="category" id="category_id">Underwears</p>
+                        <p class="category" id="category_id1">Winter cloths</p>
+                        <p class="category" id="category_id2">Summer cloths</p>
+                        <p class="category" id="category_id3">Rainy Season</p>
+                        <p class="category" id="category_id4">Jeans</p>
+                        <p class="category" id="category_id5">Underwears</p>
+                        <p class="category" id="category_id6">Masks</p>
                     </div>
 
                     <div class="meterial filter-item">
 
                         <div class="filter-item-top">
-                            <p>Meterial</p>
+                            <p>Refinements</p>
                             <i style="font-size:24px" class="fa">&#xf107;</i>
                         </div>
 
                         <form>
 
+                            
                             <div class="filter-box">
-                                <label class="custom-check-container">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox1">
                                     
-                                    <p>Check all</p>
-                                    <p>244</p>
-                                    <input type="checkbox" id="" checked="checked">
-                                    <span class="checkmark"></span>
-                                </label>
-                                
-                            </div>
-                            <div class="filter-box">
-                                <label class="custom-check-container">
-                                    
-                                    <p>Check all</p>
-                                    <p>244</p>
-                                    <input type="checkbox" id="" >
-                                    <span class="checkmark"></span>
-                                </label>
-                                
-                            </div>
-                            <div class="filter-box">
-                                <label class="custom-check-container">
-                                    
-                                    <p>Check all</p>
-                                    <p>244</p>
+                                    <p>Mens Jeans full sleeve</p>
+                                    <p>24</p>
                                     <input type="checkbox" id="">
                                     <span class="checkmark"></span>
                                 </label>
                                 
                             </div>
+
                             <div class="filter-box">
-                                <label class="custom-check-container">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox2">
                                     
-                                    <p>Check all</p>
-                                    <p>244</p>
+                                    <p>T-shirts half sleeve</p>
+                                    <p>44</p>
+                                    <input type="checkbox" >
+                                    <span class="checkmark" id="checkmark-2"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox3" >
+                                    
+                                    <p>T-shirts full sleeve</p>
+                                    <p>42</p>
+                                    <input type="checkbox" id="">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox4">
+                                    
+                                    <p>Hoodies</p>
+                                    <p>34</p>
                                     <input type="checkbox" id="" >
                                     <span class="checkmark"></span>
                                 </label>
                                 
                             </div>
+
                             <div class="filter-box">
-                                <label class="custom-check-container">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox5">
                                     
-                                    <p>Check all</p>
-                                    <p>244</p>
-                                    <input type="checkbox" id="" checked="checked">
+                                    <p>Women Jeans</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox6">
+                                    
+                                    <p>Mens Shirts full sleeve</p>
+                                    <p>78</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox7">
+                                    
+                                    <p>Kids</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox8">
+                                    
+                                    <p>Socks</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox9">
+                                    
+                                    <p>T-Shirts</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+                             
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox10">
+                                    
+                                    <p>Premium Masks</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox11">
+                                    
+                                    <p>Lungies</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
                                     <span class="checkmark"></span>
                                 </label>
                                 
@@ -444,43 +283,35 @@
 
                     <div class="condition filter-item">
                         <div class="filter-item-top">
-                            <p>Condition</p>
+                            <p>Offerings</p>
                             <i style="font-size:24px" class="fa">&#xf107;</i>
                         </div>
 
                         <form action="">
 
                             
-                            <label class="radio-container">
-                                <p>Radio Box</p>
-                                <input type="radio" id="" checked="radio">
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>New arrival</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>Hot offers</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>Summer discount</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>Any event discount</p>
+                                <input type="checkbox" id="" name="">
                                 <span class="checkmark"></span>
                             </label>
 
-                            <label class="radio-container">
-                                <p>Radio Box</p>
-                                <input type="radio" id="" >
-                                <span class="checkmark"></span>
-                            </label>
-
-                            <label class="radio-container">
-                                <p>Radio Box</p>
-                                <input type="radio" id="" >
-                                <span class="checkmark"></span>
-                            </label>
-
-                            <label class="radio-container">
-                                <p>Radio Box</p>
-                                <input type="radio" id="" >
-                                <span class="checkmark"></span>
-                            </label>
-
-                            <label class="radio-container">
-                                <p>Radio Box</p>
-                                <input type="radio" id="" >
-                                <span class="checkmark"></span>
-                            </label>
-
+                            
 
                         </form>
 
@@ -508,91 +339,7 @@
                             </div>
                         </div> 
 
-                        
-                        <button id="apply" class="apply">Apply</button>
-                        
-
-                        
-
                     </div>
-
-                    <div class="rating filter-item">
-
-                        <div class="filter-item-top">
-                            <p>Rating</p>
-                            <i style="font-size:24px" class="fa">&#xf107;</i>
-                        </div>
-
-
-                        <label class="custom-check-container">
-                                    
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                            </div>
-                            <input type="checkbox" id="" checked="checked">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="custom-check-container">
-                                    
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star "></span>
-                            </div>
-                            <input type="checkbox" id="">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="custom-check-container">
-                                    
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                            </div>
-                            <input type="checkbox" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="custom-check-container">
-                                    
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                            </div>
-                            <input type="checkbox" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label class="custom-check-container">
-                                    
-                            <div class="stars">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                                <span class="fa fa-star "></span>
-                            </div>
-                            <input type="checkbox" id="" >
-                            <span class="checkmark"></span>
-                        </label>
-
-                    
-
-                    </div>
-                    
 
                 </div>
             </div>
@@ -703,11 +450,15 @@
 
                     <div class="sort-by-price">
                         <div></div>
-                        <div class="s-b-p">
+                        <div class="s-b-p" onclick="change_sorting()">
                             <p>Sort by price </p>
-                            <i class="fa fa-sort"></i>
+                            <i class="fas fa-sort" id="sort-icon"></i>
                         </div>
                         
+                    </div>
+
+                    <div class="loader" id="loader-product-page">
+                        <i class="fas fa-cog fa-spin"></i>
                     </div>
                 </div>
 
@@ -718,32 +469,24 @@
 
                     <div class="refinements">
 
-                        <div class="refinements-filters">
+                        <div class="refinements-filters" id="refinements">
 
                             <div class="tag-btn">
-                                <p>Tag Name</p>
-                                <div class="cross">&#x2715;</div>
+                                <p>Refinements</p>
                             </div>
-                            <div class="tag-btn">
-                                <p>Tag Name</p>
-                                <div class="cross">&#x2715;</div>
-                            </div>
+                            
 
                         </div>
 
-                        <button>clear refinements </button>
+                        <button onclick="clear_refinements()">clear refinements </button>
                         
                     </div>
 
-                    <div class="tags">
+                    <div class="tags" id="tags">
 
                         <div class="tag-btn main-tag">
                             <p>Tags</p>
                             
-                        </div>
-
-                        <div class="tag-btn">
-                            <p>Tage name</p>
                         </div>
 
                     </div>

@@ -168,6 +168,13 @@
   transform: rotate(45deg);
 }
 
+.reverse-checkmark {
+  background-color: #eee !important;
+}
+.reverse-checkmark::after {
+  border: none !important;
+}
+
 /* The container */
 .radio-container {
   display: block;
@@ -436,26 +443,6 @@
   display: flex;
   flex-wrap: wrap;
 }
-.product-list .product-list-tags-and-refinements .refinements .refinements-filters .tag-btn {
-  margin-right: 0.3em;
-  background-color: #495588;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 0.1em 0.3em;
-  border-radius: 2px;
-  color: white;
-  opacity: 0.9;
-  display: flex;
-  align-items: center;
-}
-.product-list .product-list-tags-and-refinements .refinements .refinements-filters .tag-btn p {
-  margin-right: 1em;
-  font-size: 12px;
-}
-.product-list .product-list-tags-and-refinements .refinements .refinements-filters .tag-btn .cross {
-  cursor: pointer;
-  font-size: 12px;
-}
 .product-list .product-list-tags-and-refinements .refinements button {
   font-size: 13px;
   margin-top: 0.5em;
@@ -471,24 +458,33 @@
   flex-wrap: wrap;
   margin-bottom: 1em;
 }
+.product-list .product-list-tags-and-refinements .tags .main-tag {
+  color: white;
+  background: rgb(85, 85, 85) !important;
+}
 .product-list .product-list-tags-and-refinements .tags .tag-btn {
+  background: rgb(135, 135, 135);
+}
+.product-list .product-list-tags-and-refinements .tag-btn {
   margin-right: 0.3em;
-  background-color: #dfdfdf;
+  background-color: #495588;
   width: -moz-fit-content;
   width: fit-content;
   padding: 0.1em 0.3em;
   border-radius: 2px;
-  cursor: pointer;
-  opacity: 0.8;
+  color: white;
+  opacity: 0.9;
+  margin-bottom: 0.5em;
   display: flex;
   align-items: center;
 }
-.product-list .product-list-tags-and-refinements .tags .tag-btn p {
+.product-list .product-list-tags-and-refinements .tag-btn p {
+  margin-right: 1em;
   font-size: 12px;
 }
-.product-list .product-list-tags-and-refinements .tags .main-tag {
-  color: white;
-  background: rgb(85, 85, 85);
+.product-list .product-list-tags-and-refinements .tag-btn .cross {
+  cursor: pointer;
+  font-size: 12px;
 }
 .product-list .products-grid {
   display: grid;
@@ -607,7 +603,6 @@
   top: 140px;
   height: 90vh;
   overflow-y: auto;
-  padding-bottom: 2em;
 }
 
 .product-list-top {
@@ -673,4 +668,12 @@
   height: 90vh !important;
   overflow: hidden;
   opacity: 0.5;
+}
+
+.loader {
+  position: absolute;
+  bottom: -50%;
+  right: 50%;
+  font-size: 18px;
+  display: none;
 }/*# sourceMappingURL=products.css.map */

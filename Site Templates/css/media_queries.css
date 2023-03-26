@@ -1,4 +1,4 @@
-@media screen and (max-width: 1370px) {
+@media only screen and (max-width: 1370px) {
   .nav-search {
     transition-duration: 0.5s;
     width: 400px !important;
@@ -443,5 +443,19 @@
   }
   .filter-container-mobile p {
     font-size: 14px !important;
+  }
+}
+@media only screen and (min-width: 775px) {
+  .toggle-nav {
+    display: none !important;
+  }
+  .hidden-filter-mobile {
+    display: none !important;
+  }
+  .fade-out {
+    height: -moz-fit-content !important;
+    height: fit-content !important;
+    overflow: auto !important;
+    opacity: 1 !important;
   }
 }/*# sourceMappingURL=media_queries.css.map */
