@@ -1,3 +1,7 @@
+let dc = document
+// Image gallery 
+
+
 function showImage(imageId) {
     // Get all the images in the gallery
     var images = document.getElementsByClassName("img-gallery-img");
@@ -18,6 +22,10 @@ function showImage(imageId) {
     fullSizeImage.alt = selectedImage.alt;
 }
 
+// End Image gallery
+
+
+// For review stars
 
 // ---- ---- Const ---- ---- //
 const stars = document.querySelectorAll('.stars i');
@@ -34,3 +42,23 @@ stars.forEach((star, index1) => {
     });
   });
 });
+
+// End review stars
+
+
+let quantity = 1;
+
+let q_btns = dc.querySelectorAll('.q-input button')
+q_btns.forEach( (btn) => {
+
+  btn.addEventListener( 'click', function(){
+
+    if (btn.classList[0] == 'plus' && quantity < 20){
+      quantity += 1
+    }
+    else if (btn.classList[0] == 'minus' && quantity > 1){
+      quantity -= 1
+    }
+    dc.getElementById('q-count').innerHTML = quantity;
+  })
+})

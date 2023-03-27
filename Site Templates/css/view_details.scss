@@ -19,16 +19,17 @@
         margin-bottom: 1.4em;
 
         .details-main-img{
-            width:80%;
+           // width:80%;
             height:80%;
             margin:auto;
-            border:var(--border);
+            
             border-radius: 4px;
             display: flex;
             justify-content: center;
             align-items: center;
 
             img{
+                transition-duration:.5s;
                 width:auto;
                 height:auto;
                 max-width: 400px;
@@ -51,7 +52,7 @@
             display: flex;
             align-items: center;
             justify-content:center;
-            width:fit-content;
+            width:90%;
             margin:auto;
             margin-top:2em;
 
@@ -153,6 +154,7 @@
                 display: grid;
                 grid-template-columns: 30% 70%;
                 margin-bottom: .5em;
+                gap:10px;
             }
             p{
                 opacity: .8;
@@ -176,6 +178,7 @@
                     margin-bottom: .3em;
                 }
                 .select-box{
+                    transition-duration:.5s;
                     width:160px;
                     border:var(--border);
                     border-radius: 4px;
@@ -201,6 +204,7 @@
                 .q-input{
                     display: flex;
                     button{
+                        transition-duration:.5s;
                         display: block;
                         height:40px;
                         width:50px;
@@ -241,9 +245,8 @@
                 border:none;
                 margin-right:1em;
                 border-radius: 4px;
-                img{
-                    display: block;
-                    margin-right:.3em;
+                i{
+                    margin-right:.5em;
                 }
 
             }
