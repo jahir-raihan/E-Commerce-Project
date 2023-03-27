@@ -559,6 +559,89 @@
     grid-template-columns: 33% 33% 33% !important;
   }
 }
+@media screen and (max-width: 1780px) {
+  .suggested-product-list {
+    display: grid !important;
+    grid-template-columns: 19% 19% 19% 19% 19%;
+    gap: 1%;
+  }
+  .suggested-product-list .s-product-card {
+    width: 100% !important;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 1570px) {
+  .suggested-product-list {
+    grid-template-columns: 24% 24% 24% 24% !important;
+    gap: 1% !important;
+  }
+}
+@media screen and (max-width: 1115px) {
+  .cart-items-container .item .right p {
+    transition-duration: 0.5s;
+    font-size: 13px;
+    width: 90% !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .cart-top {
+    grid-template-columns: 100% !important;
+  }
+}
+@media screen and (max-width: 900px) {
+  .suggested-product-list {
+    grid-template-columns: 33% 33% 33% !important;
+    gap: 1%;
+  }
+}
+@media screen and (max-width: 775px) {
+  .cart-top, .cart-bottom-container {
+    transition-duration: 0.5s;
+    width: 90% !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .item {
+    display: block !important;
+  }
+  .item .img-title-details {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0.5em auto !important;
+    display: block !important;
+  }
+  .item .img-title-details .left {
+    border: none !important;
+    margin-bottom: 0.5em;
+    margin-right: 0 !important;
+  }
+  .item .img-title-details .left img {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto !important;
+    display: block;
+    width: 30% !important;
+    height: 80% !important;
+    min-width: 150px;
+  }
+  .item .img-title-details .right {
+    text-align: center;
+  }
+  .item .img-title-details .right p {
+    width: 100% !important;
+  }
+  .item .q-p-container {
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 500px) {
+  .suggested-product-list {
+    grid-template-columns: 49% 49% !important;
+    gap: 1%;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;
