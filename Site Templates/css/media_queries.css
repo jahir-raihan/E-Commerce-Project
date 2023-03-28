@@ -210,6 +210,9 @@
   .blog-posts {
     width: 90% !important;
   }
+  .footer-contents {
+    width: 90% !important;
+  }
   .footer-bottom .f-b-contents img {
     width: 120px;
   }
@@ -640,6 +643,135 @@
   .suggested-product-list {
     grid-template-columns: 49% 49% !important;
     gap: 1%;
+  }
+}
+.order-nav {
+  display: flex !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .info-container p {
+    font-size: 14px !important;
+  }
+  .info-container .sign-in-msg .left {
+    width: 50%;
+  }
+  .info-container .sign-in-msg .right {
+    display: flex;
+  }
+  .info-container .sign-in-msg .right button {
+    font-size: 11px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .shipping-info .saved-addresses {
+    display: block !important;
+  }
+  .shipping-info .saved-addresses .address {
+    margin-bottom: 1em;
+  }
+  .shipping-info .saved-addresses .address-info {
+    margin-right: 0;
+  }
+  .address-info-and-sign-in-option .shipping-and-address .shipping-info .delivery-choice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .address-info-and-sign-in-option .shipping-and-address .shipping-info .delivery-choice img {
+    max-width: 100%;
+    width: auto !important;
+    height: auto !important;
+    max-height: 100px;
+  }
+  .summary .items-in-cart .item img {
+    transition-duration: 0.5s;
+    width: auto !important;
+    max-width: 100%;
+    min-width: 60px;
+    height: 60px !important;
+  }
+  .summary .items-in-cart .item .info p {
+    transition-duration: 0.5s;
+    font-size: 14px !important;
+  }
+}
+@media only screen and (max-width: 775px) {
+  .info-container {
+    transition-duration: 0.5s;
+    width: 90% !important;
+    display: block;
+  }
+  .summary {
+    transition-duration: 0.5s;
+    border-radius: 4px;
+    border: var(--border);
+    box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+    -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+    -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+    background: white;
+    padding: 1em;
+  }
+  .summary .item {
+    display: flex !important;
+  }
+  .summary .item .img .cnt p {
+    font-size: 10px !important;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .btns button {
+    font-size: 11px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .address-info-and-sign-in-option .sign-in-msg .left p {
+    font-size: 12px !important;
+  }
+  .address-info-and-sign-in-option .sign-in-msg .left small {
+    font-size: 11px !important;
+  }
+  .address-info-and-sign-in-option .sign-in-msg .right button {
+    height: 35px;
+    font-size: 10px;
+  }
+  .address-info-and-sign-in-option .choice-card .cod {
+    width: 40px !important;
+    min-width: unset !important;
+    max-width: 60px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .address-info-and-sign-in-option .shipping-info .address-flex {
+    display: block;
+  }
+  .address-info-and-sign-in-option .shipping-info .address-flex .left, .address-info-and-sign-in-option .shipping-info .address-flex .right {
+    margin-bottom: 1em;
+  }
+  .address-info-and-sign-in-option .btns {
+    display: flex;
+  }
+  .address-info-and-sign-in-option .btns button {
+    margin-right: 0.5em;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .sign-in-msg .left {
+    width: -moz-fit-content !important;
+    width: fit-content !important;
+  }
+  .sign-in-msg .left small {
+    display: none;
+  }
+  .address-info .address-flex {
+    display: block !important;
+  }
+  .address-info .address-flex .left, .address-info .address-flex .right {
+    margin-bottom: 1em;
+  }
+  .shipping-info .saved-addresses .address p {
+    font-size: 12px !important;
   }
 }
 @media only screen and (min-width: 775px) {

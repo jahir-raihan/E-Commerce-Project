@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shipping Details</title>
     <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/order_info.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
 
 </head>
 <body>
@@ -16,33 +17,66 @@
     <!-- Navigation Bar -->
 
     <header>
-        <nav>
-            <div class="nav-logo">
+        <nav class="nav order-nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
                 <img src="/img/ logo.png" alt="Logo" class="logo">
             </div>
             
-    
+          
+
             <div class="nav-buttons">
 
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="sign-in">
-                            <img src="/img/person.png" draggable="false" alt="sign-in icon" class="icon">
-                            <p>Sign in</p>
-                        </div>
-                    </a>
-                </div>   
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
 
             </div>
         </nav>
 
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                <a href="#">
+                    <div >
+                        <p>Shop</p>
+                        <small>Ready made products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>Hot offers</p>
+                        <small>Get offer deals</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>New arrivals</p>
+                        <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
     </header>
+
 
     <!-- End Navigation Bar -->
 
     <!-- Base Container -->
 
-    <div class="container">
+    <div class="container" id="container">
 
         <!-- Page Navigator -->
 
@@ -57,303 +91,360 @@
 
         <!-- End Page Navigator -->
 
+        <div class="info-container">
 
-        <!-- Recevier and Address inputs -->
+        
+            <!-- Recevier and Address inputs -->
 
-        <div class="address-info-and-sign-in-option">
+            <div class="address-info-and-sign-in-option">
 
 
 
-            <div class="sign-in-msg">
+                <div class="sign-in-msg">
 
-                <div class="left">
-                    <p class="title">Have an Account?</p>
-                    <small>By Creating account you will get more benefits</small>
+                    <div class="left">
+                        <p class="title">Have an Account?</p>
+                        <small>By Creating account you will get more benefits</small>
+                    </div>
+
+                    <div class="right">
+                        <button class="sign-in">Sign in</button>
+                        <button class="create-account">Create account</button>
+                    </div>
                 </div>
 
-                <div class="right">
-                    <button class="sign-in">Sign in</button>
-                    <button class="create-account">Create account</button>
+                <div class="shipping-and-address">
+
+                    
+                    <div class="address-info">
+
+                        <p class="title">Guest checkout</p>
+
+                        <div class="address-flex">
+
+                            <div class="left">
+                                <p>First name</p>
+                                <input type="text" placeholder="Type here . . .">
+                            </div>
+
+                            <div class="right">
+                                <p>Last Name</p>
+
+                                <input type="text" placeholder="Type here">
+                            </div>
+
+                        </div>
+
+                        <div class="address-flex">
+                            <div class="left">
+                                <p>Phone</p>
+                                <input type="number" placeholder="+880172393473">
+                            </div>
+                            <div class="right">
+                                <p>Email</p>
+
+                                <input type="email" placeholder="eample@email.com">
+                            </div>
+                        </div>
+
+                        <div class="news-checkup">
+
+                            <input type="checkbox">
+                            <span>Keep me up to date on news</span>
+
+                        </div>
+
+                        <div class="line"></div>
+
+                    
+
+
+                    </div>
+
+                    <div class="shipping-info">
+
+                        <p class="title">Address & Payment Type</p>
+
+                        <div class="delivery-choice">
+
+                            <div class="choice-card choice-selected cod" id="cod">
+                                
+                                <img class="cod" src="/img/cash-on-delivery.png" alt="">
+                            </div>
+
+                            <div class="choice-card bkash" id="bkash">
+                                <img src="/img/1656227518bkash-logo-png.png" alt="">
+                            </div>
+
+                            <div class="choice-card sslcom" id="sslcom">
+                                <img src="/img/sslcom-logo.png" alt="">
+                            </div>
+
+                        </div>
+
+                        <div class="saved-address-container">
+
+                            
+                            <p class="title">
+                                Saved Addresses
+                            </p>
+                            <div class="saved-addresses">
+
+                                <div class="address" id="address-1">
+                                    <div class="address-info address-selected">
+        
+                                        <div class="icon-and-info">
+                                            <div class="img">
+                                                <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
+                                            </div>
+        
+                                            <p class="address-details">
+                                                Tashkent city, Street name, Building 123, House 321 <span>(Primary address)</span> 
+                                            </p>
+                                        </div>
+                                        
+        
+                                        <div class="three-dots">
+                                            <i class="fa fa-ellipsis-v t-dots" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="address" id="address-2">
+                                    <div class="address-info ">
+        
+                                        <div class="icon-and-info">
+                                            <div class="img">
+                                                <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
+                                            </div>
+        
+                                            <p class="address-details">
+                                                Tashkent city, Street name, Building 123, House 321 <span>(Primary address)</span> 
+                                            </p>
+                                        </div>
+                                        
+        
+                                        <div class="three-dots">
+                                            <i class="fa fa-ellipsis-v t-dots" ></i>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                        
+
+                        <div class="address-flex">
+
+                            <div class="left">
+
+                                <p>Address(*)</p>
+                                <input type="text" placeholder="Type here">
+
+                            </div>
+
+                            <div class="right">
+
+                                <p>Post / ZIP code</p>
+                                <input type="text" placeholder="Type here">
+
+                            </div>
+
+                        </div>
+
+                        <div class="address-flex">
+
+                            <div class="left area-city">
+
+                                <div class="a-c-left">
+                                    <p>Area</p>
+                                    <input type="text" placeholder="Districs, Block">
+                                </div>
+
+                                <div class="a-c-right">
+                                    <p>City</p>
+
+                                    <input type="text" placeholder="City, Area">
+                                </div>
+                            </div>
+
+                            <div class="right">
+                                <p>Country</p>
+                                <select name="" id="">
+                                    <option value="">Bangladesh</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="note-to-seller">
+                            <p class="title">Note to seller</p>
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Type Anything"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="save-checkup">
+                        <input type="checkbox">
+                        <span>Save this address</span>
+                    </div>
+
+                    <div class="btns">
+                        <button class="continue">
+                            Confirm
+                        </button>
+
+                        <button class="return-to-shop">Return to shop</button>
+                    </div>
+
                 </div>
+
             </div>
 
-            <div class="shipping-and-address">
+            <!-- End Recevier and Address inputs -->
 
-                
-                <div class="address-info">
+            <!-- Cart Summary -->
 
-                    <p class="title">Guest checkout</p>
+            <div class="summary">
 
-                    <div class="address-flex">
+                <div class="amount">
 
-                        <div class="left">
-                            <p>First name</p>
-                            <input type="text" placeholder="Type here . . .">
-                        </div>
+                    <p class="title">
+                        Summary
+                    </p>
 
-                        <div class="right">
-                            <p>Last Name</p>
-
-                            <input type="text" placeholder="Type here">
-                        </div>
-
+                    <div class="price1">
+                        <p>Unit Price : </p>
+                        <p>$1403.45</p>
                     </div>
 
-                    <div class="address-flex">
-                        <div class="left">
-                            <p>Phone</p>
-                            <input type="number" placeholder="+880172393473">
-                        </div>
-                        <div class="right">
-                            <p>Email</p>
-
-                            <input type="email" placeholder="eample@email.com">
-                        </div>
+                    <div class="discount">
+                        <p>Discount : </p>
+                        <p class="discount-amount">
+                            -$60.00
+                        </p>
                     </div>
 
-                    <div class="news-checkup">
-
-                        <input type="checkbox">
-                        <span>Keep me up to date on news</span>
-
+                    <div class="tax">
+                        <p>Tax : </p>
+                        <p class="tax-amount">+$14.00</p>
+                    </div>
+                    <div class="shipping-cost">
+                        <p>Shipping Cost : </p>
+                        <p class="shipping-amount">+$14.00</p>
                     </div>
 
                     <div class="line"></div>
 
-                
+                    <div class="total">
+                        <p>Total : </p>
+                        <p class="total-amount">
+                            $1357.00
+                        </p>
+                    </div>
 
+                    <div class="line"></div>
 
                 </div>
 
-                <div class="shipping-info">
+                <div class="items-in-cart">
 
-                    <p class="title">Address & Payment Type</p>
+                    <p class="title">Items in cart</p>
 
-                    <div class="delivery-choice">
-
-                        <div class="choice-card choice-selected">
-                            
-                            <img src="/img/cash-on-delivery.png" alt="">
-                        </div>
-
-                        <div class="choice-card">
-                            <img src="/img/1656227518bkash-logo-png.png" alt="">
-                        </div>
-
-                        <div class="choice-card">
-                            <img src="/img/sslcom-logo.png" alt="">
-                        </div>
-
-                    </div>
-
-                    <div class="address-flex">
-
-                        <div class="left">
-
-                            <p>Address(*)</p>
-                            <input type="text" placeholder="Type here">
-
-                        </div>
-
-                        <div class="right">
-
-                            <p>Post / ZIP code</p>
-                            <input type="text" placeholder="Type here">
-
-                        </div>
-
-                    </div>
-
-                    <div class="address-flex">
-
-                        <div class="left area-city">
-
-                            <div class="a-c-left">
-                                <p>Area</p>
-                                <input type="text" placeholder="Districs, Block">
-                            </div>
-
-                            <div class="a-c-right">
-                                <p>City</p>
-
-                                <input type="text" placeholder="City, Area">
+                    <div class="item">
+                    
+                        <div class="img">
+                            <img src="/img/image 17.png" alt="">
+                            <div class="cnt">
+                                <p>1</p>
                             </div>
                         </div>
 
-                        <div class="right">
-                            <p>Country</p>
-                            <select name="" id="">
-                                <option value="">Bangladesh</option>
-                            </select>
+                        <div class="info">
+                            <p class="title">Mens T-shirt Cotton Base</p>
+                            <small>Total : $12.00</small>
                         </div>
 
+                    
                     </div>
 
-                    <div class="note-to-seller">
-                        <p class="title">Note to seller</p>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Type Anything"></textarea>
+                    <div class="item">
+                    
+                        <div class="img">
+                            <img src="/img/image 17.png" alt="">
+                            <div class="cnt">
+                                <p>1</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <p class="title">Mens T-shirt Cotton Base</p>
+                            <small>Total : $12.00</small>
+                        </div>
+
+                    
                     </div>
 
-                </div>
+                    <div class="item">
+                    
+                        <div class="img">
+                            <img src="/img/image 17.png" alt="">
+                            <div class="cnt">
+                                <p>1</p>
+                            </div>
+                        </div>
 
-                <div class="save-checkup">
-                    <input type="checkbox">
-                    <span>Save this address</span>
-                </div>
+                        <div class="info">
+                            <p class="title">Mens T-shirt Cotton Base</p>
+                            <small>Total : $12.00</small>
+                        </div>
 
-                <div class="btns">
-                    <button class="continue">
-                        Confirm
-                    </button>
+                    
+                    </div>
 
-                    <button class="return-to-shop">Return to shop</button>
+                    <div class="item">
+                    
+                        <div class="img">
+                            <img src="/img/image 17.png" alt="">
+                            <div class="cnt">
+                                <p>1</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <p class="title">Mens T-shirt Cotton Base</p>
+                            <small>Total : $12.00</small>
+                        </div>
+
+                    
+                    </div>
+                    
+                    <div class="item">
+                    
+                        <div class="img">
+                            <img src="/img/image 17.png" alt="">
+                            <div class="cnt">
+                                <p>1</p>
+                            </div>
+                        </div>
+
+                        <div class="info">
+                            <p class="title">Mens T-shirt Cotton Base</p>
+                            <small>Total : $12.00</small>
+                        </div>
+
+                    
+                    </div>
+
                 </div>
 
             </div>
+
+            <!-- End Cart Summary -->
 
         </div>
-
-        <!-- End Recevier and Address inputs -->
-
-        <!-- Cart Summary -->
-
-        <div class="summary">
-
-            <div class="amount">
-
-                <p class="title">
-                    Summary
-                </p>
-
-                <div class="price1">
-                    <p>Unit Price : </p>
-                    <p>$1403.45</p>
-                </div>
-
-                <div class="discount">
-                    <p>Discount : </p>
-                    <p class="discount-amount">
-                        -$60.00
-                    </p>
-                </div>
-
-                <div class="tax">
-                    <p>Tax : </p>
-                    <p class="tax-amount">+$14.00</p>
-                </div>
-                <div class="shipping-cost">
-                    <p>Shipping Cost : </p>
-                    <p class="shipping-amount">+$14.00</p>
-                </div>
-
-                <div class="line"></div>
-
-                <div class="total">
-                    <p>Total : </p>
-                    <p class="total-amount">
-                        $1357.00
-                    </p>
-                </div>
-
-                <div class="line"></div>
-
-            </div>
-
-            <div class="items-in-cart">
-
-                <p class="title">Items in cart</p>
-
-                <div class="item">
-                   
-                    <div class="img">
-                        <img src="/img/image 17.png" alt="">
-                        <div class="cnt">
-                            <p>1</p>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <p class="title">Mens T-shirt Cotton Base</p>
-                        <small>Total : $12.00</small>
-                    </div>
-
-                   
-                </div>
-
-                <div class="item">
-                   
-                    <div class="img">
-                        <img src="/img/image 17.png" alt="">
-                        <div class="cnt">
-                            <p>1</p>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <p class="title">Mens T-shirt Cotton Base</p>
-                        <small>Total : $12.00</small>
-                    </div>
-
-                   
-                </div>
-
-                <div class="item">
-                   
-                    <div class="img">
-                        <img src="/img/image 17.png" alt="">
-                        <div class="cnt">
-                            <p>1</p>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <p class="title">Mens T-shirt Cotton Base</p>
-                        <small>Total : $12.00</small>
-                    </div>
-
-                   
-                </div>
-
-                <div class="item">
-                   
-                    <div class="img">
-                        <img src="/img/image 17.png" alt="">
-                        <div class="cnt">
-                            <p>1</p>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <p class="title">Mens T-shirt Cotton Base</p>
-                        <small>Total : $12.00</small>
-                    </div>
-
-                   
-                </div>
-                
-                <div class="item">
-                   
-                    <div class="img">
-                        <img src="/img/image 17.png" alt="">
-                        <div class="cnt">
-                            <p>1</p>
-                        </div>
-                    </div>
-
-                    <div class="info">
-                        <p class="title">Mens T-shirt Cotton Base</p>
-                        <small>Total : $12.00</small>
-                    </div>
-
-                   
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- End Cart Summary -->
-
 
     </div>
 
@@ -444,6 +535,7 @@
 
     <!-- End Footer -->
 
-    
+    <script src="/js/index.js"></script>
+    <script src="/js/order_info.js"></script>
 </body>
 </html>

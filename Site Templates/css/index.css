@@ -740,6 +740,31 @@ footer .footer-bottom .links {
   display: flex;
 }
 
+.navigator-products {
+  widtH: 100%;
+  background-color: #E3F0FF;
+  z-index: 5;
+  position: sticky;
+  top: 73px;
+}
+.navigator-products .n-p-contents {
+  transition-duration: 0.5s;
+  width: 80%;
+  padding: 1em 1em 1em 0;
+  margin: auto;
+  display: flex;
+}
+.navigator-products a {
+  transition-duration: 0.5s;
+  display: block;
+  margin-right: 0.5em;
+  text-decoration: none;
+  color: #1b53c0;
+}
+.navigator-products a:hover {
+  text-decoration: underline;
+}
+
 .fade-out {
   opacity: 0.5;
 }

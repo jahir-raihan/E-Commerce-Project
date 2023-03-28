@@ -1,5 +1,6 @@
 // Search suggestion and selection
 
+try{
 const searchInput = document.querySelector("#nav-search");
 const listItems = document.querySelectorAll("#s-list a");
 var s_r_s = document.getElementById('s-r-s')
@@ -31,6 +32,7 @@ listItems.forEach(function(item) {
     
     });
 });
+}catch{}
 
 
 // End Search suggestion and selection

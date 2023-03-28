@@ -2,10 +2,9 @@ body {
   background: #f7f7f7;
 }
 
-.container {
+.info-container {
   width: 80%;
-  margin: auto;
-  margin-top: 2em;
+  margin: 2em auto;
   display: grid;
   grid-template-columns: 68% 30%;
   gap: 2%;
@@ -38,7 +37,7 @@ body {
 .address-info-and-sign-in-option .sign-in-msg .right button {
   height: 40px;
   border: var(--border);
-  margin-right: 1em;
+  margin-left: 1em;
   padding: 0.5em 1em;
   border-radius: 4px;
   cursor: pointer;
@@ -60,6 +59,75 @@ body {
   -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
   -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
   padding: 1em;
+}
+.address-info-and-sign-in-option .saved-addresses {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: 49% 49%;
+  gap: 1.5%;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info {
+  padding: 1em;
+  display: flex;
+  border: 1px solid white;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .icon-and-info {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .img {
+  margin-right: 0.5em;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .img .loc-icon {
+  color: rgb(255, 149, 0);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .address-details {
+  font-weight: 300;
+  font-size: 14px;
+  width: 90%;
+  opacity: 0.8;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .address-details span {
+  opacity: 0.5;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .three-dots .t-dots {
+  font-size: 15px;
+  opacity: 0.7;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .three-dots .t-dots:hover {
+  background: #ffffff;
+  border: var(--border);
+}
+.address-info-and-sign-in-option .saved-addresses .address-info:hover {
+  border: var(--border);
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.address-info-and-sign-in-option .saved-addresses .address-selected {
+  border: 2px solid #0D6EFD !important;
 }
 .address-info-and-sign-in-option .address-info .title {
   font-weight: 500;

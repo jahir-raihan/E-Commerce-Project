@@ -928,7 +928,39 @@ footer{
 
 // End Footer
 
-// Container
+// End Container
+
+
+// For all 
+
+.navigator-products{
+    widtH: 100%;
+    background-color:#E3F0FF;
+    z-index: 5;
+    position:sticky;
+    top:73px;
+    
+    .n-p-contents{
+      transition-duration: .5s;
+      width:80%;
+      padding:1em 1em 1em 0;
+      margin:auto;
+      display: flex;
+      
+    }
+    a{
+      transition-duration: .5s;
+      display: block;
+      margin-right:.5em;
+      text-decoration: none;
+      color:#1b53c0;
+  
+  
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+}
 
 .fade-out{
     opacity: .5;

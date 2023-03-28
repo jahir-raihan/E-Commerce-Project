@@ -4,11 +4,13 @@ body{
     background:#f7f7f7;
 }
 
-.container{
+
+
+.info-container{
+
     width:80%;
-    margin:auto;
-    margin-top:2em;
-    display: grid;
+    margin:2em auto;
+    display:grid;
     grid-template-columns: 68% 30%;
     gap:2%;
 }
@@ -46,7 +48,7 @@ body{
             button{
                 height:40px;
                 border:var(--border);
-                margin-right:1em;
+                margin-left:1em;
                 padding:.5em 1em;
                 border-radius: 4px;
                 cursor: pointer;
@@ -75,6 +77,104 @@ body{
         -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
         -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
         padding:1em;
+    }
+
+    .saved-addresses{
+        margin:1em 0;
+        display: grid;
+        grid-template-columns: 49% 49%;
+        gap:1.5%;
+
+        .address-info{
+           
+            padding:1em;
+            display: flex;
+            border:1px solid white;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            background:#f7f7f7;
+            cursor: pointer;
+            
+
+            .icon-and-info{
+                display: flex;
+                width: fit-content;
+                align-items: center;
+               
+            }
+
+            .img{
+                margin-right:.5em;
+                
+                .loc-icon{
+                    color:rgb(255, 149, 0);
+                    width:30px;
+                    height:30px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 20px;
+                    
+                    border-radius: 50%;
+                    background: white;
+                }
+            }
+
+            .address-details{
+                font-weight: 300;
+                font-size:14px;
+                width:90%;
+                opacity: .8;
+                
+                span{
+                    opacity: .5;
+                }
+                
+            }
+
+            .three-dots{
+                
+                .t-dots{
+                    font-size: 15px;
+                    opacity: .7;
+                    cursor: pointer;
+                    width:25px;
+                    height:25px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+
+                    &:hover{
+                        
+                        background:#ffffff;
+                        border:var(--border);
+
+
+                    }
+
+                }
+            }
+
+            &:hover{
+                border:var(--border);
+                box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+                -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+                -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+            }
+        }
+
+        .address-selected{
+            border:2px solid #0D6EFD !important;
+            
+        }
+
+        
+
+        
+
+        
     }
 
 
