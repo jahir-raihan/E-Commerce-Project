@@ -774,6 +774,107 @@
     font-size: 12px !important;
   }
 }
+@media only screen and (max-width: 1200px) {
+  .profile-content .saved-addresses {
+    display: block !important;
+  }
+  .profile-content .saved-addresses .address {
+    margin-bottom: 1em;
+  }
+}
+@media only screen and (max-width: 1030px) {
+  .order .order-top .o-id-date p {
+    font-size: 13px !important;
+  }
+  .order .order-top .o-id-date p span {
+    padding: 0 !important;
+    display: block;
+  }
+  .order .order-top .order-util-btns button {
+    width: -moz-fit-content;
+    width: fit-content;
+    font-size: 11px !important;
+  }
+  .order .ordered-items {
+    grid-template-columns: 49% 49% !important;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .order-middle div {
+    margin-right: 1em;
+  }
+}
+@media only screen and (max-width: 775px) {
+  .profile-container {
+    transition-duration: 0.5s;
+    display: block;
+    width: 90%;
+  }
+  .profile-container .profile-nav {
+    display: none;
+  }
+  .profile-content .address .address-info .address-details {
+    font-size: 13px !important;
+  }
+  .current-orders {
+    padding: 1em !important;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .ordered-items .item {
+    display: flex !important;
+  }
+  .order-middle {
+    grid-template-columns: 33% 33% 33% !important;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .order-middle p {
+    font-size: 12px !important;
+  }
+  .order-middle div {
+    margin-right: 0.5em !important;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .order .order-top .o-id-date p, .order .order-top .status p {
+    font-size: 11px !important;
+  }
+  .order .order-top .order-util-btns button {
+    height: 35px !important;
+  }
+  .order .order-middle {
+    grid-template-columns: 49% 49% !important;
+    gap: 1%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .order-top {
+    display: block !important;
+  }
+  .order-top .o-id-date span {
+    display: inline !important;
+    margin-left: 0.5em;
+  }
+  .order-top .order-util-btns {
+    margin-top: 0.5em;
+  }
+  .order-top .order-util-btns button {
+    margin-left: 0 !important;
+    margin-right: 0.5em;
+  }
+  .order .ordered-items {
+    grid-template-columns: 100% !important;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .order .order-middle {
+    grid-template-columns: 100% !important;
+  }
+  .order .order-middle div {
+    margin-bottom: 0.5em;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;

@@ -78,19 +78,17 @@ button{
                 }
 
                 .name-email-phone{
+                    p{
+                        opacity:.8;
+                        font-weight: 400;
+                        font-size:11px;
+                    }
                     .name{
+                        opacity: 1;
+                        font-size:15px;
                         font-weight: 500;
-
-
                     }
-                    .email-phone{
-                        display: flex;
-                        opacity: .7;
-                        p{
-                            margin-right:1em;
-                            font-size:14px;
-                        }
-                    }
+                    
                 }
 
             }
@@ -266,10 +264,10 @@ button{
 
                 .order-middle{
                     margin-bottom: 1em;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: baseline;
-
+                
+                    display: grid;
+                    grid-template-columns: 40% 30% 30%;
+                    
                    
                     div{
                        
@@ -381,5 +379,9 @@ button{
 // End Profile Container
 .container{
     background:#f7f7f7;
+}
+
+.p-link{
+    font-size:15px !important;
 }
 

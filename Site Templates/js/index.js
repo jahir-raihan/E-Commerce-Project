@@ -48,11 +48,16 @@ function toggle_nav_menu(){
     if (obj.contains(obj2)){
         obj.innerHTML = '<img src="/img/menu.png" alt="">'
         toggle_nav.style.display = 'none'
-        obj3.classList.remove('fade-out')
+        try{
+            obj3.classList.remove('fade-out')
+        }catch{}
     }else{
         obj.innerHTML = '<i id="cross-icon-nav-ham" class="fa fa-times"></i>'
         toggle_nav.style.display = 'block'
-        obj3.classList.add('fade-out')
+        try{
+            obj3.classList.add('fade-out')
+        }catch{}
+        
 
 
     }

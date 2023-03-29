@@ -58,16 +58,15 @@ button {
   -webkit-box-shadow: -1px 0px 19px -16px rgb(0, 0, 0);
   -moz-box-shadow: -1px 0px 19px -16px rgb(0, 0, 0);
 }
+.profile-container .profile-content .user-details .user .name-email-phone p {
+  opacity: 0.8;
+  font-weight: 400;
+  font-size: 11px;
+}
 .profile-container .profile-content .user-details .user .name-email-phone .name {
+  opacity: 1;
+  font-size: 15px;
   font-weight: 500;
-}
-.profile-container .profile-content .user-details .user .name-email-phone .email-phone {
-  display: flex;
-  opacity: 0.7;
-}
-.profile-container .profile-content .user-details .user .name-email-phone .email-phone p {
-  margin-right: 1em;
-  font-size: 14px;
 }
 .profile-container .profile-content .user-details .saved-addresses {
   margin: 1em 0;
@@ -202,9 +201,8 @@ button {
 }
 .profile-container .profile-content .current-orders .order .order-middle {
   margin-bottom: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
 }
 .profile-container .profile-content .current-orders .order .order-middle div p {
   opacity: 0.9;
@@ -286,4 +284,8 @@ button {
 
 .container {
   background: #f7f7f7;
+}
+
+.p-link {
+  font-size: 15px !important;
 }/*# sourceMappingURL=page_profile.css.map */
