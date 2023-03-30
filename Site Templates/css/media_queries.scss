@@ -1330,6 +1330,7 @@
         }
         div{
             margin-right:.5em !important;
+            margin-bottom: .5em;
         }
     }
 }
@@ -1454,6 +1455,53 @@
 }
 
 // End Transaction page
+
+
+// Staff main 
+
+@media only screen and (max-width:1200px){
+
+    .address{
+        .address-info{
+            margin-right:0 !important;
+        }
+    }
+}
+
+@media only screen and (max-width:775px){
+    .only-navicons{
+        .p-o-cnt{
+            display: flex !important;
+        }
+    }
+}
+
+@media only screen and (max-width:450px){
+
+    .staff-main-order-list-container{
+        .order{
+            .order-top{
+                .order-util-btns{
+
+                    button{
+                        height:30px !important;
+
+                    }
+                }
+            }
+
+            .ordered-items{
+
+                .item{
+                    margin-bottom: 0 !important;
+                    padding:.5em 0 !important;
+                }
+            }
+        }
+    }
+}
+
+// End staff main
 
 
 // For all

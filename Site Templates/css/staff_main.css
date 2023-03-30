@@ -16,7 +16,7 @@
   opacity: 0.8;
   display: block;
 }
-.nav-buttons .nav-btns .p-o-cnt {
+.nav-buttons .p-o-cnt {
   position: absolute;
   top: -7px;
   right: -7px;
@@ -29,7 +29,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 2px;
   color: white;
 }
 
@@ -39,6 +38,7 @@
 
 .name-email-phone .staff-title {
   position: relative;
+  margin-bottom: 0.3em;
 }
 .name-email-phone .staff-title .name {
   width: -moz-fit-content;
@@ -48,6 +48,7 @@
 .name-email-phone .staff-title .abs-tag {
   position: absolute;
   left: 140px;
+  min-width: 100px;
   top: -5px;
   font-weight: 300;
   font-size: 12px;
@@ -111,7 +112,6 @@
 .item {
   border-top: var(--border);
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 1.5em 1em;
 }
@@ -195,7 +195,7 @@
   background: #0D6EFD;
   border-radius: 0 4px 4px 0;
   color: white;
-  font-weight: 500;
+  font-size: 20px;
 }
 
 .search-loader-stf-main {
@@ -206,10 +206,6 @@
 }
 .search-loader-stf-main i {
   font-size: 18px;
-}
-
-.d-none {
-  display: block !important;
 }
 
 .a-i-c-o {

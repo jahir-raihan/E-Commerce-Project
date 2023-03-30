@@ -180,6 +180,7 @@ button {
 }
 .profile-container .profile-content .current-orders .order .order-top .order-util-btns button {
   display: block;
+  opacity: 0.9;
   height: 40px;
   padding: 0.5em 1em;
   border: none;

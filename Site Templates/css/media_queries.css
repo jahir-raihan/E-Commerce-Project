@@ -834,6 +834,7 @@
   }
   .order-middle div {
     margin-right: 0.5em !important;
+    margin-bottom: 0.5em;
   }
 }
 @media only screen and (max-width: 500px) {
@@ -893,6 +894,25 @@
   }
   .transaction-list .item .date {
     font-size: 11px !important;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .address .address-info {
+    margin-right: 0 !important;
+  }
+}
+@media only screen and (max-width: 775px) {
+  .only-navicons .p-o-cnt {
+    display: flex !important;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .staff-main-order-list-container .order .order-top .order-util-btns button {
+    height: 30px !important;
+  }
+  .staff-main-order-list-container .order .ordered-items .item {
+    margin-bottom: 0 !important;
+    padding: 0.5em 0 !important;
   }
 }
 @media only screen and (min-width: 775px) {
