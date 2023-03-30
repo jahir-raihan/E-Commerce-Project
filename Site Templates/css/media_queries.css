@@ -887,6 +887,14 @@
     margin-top: 0.5em;
   }
 }
+@media only screen and (max-width: 600px) {
+  .trans-id-and-amount {
+    margin-left: 0 !important;
+  }
+  .transaction-list .item .date {
+    font-size: 11px !important;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;

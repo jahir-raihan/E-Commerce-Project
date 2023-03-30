@@ -2,6 +2,9 @@
   width: 80px;
 }
 
+.trans-id-and-amount {
+  margin: 0.5em;
+}
 .trans-id-and-amount p {
   font-weight: 400;
   font-size: 13px;
@@ -12,7 +15,10 @@
 }
 
 .date {
-  font-size: 13px;
+  font-size: 12px;
+  opacity: 0.8;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .view-order-btn {
@@ -20,8 +26,10 @@
   background: #0D6EFD;
   height: 30px;
   padding: 0 1.5em;
-  border-radius: 22px;
+  border-radius: 4px;
   color: white;
   font-size: 12px;
+  opacity: 0.8;
   cursor: pointer;
+  min-width: 95px;
 }/*# sourceMappingURL=transactions.css.map */
