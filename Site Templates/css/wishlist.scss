@@ -24,9 +24,10 @@
     .img-and-details{
         display: flex;
         align-items: center;
+        align-items: center;
         img{
-            width:70px;
-            height:70px;
+            width:60px;
+            height:60px;
 
         }
 
@@ -36,8 +37,8 @@
 
         .wish-item-title{
             font-weight: 300 ;
-            
-            font-size:14px;
+            opacity: .8;
+            font-size:13px;
             width:80%;
         }
         small{
@@ -49,14 +50,20 @@
     .status{
         font-weight: 400;
         color:green;
-        font-size:13px;
+        font-size:11px;
+        width:50px;
+        min-width:50px;
+
     }
 
     .add-to-cart-and-datetime{
+        opacity: .8;
         text-align: center;
         small{
             display: block;
-            font-size:11px;
+            font-size:10px;
+            margin-bottom: .2em;
+            min-width:120px;
         }
 
         button{
@@ -68,6 +75,7 @@
             color:white;
             font-size:12px;
             cursor: pointer;
+            min-width:95px;
         }
     }
 

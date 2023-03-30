@@ -282,6 +282,30 @@ button {
   display: none;
 }
 
+.order-history-search {
+  padding: 1.5em;
+  padding-bottom: 0;
+  display: flex;
+}
+.order-history-search input {
+  height: 40px;
+  width: 80%;
+  border-radius: 4px 0 0 4px;
+  opacity: 0.8;
+  padding: 0.3em 1em;
+  border: var(--border);
+  outline-color: #0D6EFD;
+}
+.order-history-search button {
+  height: 40px;
+  width: 20%;
+  border-radius: 0 4px 4px 0;
+  border: none;
+  background: #0D6EFD;
+  color: white;
+  font-size: 20px;
+}
+
 .container {
   background: #f7f7f7;
 }

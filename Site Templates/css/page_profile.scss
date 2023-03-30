@@ -376,7 +376,37 @@ button{
 }
 
 
+// Order history
+
+.order-history-search{
+    padding:1.5em;
+    padding-bottom: 0;
+    display:flex;
+    input{
+        height:40px;
+        width:80%;
+        border-radius: 4px 0 0 4px;
+        opacity:.8;
+        padding:.3em 1em;
+        border:var(--border);
+        outline-color: #0D6EFD;
+    }
+    button{
+        height:40px;
+        width:20%;
+        border-radius: 0 4px 4px 0;
+        border:none;
+        background:#0D6EFD;
+        color:white;
+        font-size:20px;
+    }
+}
+
+// End Order history
+
 // End Profile Container
+
+
 .container{
     background:#f7f7f7;
 }

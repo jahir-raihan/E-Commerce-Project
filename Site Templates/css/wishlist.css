@@ -18,17 +18,19 @@
 .item .img-and-details {
   display: flex;
   align-items: center;
+  align-items: center;
 }
 .item .img-and-details img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
 }
 .item .img-and-details div {
   margin-left: 0.5em;
 }
 .item .img-and-details .wish-item-title {
   font-weight: 300;
-  font-size: 14px;
+  opacity: 0.8;
+  font-size: 13px;
   width: 80%;
 }
 .item .img-and-details small {
@@ -38,14 +40,19 @@
 .item .status {
   font-weight: 400;
   color: green;
-  font-size: 13px;
+  font-size: 11px;
+  width: 50px;
+  min-width: 50px;
 }
 .item .add-to-cart-and-datetime {
+  opacity: 0.8;
   text-align: center;
 }
 .item .add-to-cart-and-datetime small {
   display: block;
-  font-size: 11px;
+  font-size: 10px;
+  margin-bottom: 0.2em;
+  min-width: 120px;
 }
 .item .add-to-cart-and-datetime button {
   border: none;
@@ -56,4 +63,5 @@
   color: white;
   font-size: 12px;
   cursor: pointer;
+  min-width: 95px;
 }/*# sourceMappingURL=wishlist.css.map */

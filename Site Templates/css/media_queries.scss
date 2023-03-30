@@ -1404,6 +1404,36 @@
 // End page profile 
 
 
+// Wishlist page 
+
+
+@media only screen and (max-width:600px){
+    .wishlist-items{
+        .item{
+
+            .img-and-details{
+
+                p{
+                    width:95% !important;
+                }
+            }
+
+            .status{
+                margin-top:.5em
+            }
+            .add-to-cart-and-datetime{
+                text-align:left;
+                margin-top:.5em;
+                
+            }
+        }
+    }
+
+}
+
+// End Wishlist page
+
+
 // For all
 
 

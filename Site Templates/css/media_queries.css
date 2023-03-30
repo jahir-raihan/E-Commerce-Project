@@ -875,6 +875,18 @@
     margin-bottom: 0.5em;
   }
 }
+@media only screen and (max-width: 600px) {
+  .wishlist-items .item .img-and-details p {
+    width: 95% !important;
+  }
+  .wishlist-items .item .status {
+    margin-top: 0.5em;
+  }
+  .wishlist-items .item .add-to-cart-and-datetime {
+    text-align: left;
+    margin-top: 0.5em;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;
