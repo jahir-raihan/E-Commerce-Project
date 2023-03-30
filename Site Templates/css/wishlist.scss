@@ -12,9 +12,22 @@
 
     .trash{
         cursor: pointer;
+        min-width: 40px;
+        opacity: .8;
         transition-duration: .2s;
         i{
-            font-size:22px;
+            font-size:20px;
+            &:hover{
+                color:red;
+            }
+        }
+    }
+
+    .trash-right{
+        display: none;
+        opacity: .8;
+        i{
+            font-size:20px;
             &:hover{
                 color:red;
             }

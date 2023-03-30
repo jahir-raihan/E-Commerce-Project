@@ -17,30 +17,65 @@
 
     <!-- Navigation Bar -->
 
-    <header>
-        <nav>
-            <div class="nav-logo">
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
                 <img src="/img/ logo.png" alt="Logo" class="logo">
             </div>
             
-           
-
             <div class="nav-buttons">
 
                 <div class="only-navicons">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <i class="fas fa-clock-rotate-left"></i>
                     <span class="p-o-cnt d-none">12</span>
                 </div>
 
                 <button class="nav-btns pending-orders-btn">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Pending Orders
+                    <i class="fas fa-clock-rotate-left"></i> Pending Orders
                     <span class="p-o-cnt">12</span>
                 </button>
 
             </div>
-            
+
+
+           
         </nav>
 
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Pending orders</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+       
     </header>
 
     <!-- End Navigation Bar -->

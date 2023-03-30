@@ -1,3 +1,7 @@
+body {
+  background: #f7f7f7;
+}
+
 button {
   cursor: pointer;
 }
@@ -304,7 +308,7 @@ button {
   border: none;
   background: #0D6EFD;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .container {

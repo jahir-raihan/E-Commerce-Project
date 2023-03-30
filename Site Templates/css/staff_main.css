@@ -1,3 +1,12 @@
+body {
+  background: #f7f7f7;
+}
+
+.staff-header .nav {
+  display: flex !important;
+  justify-content: space-between;
+}
+
 .nav-buttons .nav-btns {
   width: -moz-fit-content !important;
   width: fit-content !important;
@@ -113,32 +122,46 @@
   border-top: var(--border);
   display: flex;
   align-items: center;
-  padding: 1.5em 1em;
+  padding: 1.5em 0;
 }
-.item .trash {
+.item .edit-pen {
   cursor: pointer;
+  min-width: 40px;
+  opacity: 0.8;
   transition-duration: 0.2s;
 }
-.item .trash i {
-  font-size: 22px;
+.item .edit-pen i {
+  font-size: 16px;
 }
-.item .trash i:hover {
-  color: red;
+.item .edit-pen i:hover {
+  color: #0D6EFD;
+}
+.item .edit-pen-right {
+  display: none;
+  opacity: 0.8;
+}
+.item .edit-pen-right i {
+  font-size: 16px;
+}
+.item .edit-pen-right i:hover {
+  color: #0D6EFD;
 }
 .item .img-and-details {
   display: flex;
   align-items: center;
+  align-items: center;
 }
 .item .img-and-details img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
 }
 .item .img-and-details div {
   margin-left: 0.5em;
 }
 .item .img-and-details .wish-item-title {
   font-weight: 300;
-  font-size: 14px;
+  opacity: 0.8;
+  font-size: 13px;
   width: 80%;
 }
 .item .img-and-details small {
@@ -148,24 +171,19 @@
 .item .status {
   font-weight: 400;
   color: green;
-  font-size: 13px;
+  font-size: 11px;
+  width: 50px;
+  min-width: 50px;
 }
 .item .add-to-cart-and-datetime {
+  opacity: 0.8;
   text-align: center;
 }
 .item .add-to-cart-and-datetime small {
   display: block;
-  font-size: 11px;
-}
-.item .add-to-cart-and-datetime button {
-  border: none;
-  background: #0D6EFD;
-  height: 30px;
-  padding: 0 1.5em;
-  border-radius: 22px;
-  color: white;
-  font-size: 12px;
-  cursor: pointer;
+  font-size: 10px;
+  margin-bottom: 0.2em;
+  min-width: 120px;
 }
 
 .pen:hover i {
@@ -195,7 +213,7 @@
   background: #0D6EFD;
   border-radius: 0 4px 4px 0;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .search-loader-stf-main {

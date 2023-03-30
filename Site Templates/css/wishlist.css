@@ -7,12 +7,24 @@
 }
 .item .trash {
   cursor: pointer;
+  min-width: 40px;
+  opacity: 0.8;
   transition-duration: 0.2s;
 }
 .item .trash i {
-  font-size: 22px;
+  font-size: 20px;
 }
 .item .trash i:hover {
+  color: red;
+}
+.item .trash-right {
+  display: none;
+  opacity: 0.8;
+}
+.item .trash-right i {
+  font-size: 20px;
+}
+.item .trash-right i:hover {
   color: red;
 }
 .item .img-and-details {

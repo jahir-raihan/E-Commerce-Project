@@ -8,39 +8,79 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/products.css">
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-
+    
     <link rel="stylesheet" href="/css/page_profile.css">
     <link rel="stylesheet" href="/css/staff_main.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
 </head>
 <body>
 
     <!-- Navigation Bar -->
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
 
-    <header>
-        <nav>
-            <div class="nav-logo">
                 <img src="/img/ logo.png" alt="Logo" class="logo">
             </div>
             
-           
+          
 
             <div class="nav-buttons">
 
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="pending-orders-btn">
-                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            <!-- <i class="fas fa-spinner fa-pulse"></i> -->
-                            <p>Add a product</p>
-                        </div>
-                        
-                    </a>
-                </div>  
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+               
+                <div class="only-navicons">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </div>
+
+               <button class="nav-btns">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> Add a product
+                </button>
 
             </div>
         </nav>
 
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Add a product</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
     </header>
+  
 
     <!-- End Navigation Bar -->
 
@@ -165,7 +205,7 @@
                     <form action="">
                         <div class="search-facility">
                             <input type="search" placeholder="search by anything">
-                            <button>Search</button>
+                            <button><i class="fa fa-search" aria-hidden="true"></i></button>
 
                             <div class="search-loader-stf-main" id="search-loader-staff-main">
                                 <i class="fas fa-cog fa-spin"></i>
@@ -180,7 +220,7 @@
 
                         <div class="item">
                             
-                            <div class="pen">
+                            <div class="edit-pen">
 
                                 <i class="fas fa-pen"></i>
 
@@ -194,40 +234,10 @@
                                     <small>$99.00</small>
                                 </div>
 
-                               
+                                <div class="edit-pen-right">
 
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
+                                    <i class="fas fa-pen"></i>
+    
                                 </div>
 
                                
@@ -240,232 +250,12 @@
                                 <div class="date">
                                     <small>Added on 19 July, 2022</small>
                                 </div>
-                                
-
-                               
+   
                             </div>
 
 
 
                         </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
-                        <div class="item">
-                            
-                            <div class="pen">
-
-                                <i class="fas fa-pen"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="/img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                               
-                            </div>
-
-
-
-                        </div>
-
-                        
 
                     </div>
 
@@ -490,6 +280,7 @@
 
     <!-- End Footer -->
 
+    <script src="/js/index.js"></script>
 
 </body>
 </html>

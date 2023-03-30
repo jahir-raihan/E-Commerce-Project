@@ -8,41 +8,75 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/products.css">
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-
+    
     <link rel="stylesheet" href="/css/page_profile.css">
     <link rel="stylesheet" href="/css/staff_main.css">
     <link rel="stylesheet" href="/css/staff_pending_orders.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
 </head>
 <body>
 
     <!-- Navigation Bar -->
 
-    <header>
-        <nav>
-            <div class="nav-logo">
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
                 <img src="/img/ logo.png" alt="Logo" class="logo">
             </div>
             
-           
-
             <div class="nav-buttons">
 
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="pending-orders-btn">
-                            <img src="/img/wall-clock.png" alt="Pending Icon">
-                            <!-- <i class="fas fa-spinner fa-pulse"></i> -->
-                            <p>Pending orders</p>
-                        </div>
-                        <p class="p-o-cnt">
-                            12
-                        </p>
-                    </a>
-                </div>  
+                <div class="only-navicons">
+                    <i class="fas fa-clock-rotate-left"></i>
+                    <span class="p-o-cnt d-none">12</span>
+                </div>
+
+                <button class="nav-btns pending-orders-btn">
+                    <i class="fas fa-clock-rotate-left"></i> Pending Orders
+                    <span class="p-o-cnt">12</span>
+                </button>
 
             </div>
+
+
+           
         </nav>
 
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Pending orders</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+       
     </header>
 
     <!-- End Navigation Bar -->
@@ -94,7 +128,7 @@
                     <form action="">
                         <div class="search-facility">
                             <input type="search" placeholder="search by anything">
-                            <button>Search</button>
+                            <button><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </form>
 

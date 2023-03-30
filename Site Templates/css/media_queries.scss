@@ -940,6 +940,8 @@
     transition-duration:.5s;
     width:90% !important;
   }
+
+
   
 
 }
@@ -1287,12 +1289,21 @@
     .profile-container{
         transition-duration: .5s;
         display: block;
-        width:90% ;
+        
         .profile-nav{
             display: none;
         }
     }
     .profile-content{
+
+        .user-details{
+            padding:1em !important;
+            background-color: white;
+        }
+
+        .order-history-search{
+            padding:1em !important;
+        }
 
         .address{
 
@@ -1411,6 +1422,13 @@
 @media only screen and (max-width:600px){
     .wishlist-items{
         .item{
+            .trash, .edit-pen{
+                display: none;
+
+            }
+            .trash-right, .edit-pen-right{
+                display: block;
+            }
 
             .img-and-details{
 
@@ -1430,6 +1448,20 @@
         }
     }
 
+}
+
+@media only screen and (max-width:775px){
+
+    .wishlist-items{
+
+        .item{
+            padding:1em !important;
+            border:var(--border);
+            border-radius: 4px;
+            background:white;
+            margin-bottom: 1em;
+        }
+    }
 }
 
 // End Wishlist page
@@ -1454,8 +1486,47 @@
    
 }
 
+@media only screen and (max-width:775px){
+
+    .transaction-list{
+
+        .item{
+            padding:1em !important;
+            border:var(--border);
+            border-radius: 4px;
+            background:white;
+            margin-bottom: 1em;
+        }
+    }
+}
+
 // End Transaction page
 
+
+
+// Pending Orders 
+
+
+@media only screen and (max-width:775px){
+
+    .profile-container{
+        width:100%;
+        
+        .profile-content{
+            background:#f7f7f7;
+            border:none;
+            box-shadow: none;
+            -webkit-box-shadow:none;
+
+            .order{
+                background:white;
+            }
+        }
+        
+    }
+}
+
+// End Pending Orders
 
 // Staff main 
 
