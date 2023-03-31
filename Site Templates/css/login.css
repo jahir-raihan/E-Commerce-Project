@@ -4,7 +4,7 @@ body {
 }
 
 .container {
-  height: 100vh !important;
+  min-height: 80vh;
 }
 
 .login-card {
@@ -151,7 +151,6 @@ body {
 }
 
 footer {
-  position: sticky;
   width: 100%;
   bottom: 0;
 }

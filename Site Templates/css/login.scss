@@ -8,7 +8,7 @@ body{
 // Login card
 
 .container{
-    height:100vh !important;
+    min-height:80vh;
 }
 
 
@@ -193,7 +193,7 @@ body{
 
 
 footer{
-    position:sticky;
+    
 
     width:100%;
     bottom:0;

@@ -13,6 +13,9 @@
     image-rendering: auto;
     
 }
+.container{
+    min-height:80vh;
+}
 :root{
     --border:.5px solid rgba(0, 0, 0, 0.142);
     --i:!important;
