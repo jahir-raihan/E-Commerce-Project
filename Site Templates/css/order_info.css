@@ -2,6 +2,10 @@ body {
   background: #f7f7f7;
 }
 
+.order-header .order-nav {
+  display: flex !important;
+}
+
 .info-container {
   width: 80%;
   margin: 2em auto;
