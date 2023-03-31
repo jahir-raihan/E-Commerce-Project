@@ -13,6 +13,18 @@
     image-rendering: auto;
     
 }
+
+// Limiting maximum view 
+
+.nav , .n-p-contents, .info-container, .footer-contents, .f-b-contents, .hero-contents,
+.nav2-links, .new-products, .top-reviews-contents, .why-choose-us, .blog-posts, .product-container,
+.details-top, .details-bottom-container, .cart-top, .cart-bottom-container, .profile-container{
+    max-width:2000px;
+}
+
+// End Limiting maximum view
+
+
 .container{
     min-height:80vh;
 }
@@ -239,9 +251,11 @@ header{
 
 .nav-2{
     
-    width:80%;
+    
     margin:1em auto;
     .nav2-links{
+        width:80%;
+        margin:auto;
         display: flex;
         align-items: center;
         .nav2-link{

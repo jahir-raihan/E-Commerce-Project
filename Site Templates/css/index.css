@@ -10,6 +10,12 @@
   cursor: pointer;
 }
 
+.nav, .n-p-contents, .info-container, .footer-contents, .f-b-contents, .hero-contents,
+.nav2-links, .new-products, .top-reviews-contents, .why-choose-us, .blog-posts, .product-container,
+.details-top, .details-bottom-container, .cart-top, .cart-bottom-container, .profile-container {
+  max-width: 2000px;
+}
+
 .container {
   min-height: 80vh;
 }
@@ -205,10 +211,11 @@ header .only-navicons:hover {
 }
 
 .nav-2 {
-  width: 80%;
   margin: 1em auto;
 }
 .nav-2 .nav2-links {
+  width: 80%;
+  margin: auto;
   display: flex;
   align-items: center;
 }
