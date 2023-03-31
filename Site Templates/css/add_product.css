@@ -144,4 +144,8 @@ select {
 .save-and-clear-btn .save {
   background: #0D6EFD;
   color: white;
+}
+
+.bg-white {
+  background: white !important;
 }/*# sourceMappingURL=add_product.css.map */

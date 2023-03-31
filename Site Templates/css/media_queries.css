@@ -959,6 +959,21 @@
     padding: 0.5em 0 !important;
   }
 }
+@media only screen and (max-width: 500px) {
+  .p-price-and-category, .p-yarn-brand-status {
+    grid-template-columns: 49% 49% !important;
+  }
+  .p-price-and-category .category-new, .p-price-and-category .p-status, .p-yarn-brand-status .category-new, .p-yarn-brand-status .p-status {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  .p-name-and-code {
+    grid-template-columns: 100% !important;
+  }
+  .p-name-and-code .p-name {
+    margin-bottom: 1em;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;

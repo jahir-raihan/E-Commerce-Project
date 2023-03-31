@@ -8,38 +8,70 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/products.css">
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-
+    
     <link rel="stylesheet" href="/css/page_profile.css">
     <link rel="stylesheet" href="/css/staff_main.css">
     <link rel="stylesheet" href="/css/add_product.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
 </head>
 <body>
 
     <!-- Navigation Bar -->
 
-    <header>
-        <nav>
-            <div class="nav-logo">
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
                 <img src="/img/ logo.png" alt="Logo" class="logo">
             </div>
             
            
 
             <div class="nav-buttons">
+                <div class="only-navicons">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </div>
 
-                <div class="nav-btns">
-                    <a href="#" draggable="false">
-                        <div class="pending-orders-btn">
-                            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                            <!-- <i class="fas fa-spinner fa-pulse"></i> -->
-                            <p>Add a product</p>
-                        </div>
-                        
-                    </a>
-                </div>  
+                <button class="nav-btns">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>Add a product
+                </button>
 
             </div>
         </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Add a product</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
 
     </header>
 
@@ -86,12 +118,12 @@
 
             <!-- Profile User & Orders List & Status -->
             
-            <div class="profile-content">
+            <div class="profile-content bg-white">
                 <form action="">
 
                     <div class="p-name-and-code m-1">
 
-                        <div class="p-name">
+                        <div class="p-name ">
                             <p>Product title</p>
                             <input type="text" placeholder="Enter title">
                         </div>
@@ -111,7 +143,7 @@
 
                         </div>
 
-                        <div class="p-category">
+                        <div class="p-category m-1">
                             <p>Category</p>
                             <select name="" id="">
                                 <option value="">Select Category</option>
@@ -146,7 +178,7 @@
                             <input type="text">
                         </div>
 
-                        <div class="p-brand">
+                        <div class="p-brand m-1">
                             <p>Brand</p>
                             <input type="text">
                         </div>
@@ -159,6 +191,11 @@
                             </select>
                         </div>
 
+                    </div>
+
+                    <div class="p-tags m-1">
+                        <p>Tags</p>
+                        <input type="text" placeholder="Insert tags eg: Black hoodie, white t-shirt etc">
                     </div>
 
                     <div class="p-primary-image m-1">
@@ -207,9 +244,21 @@
                     </div>
 
                     <div class="discount-price-and-expiry m-1">
-                        <div class="discount-price">
-                            <p>Discount Price</p>
+                        <div class="discount-price m-1">
+                            <p>Discount Percentage</p>
                             <input type="number">
+                        </div>
+
+                        <div class="discount-reason">
+                            
+                            <p>Discount reason</p>
+                            <select name="" id="">
+                                <option value="">Select reason</option>
+                                <option value="">New Arrival</option>
+                                <option value="">Hot Summer</option>
+                                <option value="">Event Name</option>
+                            </select>
+                            
                         </div>
 
                         <div class="discount-expiry">
@@ -250,5 +299,6 @@
     <!-- End Footer -->
 
 <script src="/js/add_a_product.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>

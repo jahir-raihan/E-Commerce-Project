@@ -557,7 +557,7 @@
             .item{
                 width:90%;
                 cursor: pointer;
-                display: flex;
+                display: flex !important;
                 margin-bottom: 1em;
                 padding:.5em;
                 opacity: .8;

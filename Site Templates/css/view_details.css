@@ -443,7 +443,7 @@
 .details-bottom .more-items .more-items-container .item {
   width: 90%;
   cursor: pointer;
-  display: flex;
+  display: flex !important;
   margin-bottom: 1em;
   padding: 0.5em;
   opacity: 0.8;
