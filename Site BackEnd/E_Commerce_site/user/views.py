@@ -31,26 +31,15 @@ def login_user(request):
     if request.method == 'POST' and not request.user.is_authenticated:
         user = authenticate(request, email=request.POST['email'], password=request.POST['password'])
 
-        if user:
-            login(request, user)
-            return JsonResponse({
-                'login': True
-            })
-        else:
-            return JsonResponse({
-                'login': False
-            })
+        pass
     return render(request, 'user/login.html')
 
 
 @login_required
 def logout_user(request):
-    if not request.user.is_authenticated:
-        return redirect('/login')
 
     """Logs out a user"""
 
-    logout(request)
-    return redirect('/')
+    pass
 
 # Create your views here.
