@@ -54,3 +54,11 @@ class Cart(models.Model):
     cart_added_date = models.DateTimeField(auto_now_add=True)
     cart_id = models.UUIDField(auto_created=True)
 
+
+# Wishlist model
+
+class WishList(models.Model):
+    wishlist_items = models.CharField(max_length=100)
+    wisher_person_ip = models.GenericIPAddressField()
+    wisher_person = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+

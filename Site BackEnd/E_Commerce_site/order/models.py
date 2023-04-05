@@ -4,6 +4,11 @@ from django.db import models
 User = get_user_model()
 
 
+class Transaction(models.Model):
+    # All transaction information goes here
+    pass
+
+
 class Order(models.Model):
 
     # Order items and person details
@@ -34,7 +39,8 @@ class Order(models.Model):
 
     order_payment_method = models.Choices((('cash_on_delivery', 'cash_on_delivery'), ('baksh', 'bkash'), ('sslcom',
                                                                                                           'sslcom')))
-    order_transaction_id = models.CharField(max_length=30, null=True, blank=True)
+    order_transaction = models.OneToOneField(Transaction, on_delete=models.DO_NOTHING)
+    note_msg = models.CharField(max_length=300)
 
     def __str__(self):
         return f'{self.order_id, self.order_person_name}'

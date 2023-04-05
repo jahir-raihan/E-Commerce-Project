@@ -70,3 +70,19 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+
+
+# Model for profile picture
+
+class Profile(models.Model):
+    picture = models.ImageField(upload_to='profile-images/')
+
+
+# Model for saving addresses
+
+class Address(models.Model):
+    city = models.CharField(max_length=30)
+    street = models.CharField(max_length=40)
+    zipcode = models.IntegerField()
+    full_address = models.CharField(max_length=150)
+
