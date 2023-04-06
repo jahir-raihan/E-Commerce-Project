@@ -49,7 +49,7 @@ class Product(models.Model):
 class Cart(models.Model):
     cart_items = models.CharField(max_length=400)
     cart_person_ip = models.GenericIPAddressField()
-    cart_person = models.OneToOneField(User, null=True, balnk=True, on_delete=models.DO_NOTHING)
+    cart_person = models.OneToOneField(User, on_delete=models.DO_NOTHING, blank=True, null=True)
     cart_items_price = models.IntegerField()
     cart_added_date = models.DateTimeField(auto_now_add=True)
     cart_id = models.UUIDField(auto_created=True)

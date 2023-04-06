@@ -13,14 +13,16 @@ User = get_user_model()
 
 def register_user(request):
     if request.user.is_authenticated:
-        return False
+        return JsonResponse({'redirect': False})
 
     """View for register"""
 
-    if request.method == 'POST':
-        pass
+    if request.method == 'POST' and not request.user.is_authenticated:
+        form = UserRegisterForm(request.POST)
+        if form.is_valid:
+            print('valid')
 
-    return render(request, 'user/register.html')
+    return render(request, 'register.html')
 
 
 def login_user(request):
@@ -32,7 +34,10 @@ def login_user(request):
         user = authenticate(request, email=request.POST['email'], password=request.POST['password'])
         if user:
             login(request, user)
-            return JsonResponse({'success': True, 'redirect': f'redirect url'})
+            if 'redirect_url' in request.POST:
+                return JsonResponse({'success': True, 'redirect': f'{request.POST["redirect_url"]}'})
+            else:
+                return JsonResponse({'success': True, 'redirect': '/'})
         else:
             return JsonResponse({'error': True})
     return render(request, 'login.html')

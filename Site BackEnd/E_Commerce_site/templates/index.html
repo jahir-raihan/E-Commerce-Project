@@ -1,14 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Ecommerce</title>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    {% block jsfiles %} {% endblock jsfiles %}
+
+    <title> {% block title %} Home - Ecommerce {% endblock title %}</title>
+
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
    
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
+    {% block cssfiles %}
+    {% endblock cssfiles %}
+
 </head>
 <body>
 
@@ -18,12 +26,13 @@
         <nav class="nav">
             <div class="nav-logo nav-ham-logo">
                 <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="../img/menu.png" alt="">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </div>
 
-                <img src="../img/ logo.png" alt="Logo" class="logo">
+                <img src="{% static 'img/ logo.png' %}" alt="Logo" class="logo">
             </div>
-            
+
+            {% block nav_search %}
             <div>
                 <div class="nav-search search-container-global">
                     <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
@@ -110,6 +119,7 @@
                     </div>
                 </div>
             </div>
+            {% endblock nav_search %}
 
             <div class="nav-buttons">
 
@@ -137,6 +147,7 @@
                 </button>
 
             </div>
+
         </nav>
 
         <div class="toggle-nav " id="toggle-nav">
@@ -172,8 +183,9 @@
         <input type="text" class="nav-search-input" placeholder="search by anything">
     </div>
 
-    <!-- Navigation 2 , I don't know , but its in the design -->
+    <!-- Navigation 2 , I don't know , but it's in the design -->
 
+    {% block nav_2 %}
     <nav class="nav-2">
         <div class="nav2-links">
 
@@ -255,7 +267,7 @@
 
         </div>
     </nav>
-
+    {% endblock nav_2 %}
     <!-- End Navigation 2 -->
 
     <!-- Navigation bar  end -->
@@ -265,6 +277,7 @@
 
     <div class="container" id="container">
 
+        {% block container %}
         <!-- Hero Section -->
 
         <div class="hero" id="hero">
@@ -1007,6 +1020,7 @@
 
         </div>
 
+        {% endblock container %}
         
     </div>
 
@@ -1014,7 +1028,10 @@
 
     <!-- Footer -->
 
+
     <footer>
+        {% block footer_top %}
+
         <div class="footer-contents">
 
         
@@ -1022,7 +1039,7 @@
 
                 <div class="brand-details">
                     <div class="img">
-                        <img src="../img/logo-white.png" alt="Logo" class="logo">
+                        <img src="{% static 'img/logo-white.png' %}" alt="Logo" class="logo">
                     </div>
                     
                     <p>Company name. </p>
@@ -1080,13 +1097,18 @@
 
             
         </div>
+
+        {% endblock footer_top %}
+
+        {% block footer_bottom %}
+
         <div class="footer-bottom">
 
             <div class="f-b-contents">
 
             
                 <div class="payment-methods">
-                    <img src="../img/Payment-methods.png" alt="">
+                    <img src="{% static 'img/Payment-methods.png' %}" alt="">
                 </div>
 
                 <div class="links">
@@ -1096,9 +1118,13 @@
                 </div>
             </div>
         </div>
+
+        {% endblock footer_bottom %}
+
     </footer>
 
+
     <!-- End Footer -->
-    <script src="../js/index.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
 </body>
 </html>

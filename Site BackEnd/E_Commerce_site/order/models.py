@@ -19,10 +19,10 @@ class Order(models.Model):
     order_person_name = models.CharField(max_length=30)
     order_person_phone = models.CharField(max_length=14)
     order_person_ip = models.GenericIPAddressField()
-    order_person = models.OneToOneField(User, on_delete=models.DO_NOTHING, null=None, blank=True)
+    order_person = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
     order_date = models.DateTimeField(auto_now_add=True)
     order_handle_date = models.DateTimeField(blank=True, null=True)
-    order_handled_by = models.OneToOneField(User, on_delete=models.DO_NOTHING)
+    order_handled_by = models.IntegerField()
 
     # Order Status
 
@@ -36,9 +36,9 @@ class Order(models.Model):
     order_total_price = models.IntegerField()
 
     # Order payment method
+    payment_choices = (('cash_on_delivery', 'cash_on_delivery'), ('bkash', 'bkash'), ('sslcom', 'sslcom'))
 
-    order_payment_method = models.Choices((('cash_on_delivery', 'cash_on_delivery'), ('baksh', 'bkash'), ('sslcom',
-                                                                                                          'sslcom')))
+    order_payment_method = models.CharField(max_length=50, choices=payment_choices, default='cash_on_delivery')
     order_transaction = models.OneToOneField(Transaction, on_delete=models.DO_NOTHING)
     note_msg = models.CharField(max_length=300)
 

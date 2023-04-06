@@ -46,7 +46,7 @@ function toggle_nav_menu(){
     var obj3 = document.getElementById('container')
     var toggle_nav = document.getElementById('toggle-nav')
     if (obj.contains(obj2)){
-        obj.innerHTML = '<img src="/img/menu.png" alt="">'
+        obj.innerHTML = '<i class="fa fa-bars" aria-hidden="true"></i>'
         toggle_nav.style.display = 'none'
         try{
             obj3.classList.remove('fade-out')
