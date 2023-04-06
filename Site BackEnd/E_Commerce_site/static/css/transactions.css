@@ -1,0 +1,35 @@
+.operator-logo img {
+  width: 80px;
+}
+
+.trans-id-and-amount {
+  margin: 0.5em;
+}
+.trans-id-and-amount p {
+  font-weight: 400;
+  font-size: 13px;
+  opacity: 0.8;
+}
+.trans-id-and-amount p span {
+  font-weight: 500;
+}
+
+.date {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.view-order-btn {
+  border: none;
+  background: #0D6EFD;
+  height: 30px;
+  padding: 0 1.5em;
+  border-radius: 4px;
+  color: white;
+  font-size: 12px;
+  opacity: 0.8;
+  cursor: pointer;
+  min-width: 100px;
+}/*# sourceMappingURL=transactions.css.map */

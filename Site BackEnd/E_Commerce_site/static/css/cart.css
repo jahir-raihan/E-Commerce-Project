@@ -1,0 +1,257 @@
+.cart-top {
+  width: 80%;
+  margin: 2em auto;
+  display: grid;
+  grid-template-columns: 68% 30%;
+  gap: 2%;
+}
+.cart-top .cart-items-container {
+  border: var(--border);
+  padding: 1.4em;
+  border-radius: 4px;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.cart-top .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em 0;
+}
+.cart-top .item .img-title-details {
+  margin-right: 0.5em;
+  display: flex;
+}
+.cart-top .item .img-title-details .left {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-right: 0.5em;
+  border: var(--border);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.3em;
+  border-radius: 4px;
+}
+.cart-top .item .img-title-details .left img {
+  width: 80px;
+  height: 80px;
+}
+.cart-top .item .img-title-details .right .title {
+  opacity: 0.8;
+  font-weight: 400;
+  width: 70%;
+}
+.cart-top .item .img-title-details .right small {
+  opacity: 0.7;
+}
+.cart-top .item .q-p-container {
+  display: flex;
+}
+.cart-top .item .quantity-price {
+  display: flex;
+  margin-right: 0.5em;
+}
+.cart-top .item .quantity-price .quantity {
+  margin-right: 0.5em;
+}
+.cart-top .item .quantity-price .quantity select {
+  cursor: pointer;
+  height: 40px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 60px;
+  border-radius: 4px;
+  padding: 0.5em;
+  padding-left: 1em;
+  background: #f7f7f7;
+  border: none;
+  outline: none;
+}
+.cart-top .item .quantity-price .price .price {
+  font-weight: 500;
+  font-size: 15px;
+  opacity: 0.9;
+}
+.cart-top .item .quantity-price .price .price-per-pc {
+  font-size: 11px;
+  opacity: 0.6;
+}
+.cart-top .item .like-and-remove-btn {
+  opacity: 0.8;
+  display: flex;
+}
+.cart-top .item .like-and-remove-btn button {
+  cursor: pointer;
+  height: 40px;
+  display: block;
+  padding: 0.3em 1em;
+  border: var(--border);
+  margin-left: 0.5em;
+  border-radius: 4px;
+  background: none;
+}
+.cart-top .item .like-and-remove-btn .love-btn {
+  padding-top: 0.8em;
+}
+.cart-top .item .like-and-remove-btn .remove {
+  color: rgb(255, 85, 0);
+}
+.cart-top .item .like-and-remove-btn button:hover {
+  opacity: 1 !important;
+}
+.cart-top .prompt-msg {
+  margin: 1em 0;
+}
+.cart-top .prompt-msg .title {
+  color: green;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+}
+.cart-top .prompt-msg small {
+  opacity: 0.7;
+}
+.cart-top .cart-checkout .coupon {
+  border: var(--border);
+  margin-bottom: 1.4em;
+  padding: 1em;
+  border-radius: 4px;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.cart-top .cart-checkout .coupon p {
+  margin-bottom: 0.5em;
+  opacity: 0.8;
+}
+.cart-top .cart-checkout .coupon .coupon-input {
+  display: flex;
+}
+.cart-top .cart-checkout .coupon .coupon-input input, .cart-top .cart-checkout .coupon .coupon-input button {
+  display: block;
+  padding: 0.3em;
+}
+.cart-top .cart-checkout .coupon .coupon-input input {
+  width: 70%;
+  height: 40px;
+  padding: 0 1em;
+  border: var(--border);
+  border-radius: 4px 0 0 4px;
+  outline-color: #0D6EFD;
+  border-right: none;
+}
+.cart-top .cart-checkout .coupon .coupon-input button {
+  width: 30%;
+  border: var(--border);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  background: #0D6EFD;
+}
+.cart-top .cart-checkout .amount {
+  border: var(--border);
+  margin-bottom: 1.4em;
+  padding: 1em;
+  border-radius: 4px;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.cart-top .cart-checkout .amount div {
+  margin-bottom: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+.cart-top .cart-checkout .amount div p {
+  font-weight: 400;
+  opacity: 0.8;
+}
+.cart-top .cart-checkout .amount div .discount-amount {
+  color: green;
+}
+.cart-top .cart-checkout .amount div .tax-amount {
+  color: rgb(255, 140, 0);
+}
+.cart-top .cart-checkout .amount .total {
+  margin: 1em 0;
+}
+.cart-top .cart-checkout .amount .total p {
+  font-weight: 500;
+}
+.cart-top .cart-checkout .amount .total .total-amount {
+  font-weight: 600;
+}
+.cart-top .cart-checkout .amount button {
+  display: block;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 1em;
+  border: none;
+  font-weight: 500;
+  border-radius: 4px;
+  color: white;
+  background: #0D6EFD;
+}
+.cart-top .cart-checkout .amount .back-to-shop {
+  color: #0D6EFD;
+  border: var(--border);
+  background: white;
+}
+
+.cart-bottom {
+  background: #f7f7f7;
+}
+.cart-bottom .cart-bottom-container {
+  padding: 2em 0;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+.cart-bottom .cart-bottom-container .title {
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 1em;
+  opacity: 0.8;
+}
+.cart-bottom .cart-bottom-container .s-product-card {
+  cursor: pointer;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  border: 1px solid #f7f7f7;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 1em;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+.cart-bottom .cart-bottom-container .s-product-card .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-bottom .cart-bottom-container .s-product-card .img img {
+  width: 80%;
+}
+.cart-bottom .cart-bottom-container .s-product-card .title {
+  font-weight: 400;
+  font-size: 15px;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+.cart-bottom .cart-bottom-container .s-product-card:hover {
+  border: var(--border);
+}
+.cart-bottom .cart-bottom-container .suggested-product-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  margin-bottom: 0;
+}/*# sourceMappingURL=cart.css.map */

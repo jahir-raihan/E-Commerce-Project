@@ -1,0 +1,23 @@
+.search-facility {
+  margin-bottom: 1em;
+  display: flex;
+}
+.search-facility input {
+  display: block;
+  width: 80%;
+  height: 40px;
+  border: var(--border);
+  border-radius: 4px 0 0 4px;
+  padding: 0 1em;
+  border-right: none;
+  outline-color: #0D6EFD;
+}
+.search-facility button {
+  width: 20%;
+  height: 40px;
+  border: none;
+  background: #0D6EFD;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  font-weight: 500;
+}/*# sourceMappingURL=staff_pending_orders.css.map */

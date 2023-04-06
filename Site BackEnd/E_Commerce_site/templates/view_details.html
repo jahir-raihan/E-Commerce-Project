@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/view_details.css">
+    <link rel="stylesheet" href="../css/media_queries.css">
+    <title>View details</title>
+</head>
+<body>
+
+    <!-- Navigation bar -->
+
+    <header>
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="../img/menu.png" alt="">
+                </div>
+
+                <img src="../img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+            <div>
+                <div class="nav-search search-container-global">
+                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
+                    <button class="nav-search-button">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-search-button snd-nav-srch-btn d-none"
+                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="search-result-suggestion d-none" id="s-r-s">
+                        <ul id="s-list">
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">poke man</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Mens T-shirts</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons ">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="cart-item-count d-none">1</span>
+                </div>
+
+                <button class="nav-btns wishlist-btn">
+                    <i class="fas fa-heart"></i></i> Wishlist
+                </button>
+                <button class="nav-btns my-cart-btn">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="cart-item-count d-none">1</span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                <a href="#">
+                    <div >
+                        <p>Shop</p>
+                        <small>Ready made products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>Hot offers</p>
+                        <small>Get offer deals</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>New arrivals</p>
+                        <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+    </header>
+
+    <div class="nav-search-hidden d-none" id="n-srch-hidden">
+        <input type="text" class="nav-search-input" placeholder="search by anything">
+    </div>
+
+    <!-- End Navigation Bar -->
+
+    <!-- Base Container -->
+
+    <div class="container">
+
+        <!-- Page Navigator -->
+        
+        <div class="navigator-products">
+            <div class="n-p-contents">
+                <a href="#">Home > </a>
+                <a href="#">Products ></a>
+                <a href="#" style="color:gray"> Product title </a>
+            </div>
+            
+        </div>
+
+        <!-- End Page Navigator -->
+
+
+        <!-- Product Details  -->
+
+        <div class="details-top">
+
+            <div class="img">
+
+                <div class="details-main-img">
+                    <img id="selected-image" src="../img/image 17.png" alt="primary image">
+                </div>
+                
+
+
+                <div class="image-gallery">
+
+                    <div class="img-gallery-img" id="img-gallery-img1"onclick="showImage('1')" >
+                        <img id="1" class="gallery-image "  src="../img/image 17.png" alt="primary image" >
+                    </div>
+                    
+                    <div class="img-gallery-img" id="img-gallery-img2" onclick="showImage('2')">
+                        <img id="2" class="gallery-image" src="../img/cash-on-delivery.png" alt="" >
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img3"  onclick="showImage('3')" >
+                        <img id="3" class="gallery-image" src="../img/1656227518bkash-logo-png.png" alt="" >
+
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img4" onclick="showImage('4')">
+                         <img id="4" class="gallery-image" src="../img/cash-on-delivery.png" alt="" >
+
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img5" onclick="showImage('5')">
+                        <img id="5" class="gallery-image" src="../img/test_image.jpeg" alt="" >
+                    </div>
+                    <div class="img-gallery-img" id="img-gallery-img6" onclick="showImage('6')">
+                        <img id="6" class="gallery-image" src="../img/olive.png" alt="" >
+                    </div>
+                    
+                    
+                </div>
+
+            </div>
+
+            <div class="details">
+                <p class="title">Quality Ment's Hoodie for Winter, Men's Fashio Casual Hoodie</p>
+
+                <div class="rating">
+
+                    <div class="rates">
+                        
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>   
+                        
+                    </div>
+                    <p>9.3</p>
+                    <small class="is-available">In stock</small>
+                </div>
+
+                <div class="price">
+                    <p>$98.00</p>
+                    <p class="offer-price">$88.00</p>
+                </div>
+
+                
+
+                <div class="size-quantity">
+
+                    <div class="size">
+                        <p>Size</p>
+
+                        <div class="select-box">
+                            <select name="size" id="">
+                            
+                                <option value="XXL"> M </option>
+                                <option value="XXL"> L </option>
+                                <option value="XXL"> XL </option>
+                                <option value="XXL"> XXL </option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="quantity">
+                        <p>Quantity</p>
+
+                        <div class="q-input">
+                            <button class="minus">-</button>
+                            <button class="count" id="q-count">1</button>
+                            <button class="plus">+</button>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+                <div class="btns">
+                    
+                   <button class="add-to-cart-btn">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    Add to cart
+                   </button>
+                   <button class="love-btn">
+                    <i class="fas fa-heart"></i></i>
+                    233
+                   </button>
+                    
+                </div>
+                <div class="line"></div>
+                <p class="more-details">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta corporis laboriosam itaque incidunt veniam in.
+                </p>
+
+                <div class="color-brand-type-details">
+
+                    
+                    <div class="sub-details">
+                        <p class="d-fadeout">Color Type</p>
+                        <p>Brown</p>
+                    </div>
+                    <div class="sub-details">
+                        <p class="d-fadeout">Delivery</p>
+                        <p>Only in Bangladesh</p>
+                    </div>
+                    <div class="sub-details">
+                        <p class="d-fadeout">Brand</p>
+                        <p>Unknown</p>
+                    </div>
+                    <div class="sub-details">
+                        <p class="d-fadeout">Yarn Type</p>
+                        <p>Ringspun Combed CompactYarn Construction: 100% Cotton, Organic</p>
+                    </div>
+                    <div class="sub-details">
+                        <p class="d-fadeout">Yarn Count</p>
+                        <p>26s</p>
+                    </div>
+
+                </div>
+                <div class="line"></div>
+                <div class="size-chart">
+                    <p class="title">Size Chart - In Inches </p>
+                    <table border="1" cellpadding="5">
+                        <tr>
+                            <th>Size</th>
+                            <th>Chest (Round)</th>
+                            <th>Length</th>
+                            <th>Sleeve</th>
+                        </tr>
+
+                        <tr>
+                            <td>M</td>
+                            <td>39</td>
+                            <td>27.5</td>
+                            <td>8.25</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>40.5</td>
+                            <td>28.5</td>
+                            <td>8.5</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>43</td>
+                            <td>29</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>XXL</td>
+                            <td>45</td>
+                            <td>30</td>
+                            <td>9.5</td>
+                        </tr>
+                    </table>
+                </div>
+
+               
+            </div>
+        </div>
+
+        <!-- End Product Details -->
+
+
+        <!-- Reviews and More items list -->
+
+        <div class="details-bottom">
+
+            <div class="details-bottom-container">
+
+            
+
+                <div class="reviews-and-rating">
+                    <div class="top">
+
+                        <div>
+                            <p class="title">
+                                Reviews & Rating
+                            </p>
+                        </div>
+                        <button class="write-a-review" 
+                        onclick="document.getElementById('w-a-r-p-s').style.display='block';">
+                            Wrtie a review
+                            <p>+</p>
+                        </button>
+
+                    </div>
+
+
+                    <div class="write-a-review-popup-section" id="w-a-r-p-s">
+
+                         <div class="rating-box">
+                            <div class="title-and-cross">
+                                <p class="title">Rate</p>
+                                <i class="fas fa-times" onclick="document.getElementById('w-a-r-p-s').style.display='none';"></i>
+                            </div>
+                            
+                            <form action="">
+                                <div class="stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <div class="feedback-input-btn">
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter your feedback"></textarea>
+
+                                    <button class="submit-review-and-feedback">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                          </div>
+
+                    </div>
+
+                    <div class="bottom">
+
+                        <div class="review">
+                            <div class="left">
+                                <img src="../img/person.png" alt="">
+                            </div>
+                            <div class="right">
+                                <p class="name">Jahir Raihan</p>
+
+                                <div class="rates">
+                            
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+
+                                </div>
+
+                                <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officia praesentium officiis hic quidem consequuntur!</small>
+
+                                <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
+
+                                <div class="write-reply" id="write-reply">
+                                    <input type="text" placeholder="Write your reply">
+                                    <button>Submit</button>
+                                </div>
+
+                                <div class="replys-container">
+                                    <p class="title">
+                                        Replys
+                                    </p>
+
+                                    <div class="replys">
+                                        
+                                        <div class="left">
+                                            <img src="../img/person.png" alt="">
+                                        </div>
+                                        <div class="right">
+                                            <p class="name">Jahir Raihan</p>
+
+                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
+                                        </div>
+                                    </div>
+                                    <div class="replys">
+                                        
+                                        <div class="left">
+                                            <img src="../img/person.png" alt="">
+                                        </div>
+                                        <div class="right">
+                                            <p class="name">Jahir Raihan</p>
+
+                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="review">
+                            <div class="left">
+                                <img src="../img/person.png" alt="">
+                            </div>
+                            <div class="right">
+                                <p class="name">Jahir Raihan</p>
+
+                                <div class="rates">
+                            
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+
+                                </div>
+
+                                <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officia praesentium officiis hic quidem consequuntur!</small>
+
+                                <button class="reply">Reply</button>
+
+                                <div class="replys-container">
+                                    <p class="title">
+                                        Replys
+                                    </p>
+
+                                    <div class="replys">
+                                        
+                                        <div class="left">
+                                            <img src="../img/person.png" alt="">
+                                        </div>
+                                        <div class="right">
+                                            <p class="name">Jahir Raihan</p>
+
+                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
+                                        </div>
+                                    </div>
+                                    <div class="replys">
+                                        
+                                        <div class="left">
+                                            <img src="../img/person.png" alt="">
+                                        </div>
+                                        <div class="right">
+                                            <p class="name">Jahir Raihan</p>
+
+                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <button class="show-all-reviews">Show all</button>
+
+                    </div>
+
+                </div>
+
+                <div class="more-items">
+
+                    <div class="more-items-container">
+                        <p class="title">Similar products</p>
+
+
+                        <div class="item">
+
+                            <div class="left">
+                                <img src="../img/go-pro.png" alt="">
+                            </div>
+                            <div class="right">
+
+                                <p class="i-title">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
+                                </p>
+
+                                <p class="price">$78.00</p>
+
+                            </div>
+                        </div>
+                        <div class="item">
+
+                            <div class="left">
+                                <img src="../img/go-pro.png" alt="">
+                            </div>
+                            <div class="right">
+
+                                <p class="i-title">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
+                                </p>
+
+                                <p class="price">$78.00</p>
+
+                            </div>
+                        </div>
+                        <div class="item">
+
+                            <div class="left">
+                                <img src="../img/go-pro.png" alt="">
+                            </div>
+                            <div class="right">
+
+                                <p class="i-title">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
+                                </p>
+
+                                <p class="price">$78.00</p>
+
+                            </div>
+                        </div>
+                        <div class="item">
+
+                            <div class="left">
+                                <img src="../img/go-pro.png" alt="">
+                            </div>
+                            <div class="right">
+
+                                <p class="i-title">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
+                                </p>
+
+                                <p class="price">$78.00</p>
+
+                            </div>
+                        </div>
+                        <div class="item">
+
+                            <div class="left">
+                                <img src="../img/go-pro.png" alt="">
+                            </div>
+                            <div class="right">
+
+                                <p class="i-title">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
+                                </p>
+
+                                <p class="price">$78.00</p>
+
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+           
+
+        </div>
+
+        <!-- End Reviews and More item list -->
+
+    </div>
+
+     <!-- End Base Container -->
+
+     <!-- Footer -->
+
+    <footer>
+        <div class="footer-contents">
+
+        
+            <div class="footer-flex-items">
+
+                <div class="brand-details">
+                    <img src="../img/logo-white.png" alt="Logo" class="logo">
+                    <p>Company name. </p>
+                    <p>c 2018-2021 Templatemount.</p>
+                    <p>All rights reserved.</p>
+                </div>
+
+                <div class="help f-links">
+                    <p class="title">Help</p>
+
+                    <div class="links">
+                        <a href="#">Contact Us</a>
+                        <a href="#">Refunds</a>
+                        <a href="#">Live Chat</a>
+                        <a href="#">Track Info</a>
+                    </div>
+                </div>
+
+                <div class="about f-links">
+                    <p class="title">About</p>
+
+                    <div class="links">
+                        <a href="#">About Us</a>
+                        <a href="#">Services</a>
+                        <a href="#">Policy & Terms</a>
+                        <a href="#">Blog posts</a>
+                    </div>
+                </div>
+
+                <div class="partnership f-links">
+                    <p class="title">Partnership</p>
+
+                    <div class="links">
+                        <a href="#">Login / Register</a>
+                        <a href="#">Settings</a>
+                        <a href="#">My Orders</a>
+                        
+                    </div>
+                </div>
+
+                <div class="newsletter f-links">
+                    <p class="title">Newsletter</p>
+
+                    <p class="txt">Stay in touch with latest updates about our products and offers</p>
+
+                    <div class="newsletter-input">
+                        <input type="text" placeholder="Email">
+                        <button>Join</button>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+
+            
+        </div>
+        <div class="footer-bottom">
+
+            <div class="f-b-contents">
+
+            
+                <div class="payment-methods">
+                    <img src="../img/Payment-methods.png" alt="">
+                </div>
+
+                <div class="links">
+                    <a href="#">Support</a>
+                    <a href="#">Privacy & Cookies</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- End Footer -->
+
+    <script src="/js/view_details.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>

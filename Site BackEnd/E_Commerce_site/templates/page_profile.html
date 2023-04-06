@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="../css/page_profile.css">
+    <link rel="stylesheet" href="../css/media_queries.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+
+    <header>
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="../img/menu.png" alt="">
+                </div>
+
+                <img src="../img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+            <div>
+                <div class="nav-search search-container-global">
+                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
+                    <button class="nav-search-button">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-search-button snd-nav-srch-btn d-none"
+                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="search-result-suggestion d-none" id="s-r-s">
+                        <ul id="s-list">
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">poke man</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Mens T-shirts</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons ">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="cart-item-count d-none">1</span>
+                </div>
+
+                <button class="nav-btns wishlist-btn">
+                    <i class="fas fa-heart"></i></i> Wishlist
+                </button>
+                <button class="nav-btns my-cart-btn">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="cart-item-count d-none">1</span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                <a href="#">
+                    <div >
+                        <p>Shop</p>
+                        <small>Ready made products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>Hot offers</p>
+                        <small>Get offer deals</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>New arrivals</p>
+                        <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Order history</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">My wishlist</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Transactions</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+    </header>
+
+    <div class="nav-search-hidden d-none" id="n-srch-hidden">
+        <input type="text" class="nav-search-input" placeholder="search by anything">
+    </div>
+    <!-- End Navigation Bar -->
+
+    <!-- Base Container -->
+
+    <div class="container" >
+
+        <!-- Page Navigator -->
+
+        <div class="navigator-products">
+
+            <div class="n-p-contents">
+                <a href="#">Home > </a>
+                <a href="#">Account ></a>
+                <a href="#" style="color:gray">Profile Main</a>
+            </div>
+            
+        </div>
+
+        <!-- End Page Navigator -->
+
+
+        <!-- Profile Container -->
+
+        <div class="profile-container">
+
+            <!-- Profile Navigation -->
+
+            <div class="profile-nav">
+
+                <ul>
+                    <a href="#"><li class="current-tab-profile">Account main</li></a>
+                    
+                    <a href="#"><li class="">Orders history</li></a>
+                    <a href="#"><li class="">My wishlist</li></a>
+                    <a href="#"><li class="">Transactions</li></a>
+                    <a href="#"><li class="">Log out</li></a>
+                </ul>
+
+            </div>
+
+            <!-- End Profile Navigation -->
+
+
+            <!-- Profile User & Orders List & Status -->
+            
+            <div class="profile-content">
+
+                <div class="user-details">
+                    
+                    <div class="user">
+
+                        <div class="img">
+                            <img src="../img/person.png" alt="">
+                        </div>
+
+                        <div class="name-email-phone">
+                            <p class="name">Jahir Raihan Joy</p>
+                            <p>myusername@gmail.com</p>
+                            <p>+8801720988071</p>
+                            
+                        </div>
+                    </div>
+
+                    <div class="saved-addresses">
+
+                        <div class="address">
+                            <div class="address-info address-selected">
+
+                                <div class="icon-and-info">
+                                    <div class="img">
+                                        <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
+                                    </div>
+
+                                    <p class="address-details">
+                                        Tashkent city, Street name, Building 123, House 321 <span>(Primary address)</span> 
+                                    </p>
+                                </div>
+                                
+
+                                <div class="three-dots">
+                                    <i class="fa fa-ellipsis-v t-dots" ></i>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="address">
+                            <div class="address-info">
+
+                                <div class="icon-and-info">
+                                    <div class="img">
+                                        <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
+                                    </div>
+
+                                    <p class="address-details">
+                                        Tashkent city, Street name, Building 123, House 321 <span>(Primary address)</span> 
+                                    </p>
+                                </div>
+                                
+
+                                <div class="three-dots">
+                                    <i class="fa fa-ellipsis-v t-dots" ></i>
+                                </div>
+                            </div>
+                           
+                        </div>
+
+
+                        
+
+                    </div>
+
+                    <button class="add-new-address-btn">
+                        + Add new address
+                    </button>
+
+                </div>
+
+                <div class="line"></div>
+
+
+                <div class="current-orders">
+
+                    <p class="title"> Current Orders</p>
+
+
+                    <div class="order">
+
+                        <div class="order-top">
+
+                            <div class="o-id-date">
+                                <p>Order ID : 234 <span>Mon, Dec 28, 2023</span></p>
+                                <p class="status">Confirmed</p>
+                            </div>
+
+                            <div class="order-util-btns">
+                                <button class="cancel-order confirmed-order">Cancel order</button>
+                                <button class="track-order pending">Track order</button>
+                            </div>
+
+                        </div>
+
+                        <div class="order-middle">
+
+                            <div class="delivery-person">
+
+                                <p class="o-m-title">
+                                    Person
+                                </p>
+
+                                <p>Jahir Raihan Joy </p>
+                                <p>+883002420424</p>
+                                <p>hello@gmail.com</p>
+
+                            </div>
+
+                            <div class="delivery-address">
+                                <p class="o-m-title">
+                                    Delivery address
+                                </p>
+
+                                <p class="d-address">4715 madisen Troughway, That street 343 Palo Alto, Dhaka</p>
+                                
+                            </div>
+
+                            <div class="payment">
+                                <p class="o-m-title">
+                                    Payment
+                                </p>
+
+                                <p class="payment-type">
+                                    Visa Card
+                                </p>
+
+                                <p>Shipping fee : $3.00</p>
+                                <p>Total paid : $434.89</p>
+                            </div>
+
+                        </div>
+
+                        <div class="line"></div>
+
+                        <div class="ordered-items">
+
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="order cancelled-order">
+
+                        <div class="order-top">
+
+                            <div class="o-id-date">
+                                <p>Order ID : 234 <span>Mon, Dec 28, 2023</span></p>
+                                <p class="status status-cancelled">Cancelled</p>
+                            </div>
+
+                            <div class="order-util-btns">
+                                <button class="cancel-order confirmed-order">Cancelled</button>
+                                
+                            </div>
+
+                        </div>
+
+                        <div class="order-middle">
+
+                            <div class="delivery-person">
+
+                                <p class="o-m-title">
+                                    Person
+                                </p>
+
+                                <p>Jahir Raihan Joy </p>
+                                <p>Phone : 3002420424</p>
+                                <p>Email : hello@gmail.com</p>
+
+                            </div>
+
+                            <div class="delivery-address">
+                                <p class="o-m-title">
+                                    Delivery address
+                                </p>
+
+                                <p class="d-address">4715 madisen Troughway, That street 343 Palo Alto, Dhaka</p>
+                                
+                            </div>
+
+                            <div class="payment">
+                                <div class="o-m-title">
+                                    Payment
+                                </div>
+
+                                <p class="payment-type">
+                                    Visa Card
+                                </p>
+
+                                <p>Shipping fee : $3.00</p>
+                                <p>Total paid : $434.89</p>
+                            </div>
+
+                        </div>
+
+                        <div class="line"></div>
+
+                        <div class="ordered-items">
+
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="order pending-order">
+
+                        <div class="order-top">
+
+                            <div class="o-id-date">
+                                <p>Order ID : 234 <span>Mon, Dec 28, 2023</span></p>
+                                <p class="status status-pending">Pending</p>
+                            </div>
+
+                            <div class="order-util-btns">
+                                <button class="cancel-order pending-order">Cancel order</button>
+                                <button class="track-order pending">Track order</button>
+                            </div>
+
+                        </div>
+
+                        <div class="order-middle">
+
+                            <div class="delivery-person">
+
+                                <p class="o-m-title">
+                                    Person
+                                </p>
+
+                                <p>Jahir Raihan Joy </p>
+                                <p>Phone : 3002420424</p>
+                                <p>Email : hello@gmail.com</p>
+
+                            </div>
+
+                            <div class="delivery-address">
+                                <p class="o-m-title">
+                                    Delivery address
+                                </p>
+
+                                <p class="d-address">4715 madisen Troughway, That street 343 Palo Alto, Dhaka</p>
+                                
+                            </div>
+
+                            <div class="payment">
+                                <div class="o-m-title">
+                                    Payment
+                                </div>
+
+                                <p class="payment-type">
+                                    Visa Card
+                                </p>
+
+                                <p>Shipping fee : $3.00</p>
+                                <p>Total paid : $434.89</p>
+                            </div>
+
+                        </div>
+
+                        <div class="line"></div>
+
+                        <div class="ordered-items">
+
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+                            <div class="item">
+                   
+                                <div class="img">
+                                    <img src="../img/image 17.png" alt="">
+                                    <div class="cnt">
+                                        <p>1</p>
+                                    </div>
+                                </div>
+            
+                                <div class="info">
+                                    <p class="title">Mens T-shirt Cotton Base</p>
+                                    <small>Total : $12.00</small>
+                                </div>
+            
+                               
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- End Profile User & Orders List & Status -->
+
+        </div>
+
+        <!-- End Profile Container -->
+
+
+    </div>
+    
+    <!-- End Base Container -->
+
+
+    <!-- Footer-->
+
+    <footer>
+        <div class="footer-contents">
+
+        
+            <div class="footer-flex-items">
+
+                <div class="brand-details">
+                    <img src="../img/logo-white.png" alt="Logo" class="logo">
+                    <p>Company name. </p>
+                    <p>c 2018-2021 Templatemount.</p>
+                    <p>All rights reserved.</p>
+                </div>
+
+                <div class="help f-links">
+                    <p class="title">Help</p>
+
+                    <div class="links">
+                        <a href="#">Contact Us</a>
+                        <a href="#">Refunds</a>
+                        <a href="#">Live Chat</a>
+                        <a href="#">Track Info</a>
+                    </div>
+                </div>
+
+                <div class="about f-links">
+                    <p class="title">About</p>
+
+                    <div class="links">
+                        <a href="#">About Us</a>
+                        <a href="#">Services</a>
+                        <a href="#">Policy & Terms</a>
+                        <a href="#">Blog posts</a>
+                    </div>
+                </div>
+
+                <div class="partnership f-links">
+                    <p class="title">Partnership</p>
+
+                    <div class="links">
+                        <a href="#">Login / Register</a>
+                        <a href="#">Settings</a>
+                        <a href="#">My Orders</a>
+                        
+                    </div>
+                </div>
+
+                <div class="newsletter f-links">
+                    <p class="title">Newsletter</p>
+
+                    <p class="txt">Stay in touch with latest updates about our products and offers</p>
+
+                    <div class="newsletter-input">
+                        <input type="text" placeholder="Email">
+                        <button>Join</button>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+
+            
+        </div>
+        <div class="footer-bottom">
+
+            <div class="f-b-contents">
+
+            
+                <div class="payment-methods">
+                    <img src="../img/Payment-methods.png" alt="">
+                </div>
+
+                <div class="links">
+                    <a href="#">Support</a>
+                    <a href="#">Privacy & Cookies</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- End Footer -->
+
+    <script src="../js/index.js"></script>
+</body>
+</html>

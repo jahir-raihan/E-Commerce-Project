@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/media_queries.css">
+
+</head>
+<body>
+
+    <header>
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="../img/menu.png" alt="">
+                </div>
+
+                <img src="../img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+            <div>
+                <div class="nav-search search-container-global">
+                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
+                    <button class="nav-search-button">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <button class="nav-search-button snd-nav-srch-btn d-none"
+                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
+                       
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+
+                    <div class="search-result-suggestion d-none" id="s-r-s">
+                        <ul id="s-list">
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">poke man</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Mens T-shirts</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                            <a href="#">Hello how are you</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons ">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="cart-item-count d-none">1</span>
+                </div>
+
+                <button class="nav-btns wishlist-btn">
+                    <i class="fas fa-heart"></i></i> Wishlist
+                </button>
+                <button class="nav-btns my-cart-btn">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="cart-item-count d-none">1</span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                <a href="#">
+                    <div >
+                        <p>Shop</p>
+                        <small>Ready made products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>Hot offers</p>
+                        <small>Get offer deals</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>New arrivals</p>
+                        <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+    </header>
+    <div class="nav-search-hidden d-none" id="n-srch-hidden">
+        <input type="text" class="nav-search-input" placeholder="search by anything">
+    </div>
+
+    <div class="container">
+
+        <div class="login-card">
+
+            <form action="">
+
+                <p class="title">Sign in</p>
+
+                <div class="input">
+                    <span>E-mail</span>
+                    <input type="text" placeholder="Enter email">
+                </div>
+
+                <div class="input login-password">
+                    
+                    <div class="pass-and-forgot-pass">
+                        <span>Password</span>
+                        <a href="#" class="forgot-pass">Forgot Password</a>
+                    </div>
+
+                    <div class="password-container">
+                        <input type="password" id="password-input" placeholder="Enter password">
+                        <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
+                          <i class="fa fa-eye-slash" id="password-toggle-icon"></i>
+                        </span>
+                    </div>
+                    <script>
+                        function togglePasswordVisibility() {
+                            var passwordInput = document.getElementById("password-input");
+                            var passwordToggleIcon = document.getElementById("password-toggle-icon");
+
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                                passwordToggleIcon.className = "fa fa-eye";
+                            } else {
+                                passwordInput.type = "password";
+                                passwordToggleIcon.className = "fa fa-eye-slash";
+                            }
+                        }
+                    </script>
+
+
+                </div>
+
+                <button class="login-btn">
+                    Log in
+                </button>
+
+            </form>
+
+            <div class="or-border">
+                <div class="line"></div>
+                <small>OR</small>
+                <div class="line"></div>
+            </div>
+
+            <button class="sign-with-google">
+
+                <div class="icon">
+                    <img src="../img/google-logo.png" alt="">
+                </div>
+
+                <p>Continue with Google</p>
+
+                <div></div>
+
+            </button>
+            <button class="sign-with-facebook">
+
+                <div class="icon">
+                    <i class="fab fa-facebook"></i>
+                </div>
+
+                <p>Continue with Facebook</p>
+
+                <div></div>
+
+            </button>
+
+            <div class="register-link">
+                <p>Don't have an account? </p>
+                <a href="#"> Register now</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+      
+        <div class="footer-bottom">
+
+            <div class="f-b-contents">
+
+            
+                <div class="payment-methods">
+                    <img src="../img/Payment-methods.png" alt="">
+                </div>
+
+                <div class="links">
+                    <a href="#">Support</a>
+                    <a href="#">Privacy & Cookies</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

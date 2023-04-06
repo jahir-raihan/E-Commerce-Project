@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add | Edit a product</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="../css/page_profile.css">
+    <link rel="stylesheet" href="../css/staff_main.css">
+    <link rel="stylesheet" href="../css/add_product.css">
+    <link rel="stylesheet" href="../css/media_queries.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="../img/menu.png" alt="">
+                </div>
+
+                <img src="../img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+           
+
+            <div class="nav-buttons">
+                <div class="only-navicons">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </div>
+
+                <button class="nav-btns">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>Add a product
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Add a product</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+
+    </header>
+
+    <!-- End Navigation Bar -->
+
+    <!-- Base Container -->
+
+    <div class="container">
+
+        <!-- Page Navigator -->
+
+        <div class="navigator-products">
+
+            <div class="n-p-contents">
+                <a href="#">Home > </a>
+                <a href="#">Account ></a>
+                <a href="#">Staff ></a>
+                <a href="#" style="color:gray">Add or edit a product</a>
+            </div>
+            
+        </div>
+
+        <!-- End Page Navigator -->
+
+
+        <!-- Profile Container -->
+
+        <div class="profile-container">
+
+            <!-- Profile Navigation -->
+
+            <div class="profile-nav">
+
+                <ul>
+                    <a href="#"><li class="">Main</li></a>   
+                    <a href="#"><li class="current-tab-profile">Add | Edit a product</li></a>
+                    <a href="#"><li class="">Log out</li></a>
+                </ul>
+
+            </div>
+
+            <!-- End Profile Navigation -->
+
+
+            <!-- Profile User & Orders List & Status -->
+            
+            <div class="profile-content bg-white">
+                <form action="">
+
+                    <div class="p-name-and-code m-1">
+
+                        <div class="p-name ">
+                            <p>Product title</p>
+                            <input type="text" placeholder="Enter title">
+                        </div>
+
+                        <div class="p-code">
+                            <p>Product Code</p>
+                            <input type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="p-price-and-category m-1">
+
+                        <div class="p-price">
+                            <p>Price</p>
+                            <input type="number">
+
+                        </div>
+
+                        <div class="p-category m-1">
+                            <p>Category</p>
+                            <select name="" id="">
+                                <option value="">Select Category</option>
+                            </select>
+                        </div>
+
+                        <div class="p-category category-new">
+                            <p>Category (New)</p>
+                            <input type="text" placeholder="Type new category name">
+                        </div>
+
+                    </div>
+
+                    <div class="p-color-and-yarn-type m-1">
+
+                        <div class="p-color">
+                            <p>Color Type</p>
+                            <input type="text" >
+                        </div>
+
+                        <div class="p-yarn">
+                            <p>Yarn Type</p>
+                            <input type="text">
+                        </div>
+
+                    </div>
+
+                    <div class="p-yarn-brand-status m-1">
+
+                        <div class="p-yarn-count">
+                            <p>Yarn Count</p>
+                            <input type="text">
+                        </div>
+
+                        <div class="p-brand m-1">
+                            <p>Brand</p>
+                            <input type="text">
+                        </div>
+
+                        <div class="p-status">
+                            <p>Status</p>
+                            <select name="" id="">
+                                <option value="in_stock">In Stock</option>
+                                <option value="out_of_stock">Out of Stock</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="p-tags m-1">
+                        <p>Tags</p>
+                        <input type="text" placeholder="Insert tags eg: Black hoodie, white t-shirt etc">
+                    </div>
+
+                    <div class="p-primary-image m-1">
+
+                        <p>Product Primary Image</p>
+                        <input type="file" name="images" >
+                    </div>
+
+                    <div class="p-images-and-preview">
+
+                        <div class="p-images">
+                            <p>Product Images</p>
+
+                            <div class="input-and-preview">
+                                <input type="file"  name="images" id="images" multiple>
+                                <div id="image-preview"></div>
+                            </div>
+                           
+                        </div>
+
+                       
+
+                    </div>
+
+                    <div class="p-images-alt-texts m-1">
+
+                        <p>Image alternative texts</p>
+
+                        <input type="text" placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc">
+                    </div>
+
+                    <div class="p-more-info m-1">
+                        <p>More information</p>
+                        <input type="text">
+                    </div>
+
+                    <div class="p-search-keywords m-1">
+                        <p>Search Keywords</p>
+
+                        <textarea name="" placeholder="Separate with commas. Ex: black hoodie, white bra, etc"></textarea>
+                    </div>
+
+
+                    <div class="on-discount-checkbox m-1">
+                        <input type="checkbox"> <span>On Discount</span>
+                    </div>
+
+                    <div class="discount-price-and-expiry m-1">
+                        <div class="discount-price m-1">
+                            <p>Discount Percentage</p>
+                            <input type="number">
+                        </div>
+
+                        <div class="discount-reason">
+                            
+                            <p>Discount reason</p>
+                            <select name="" id="">
+                                <option value="">Select reason</option>
+                                <option value="">New Arrival</option>
+                                <option value="">Hot Summer</option>
+                                <option value="">Event Name</option>
+                            </select>
+                            
+                        </div>
+
+                        <div class="discount-expiry">
+                            <p>Discount Expiry</p>
+
+                            <input type="date">
+                        </div>
+
+                    </div>
+
+                    <div class="save-and-clear-btn m-1">
+                        <button class="clear">Clear</button>
+                        <button class="save">Save</button>
+                    </div>
+
+
+
+
+                </form>
+
+            </div>
+
+            <!-- End Profile User & Orders List & Status -->
+
+        </div>
+
+        <!-- End Profile Container -->
+
+
+    </div>
+    
+    <!-- End Base Container -->
+
+
+    <!-- Footer-->
+
+
+    <!-- End Footer -->
+
+<script src="/js/add_a_product.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

@@ -25,14 +25,17 @@ def register_user(request):
 
 def login_user(request):
     if request.user.is_authenticated:
-        return False
+        return JsonResponse({'redirect': False})
 
     """Login view """
     if request.method == 'POST' and not request.user.is_authenticated:
         user = authenticate(request, email=request.POST['email'], password=request.POST['password'])
-
-        pass
-    return render(request, 'user/login.html')
+        if user:
+            login(request, user)
+            return JsonResponse({'success': True, 'redirect': f'redirect url'})
+        else:
+            return JsonResponse({'error': True})
+    return render(request, 'login.html')
 
 
 @login_required

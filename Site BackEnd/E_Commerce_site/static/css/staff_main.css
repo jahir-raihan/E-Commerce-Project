@@ -1,0 +1,231 @@
+body {
+  background: #f7f7f7;
+}
+
+.staff-header .nav {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.nav-buttons .nav-btns {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  position: relative;
+}
+.nav-buttons .nav-btns a {
+  display: block;
+  padding: 0 1em;
+}
+.nav-buttons .nav-btns .pending-orders-btn {
+  display: flex;
+}
+.nav-buttons .nav-btns .pending-orders-btn img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.8;
+  display: block;
+}
+.nav-buttons .p-o-cnt {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  font-weight: 500;
+  font-size: 11px;
+  background: rgb(255, 115, 0);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.staff-main-order-list-container {
+  margin-top: 0 !important;
+}
+
+.name-email-phone .staff-title {
+  position: relative;
+  margin-bottom: 0.3em;
+}
+.name-email-phone .staff-title .name {
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+}
+.name-email-phone .staff-title .abs-tag {
+  position: absolute;
+  left: 140px;
+  min-width: 100px;
+  top: -5px;
+  font-weight: 300;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.address {
+  width: 100%;
+}
+.address .icon-and-info .img i {
+  font-size: 25px;
+}
+.address .icon-and-info .img .confirmed-icon {
+  color: green;
+}
+.address .icon-and-info .img .cancelled-order {
+  color: rgb(255, 115, 0);
+}
+.address .address-details {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+.address .address-info:hover {
+  box-shadow: unset !important;
+}
+
+.three-dots {
+  position: relative;
+}
+.three-dots .three-dots-popup {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  background: white;
+  border: var(--border);
+  padding: 1px 10px;
+  padding-bottom: 2px;
+  border-radius: 4px;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  right: -107px;
+  top: -4px;
+}
+.three-dots .three-dots-popup button {
+  padding: 0.3em 1em;
+  width: 80px;
+  font-size: 10px;
+  border-radius: 2px;
+  border: none;
+  background: white;
+}
+.three-dots .three-dots-popup button:hover {
+  color: #0D6EFD;
+}
+
+.order-util-btns button {
+  padding: 0 2.5em !important;
+}
+
+.item {
+  border-top: var(--border);
+  display: flex;
+  align-items: center;
+  padding: 1.5em 0;
+}
+.item .edit-pen {
+  cursor: pointer;
+  min-width: 40px;
+  opacity: 0.8;
+  transition-duration: 0.2s;
+}
+.item .edit-pen i {
+  font-size: 16px;
+}
+.item .edit-pen i:hover {
+  color: #0D6EFD;
+}
+.item .edit-pen-right {
+  display: none;
+  opacity: 0.8;
+}
+.item .edit-pen-right i {
+  font-size: 16px;
+}
+.item .edit-pen-right i:hover {
+  color: #0D6EFD;
+}
+.item .img-and-details {
+  display: flex;
+  align-items: center;
+  align-items: center;
+}
+.item .img-and-details img {
+  width: 60px;
+  height: 60px;
+}
+.item .img-and-details div {
+  margin-left: 0.5em;
+}
+.item .img-and-details .wish-item-title {
+  font-weight: 300;
+  opacity: 0.8;
+  font-size: 13px;
+  width: 80%;
+}
+.item .img-and-details small {
+  font-size: 13px;
+  opacity: 0.8;
+}
+.item .status {
+  font-weight: 400;
+  color: green;
+  font-size: 11px;
+  width: 50px;
+  min-width: 50px;
+}
+.item .add-to-cart-and-datetime {
+  opacity: 0.8;
+  text-align: center;
+}
+.item .add-to-cart-and-datetime small {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 0.2em;
+  min-width: 120px;
+}
+
+.pen:hover i {
+  color: #0D6EFD;
+  cursor: pointer;
+}
+
+.search-facility {
+  margin-bottom: 1em;
+  display: flex;
+  position: relative;
+}
+.search-facility input {
+  display: block;
+  width: 80%;
+  height: 40px;
+  border: var(--border);
+  border-radius: 4px 0 0 4px;
+  padding: 0 1em;
+  border-right: none;
+  outline-color: #0D6EFD;
+}
+.search-facility button {
+  width: 20%;
+  height: 40px;
+  border: none;
+  background: #0D6EFD;
+  border-radius: 0 4px 4px 0;
+  color: white;
+  font-size: 16px;
+}
+
+.search-loader-stf-main {
+  display: none;
+  position: absolute;
+  left: 48.1%;
+  bottom: -40px;
+}
+.search-loader-stf-main i {
+  font-size: 18px;
+}
+
+.a-i-c-o {
+  margin: 0 !important;
+}/*# sourceMappingURL=staff_main.css.map */

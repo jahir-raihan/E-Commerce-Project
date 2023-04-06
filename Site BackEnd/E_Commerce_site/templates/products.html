@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+   
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/media_queries.css">
+
+    <title>Products</title>
+</head>
+<body id="body">
+
+    <!-- Navigation Bar -->
+
+    <header id="header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="../img/menu.png" alt="">
+                </div>
+
+                <img src="../img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+           <div></div>
+
+            <div class="nav-buttons">
+
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons ">
+                    <i class="fas fa-heart" aria-hidden="true"></i>
+                </div>
+                <div class="only-navicons">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    <span class="cart-item-count d-none">1</span>
+                </div>
+
+                <button class="nav-btns wishlist-btn">
+                    <i class="fas fa-heart"></i></i> Wishlist
+                </button>
+                <button class="nav-btns my-cart-btn">
+                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
+                    <span class="cart-item-count d-none">1</span>
+                </button>
+
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+                <a href="#">
+                    <div >
+                        <p>Shop</p>
+                        <small>Ready made products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>Hot offers</p>
+                        <small>Get offer deals</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p>New arrivals</p>
+                        <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+
+        <div class="mobile-filter-container">
+            <div class="hidden-filter-mobile" id="hidden-filter-mobile">
+ 
+            </div>
+        </div>
+        
+
+    </header>
+
+    <!-- End Navigation Bar -->
+
+
+    <!-- Base Container -->
+
+    <div class="container" id="container">
+
+        <!-- Page Navigator -->
+
+        <div class="navigator-products">
+            <div class="n-p-contents">
+                <a href="#">Home > </a>
+                <a href="#">Products ></a>
+            </div>
+            
+        </div>
+
+        <!-- End Page Navigator -->
+
+        <!-- Product Container -->
+       
+
+        <div class="product-container">
+
+            <!-- Filter Container -->
+
+            <div class="filter-container" id="main-filter-container">
+
+                <div class="filter" id="filter-contents">
+                    <div class="close-filter d-none" id="close-filter">
+                        <div></div>
+                        <i class="fa fa-times" onclick="enable_hidden_filter(false)"></i>
+                        
+                    </div>
+                    <div class="line"></div>
+
+                    <div class="category-container filter-item">
+                        <div class="filter-item-top">
+                            <p>Categories</p>
+                            <i style="font-size:24px" class="fa">&#xf107;</i>
+                        </div>
+
+                        <p class="category" id="category_id1">Winter cloths</p>
+                        <p class="category" id="category_id2">Summer cloths</p>
+                        <p class="category" id="category_id3">Rainy Season</p>
+                        <p class="category" id="category_id4">Jeans</p>
+                        <p class="category" id="category_id5">Underwears</p>
+                        <p class="category" id="category_id6">Masks</p>
+                    </div>
+
+                    <div class="meterial filter-item">
+
+                        <div class="filter-item-top">
+                            <p>Refinements</p>
+                            <i style="font-size:24px" class="fa">&#xf107;</i>
+                        </div>
+
+                        <form>
+
+                            
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox1">
+                                    
+                                    <p>Mens Jeans full sleeve</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox2">
+                                    
+                                    <p>T-shirts half sleeve</p>
+                                    <p>44</p>
+                                    <input type="checkbox" >
+                                    <span class="checkmark" id="checkmark-2"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox3" >
+                                    
+                                    <p>T-shirts full sleeve</p>
+                                    <p>42</p>
+                                    <input type="checkbox" id="">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox4">
+                                    
+                                    <p>Hoodies</p>
+                                    <p>34</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox5">
+                                    
+                                    <p>Women Jeans</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="">
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox6">
+                                    
+                                    <p>Mens Shirts full sleeve</p>
+                                    <p>78</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox7">
+                                    
+                                    <p>Kids</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox8">
+                                    
+                                    <p>Socks</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox9">
+                                    
+                                    <p>T-Shirts</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+                             
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox10">
+                                    
+                                    <p>Premium Masks</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+
+                            <div class="filter-box">
+                                <label class="custom-check-container refinements-input-checkbox" id="refinements-input-checkbox11">
+                                    
+                                    <p>Lungies</p>
+                                    <p>24</p>
+                                    <input type="checkbox" id="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                
+                            </div>
+                            
+
+                        </form>
+
+
+                    </div>
+
+                    <div class="condition filter-item">
+                        <div class="filter-item-top">
+                            <p>Offerings</p>
+                            <i style="font-size:24px" class="fa">&#xf107;</i>
+                        </div>
+
+                        <form action="">
+
+                            
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>New arrival</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>Hot offers</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>Summer discount</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-check-container offerings-checkbox">
+                                <p>Any event discount</p>
+                                <input type="checkbox" id="" name="">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            
+
+                        </form>
+
+                    </div>
+
+                    <div class="price-range filter-item">
+                        <div class="filter-item-top">
+                            <p>Price</p>
+                            <i style="font-size:24px" class="fa">&#xf107;</i>
+                        </div>
+
+                        <div class="range">
+                            <div class="range-slider">
+                            <span class="range-selected"></span>
+                            </div>
+                            <div class="range-input">
+                            <input type="range" class="min" min="0" max="1000" value="300" step="10">
+                            <input type="range" class="max" min="0" max="1000" value="700" step="10">
+                            </div>
+                            <div class="range-price">      
+                            <label for="min">Min</label>
+                            <input type="number" name="min" value="300" class="min-max">      
+                            <label for="max">Max</label>
+                            <input type="number" name="max" value="700" class="min-max">      
+                            </div>
+                        </div> 
+
+                    </div>
+
+                </div>
+            </div>
+
+            
+
+            <!-- End Filter Container -->
+
+            <!-- Product List -->
+
+            <div class="product-list" id="product-list">
+                
+                <div class="product-list-top">
+
+                    <div class="p-l-t-ham-and-search">
+
+                        <div class="hidden-filter-icon">
+                            <i class="fa fa-sliders" onclick="enable_hidden_filter(true)"></i>
+
+                        </div>
+                  
+
+                        <div class="product-list-search search-container-global">
+
+                        
+
+                            <input type="text" id="nav-search" placeholder="Search a product . . . ">
+                            <button><i class="fa fa-fw fa-search"></i></button>
+
+                            <!-- To hide contents below, illiegally -->
+                            
+
+                            <div class="search-result-suggestion d-none" id="s-r-s">
+                                <ul id="s-list">
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">poke man</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Mens T-shirts</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                    <a href="#">Hello how are you</a>
+                                </ul>
+                            </div>
+                        </div> 
+                    </div>
+
+                    
+
+                    <div class="sort-by-price">
+                        <div></div>
+                        <div class="s-b-p" onclick="change_sorting()">
+                            <p>Sort by price </p>
+                            <i class="fas fa-sort" id="sort-icon"></i>
+                        </div>
+                        
+                    </div>
+
+                    <div class="loader" id="loader-product-page">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </div>
+                </div>
+
+
+                <!-- Tags & Refinements -->
+
+                <div class="product-list-tags-and-refinements">
+
+                    <div class="refinements">
+
+                        <div class="refinements-filters" id="refinements">
+
+                            <div class="tag-btn">
+                                <p>Refinements</p>
+                            </div>
+                            
+
+                        </div>
+
+                        <button onclick="clear_refinements()">clear refinements </button>
+                        
+                    </div>
+
+                    <div class="tags" id="tags">
+
+                        <div class="tag-btn main-tag">
+                            <p>Tags</p>
+                            
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+
+                <!-- End Tags & Refinements -->
+
+
+                <!-- Products Grid -->
+
+                <div class="p-grid-container">
+
+                    <ol class="products-grid">
+
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                        <li>
+                            
+                            <div class="product-card">
+                                <div class="product-card-and-view-mask">
+                                    <div class="view-mask">
+                                        <p>View Details</p>
+                                    </div>
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="../img/go-pro.png" alt="">
+                                    </div>
+                                   
+                                </div>
+                               
+                                
+                                <div class="line"></div>
+                                <p class="price">$99.99</p>
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                    <button class="add-to-cart">Add to cart</button>
+                                    <button class="add-to-wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div> 
+                
+                        </li>
+                    
+                       
+
+                    </ol>
+
+                
+
+               
+                </div>
+
+                <!-- End Products Grid -->
+
+            </div>
+
+            <!-- End Product List -->
+
+        </div>
+
+        <!-- End Product Container -->
+
+    </div>
+
+    <!-- End Base Container -->
+
+
+   
+    
+</body>
+<script src="/js/products.js"></script>
+<script src="/js/index.js"></script>
+</html>

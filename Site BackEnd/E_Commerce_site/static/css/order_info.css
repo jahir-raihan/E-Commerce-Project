@@ -1,0 +1,366 @@
+body {
+  background: #f7f7f7;
+}
+
+.order-header .order-nav {
+  display: flex !important;
+}
+
+.info-container {
+  width: 80%;
+  margin: 2em auto;
+  display: grid;
+  grid-template-columns: 68% 30%;
+  gap: 2%;
+}
+
+.address-info-and-sign-in-option {
+  margin-bottom: 2em;
+}
+.address-info-and-sign-in-option .sign-in-msg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: var(--border);
+  padding: 1em;
+  border-radius: 4px;
+  margin-bottom: 2em;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.address-info-and-sign-in-option .sign-in-msg .left .title {
+  font-weight: 500;
+  opacity: 0.9;
+}
+.address-info-and-sign-in-option .sign-in-msg .left small {
+  opacity: 0.8;
+  font-size: 13px;
+}
+.address-info-and-sign-in-option .sign-in-msg .right button {
+  height: 40px;
+  border: var(--border);
+  margin-left: 1em;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.address-info-and-sign-in-option .sign-in-msg .right .sign-in {
+  color: #0D6EFD;
+  background: white;
+}
+.address-info-and-sign-in-option .sign-in-msg .right .create-account {
+  color: white;
+  background: #0D6EFD;
+  border: none;
+}
+.address-info-and-sign-in-option .shipping-and-address {
+  border: var(--border);
+  border-radius: 4px;
+  background: white;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  padding: 1em;
+}
+.address-info-and-sign-in-option .saved-addresses {
+  margin: 1em 0;
+  display: grid;
+  grid-template-columns: 49% 49%;
+  gap: 1.5%;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info {
+  padding: 1em;
+  display: flex;
+  border: 1px solid white;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  background: #f7f7f7;
+  cursor: pointer;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .icon-and-info {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .img {
+  margin-right: 0.5em;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .img .loc-icon {
+  color: rgb(255, 149, 0);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 50%;
+  background: white;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .address-details {
+  font-weight: 300;
+  font-size: 14px;
+  width: 90%;
+  opacity: 0.8;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .address-details span {
+  opacity: 0.5;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .three-dots .t-dots {
+  font-size: 15px;
+  opacity: 0.7;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.address-info-and-sign-in-option .saved-addresses .address-info .three-dots .t-dots:hover {
+  background: #ffffff;
+  border: var(--border);
+}
+.address-info-and-sign-in-option .saved-addresses .address-info:hover {
+  border: var(--border);
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.address-info-and-sign-in-option .saved-addresses .address-selected {
+  border: 2px solid #0D6EFD !important;
+}
+.address-info-and-sign-in-option .address-info .title {
+  font-weight: 500;
+  opacity: 0.8;
+  font-size: 18px;
+  margin-bottom: 1em;
+}
+.address-info-and-sign-in-option .address-info .address-flex {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 4%;
+  margin-bottom: 1em;
+}
+.address-info-and-sign-in-option .address-info .address-flex p {
+  font-weight: 500;
+  opacity: 0.7;
+  font-size: 15px;
+  margin-bottom: 0.3em;
+}
+.address-info-and-sign-in-option .address-info .address-flex input {
+  width: 100%;
+  height: 40px;
+  padding: 0.5em 1em;
+  border: var(--border);
+  border-radius: 4px;
+  outline-color: #0D6EFD;
+}
+.address-info-and-sign-in-option .address-info .news-checkup {
+  display: flex;
+  opacity: 0.8;
+  margin-bottom: 1em;
+}
+.address-info-and-sign-in-option .address-info .news-checkup input {
+  display: block;
+  margin-right: 0.5em;
+}
+.address-info-and-sign-in-option .address-info .news-checkup span {
+  font-size: 14px;
+}
+.address-info-and-sign-in-option .shipping-info .title {
+  font-weight: 500;
+  font-size: 18px;
+  margin: 1em 0;
+  opacity: 0.8;
+}
+.address-info-and-sign-in-option .shipping-info .delivery-choice {
+  display: flex;
+  margin-bottom: 2em;
+}
+.address-info-and-sign-in-option .shipping-info .delivery-choice .choice-card {
+  border: var(--border);
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 1em;
+}
+.address-info-and-sign-in-option .shipping-info .delivery-choice .choice-card img {
+  height: 100px;
+  padding: 1em;
+}
+.address-info-and-sign-in-option .shipping-info .delivery-choice .choice-card:hover {
+  box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
+}
+.address-info-and-sign-in-option .shipping-info .delivery-choice .choice-selected {
+  box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 1px 5px -3px rgba(0, 0, 0, 0.75);
+  border: 2px solid #0D6EFD;
+}
+.address-info-and-sign-in-option .shipping-info .address-flex {
+  display: grid;
+  grid-template-columns: 68% 30%;
+  gap: 2%;
+  margin-bottom: 1em;
+}
+.address-info-and-sign-in-option .shipping-info .address-flex p {
+  font-weight: 500;
+  opacity: 0.7;
+  font-size: 15px;
+  margin-bottom: 0.3em;
+}
+.address-info-and-sign-in-option .shipping-info .address-flex input {
+  width: 100%;
+  height: 40px;
+  padding: 0.5em 1em;
+  border: var(--border);
+  border-radius: 4px;
+  outline-color: #0D6EFD;
+}
+.address-info-and-sign-in-option .shipping-info .address-flex .area-city {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 4%;
+}
+.address-info-and-sign-in-option .shipping-info .address-flex .right select {
+  width: 100%;
+  height: 40px;
+  border: var(--border);
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  opacity: 0.8;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline-color: #0D6EFD;
+  cursor: pointer;
+}
+.address-info-and-sign-in-option .shipping-info .note-to-seller {
+  margin-top: 2em;
+}
+.address-info-and-sign-in-option .shipping-info .note-to-seller .title {
+  font-size: 15px;
+}
+.address-info-and-sign-in-option .shipping-info .note-to-seller textarea {
+  width: 100%;
+  min-width: 100%;
+  min-height: 200px;
+  max-width: 100%;
+  max-height: 200px;
+  border: var(--border);
+  padding: 1em;
+  border-radius: 4px;
+  outline-color: #0D6EFD;
+  opacity: 0.8;
+}
+.address-info-and-sign-in-option .save-checkup {
+  display: flex;
+  opacity: 0.8;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.address-info-and-sign-in-option .save-checkup input {
+  display: block;
+  margin-right: 0.5em;
+}
+.address-info-and-sign-in-option .save-checkup span {
+  font-size: 14px;
+}
+.address-info-and-sign-in-option .btns button {
+  height: 40px;
+  padding: 0.5em 1.4em;
+  border: var(--border);
+  border-radius: 4px;
+  width: 150px;
+  cursor: pointer;
+}
+.address-info-and-sign-in-option .btns .continue {
+  background: #0D6EFD;
+  color: white;
+  width: 150px;
+}
+.address-info-and-sign-in-option .btns .return-to-shop {
+  color: #0D6EFD;
+  background: white;
+}
+
+.summary .amount .title {
+  font-weight: 500;
+  margin-bottom: 1em;
+  opacity: 0.8;
+}
+.summary .amount div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+.summary .amount div .discount-amount {
+  color: green;
+}
+.summary .amount div .tax-amount, .summary .amount div .shipping-amount {
+  color: rgb(255, 140, 0);
+}
+.summary .amount .total {
+  margin: 1em 0;
+}
+.summary .amount .total p {
+  font-weight: 500;
+}
+.summary .amount .total .total-amount {
+  font-weight: 600;
+}
+.summary .items-in-cart .title {
+  font-weight: 500;
+  opacity: 0.8;
+  margin: 1em 0;
+}
+.summary .items-in-cart .item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.summary .items-in-cart .item .img {
+  position: relative;
+  margin-right: 0.5em;
+}
+.summary .items-in-cart .item .img img {
+  width: 80px;
+  height: 80px;
+  border: var(--border);
+  border-radius: 4px;
+  padding: 0.3em;
+}
+.summary .items-in-cart .item .img .cnt {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  border: var(--border);
+  border-radius: 50%;
+  padding: 5px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: gray;
+}
+.summary .items-in-cart .item .img .cnt p {
+  padding-top: 1px;
+  color: white;
+  font-size: 10px;
+  font-weight: 500;
+}
+.summary .items-in-cart .item .info .title {
+  margin: 0;
+}
+.summary .items-in-cart .item .info small {
+  opacity: 0.7;
+}/*# sourceMappingURL=order_info.css.map */
