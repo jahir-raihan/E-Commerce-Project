@@ -7,6 +7,14 @@ body {
   min-height: 80vh;
 }
 
+a{
+    text-decoration:none;
+}
+
+.icon{
+    padding-top:.2em;
+}
+
 .login-card {
   margin: 5% auto;
   background: white;

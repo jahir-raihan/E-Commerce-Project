@@ -20,7 +20,15 @@ def register_user(request):
     if request.method == 'POST' and not request.user.is_authenticated:
         form = UserRegisterForm(request.POST)
         if form.is_valid:
-            print('valid')
+            form.save()
+            user = authenticate(request, email=request.POST['email'], password=request.POST['password1'])
+            login(user, request)
+            if 'redirect_url' in request.POST:
+                return JsonResponse({'success': True, 'redirect': f'{request.POST["redirect_url"]}'})
+            else:
+                return JsonResponse({'success': True, 'redirect': '/'})
+        else:
+            return JsonResponse({'error': True})
 
     return render(request, 'register.html')
 
@@ -50,4 +58,5 @@ def logout_user(request):
 
     pass
 
-# Create your views here.
+def redirect_origin(request):
+    return render(request, 'redirect_user_base_url.html')

@@ -13,6 +13,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -22,9 +28,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'order',
     'products',
-    'user'
+    'user',
+    
+    # Oauth 
+
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # Oauth providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -52,6 +71,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Oauth
+                'django.template.context_processors.request',
+
             ],
         },
     },
@@ -61,6 +83,10 @@ WSGI_APPLICATION = 'E_Commerce_site.wsgi.application'
 
 
 # user model setting
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
 AUTH_USER_MODEL = 'user.User'
 
@@ -73,7 +99,7 @@ DATABASES = {
     }
 }
 
-
+SOCIALACCOUNT_LOGIN_ON_GET=True
 # Password validation
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -113,6 +139,54 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = '/login/'
 
+# Account adapter for custom login redirect
+
+ACCOUNT_ADAPTER = 'user.allauth.AccountAdapter'
+
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SITE_ID = 1
+
+# Scopes / Provider specific
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    },
+    'facebook': {
+        'METHOD': 'oauth2',
+        # 'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        # 'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+    }
+}
+
+
+# 1071218854822-l5gce0oia4rp7tv1mmo6gode8a2ae43e.apps.googleusercontent.com
+# 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
+

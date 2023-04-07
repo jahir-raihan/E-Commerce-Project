@@ -41,7 +41,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
 
     """Abstracting BaseUser model to add custom fields to user model for System Quest."""
-
+    first_name = models.CharField(verbose_name='first_name', max_length=22, blank=True, null=True)
+    last_name = models.CharField(verbose_name='last_name', max_length=22, blank=True, null=True)
     name = models.CharField(verbose_name='Name', max_length=22)
     email = models.EmailField(verbose_name='Email Address', max_length=50, unique=True, null=True, blank=True)
     phone = models.CharField(verbose_name='Phone Number', max_length=11, unique=True)
@@ -61,6 +62,14 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = ['name', 'phone']
 
     objects = UserManager()
+
+    def save(self, commit=True, *args, **kwargs):  # Edited
+
+        if commit:
+            if self.first_name and self.last_name:
+                self.name = f'{self.first_name} {self.last_name}'
+
+            super().save()
 
     def __str__(self):
         return self.name

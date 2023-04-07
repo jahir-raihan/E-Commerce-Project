@@ -1,0 +1,111 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load socialaccount %}
+    {% block title %} Login {% endblock title %}
+
+    {% block jsfiles %}
+        <script src="{% static 'js/login_registration.js' %}"></script>
+    {% endblock jsfiles %}
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock cssfiles %}
+
+
+    {% block nav_2 %} {% endblock nav_2 %}
+
+    {% block container %}
+
+        <div class="login-card">
+
+            <form id="login-form">
+                {% csrf_token %}
+                <p class="title">Sign in</p>
+
+                <div class="input">
+                    <span>E-mail</span>
+                    <input type="email" id="email" placeholder="Enter email">
+                </div>
+
+                <div class="input login-password">
+                    
+                    <div class="pass-and-forgot-pass">
+                        <span>Password</span>
+                        <a href="#" class="forgot-pass">Forgot Password</a>
+                    </div>
+
+                    <div class="password-container">
+                        <input type="password" id="password-input" placeholder="Enter password">
+                        <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
+                          <i class="fa fa-eye-slash" id="password-toggle-icon"></i>
+                        </span>
+                    </div>
+                    <script>
+                        function togglePasswordVisibility() {
+                            var passwordInput = document.getElementById("password-input");
+                            var passwordToggleIcon = document.getElementById("password-toggle-icon");
+
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                                passwordToggleIcon.className = "fa fa-eye";
+                            } else {
+                                passwordInput.type = "password";
+                                passwordToggleIcon.className = "fa fa-eye-slash";
+                            }
+                        }
+                    </script>
+
+
+                </div>
+
+                <button class="login-btn" type="submit">
+                    <span id="l-t">Login</span> <i id="l-i" class="fa fa-spinner fa-spin d-none"></i>
+                </button>
+
+            </form>
+
+            <div class="or-border">
+                <div class="line"></div>
+                <small>OR</small>
+                <div class="line"></div>
+            </div>
+
+            <a href="{% provider_login_url 'google' %}">
+                <button class="sign-with-google">
+
+                    <div class="icon">
+                        <img src="{% static 'img/google-logo.png' %}" alt="">
+                    </div>
+
+                    <p>Continue with Google</p>
+
+                    <div></div>
+
+
+                </button>
+            </a>
+            <a href="{% provider_login_url 'facebook' %}">
+                <button class="sign-with-facebook">
+
+                    <div class="icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+
+                    <p>Continue with Facebook</p>
+
+                    <div></div>
+
+                </button>
+            </a>
+            <div class="register-link">
+                <p>Don't have an account? </p>
+                <a href="#"> Register now</a>
+            </div>
+
+        </div>
+
+    {% endblock container %}
+
+    {% block footer_top %} {% endblock footer_top %}
+

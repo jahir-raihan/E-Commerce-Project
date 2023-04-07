@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 {% load static %}
 
-    {% block title %} Login {% endblock title %}
+    {% block title %} Register {% endblock title %}
 
     {% block jsfiles %}
         <script src="{% static 'js/login_registration.js' %}"></script>
@@ -19,31 +19,41 @@
 
         <div class="login-card">
 
-            <form id="login-form">
+            <form id="register-form">
+
                 {% csrf_token %}
-                <p class="title">Sign in</p>
+                <p class="title">Register</p>
+
+                <div class="input">
+                    <span>Full Name</span>
+                    <input type="text" id="name" placeholder="Enter name">
+                </div>
 
                 <div class="input">
                     <span>E-mail</span>
-                    <input type="email" id="email" placeholder="Enter email">
+                    <input type="email" placeholder="Enter email">
+                </div>
+
+                <div class="input">
+                    <span>Phone</span>
+                    <input type="number" id="phone" placeholder="Enter phone number">
                 </div>
 
                 <div class="input login-password">
-                    
+
                     <div class="pass-and-forgot-pass">
                         <span>Password</span>
-                        <a href="#" class="forgot-pass">Forgot Password</a>
                     </div>
 
-                    <div class="password-container">
-                        <input type="password" id="password-input" placeholder="Enter password">
+                    <div class="password-container input">
+                        <input type="password" id="password-input1" placeholder="Enter password">
                         <span class="password-toggle-icon" onclick="togglePasswordVisibility()">
                           <i class="fa fa-eye-slash" id="password-toggle-icon"></i>
                         </span>
                     </div>
                     <script>
                         function togglePasswordVisibility() {
-                            var passwordInput = document.getElementById("password-input");
+                            var passwordInput = document.getElementById("password-input1");
                             var passwordToggleIcon = document.getElementById("password-toggle-icon");
 
                             if (passwordInput.type === "password") {
@@ -55,12 +65,17 @@
                             }
                         }
                     </script>
+                     <div class="input">
+                        <span>Confirm Password</span>
+                        <input type="password" id="password-input2" placeholder="Confirm password">
+                    </div>
+
 
 
                 </div>
 
-                <button class="login-btn" type="submit">
-                    <span id="l-t">Login</span> <i id="l-i" class="fa fa-spinner fa-spin d-none"></i>
+                <button type="submit" class="login-btn">
+                    <span id="r-t">Login</span> <i id="r-i" class="fa fa-spinner fa-spin d-none"></i>
                 </button>
 
             </form>
@@ -74,7 +89,7 @@
             <button class="sign-with-google">
 
                 <div class="icon">
-                    <img src="{% static 'img/google-logo.png' %}" alt="">
+                    <img src="../img/google-logo.png" alt="">
                 </div>
 
                 <p>Continue with Google</p>
@@ -95,8 +110,8 @@
             </button>
 
             <div class="register-link">
-                <p>Don't have an account? </p>
-                <a href="#"> Register now</a>
+                <p>Already have an account? </p>
+                <a href="#"> Login</a>
             </div>
 
         </div>
