@@ -1,95 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add | Edit a product</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="../css/page_profile.css">
-    <link rel="stylesheet" href="../css/staff_main.css">
-    <link rel="stylesheet" href="../css/add_product.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
-</head>
-<body>
+{% extends 'index.html' %}
+{% load static %}
+
+    {% block title %} Add | Edit a product {% endblock title %}
+
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/add_product.css' %}">
+    {% endblock cssfiles %}
 
     <!-- Navigation Bar -->
+    {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
+    {% block nav_search %}
+    {% endblock nav_search %}
 
-    <header class="staff-header">
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="../img/menu.png" alt="">
-                </div>
+    {% block nav_buttons %}
 
-                <img src="../img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
-           
+        <button class="nav-btns">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+        </button>
 
-            <div class="nav-buttons">
-                <div class="only-navicons">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                </div>
-
-                <button class="nav-btns">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i>Add a product
-                </button>
-
-            </div>
-        </nav>
-
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-                
-                <a href="#">
-                    <div >
-                        <p class="p-link" >Account main</p>
-                      
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div  >
-                        <p class="p-link">Add a product</p>
-                       
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                
-                <a href="#">
-                    <div >
-                        <p class="p-link">Logout</p>
-                        
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
+        <div class="only-navicons">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
         </div>
 
-    </header>
+        <div class="only-navicons">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </div>
 
-    <!-- End Navigation Bar -->
+       <button class="nav-btns">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i> Add a product
+        </button>
+    {% endblock nav_buttons %}
 
-    <!-- Base Container -->
 
-    <div class="container">
+    {% block toggle_nav_user_part %}
+    {% endblock toggle_nav_user_part %}
 
-        <!-- Page Navigator -->
+    {% block toggle_nav_staff_part %}
+
+        <ul>
+
+            <a href="{% url 'staff_main2' %}">
+                <div >
+                    <p class="p-link" >Account main</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="{% url 'add_products' %}">
+                <div  >
+                    <p class="p-link">Add a product</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+
+            <a href="#">
+                <div >
+                    <p class="p-link">Logout</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+        </ul>
+    {% endblock toggle_nav_staff_part %}
+
+    {% block nav_2 %}
+    {% endblock nav_2 %}
+
+    {% block container %}
+
 
         <div class="navigator-products">
 
-            <div class="n-p-contents">
-                <a href="#">Home > </a>
-                <a href="#">Account ></a>
-                <a href="#">Staff ></a>
-                <a href="#" style="color:gray">Add or edit a product</a>
+             <div class="n-p-contents">
+                <a href="{% url 'staff_main2' %}">Home > </a>
+                <a href="{% url 'staff_main2' %}">Account ></a>
+                <a href="{% url 'staff_main2' %}">Staff ></a>
+                <a href="{% url 'add_products' %}" style="color:gray">Add or edit a product</a>
             </div>
             
         </div>
@@ -288,17 +282,16 @@
         <!-- End Profile Container -->
 
 
-    </div>
+    {% endblock container %}
     
-    <!-- End Base Container -->
+    {% block footer_top %}
+    {% endblock footer_top %}
+    {% block footer_bottom %}
+    {% endblock footer_bottom %}
 
+    {% block js_bottom %}
 
-    <!-- Footer-->
+        <script src="{% static 'js/add_a_product.js' %}"></script>
 
+    {% endblock js_bottom %}
 
-    <!-- End Footer -->
-
-<script src="/js/add_a_product.js"></script>
-<script src="/js/index.js"></script>
-</body>
-</html>

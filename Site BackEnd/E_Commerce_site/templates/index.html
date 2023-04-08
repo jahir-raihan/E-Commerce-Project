@@ -13,16 +13,17 @@
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
    
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
     {% block cssfiles %}
     {% endblock cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
+
 
 </head>
 <body>
 
     <!-- Navigation bar -->
 
-    <header>
+    <header {% block hclass_names %} {% endblock hclass_names %}>
         <nav class="nav">
             <div class="nav-logo nav-ham-logo">
                 <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
@@ -122,6 +123,7 @@
             {% endblock nav_search %}
 
             <div class="nav-buttons">
+                {% block nav_buttons %}
 
                 <button class="nav-btns">
                     <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
@@ -146,11 +148,15 @@
                     <span class="cart-item-count d-none">1</span>
                 </button>
 
+                {% endblock nav_buttons %}
+
             </div>
 
         </nav>
 
         <div class="toggle-nav " id="toggle-nav">
+
+            {% block toggle_nav_user_part %}
             <ul>
                 <a href="#">
                     <div >
@@ -177,13 +183,16 @@
                     <p class="g-icon">></p>
                 </a>
             </ul>
+            {% endblock toggle_nav_user_part %}
+
+            {% block toggle_nav_staff_part %}
+
+            {% endblock toggle_nav_staff_part %}
         </div>
     </header>
     <div class="nav-search-hidden d-none" id="n-srch-hidden">
         <input type="text" class="nav-search-input" placeholder="search by anything">
     </div>
-
-    <!-- Navigation 2 , I don't know , but it's in the design -->
 
     {% block nav_2 %}
     <nav class="nav-2">
@@ -268,7 +277,6 @@
         </div>
     </nav>
     {% endblock nav_2 %}
-    <!-- End Navigation 2 -->
 
     <!-- Navigation bar  end -->
 
@@ -278,7 +286,6 @@
     <div class="container" id="container">
 
         {% block container %}
-        <!-- Hero Section -->
 
         <div class="hero" id="hero">
             <div class="hero-contents">
@@ -293,8 +300,6 @@
             </div>
             
         </div>
-
-        <!-- New Products Section -->
 
         <div class="new-products">
 
@@ -773,8 +778,7 @@
             </div>
 
         </div>
-        
-        <!-- Top Reviews Section -->
+
 
         <div class="top-reviews">
 
@@ -837,7 +841,6 @@
 
         </div>
 
-        <!-- Why Choose us , with custom background made with css -->
 
         <div class="why-choose-us">
             <p class="section-title">
@@ -945,7 +948,6 @@
         </div>
 
 
-        <!-- Exclusive Blog posts -->
 
         <div class="blog-posts">
 
@@ -1126,5 +1128,6 @@
 
     <!-- End Footer -->
     <script src="{% static 'js/index.js' %}"></script>
+    {% block js_bottom %}{% endblock js_bottom %}
 </body>
 </html>

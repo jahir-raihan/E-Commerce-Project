@@ -1,99 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pending orders</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="../css/page_profile.css">
-    <link rel="stylesheet" href="../css/staff_main.css">
-    <link rel="stylesheet" href="../css/staff_pending_orders.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
-</head>
-<body>
+{% extends 'index.html' %}
+{% load static %}
+
+    {% block title %} Pending Orders {% endblock title %}
+
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+    {% endblock cssfiles %}
 
     <!-- Navigation Bar -->
+    {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
+    {% block nav_search %}
+    {% endblock nav_search %}
 
-    <header class="staff-header">
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="../img/menu.png" alt="">
-                </div>
+    {% block nav_buttons %}
 
-                <img src="../img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
-            <div class="nav-buttons">
-
-                <div class="only-navicons">
-                    <i class="fas fa-clock-rotate-left"></i>
-                    <span class="p-o-cnt d-none">12</span>
-                </div>
-
-                <button class="nav-btns pending-orders-btn">
-                    <i class="fas fa-clock-rotate-left"></i> Pending Orders
-                    <span class="p-o-cnt">12</span>
-                </button>
-
-            </div>
-
-
-           
-        </nav>
-
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-                
-                <a href="#">
-                    <div >
-                        <p class="p-link" >Account main</p>
-                      
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div  >
-                        <p class="p-link">Pending orders</p>
-                       
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                
-                <a href="#">
-                    <div >
-                        <p class="p-link">Logout</p>
-                        
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
+        <div class="only-navicons">
+            <i class="fas fa-clock-rotate-left"></i>
+            <span class="p-o-cnt d-none">12</span>
         </div>
-       
-    </header>
 
-    <!-- End Navigation Bar -->
+        <button class="nav-btns pending-orders-btn">
+            <i class="fas fa-clock-rotate-left"></i> Pending Orders
+            <span class="p-o-cnt">12</span>
+        </button>
 
-    <!-- Base Container -->
+    {% endblock nav_buttons %}
 
-    <div class="container">
+    {% block toggle_nav_user_part %}
+    {% endblock toggle_nav_user_part %}
+
+    {% block toggle_nav_staff_part %}
+        <ul>
+
+            <a href="{% url 'staff_main1' %}">
+                <div >
+                    <p class="p-link" >Account main</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="{% url 'pending_orders' %}">
+                <div  >
+                    <p class="p-link">Pending orders</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+
+            <a href="#">
+                <div >
+                    <p class="p-link">Logout</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+        </ul>
+    {% endblock toggle_nav_staff_part %}
+
+    {% block nav_2 %}
+    {% endblock nav_2 %}
+
+    {% block container %}
 
         <!-- Page Navigator -->
 
         <div class="navigator-products">
 
             <div class="n-p-contents">
-                <a href="#">Home > </a>
-                <a href="#">Account ></a>
-                <a href="#">Staff ></a>
-                <a href="#" style="color:gray">Pending Orders</a>
+                <a href="{% url 'staff_main1' %}">Home > </a>
+                <a href="{% url 'staff_main1' %}">Account ></a>
+                <a href="{% url 'staff_main1' %}">Staff ></a>
+                <a href="{% url 'pending_orders' %}" style="color:gray">Pending Orders</a>
             </div>
             
         </div>
@@ -110,8 +93,8 @@
             <div class="profile-nav">
 
                 <ul>
-                    <a href="#"><li class="">Main</li></a>   
-                    <a href="#"><li class="current-tab-profile">Pending Orders</li></a>
+                    <a href="{% url 'staff_main1' %}"><li class="">Main</li></a>
+                    <a href="{% url 'pending_orders' %}"><li class="current-tab-profile">Pending Orders</li></a>
                     <a href="#"><li class="">Log out</li></a>
                 </ul>
 
@@ -1709,16 +1692,11 @@
         <!-- End Profile Container -->
 
 
-    </div>
+    {% endblock container %}
     
     <!-- End Base Container -->
 
-
-    <!-- Footer-->
-
-
-    <!-- End Footer -->
-
-
-</body>
-</html>
+    {% block footer_top %}
+    {% endblock footer_top %}
+    {% block footer_bottom %}
+    {% endblock footer_bottom %}

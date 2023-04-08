@@ -12,8 +12,10 @@ User = get_user_model()
 
 
 def register_user(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.method == 'POST':
         return JsonResponse({'redirect': False})
+    if request.user.is_authenticated:
+        return redirect('redirect_origin')
 
     """View for register"""
 
@@ -34,8 +36,10 @@ def register_user(request):
 
 
 def login_user(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.method == 'POST':
         return JsonResponse({'redirect': False})
+    if request.user.is_authenticated:
+        return redirect('redirect_origin')
 
     """Login view """
     if request.method == 'POST' and not request.user.is_authenticated:
@@ -58,5 +62,43 @@ def logout_user(request):
 
     pass
 
+
 def redirect_origin(request):
     return render(request, 'redirect_user_base_url.html')
+
+
+# Staff panel
+
+def staff_main1(request):
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'staff_main.html')
+
+
+def staff_main2(request):
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'staff2_main.html')
+
+
+def pending_orders(request):
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'staff_pending_orders.html')
+
+
+def add_products(request):
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'add_a_product.html')
+
+
+def edit_products(request, pk):
+    if request.method == 'POST':
+        pass
+
+    return render(request, 'add_a_product.html')
