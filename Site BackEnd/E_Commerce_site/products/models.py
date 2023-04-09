@@ -8,9 +8,10 @@ class Category(models.Model):
     category_name = models.CharField(max_length=30)
 
 
-class ProductImages(models.Model):
-    image = models.ImageField(upload_to='product-images/')
-    image_alt_tag = models.CharField(max_length=30)
+# Discount reason
+
+class DiscountReason(models.Model):
+    discount_reason = models.CharField(max_length=30)
 
 
 class Product(models.Model):
@@ -30,8 +31,7 @@ class Product(models.Model):
 
     # Product images
 
-    product_primary_image = models.ImageField()
-    product_images = models.ForeignKey(ProductImages, on_delete=models.DO_NOTHING)
+    product_primary_image = models.ImageField(upload_to='product_primary_images/')
 
     # Seo section
 
@@ -41,9 +41,16 @@ class Product(models.Model):
     # Offer Section
 
     on_discount = models.BooleanField(default=False)
+    discount_percentage = models.IntegerField(default=0)
     discount_price = models.IntegerField(default=0)
-    discount_reason = models.CharField(max_length=50)
-    discount_expiry = models.DateTimeField()
+    discount_reason = models.ForeignKey(DiscountReason, on_delete=models.DO_NOTHING, null=True, blank=True)
+    discount_expiry = models.DateTimeField(null=True, blank=True)
+
+
+class ProductImages(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='product_images/')
+    image_alt_tag = models.CharField(max_length=30)
 
 
 class Cart(models.Model):
@@ -61,4 +68,6 @@ class WishList(models.Model):
     wishlist_items = models.CharField(max_length=100)
     wisher_person_ip = models.GenericIPAddressField()
     wisher_person = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+
+
 

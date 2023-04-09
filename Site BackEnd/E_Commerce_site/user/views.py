@@ -3,7 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
-from .algorithms import get_client_ip
+from products.models import Product, ProductImages, Category, DiscountReason
+from django.middleware.csrf import get_token
+from .algorithms import *
 
 User = get_user_model()
 
@@ -92,7 +94,41 @@ def pending_orders(request):
 
 def add_products(request):
     if request.method == 'POST':
-        pass
+        data = request.POST
+        if data['category'] == '':
+            category = Category(category_name=data['category_new'])
+            category.save()
+        else:
+            category = Category.objects.get(pk=data['category'])
+
+        product = Product(
+            product_title=data['title'],
+            product_code=data['product_code'],
+            product_price=data['price'],
+            product_category=category,
+            color_type=data['color_type'],
+            yarn_type=data['yarn_type'],
+            yarn_count=data['yarn_count'],
+            brand=data['brand'],
+            product_in_stock=bool(data['status']),
+            product_tags=data['tags'],
+            product_primary_image=request.FILES['primary_image'],
+            product_more_information=data['more_info'],
+            product_search_keyword=data['search_keywords'],
+        )
+
+        if 'on_discount' in data:
+            on_discount(data, product)
+        product.save()
+        #  Save all images
+
+        alt_texts = request.POST['image_alt_texts']
+        images = request.FILES.getlist('images')
+        save_product_images(product, alt_texts.split(','), images)
+
+        new_token = get_token(request)
+
+        return JsonResponse({'success': True, 'token': new_token, 'edit': False})
 
     return render(request, 'add_a_product.html')
 

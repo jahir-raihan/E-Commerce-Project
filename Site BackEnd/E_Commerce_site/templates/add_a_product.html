@@ -12,6 +12,12 @@
     {% endblock cssfiles %}
 
     <!-- Navigation Bar -->
+    {% block msg_box %}
+        <div class="success-msg" id="success-msg">
+            <p class="" id="success-msg-p">Product added successfully</p>
+        </div>
+    {% endblock msg_box %}
+
     {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
     {% block nav_search %}
     {% endblock nav_search %}
@@ -74,6 +80,8 @@
     {% block nav_2 %}
     {% endblock nav_2 %}
 
+
+
     {% block container %}
 
 
@@ -100,7 +108,7 @@
             <div class="profile-nav">
 
                 <ul>
-                    <a href="#"><li class="">Main</li></a>   
+                    <a href="{% url 'staff_main2' %}"><li class="">Main</li></a>
                     <a href="#"><li class="current-tab-profile">Add | Edit a product</li></a>
                     <a href="#"><li class="">Log out</li></a>
                 </ul>
@@ -113,18 +121,20 @@
             <!-- Profile User & Orders List & Status -->
             
             <div class="profile-content bg-white">
-                <form action="">
+                <form id="add-a-product" enctype="multipart/form-data">
+
+                    {% csrf_token %}
 
                     <div class="p-name-and-code m-1">
 
                         <div class="p-name ">
                             <p>Product title</p>
-                            <input type="text" placeholder="Enter title">
+                            <input type="text" name="title" placeholder="Enter title" required>
                         </div>
 
                         <div class="p-code">
                             <p>Product Code</p>
-                            <input type="text">
+                            <input type="text" name="product_code" required>
                         </div>
 
                     </div>
@@ -133,20 +143,20 @@
 
                         <div class="p-price">
                             <p>Price</p>
-                            <input type="number">
+                            <input type="number" name="price" required>
 
                         </div>
 
                         <div class="p-category m-1">
                             <p>Category</p>
-                            <select name="" id="">
+                            <select name="category" >
                                 <option value="">Select Category</option>
                             </select>
                         </div>
 
                         <div class="p-category category-new">
                             <p>Category (New)</p>
-                            <input type="text" placeholder="Type new category name">
+                            <input type="text" name="category_new" placeholder="Type new category name">
                         </div>
 
                     </div>
@@ -155,12 +165,12 @@
 
                         <div class="p-color">
                             <p>Color Type</p>
-                            <input type="text" >
+                            <input type="text" name="color_type" required>
                         </div>
 
                         <div class="p-yarn">
                             <p>Yarn Type</p>
-                            <input type="text">
+                            <input type="text" name="yarn_type" required>
                         </div>
 
                     </div>
@@ -169,19 +179,19 @@
 
                         <div class="p-yarn-count">
                             <p>Yarn Count</p>
-                            <input type="text">
+                            <input type="number" name="yarn_count" required>
                         </div>
 
                         <div class="p-brand m-1">
                             <p>Brand</p>
-                            <input type="text">
+                            <input type="text" name="brand" required>
                         </div>
 
                         <div class="p-status">
                             <p>Status</p>
-                            <select name="" id="">
-                                <option value="in_stock">In Stock</option>
-                                <option value="out_of_stock">Out of Stock</option>
+                            <select name="status" required>
+                                <option value="True">In Stock</option>
+                                <option value="False">Out of Stock</option>
                             </select>
                         </div>
 
@@ -189,13 +199,13 @@
 
                     <div class="p-tags m-1">
                         <p>Tags</p>
-                        <input type="text" placeholder="Insert tags eg: Black hoodie, white t-shirt etc">
+                        <input type="text" name="tags" placeholder="Insert tags eg: Black hoodie, white t-shirt etc" required>
                     </div>
 
                     <div class="p-primary-image m-1">
 
                         <p>Product Primary Image</p>
-                        <input type="file" name="images" >
+                        <input type="file" name="primary_image" required>
                     </div>
 
                     <div class="p-images-and-preview">
@@ -204,7 +214,7 @@
                             <p>Product Images</p>
 
                             <div class="input-and-preview">
-                                <input type="file"  name="images" id="images" multiple>
+                                <input type="file"  name="images" id="images" multiple required>
                                 <div id="image-preview"></div>
                             </div>
                            
@@ -218,54 +228,59 @@
 
                         <p>Image alternative texts</p>
 
-                        <input type="text" placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc">
+                        <input type="text" name="image_alt_texts" placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc" required>
                     </div>
 
                     <div class="p-more-info m-1">
                         <p>More information</p>
-                        <input type="text">
+                        <input type="text" name="more_info" required>
                     </div>
 
                     <div class="p-search-keywords m-1">
                         <p>Search Keywords</p>
 
-                        <textarea name="" placeholder="Separate with commas. Ex: black hoodie, white bra, etc"></textarea>
+                        <textarea name="search_keywords" placeholder="Separate with commas. Ex: black hoodie, white bra, etc" required></textarea>
                     </div>
 
 
                     <div class="on-discount-checkbox m-1">
-                        <input type="checkbox"> <span>On Discount</span>
+                        <input name="on_discount" type="checkbox"> <span>On Discount</span>
                     </div>
 
                     <div class="discount-price-and-expiry m-1">
                         <div class="discount-price m-1">
                             <p>Discount Percentage</p>
-                            <input type="number">
+                            <input name="discount_percentage" type="number">
                         </div>
 
                         <div class="discount-reason">
                             
                             <p>Discount reason</p>
-                            <select name="" id="">
+                            <select name="discount_reason" id="">
                                 <option value="">Select reason</option>
-                                <option value="">New Arrival</option>
-                                <option value="">Hot Summer</option>
-                                <option value="">Event Name</option>
+                                <option value="1">New Arrival</option>
+                                <option value="2">Hot Summer</option>
+                                <option value="3">Event Name</option>
                             </select>
                             
+                        </div>
+
+                         <div class="discount-reason m-1">
+                            <p>Discount Reason (New)</p>
+                            <input name="discount_reason_new" type="text">
                         </div>
 
                         <div class="discount-expiry">
                             <p>Discount Expiry</p>
 
-                            <input type="date">
+                            <input name="discount_expiry_date" type="date">
                         </div>
 
                     </div>
 
                     <div class="save-and-clear-btn m-1">
                         <button class="clear">Clear</button>
-                        <button class="save">Save</button>
+                        <button class="save" id="product_save_btn" type="submit">Save</button>
                     </div>
 
 
