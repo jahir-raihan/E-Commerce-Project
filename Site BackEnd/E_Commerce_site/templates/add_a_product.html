@@ -149,14 +149,18 @@
 
                         <div class="p-category m-1">
                             <p>Category</p>
-                            <select name="category" >
+                            <select name="category" id="category">
                                 <option value="">Select Category</option>
+
+                                {% for cat in categories %}
+                                    <option value="{{cat.id}}">{{cat.category_name}}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="p-category category-new">
                             <p>Category (New)</p>
-                            <input type="text" name="category_new" placeholder="Type new category name">
+                            <input type="text" name="category_new" id="category_new" placeholder="Type new category name">
                         </div>
 
                     </div>
@@ -244,36 +248,40 @@
 
 
                     <div class="on-discount-checkbox m-1">
-                        <input name="on_discount" type="checkbox"> <span>On Discount</span>
+                        <input name="on_discount" id="on_discount" type="checkbox"> <span>On Discount</span>
                     </div>
 
                     <div class="discount-price-and-expiry m-1">
                         <div class="discount-price m-1">
                             <p>Discount Percentage</p>
-                            <input name="discount_percentage" type="number">
+                            <input name="discount_percentage" id="discount_percentage" type="number">
                         </div>
 
                         <div class="discount-reason">
                             
                             <p>Discount reason</p>
-                            <select name="discount_reason" id="">
+                            <select name="discount_reason" id="discount_reason">
                                 <option value="">Select reason</option>
-                                <option value="1">New Arrival</option>
-                                <option value="2">Hot Summer</option>
-                                <option value="3">Event Name</option>
+
+                                {% for reason in discount_reasons %}
+
+                                    <option value="{{reason.id}}">{{reason.discount_reason}}</option>
+
+                                {% endfor %}
+
                             </select>
                             
                         </div>
 
                          <div class="discount-reason m-1">
                             <p>Discount Reason (New)</p>
-                            <input name="discount_reason_new" type="text">
+                            <input name="discount_reason_new" id="discount_reason_new" type="text">
                         </div>
 
                         <div class="discount-expiry">
                             <p>Discount Expiry</p>
 
-                            <input name="discount_expiry_date" type="date">
+                            <input name="discount_expiry_date" type="date" id="discount_expiry">
                         </div>
 
                     </div>

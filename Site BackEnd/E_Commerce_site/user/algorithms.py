@@ -28,7 +28,7 @@ def on_discount(data, product):
         reason.save()
 
     product.discount_reason = reason
-    product.discount_expiry = ['discount_expiry_date']
+    product.discount_expiry = data['discount_expiry_date']
 
     product.save()
 

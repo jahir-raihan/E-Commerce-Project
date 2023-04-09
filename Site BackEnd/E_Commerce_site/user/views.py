@@ -130,7 +130,14 @@ def add_products(request):
 
         return JsonResponse({'success': True, 'token': new_token, 'edit': False})
 
-    return render(request, 'add_a_product.html')
+    categories = Category.objects.all()
+    discount_reasons = DiscountReason.objects.all()
+
+    context = {
+        'categories': categories,
+        'discount_reasons': discount_reasons
+    }
+    return render(request, 'add_a_product.html', context)
 
 
 def edit_products(request, pk):

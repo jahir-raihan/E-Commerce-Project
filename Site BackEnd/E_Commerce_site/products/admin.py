@@ -3,6 +3,7 @@ from .models import *
 
 
 admin.site.register(Product)
-
+admin.site.register(Category)
+admin.site.register(DiscountReason)
 admin.site.register(ProductImages)
 # Register your models here.
