@@ -81,8 +81,9 @@ def staff_main1(request):
 def staff_main2(request):
     if request.method == 'POST':
         pass
+    products = Product.objects.filter(product_added_by=request.user)
 
-    return render(request, 'staff2_main.html')
+    return render(request, 'staff2_main.html', {'products': products})
 
 
 def pending_orders(request):
@@ -142,6 +143,16 @@ def add_products(request):
 
 def edit_products(request, pk):
     if request.method == 'POST':
-        pass
+        product = Product.objects.get(pk=pk)
+        save_edited_product(product, request)
+        new_token = get_token(request)
+        return JsonResponse({'success': True, 'token': new_token, 'edit': True})
 
-    return render(request, 'add_a_product.html')
+    product = Product.objects.get(pk=pk)
+    product_images = product.productimages_set.all()
+    context = {
+        'product': product,
+        'product_images': product_images
+    }
+
+    return render(request, 'add_a_product.html', context)

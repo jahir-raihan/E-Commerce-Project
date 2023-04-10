@@ -49,10 +49,17 @@ checkbox.addEventListener('change', ()=> {
 
 })
 
-$(document).on('submit', '#add-a-product', function(e){
+try{
+    var product_id = $('#product_id').val()
+}catch{
+    var product_id = ''
+}
+
+
+$(document).on('submit', '#add-a-product'+product_id, function(e){
 
     e.preventDefault();
-    var formData = new FormData($('#add-a-product').get(0))
+    var formData = new FormData($('#add-a-product'+product_id).get(0))
     var category = $('#category')
     var category_new = $('#category_new')
     var discount = document.getElementById('on_discount')
@@ -66,9 +73,13 @@ $(document).on('submit', '#add-a-product', function(e){
 
         var btn = document.getElementById('product_save_btn')
         btn.innerHTML = 'Saving <i id="l-i" class="fa fa-spinner fa-spin"></i>'
+        let url = '/account/add-edit-products/'
+        if (product_id !== ''){
+            url += product_id+'/'
+        }
         let req = $.ajax({
             type:'post',
-            url: '/account/add-products/',
+            url: url,
             data: formData,
             cache: false,
             processData: false,
@@ -81,27 +92,27 @@ $(document).on('submit', '#add-a-product', function(e){
                 $( '#add-a-product' ).each(function(){
                     this.reset();
                 });
-                btn.innerHTML = 'Save'
-                var msg = document.getElementById('success-msg')
-                msg.style.display = 'block'
+
                 var preview = document.querySelector('#image-preview')
                 preview.innerHTML = ''
 
+            } else if ('success' in response && response['edit'] == true){
 
-
-                // Reset CSRF token
-
-                var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
-                token.value = response['token']
-
-
-                setTimeout(() => {msg.style.display='none'}, 3000);
-
-
+                document.getElementById('success-msg-p').innerHTML = 'Updated successfully'
             }
 
+            btn.innerHTML = 'Save'
+            var msg = document.getElementById('success-msg')
+            msg.style.display = 'block'
 
-        })
+            var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+            token.value = response['token']
+
+            setTimeout(() => {msg.style.display='none'}, 4000);
+
+
+        });
+        return
     }
 
 

@@ -945,6 +945,11 @@
   .only-navicons .p-o-cnt {
     display: flex !important;
   }
+  .img-and-det-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
 }
 @media only screen and (max-width: 450px) {
   .staff-main-order-list-container .order .order-top .order-util-btns button {

@@ -121,20 +121,21 @@
             <!-- Profile User & Orders List & Status -->
             
             <div class="profile-content bg-white">
-                <form id="add-a-product" enctype="multipart/form-data">
 
+                <form id="add-a-product{{product.id}}" enctype="multipart/form-data">
+                    <input type="hidden" name="product_id" value="{{product.id}}" id="product_id">
                     {% csrf_token %}
 
                     <div class="p-name-and-code m-1">
 
                         <div class="p-name ">
                             <p>Product title</p>
-                            <input type="text" name="title" placeholder="Enter title" required>
+                            <input type="text" name="title" placeholder="Enter title" value="{{product.product_title}}" title="Title can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-code">
                             <p>Product Code</p>
-                            <input type="text" name="product_code" required>
+                            <input type="text" name="product_code" value="{{product.product_code}}" title="Product code can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                     </div>
@@ -143,14 +144,24 @@
 
                         <div class="p-price">
                             <p>Price</p>
-                            <input type="number" name="price" required>
+                            <input type="number" name="price" value="{{product.product_price}}" required>
 
                         </div>
 
                         <div class="p-category m-1">
                             <p>Category</p>
                             <select name="category" id="category">
-                                <option value="">Select Category</option>
+                                {% if product %}
+                                    <option value="{{product.product_category.id}}">
+                                        {{product.product_category.category_name}}
+                                    </option>
+
+                                {% endif %}
+                                 <option value="">
+                                        Select Category
+                                 </option>
+
+
 
                                 {% for cat in categories %}
                                     <option value="{{cat.id}}">{{cat.category_name}}</option>
@@ -169,12 +180,12 @@
 
                         <div class="p-color">
                             <p>Color Type</p>
-                            <input type="text" name="color_type" required>
+                            <input type="text" name="color_type" value="{{product.color_type}}" title="Color type can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-yarn">
                             <p>Yarn Type</p>
-                            <input type="text" name="yarn_type" required>
+                            <input type="text" name="yarn_type" value="{{product.yarn_type}}" title="Yarn type can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                     </div>
@@ -183,12 +194,12 @@
 
                         <div class="p-yarn-count">
                             <p>Yarn Count</p>
-                            <input type="number" name="yarn_count" required>
+                            <input type="number" name="yarn_count" value="{{product.yarn_count}}" title="Yarn count can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-brand m-1">
                             <p>Brand</p>
-                            <input type="text" name="brand" required>
+                            <input type="text" name="brand" value="{{product.brand}}" title="Brand name can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-status">
@@ -203,13 +214,19 @@
 
                     <div class="p-tags m-1">
                         <p>Tags</p>
-                        <input type="text" name="tags" placeholder="Insert tags eg: Black hoodie, white t-shirt etc" required>
+                        <input type="text" name="tags" placeholder="Insert tags eg: Black hoodie, white t-shirt etc" value="{{product.product_tags}}"  required>
                     </div>
 
                     <div class="p-primary-image m-1">
-
                         <p>Product Primary Image</p>
-                        <input type="file" name="primary_image" required>
+
+                        {% if product %}
+                            <input type="file" name="primary_image" id="primary_image" value="false">
+                        {% else %}
+                            <input type="file" name="primary_image" id="primary_image"  required>
+                        {% endif %}
+
+
                     </div>
 
                     <div class="p-images-and-preview">
@@ -218,7 +235,12 @@
                             <p>Product Images</p>
 
                             <div class="input-and-preview">
-                                <input type="file"  name="images" id="images" multiple required>
+
+                                {% if product %}
+                                    <input type="file" name="images" id="images" value="false" multiple>
+                                {% else %}
+                                    <input type="file" name="images" id="images" multiple  required>
+                                {% endif %}
                                 <div id="image-preview"></div>
                             </div>
                            
@@ -232,18 +254,19 @@
 
                         <p>Image alternative texts</p>
 
-                        <input type="text" name="image_alt_texts" placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc" required>
+                        <input type="text" name="image_alt_texts" value="{% for alt in product_images %}{{alt.image_alt_tag}}, {% endfor %}"
+                               placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc" required>
                     </div>
 
                     <div class="p-more-info m-1">
                         <p>More information</p>
-                        <input type="text" name="more_info" required>
+                        <input type="text" name="more_info" value="{{product.product_more_information}}" required>
                     </div>
 
                     <div class="p-search-keywords m-1">
                         <p>Search Keywords</p>
 
-                        <textarea name="search_keywords" placeholder="Separate with commas. Ex: black hoodie, white bra, etc" required></textarea>
+                        <textarea name="search_keywords" placeholder="Separate with commas. Ex: black hoodie, white bra, etc"  required>{{product.product_search_keyword}}</textarea>
                     </div>
 
 

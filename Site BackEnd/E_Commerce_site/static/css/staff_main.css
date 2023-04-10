@@ -117,6 +117,10 @@ body {
 .order-util-btns button {
   padding: 0 2.5em !important;
 }
+.added-items .item {
+  display:grid;
+  grid-template-columns:10% 40% 25% 25%;
+}
 
 .item {
   border-top: var(--border);

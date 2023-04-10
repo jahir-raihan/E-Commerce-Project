@@ -37,5 +37,46 @@ def on_discount(data, product):
 
 def save_product_images(product, alt_texts, images):
     for i in range(len(images)):
-        img = ProductImages(product=product, image_alt_tag=alt_texts[i], image=images[i])
+        try:
+            alt_txt = alt_texts[i]
+        except:
+            alt_txt = 'Product Image'
+        img = ProductImages(product=product, image_alt_tag=alt_txt, image=images[i])
         img.save()
+
+
+# Edit product
+
+def save_edited_product(product, data):
+    files = data.FILES
+    data = data.POST
+
+    product.product_title = data['title']
+    product.product_code = data['product_code']
+    product.product_price = data['price']
+    product.color_type = data['color_type']
+    product.yarn_type = data['yarn_type']
+    product.yarn_count = data['yarn_count']
+    product.brand = data['brand']
+    product.product_tags = data['tags']
+    product.product_more_information = data['more_info']
+    product.product_search_keyword = data['search_keywords']
+
+    if 'on_discount' in data:
+        on_discount(data, product)
+    if data['category'] == '':
+        category = Category(category_name=data['category_new'])
+        category.save()
+    else:
+        category = Category.objects.get(pk=data['category'])
+    product.product_category = category
+
+    if 'primary_image' in files:
+        product.product_primary_image = files['primary_image']
+    if 'images' in files:
+        alt_texts = data['image_alt_texts']
+        images = files.getlist('images')
+        save_product_images(product, alt_texts.split(','), images)
+
+    product.save()
+

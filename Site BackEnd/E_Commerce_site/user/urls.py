@@ -16,8 +16,8 @@ urlpatterns = [
     # Product Adder
 
     path('staff-main-2/', staff_main2, name='staff_main2'),
-    path('add-products/', add_products, name='add_products'),
-    path('edit-products/<str:pk>/', edit_products, name='edit_products')
+    path('add-edit-products/', add_products, name='add_products'),
+    path('add-edit-products/<str:pk>/', edit_products, name='edit_products')
 
 
 

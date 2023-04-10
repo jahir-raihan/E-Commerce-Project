@@ -200,10 +200,55 @@
                         </div>
                     </form>
 
-                    <p class="title"> Recenlty added products</p>
+                    <p class="title"> Recently added products</p>
 
 
                     <div class="wishlist-items added-items">
+
+                        {% for product in products %}
+                            <div class="item">
+
+                                <div class="edit-pen">
+
+                                    <a style="text-decoration:none; color:black;" href="{% url 'edit_products' product.id %} ">a<i class="fas fa-pen"></i></a>
+
+                                </div>
+
+                                <div class="img-and-det-container">
+                                    <div class="img-and-details">
+                                        <img src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}">
+
+                                        <div>
+                                             <p class="wish-item-title">{{product.product_title}}</p>
+                                            <small>${{product.product_price}}</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="edit-pen-right">
+                                        <a style="text-decoration:none; color:black;" href="{% url 'edit_products' product.id %} "><i class="fas fa-pen"></i></a>
+                                    </div>
+
+                                </div>
+                                <p class="status">
+                                    {% if product.product_in_stock %}
+                                        In Stock
+                                    {% else %}
+                                        Out of Stock
+                                    {% endif %}
+                                </p>
+
+                                <div class="add-to-cart-and-datetime">
+                                    <div class="date">
+                                        <small>Updated on: {{product.product_last_update |date:"d M, Y"}}</small>
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        {% endfor %}
 
                         <div class="item">
                             

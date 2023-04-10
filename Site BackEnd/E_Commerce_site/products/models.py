@@ -28,7 +28,8 @@ class Product(models.Model):
     brand = models.CharField(max_length=30)
     product_in_stock = models.BooleanField(default=True)
     product_tags = models.CharField(max_length=300)
-
+    product_added_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, default=1)
+    product_last_update = models.DateTimeField(auto_now_add=True)
     # Product images
 
     product_primary_image = models.ImageField(upload_to='product_primary_images/')
