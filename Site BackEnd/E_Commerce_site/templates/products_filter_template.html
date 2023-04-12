@@ -1,0 +1,38 @@
+
+{% if products %}
+{% for product in products %}
+<li>
+
+    <div class="product-card">
+
+        <div class="product-card-and-view-mask">
+
+                <div class="view-mask">
+                    <p>View Details</p>
+                </div>
+
+            <div class="p-c-img">
+                <img draggable="false" src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}">
+            </div>
+
+        </div>
+
+
+
+        <div class="line"></div>
+        <p class="price">${{product.product_price}}</p>
+        <p class="title">{{product.product_title}}</p>
+
+        <div class="p-c-btns">
+            <button class="add-to-cart">Add to cart</button>
+            <button class="add-to-wishlist">
+                <i class="far fa-heart"></i>
+            </button>
+        </div>
+    </div>
+
+</li>
+{% endfor %}
+{% else %}
+<p style="font-weight:500">No products Found !</p>
+{% endif %}

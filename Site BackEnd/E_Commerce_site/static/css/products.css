@@ -273,8 +273,8 @@
 }
 .price-range .range-selected {
   height: 100%;
-  left: 30%;
-  right: 30%;
+  left: 0%;
+  right: 0%;
   position: absolute;
   border-radius: 5px;
   background-color: #1b53c0;
@@ -513,6 +513,7 @@
   justify-content: center;
   padding: 0.5em;
   max-height: 220px;
+  min-height:220px;
 }
 .product-list .products-grid .product-card .p-c-img img {
   max-width: 98%;
@@ -676,4 +677,4 @@
   right: 50%;
   font-size: 18px;
   display: none;
-}/*# sourceMappingURL=products.css.map */
+}

@@ -103,7 +103,7 @@ def add_products(request):
             category = Category.objects.get(pk=data['category'])
 
         product = Product(
-            product_title=data['title'],
+            product_title=data['title'].lower(),
             product_code=data['product_code'],
             product_price=data['price'],
             product_category=category,
@@ -112,10 +112,10 @@ def add_products(request):
             yarn_count=data['yarn_count'],
             brand=data['brand'],
             product_in_stock=bool(data['status']),
-            product_tags=data['tags'],
+            product_tags=data['tags'].lower(),
             product_primary_image=request.FILES['primary_image'],
-            product_more_information=data['more_info'],
-            product_search_keyword=data['search_keywords'],
+            product_more_information=data['more_info'].lower(),
+            product_search_keyword=data['search_keywords'].lower(),
         )
 
         if 'on_discount' in data:

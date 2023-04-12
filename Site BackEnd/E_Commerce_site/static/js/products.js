@@ -30,8 +30,9 @@ rangeInput.forEach((input) => {
     }
     current_price_range[0] = rangePrice[0].value
     current_price_range[1] = rangePrice[1].value
+    trigger()
 
-    // for updaing price range in tag
+    // for updating price range in tag
     try{
       gt.getElementById('price-range-tag').remove()
     }
@@ -63,6 +64,7 @@ rangePrice.forEach((input) => {
     }
     current_price_range[0] = rangePrice[0].value
     current_price_range[1] = rangePrice[1].value
+    trigger()
     
   });
   
@@ -82,22 +84,24 @@ function enable_hidden_filter(action){
   var filter_contents = gt.getElementById('filter-contents')
   var obj3 = document.getElementById('container')
   var close_filter = gt.getElementById('close-filter')
+  try{
 
-  if (action==true){
-    obj.style.display = 'block';
-    obj.appendChild(filter_contents)
-    console.log(main_filter_container.children)
-    obj3.classList.add('fade-out')
-    close_filter.classList.remove('d-none')
-  }
-  else{
-    main_filter_container.appendChild(filter_contents);
-    
-    obj.style.display = 'none'
-    obj3.classList.remove('fade-out')
+      if (action==true){
+        obj.style.display = 'block';
+        obj.appendChild(filter_contents)
+        console.log(main_filter_container.children)
+        obj3.classList.add('fade-out')
+        close_filter.classList.remove('d-none')
+      }
+      else{
+        main_filter_container.appendChild(filter_contents);
 
-    close_filter.classList.add('d-none')
-  }
+        obj.style.display = 'none'
+        obj3.classList.remove('fade-out')
+
+        close_filter.classList.add('d-none')
+      }
+  }catch{}
  
 
 }
@@ -108,13 +112,14 @@ window.onresize = function(){
   }
 }
 
+
 // End Hidden filter
 
 
 
 // To update tags and refinements
 
-let refienments = new Set(); // Set for storing tags and tracking tags
+let refinements = new Set(); // Set for storing tags and tracking tags
 
 
 
@@ -130,7 +135,7 @@ filter_box.forEach((item) => {
     var child = item.children[0].children
     var refinements_list = gt.getElementById('refinements')
 
-    if (child[2].checked && !refienments.has(child[0].innerHTML)){
+    if (child[2].checked && !refinements.has(child[0].innerHTML)){
       
       var new_ref = gt.createElement('div')
       new_ref.classList.add('tag-btn')
@@ -139,10 +144,11 @@ filter_box.forEach((item) => {
       new_ref.innerHTML = `<p id="${counter}"> ${child[0].innerHTML}
                           </p><div class="cross" onclick="del_refinements(${counter})">&#x2715;</div>`
       refinements_list.appendChild(new_ref)
-      refienments.add(child[0].innerHTML)
+      refinements.add(child[0].innerHTML)
       counter += 1
+      trigger()
     } 
-    else if (child[2].checked && refienments.has(child[0].innerHTML)){
+    else if (child[2].checked && refinements.has(child[0].innerHTML)){
       var tmp = gt.querySelectorAll('.refinements-p p')
       var itm_to_remove = '';
       tmp.forEach ((item) => {
@@ -151,7 +157,8 @@ filter_box.forEach((item) => {
         }
       })
       gt.getElementById('ref-'+itm_to_remove).remove()
-      refienments.delete(child[0].innerHTML)
+      refinements.delete(child[0].innerHTML)
+      trigger()
       
     }
 
@@ -165,16 +172,17 @@ filter_box.forEach((item) => {
 function del_refinements(id){
   var tmp_txt = gt.getElementById('ref-'+id).children[0].textContent.trim()
   gt.getElementById('ref-'+id).remove()
-  refienments.delete(tmp_txt)
+  refinements.delete(tmp_txt)
   var refinements_input_check_box = gt.querySelectorAll('.refinements-input-checkbox')
   refinements_input_check_box.forEach( (item) => {
     if (tmp_txt === item.children[0].textContent.trim()){
       item.children[2].checked = false
     }
-   
+
     // solved
 
   })
+  trigger()
 
 }
 
@@ -184,8 +192,9 @@ function clear_refinements(){
   refinements.forEach( (item) => {
     del_refinements(item.id.split('-')[1])
   })
+  trigger()
 }
-// End tags and refienments
+// End tags and refinements
 
 
 // category filter 
@@ -203,15 +212,25 @@ categories.forEach( (item) => {
     try{
       gt.getElementById('cat-tag').remove()
     }
-    catch{} 
-    var ele = gt.createElement('div')
-    ele.setAttribute('id', 'cat-tag')
-    ele.classList.add('tag-btn')
-    current_category = item.textContent.trim()
-    ele.innerHTML = `<p> ${current_category} </p>`;
-    gt.getElementById('tags').appendChild(ele)
-    item.classList.add('selected')
-    
+    catch{}
+    if (current_category !== item.getAttribute('cat_id')){
+        var ele = gt.createElement('div')
+        ele.setAttribute('id', 'cat-tag')
+        ele.classList.add('tag-btn')
+        current_category = item.getAttribute('cat_id')
+        ele.innerHTML = `<p> ${item.innerHTML} </p>`;
+        gt.getElementById('tags').appendChild(ele)
+        item.classList.add('selected')
+    }else{
+        try{document.getElementById('cat-tag').remove()}catch{}
+
+
+        item.classList.remove('selected')
+        current_category = ''
+    }
+
+
+    trigger()
     
   })
 
@@ -228,29 +247,32 @@ function change_sorting(){
     sort_icon.classList.remove('fa-sort')
     sort_icon.classList.add('fa-sort-up')
     sort_by_price = false
+
   }
   else{
     sort_icon.classList.remove('fa-sort')
     sort_icon.classList.remove('fa-sort-up')
     sort_icon.classList.add('fa-sort-down')
     sort_by_price = true
+
   }
+  trigger()
 }
 
 // end sort by price
 
 // Offerings
-let offerrings_set = new Set();
+let offerings_set = new Set();
 
-let offerrings = gt.querySelectorAll('.offerings-checkbox')
+let offerings = gt.querySelectorAll('.offerings-checkbox')
 var counter_tag = 1;
-offerrings.forEach( (item) => {
+offerings.forEach( (item) => {
 
   item.addEventListener('click', function(){
     var child = item.children
     var tags_list = gt.getElementById('tags')
 
-    if (child[1].checked && !offerrings_set.has(child[0].innerHTML)){
+    if (child[1].checked && !offerings_set.has(child[0].innerHTML)){
       
       var new_tag = gt.createElement('div')
       new_tag.classList.add('tag-btn')
@@ -259,10 +281,11 @@ offerrings.forEach( (item) => {
       new_tag.innerHTML = `<p id="${counter_tag}"> ${child[0].innerHTML}
                           </p><div class="cross" onclick="del_tags(${counter_tag})">&#x2715;</div>`
       tags_list.appendChild(new_tag)
-      offerrings_set.add(child[0].innerHTML)
+      offerings_set.add(child[0].innerHTML)
       counter_tag += 1
+      trigger()
     } 
-    else if (child[1].checked && offerrings_set.has(child[0].innerHTML)){
+    else if (child[1].checked && offerings_set.has(child[0].innerHTML)){
       var tmp = gt.querySelectorAll('.tags-p p')
       var itm_to_remove = '';
       tmp.forEach ((item) => {
@@ -271,7 +294,9 @@ offerrings.forEach( (item) => {
         }
       })
       gt.getElementById('tag-'+itm_to_remove).remove()
-      offerrings_set.delete(child[0].innerHTML)
+      offerings_set.delete(child[0].innerHTML)
+      trigger()
+
       
     }
 
@@ -283,32 +308,67 @@ offerrings.forEach( (item) => {
 function del_tags(id){
   var tmp_txt = gt.getElementById('tag-'+id).children[0].textContent.trim()
   gt.getElementById('tag-'+id).remove()
-  offerrings_set.delete(tmp_txt)
+  offerings_set.delete(tmp_txt)
   var tags_input_check_box = gt.querySelectorAll('.offerings-checkbox')
   tags_input_check_box.forEach( (item) => {
     if (tmp_txt === item.children[0].textContent.trim()){
       item.children[1].checked = false
+
     }
    
-    // solved
+
 
   })
+  trigger()
 
 }
 
 
 // End offerings
 
-// Rating 
+// Search query from other pages
 
+var search_query = search_query;
+function del_s_q(){
+    document.getElementById('search-query-tag').remove()
 
+    window.location.href = 'http://127.0.0.1:8000/products/'
+    search_query = '';
+    trigger()
 
-// End Rating 
+}
+
+// End Search query
 
 // Trigger section, it will be responsible for filtering out the page 
 
 function trigger(){
+    gt.getElementById('loader-product-page').style.display = 'block'
 
+    let req = $.ajax({
+        type:'post',
+        url:'/products/',
+        data:{
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            search_query:search_query,
+            offerings: Array.from(offerings_set),
+            sort_by_price:sort_by_price,
+            current_category:current_category,
+            refinements: Array.from(refinements),
+            price_range: current_price_range
+
+
+
+        }
+
+    })
+    req.done(function(response){
+        gt.getElementById('loader-product-page').style.display = 'none'
+        $('#products-grid').html(response.template)
+
+        var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+        token.value = response['token']
+    })
   // Do anything here.
 }
 

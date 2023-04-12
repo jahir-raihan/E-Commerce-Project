@@ -1,12 +1,28 @@
 // Search suggestion and selection
 
+var s_list = document.getElementById('s-list')
+all_keywords.forEach((item) => {
+    var ele = document.createElement('small')
+    ele.innerHTML = item
+    s_list.appendChild(ele)
+});
+
+
 try{
 const searchInput = document.querySelector("#nav-search");
-const listItems = document.querySelectorAll("#s-list a");
+const listItems = document.querySelectorAll("#s-list small");
 var s_r_s = document.getElementById('s-r-s')
 searchInput.addEventListener("input", function() {
     s_r_s.classList.remove('d-none')
     const searchTerm = searchInput.value.toLowerCase().trim();
+
+    try{
+        // for products page
+
+        search_query = searchTerm
+        trigger()
+    }catch{}
+
     var cnt = 0;
     listItems.forEach(function(item) {
         if (item.textContent.toLowerCase().includes(searchTerm) & cnt < 10) {
@@ -29,6 +45,7 @@ searchInput.addEventListener("blur", function() {
 listItems.forEach(function(item) {
     item.addEventListener("click", function() {
         searchInput.value = item.textContent;
+        window.location.href = 'http://127.0.0.1:8000/products/' + '?s=' + item.textContent
     
     });
 });
@@ -70,7 +87,7 @@ function toggle_nav_menu(){
 
 
  // array of background colors to cycle through
- const bgColors = ['pink', '#E5E0FF', 'pink', '#F8CBA6', '#AACB73'];
+ var bgColors = ['pink', '#E5E0FF', 'pink', '#F8CBA6', '#AACB73'];
 
  // get reference to the body element
  const body = document.getElementById('hero');

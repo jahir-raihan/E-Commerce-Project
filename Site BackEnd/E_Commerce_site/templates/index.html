@@ -17,6 +17,17 @@
     {% endblock cssfiles %}
     <link rel="stylesheet" href="{% static 'css/media_queries.css' %}">
 
+    {% block search_suggestions %}
+
+    <script>
+        var all_keywords = [{% for p in products %} '{{p.product_title}}', {% endfor %}
+         {% for p in products %} '{{p.product_search_keyword}}', {% endfor %}
+          {% for p in products %} '{{p.product_tags}}',{% endfor %} {% for c in categories %} '{{c.category_name}}', {% endfor %}];
+
+    </script>
+
+    {% endblock search_suggestions %}
+
 
 </head>
 <body>
@@ -36,90 +47,28 @@
 
             {% block nav_search %}
             <div>
-                <div class="nav-search search-container-global">
-                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
-                    <button class="nav-search-button">
-                       
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                    <button class="nav-search-button snd-nav-srch-btn d-none"
-                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
-                       
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
+                <form action="/products/" method="get">
+                    <div class="nav-search search-container-global">
 
-                    <div class="search-result-suggestion d-none" id="s-r-s">
-                        <ul id="s-list">
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">poke man</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Mens T-shirts</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                        </ul>
+                            <input type="text" name="s" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
+                            <button type="submit" class="nav-search-button">
+
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+
+                        <button class="nav-search-button snd-nav-srch-btn d-none"
+                        onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
+
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+
+                        <div class="search-result-suggestion d-none" id="s-r-s">
+                            <ul id="s-list">
+
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             {% endblock nav_search %}
 
@@ -187,9 +136,13 @@
             {% endblock toggle_nav_user_part %}
 
             {% block toggle_nav_staff_part %}
-
             {% endblock toggle_nav_staff_part %}
+
+
         </div>
+
+        {% block mobile_filter %}
+        {% endblock mobile_filter %}
     </header>
     <div class="nav-search-hidden d-none" id="n-srch-hidden">
         <input type="text" class="nav-search-input" placeholder="search by anything">
@@ -292,7 +245,7 @@
             <div class="hero-contents">
                 <h1>Best products & brands in our store</h1>
 
-                <p>Trendy Products, Facotry Prices, Excellent Service</p>
+                <p>Trendy Products, Factory Prices, Excellent Service</p>
 
                 <div class="hero-btns">
                     <button class="discover">Discover</button>
@@ -309,22 +262,23 @@
             </p>
 
             <div class="product-lists">
-                
+
+                {% for product in products %}
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">
                             <p>View Details</p>
                         </div>
                         <div class="p-c-img">
-                            <img draggable="false" src="../img/image 17.png" alt="">
+                            <img draggable="false" src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}">
                         </div>
-                       
+
                     </div>
-                   
-                    
+
+
                     <div class="line"></div>
-                    <p class="price">$99.99</p>
-                    <p class="title">GoPro HERO 4k Action Camera-Black</p>
+                    <p class="price">${{product.product_price}}</p>
+                    <p class="title">{{product.product_title}}</p>
 
                     <div class="p-c-btns">
                         <button class="add-to-cart">Add to cart</button>
@@ -332,7 +286,9 @@
                             <i class="far fa-heart"></i>
                         </button>
                     </div>
-                </div> 
+                </div>
+                {% endfor %}
+
                 <div class="product-card">
                     <div class="product-card-and-view-mask">
                         <div class="view-mask">

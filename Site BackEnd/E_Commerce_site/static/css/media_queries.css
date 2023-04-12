@@ -355,7 +355,7 @@
     font-size: 11px !important;
   }
   .price-range .range .min-max {
-    width: 45px !important;
+    width: 55px !important;
   }
   .price-range .range label {
     font-size: 13px !important;
@@ -995,4 +995,4 @@
     overflow: auto !important;
     opacity: 1 !important;
   }
-}/*# sourceMappingURL=media_queries.css.map */
+}

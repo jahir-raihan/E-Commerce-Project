@@ -296,9 +296,10 @@ header .only-navicons:hover {
   border-radius: 6px;
   top: 38px;
 }
-.search-container-global .search-result-suggestion a {
+.search-container-global .search-result-suggestion small {
   color: black;
-  text-decoration: none;
+  cursor:pointer;
+  font-size:14px;
   display: block;
   padding: 0.5em;
   border-top: var(--border);
@@ -788,4 +789,4 @@ footer .footer-bottom .links {
 
 .d-none {
   display: none !important;
-}/*# sourceMappingURL=index.css.map */
+}
