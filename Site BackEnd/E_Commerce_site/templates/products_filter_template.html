@@ -7,9 +7,11 @@
 
         <div class="product-card-and-view-mask">
 
-                <div class="view-mask">
-                    <p>View Details</p>
-                </div>
+                <a href="{% url 'view_details' product.id %}">
+                    <div class="view-mask">
+                        <p>View Details</p>
+                    </div>
+                </a>
 
             <div class="p-c-img">
                 <img draggable="false" src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}">
