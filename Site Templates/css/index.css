@@ -309,7 +309,7 @@ header .only-navicons:hover {
 
 .hero {
   transition-duration: 1s;
-  background-image: url("../img/bg-3d.png");
+  background-image: url("/img/bg-3d.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #7286D3;

@@ -120,7 +120,6 @@ body{
 
 .three-dots{
     position: relative;
-    ///border:1px solid red;
     .three-dots-popup{
         display: none;
         z-index: 2;
@@ -240,11 +239,18 @@ body{
 
 
 // }
+
+.added-items {
+    .item{
+        justify-content: space-between;
+    }
+}
+
 .item{
 
     border-top:var(--border);
     display: flex;
-   // justify-content: space-between;
+   
     align-items: center;
     padding:1.5em 0;
 

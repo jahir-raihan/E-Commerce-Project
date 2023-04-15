@@ -448,6 +448,12 @@
     font-size: 14px !important;
   }
 }
+
+@media only screen and (max-width:360px){
+    .n-p-contents .details-url{
+        width:150px !important;
+    }
+}
 @media screen and (max-width: 1050px) {
   .details-top .img .details-main-img {
     transition-duration: 0.5s;

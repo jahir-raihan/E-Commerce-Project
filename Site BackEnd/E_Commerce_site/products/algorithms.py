@@ -52,3 +52,29 @@ def filter_products(query_data):
     return products_list
 
 
+# Get average rating point
+
+def get_avg_rating(product):
+    reviews = product.review_set.all()
+    one = 0
+    two = 0
+    three = 0
+    four = 0
+    five = 0
+    for r in reviews:
+        if r.rating == 1:
+            one += 1
+        elif r.rating == 2:
+            two += 1
+        elif r.rating == 3:
+            three += 1
+        elif r.rating == 4:
+            four += 1
+        else:
+            five += 1
+    try:
+        res = ((1*one) + (2*two) + (3*three) + (4*four) + (5*five)) / (one + two + three + four + five)
+    except ZeroDivisionError:
+        res = 5.0
+
+    return res

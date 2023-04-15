@@ -1,0 +1,142 @@
+{% load static %}
+
+
+{% for review in product.review_set.all %}
+
+  {% if limiter and forloop.counter < 3 %}
+     <div class="review">
+    <div class="left">
+    {% if review.user.profile_pic %}
+        <img src="{{review.user.profile_pic.url}}" alt="{{review.user.name}} picture">
+    {% else %}
+        <img src="{% static 'img/person.png' %}" alt="Default person picture">
+    {% endif %}
+    </div>
+    <div class="right" style="width:100%">
+    <p class="name">{{review.user.name}}</p>
+
+    <div class="rates">
+        {% for i in loop %}
+
+            {% if forloop.counter <= review.rating %}
+                <span class="fa fa-star checked"></span>
+            {% else %}
+                <span class="fa fa-star" style="opacity:.7"></span>
+            {% endif %}
+
+        {% endfor %}
+
+
+    </div>
+
+    <small>{{review.review_text}}</small>
+
+    <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
+
+    <form class="write-reply" id="write-reply" r_id="{{review.id}}">
+        <input type="text" name="replay_text" id="replay_text" placeholder="Write your reply">
+        <button>Submit</button>
+    </form>
+
+    <div class="replys-container">
+        <p class="title">
+            Replays
+        </p>
+
+        {% for reply in review.reviewreply_set.all %}
+            <div class="replys">
+
+            <div class="left">
+
+                {% if reply.user.profile_pic %}
+                    <img src="{{reply.user.profile_pic.url}}" alt="{{reply.user.name}} s picture">
+                {% else %}
+                    <img src="{% static 'img/person.png' %}">
+                {% endif %}
+
+            </div>
+            <div class="right">
+                <p class="name">{{reply.user.name}}</p>
+
+                <small>{{reply.replay_text}}</small>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+</div>
+
+  {% else %}
+
+    <div class="review">
+        <div class="left">
+            {% if review.user.profile_pic %}
+                <img src="{{review.user.profile_pic.url}}" alt="{{review.user.name}} picture">
+            {% else %}
+                <img src="{% static 'img/person.png' %}" alt="Default person picture">
+            {% endif %}
+        </div>
+        <div class="right" style="width:100%">
+            <p class="name">{{review.user.name}}</p>
+
+            <div class="rates">
+                {% for i in loop %}
+
+                    {% if forloop.counter <= review.rating %}
+                        <span class="fa fa-star checked"></span>
+                    {% else %}
+                        <span class="fa fa-star" style="opacity:.7"></span>
+                    {% endif %}
+
+                {% endfor %}
+
+
+            </div>
+
+            <small>{{review.review_text}}</small>
+
+            <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
+
+            <form class="write-reply" id="write-reply" r_id="{{review.id}}">
+                <input type="text"  name="replay_text" id="replay_text" placeholder="Write your reply">
+                <button>Submit</button>
+            </form>
+
+            <div class="replys-container">
+                <p class="title">
+                    Replays
+                </p>
+
+                {% for reply in review.reviewreply_set.all %}
+                    <div class="replys">
+
+                    <div class="left">
+
+                        {% if reply.user.profile_pic %}
+                            <img src="{{reply.user.profile_pic.url}}" alt="{{reply.user.name}} s picture">
+                        {% else %}
+                            <img src="{% static 'img/person.png' %}">
+                        {% endif %}
+
+                    </div>
+                    <div class="right">
+                        <p class="name">{{reply.user.name}}</p>
+
+                        <small>{{reply.replay_text}}</small>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+  {% endif %}
+
+{% endfor %}
+
+{% if limiter %}
+<button class="show-all-reviews" onclick="show_all_reviews({{product.id}})">Show all</button>
+{% endif %}

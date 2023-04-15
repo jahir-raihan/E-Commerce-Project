@@ -1,192 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/view_details.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
-    <title>View details</title>
-</head>
-<body>
+{% extends 'index.html' %}
+{% load static %}
 
-    <!-- Navigation bar -->
 
-    <header>
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="../img/menu.png" alt="">
-                </div>
+{% block title %} Details - {{product.product_title}} {% endblock title %}
 
-                <img src="../img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
-            <div>
-                <div class="nav-search search-container-global">
-                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
-                    <button class="nav-search-button">
-                       
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                    <button class="nav-search-button snd-nav-srch-btn d-none"
-                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
-                       
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
+    {% block jsfiles %}
+        <script>
+            var users_reviewed = [{% for review in product.review_set.all %} {{review.user.id}}, {% endfor %}];
+        </script>
+    {% endblock jsfiles %}
 
-                    <div class="search-result-suggestion d-none" id="s-r-s">
-                        <ul id="s-list">
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">poke man</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Mens T-shirts</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/view_details.css' %}">
+    {% endblock cssfiles %}
 
-            <div class="nav-buttons">
+    {% block nav_2 %}{% endblock nav_2 %}
 
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
 
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-                <div class="only-navicons ">
-                    <i class="fas fa-heart" aria-hidden="true"></i>
-                </div>
-                <div class="only-navicons">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="cart-item-count d-none">1</span>
-                </div>
+    {% block container %}
 
-                <button class="nav-btns wishlist-btn">
-                    <i class="fas fa-heart"></i></i> Wishlist
-                </button>
-                <button class="nav-btns my-cart-btn">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
-                    <span class="cart-item-count d-none">1</span>
-                </button>
 
-            </div>
-        </nav>
-
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-                <a href="#">
-                    <div >
-                        <p>Shop</p>
-                        <small>Ready made products</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p>Hot offers</p>
-                        <small>Get offer deals</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p>New arrivals</p>
-                        <small>See our new products</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
-        </div>
-    </header>
-
-    <div class="nav-search-hidden d-none" id="n-srch-hidden">
-        <input type="text" class="nav-search-input" placeholder="search by anything">
-    </div>
-
-    <!-- End Navigation Bar -->
-
-    <!-- Base Container -->
-
-    <div class="container">
-
-        <!-- Page Navigator -->
-        
         <div class="navigator-products">
             <div class="n-p-contents">
-                <a href="#">Home > </a>
-                <a href="#">Products ></a>
-                <a href="#" style="color:gray"> Product title </a>
+                <a href="{% url 'home' %}">Home > </a>
+                <a href="{% url 'products' %}">Products ></a>
+                <a class="details-url" href="{% url 'view_details' product.id %}" style="color:gray; width:60%; height:20px; overflow:hidden;">
+                    {{product.product_title|title}}
+                </a>
             </div>
             
         </div>
@@ -199,78 +40,91 @@
         <div class="details-top">
 
             <div class="img">
+                {% if not product.product_in_stock %}
+                    <div class="extra-msg out">
+                        <p>Out of stock</p>
+                    </div>
+                {% elif product.on_discount %}
+                    <div class="extra-msg offer">
+                        <p>{{product.discount_reason.discount_reason |upper}} <i>{{product.discount_percentage}}% OFF</i></p>
+                    </div>
+                {% endif %}
+
 
                 <div class="details-main-img">
-                    <img id="selected-image" src="../img/image 17.png" alt="primary image">
+                    <img id="selected-image" src="{{product.product_primary_image.url}}" alt="product.product_search_keyword">
+                    <input type="hidden" id="p_img-{{product.id}}" src="{{product.product_primary_image.url}}">
                 </div>
                 
 
 
                 <div class="image-gallery">
 
-                    <div class="img-gallery-img" id="img-gallery-img1"onclick="showImage('1')" >
-                        <img id="1" class="gallery-image "  src="../img/image 17.png" alt="primary image" >
+                    <div class="img-gallery-img" id="img-gallery-img{{product.id}}" onclick="showImage('{{product.id}}')" >
+                            <img id="{{product.id}}" class="gallery-image "  src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}" >
                     </div>
-                    
-                    <div class="img-gallery-img" id="img-gallery-img2" onclick="showImage('2')">
-                        <img id="2" class="gallery-image" src="../img/cash-on-delivery.png" alt="" >
-                    </div>
-                    <div class="img-gallery-img" id="img-gallery-img3"  onclick="showImage('3')" >
-                        <img id="3" class="gallery-image" src="../img/1656227518bkash-logo-png.png" alt="" >
+                    {% for img in product.productimages_set.all %}
+                        <div class="img-gallery-img" id="img-gallery-img{{img.id}}" onclick="showImage('{{img.id}}')" >
+                            <img id="{{img.id}}" class="gallery-image "  src="{{img.image.url}}" alt="{{img.image_alt_tag}}" >
+                        </div>
 
-                    </div>
-                    <div class="img-gallery-img" id="img-gallery-img4" onclick="showImage('4')">
-                         <img id="4" class="gallery-image" src="../img/cash-on-delivery.png" alt="" >
+                    {% endfor %}
 
-                    </div>
-                    <div class="img-gallery-img" id="img-gallery-img5" onclick="showImage('5')">
-                        <img id="5" class="gallery-image" src="../img/test_image.jpeg" alt="" >
-                    </div>
-                    <div class="img-gallery-img" id="img-gallery-img6" onclick="showImage('6')">
-                        <img id="6" class="gallery-image" src="../img/olive.png" alt="" >
-                    </div>
-                    
-                    
                 </div>
 
             </div>
 
             <div class="details">
-                <p class="title">Quality Ment's Hoodie for Winter, Men's Fashio Casual Hoodie</p>
+                <p class="title" id="p_title-{{product.id}}">{{product.product_title}}</p>
 
                 <div class="rating">
 
                     <div class="rates">
-                        
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>   
+                        {% for i in loop %}
+
+                            {% if forloop.counter <= avg_abs_rating %}
+                                <span class="fa fa-star checked"></span>
+                            {% else %}
+                                <span class="fa fa-star" style="opacity:.8"></span>
+                            {% endif %}
+
+
+
+                        {% endfor %}
+
+
                         
                     </div>
-                    <p>9.3</p>
+                    <p>{{avg_rating}}</p>
+                    {% if product.product_in_stock %}
                     <small class="is-available">In stock</small>
+                    {% else %}
+                    <small class="is-available" style="color:red;">Out of stock</small>
+                    {% endif %}
                 </div>
 
                 <div class="price">
-                    <p>$98.00</p>
-                    <p class="offer-price">$88.00</p>
+                    {% if product.on_discount %}
+                        <p>${{product.product_price}}</p>
+                        <p class="offer-price" >$<span id="p_price-{{product.id}}">{{product.discount_price}}</span></p>
+                    {% else %}
+                        <p style="text-decoration:none;opacity:.9">$<span id="p_price-{{product.id}}">{{product.product_price}}</span></p>
+                    {% endif %}
                 </div>
 
                 
-
+                {% if product.product_in_stock %}
                 <div class="size-quantity">
 
                     <div class="size">
                         <p>Size</p>
 
                         <div class="select-box">
-                            <select name="size" id="">
+                            <select name="size" id="p_size">
                             
-                                <option value="XXL"> M </option>
-                                <option value="XXL"> L </option>
-                                <option value="XXL"> XL </option>
+                                <option value="M"> M </option>
+                                <option value="L"> L </option>
+                                <option value="XL"> XL </option>
                                 <option value="XXL"> XXL </option>
                             </select>
                         </div>
@@ -290,21 +144,61 @@
 
                 </div>
 
-                <div class="btns">
-                    
-                   <button class="add-to-cart-btn">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                    Add to cart
-                   </button>
-                   <button class="love-btn">
-                    <i class="fas fa-heart"></i></i>
-                    233
-                   </button>
-                    
+                {% else %}
+                <div class="size-quantity" style="opacity:.6">
+
+                    <div class="size">
+                        <p>Size</p>
+
+                        <div class="select-box">
+                            <select name="size" disabled>
+
+                                <option value="M"> M </option>
+                                <option value="L"> L </option>
+                                <option value="XL"> XL </option>
+                                <option value="XXL"> XXL </option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="quantity">
+                        <p>Quantity</p>
+
+                        <div class="q-input">
+                            <button class="minus" disabled>-</button>
+                            <button class="count" disabled>1</button>
+                            <button class="plus" disabled>+</button>
+                        </div>
+                    </div>
+
+
                 </div>
+                {% endif %}
+
+                {% if product.product_in_stock %}
+                    <div class="btns">
+
+                       <button class="add-to-cart-btn" onclick="add_to_cart( {{product.id}}, `{{request.user}}`,  get_size_quantity(true))">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                            Add to cart
+                       </button>
+                       <button class="love-btn" onclick="add_to_wishlist({{product.id}}, '{{request.user}}')">
+                            <i class="fas fa-heart"></i>
+                            233
+                       </button>
+
+                    </div>
+                {% else %}
+                    <div class="btns">
+
+                       <button disabled>Out of stock</button>
+
+                    </div>
+                {% endif %}
                 <div class="line"></div>
                 <p class="more-details">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta corporis laboriosam itaque incidunt veniam in.
+                    {{product.product_more_information}}
                 </p>
 
                 <div class="color-brand-type-details">
@@ -312,7 +206,7 @@
                     
                     <div class="sub-details">
                         <p class="d-fadeout">Color Type</p>
-                        <p>Brown</p>
+                        <p>{{product.color_type}}</p>
                     </div>
                     <div class="sub-details">
                         <p class="d-fadeout">Delivery</p>
@@ -320,21 +214,29 @@
                     </div>
                     <div class="sub-details">
                         <p class="d-fadeout">Brand</p>
-                        <p>Unknown</p>
+                        <p>{{product.brand}}</p>
                     </div>
                     <div class="sub-details">
                         <p class="d-fadeout">Yarn Type</p>
-                        <p>Ringspun Combed CompactYarn Construction: 100% Cotton, Organic</p>
+                        <p>{{product.yarn_type}}</p>
                     </div>
                     <div class="sub-details">
                         <p class="d-fadeout">Yarn Count</p>
-                        <p>26s</p>
+                        <p>{{product.yarn_count}}s</p>
+                    </div>
+
+                    <div class="sub-details">
+                        <p class="d-fadeout">G.S.M</p>
+                        <p>{{product.gsm}}</p>
                     </div>
 
                 </div>
                 <div class="line"></div>
                 <div class="size-chart">
                     <p class="title">Size Chart - In Inches </p>
+
+<!--                    T-shirt-->
+                    {% if product.product_type == 't-shirt' %}
                     <table border="1" cellpadding="5">
                         <tr>
                             <th>Size</th>
@@ -368,6 +270,127 @@
                             <td>9.5</td>
                         </tr>
                     </table>
+
+<!--                    Shirt-->
+                    {% elif product.product_type == 'shirt' %}
+                    <table border="1" cellpadding="5">
+                        <tr>
+                            <th>Size</th>
+                            <th>Collar</th>
+                            <th>Chest</th>
+                            <th>Length</th>
+                        </tr>
+                        <tr>
+                            <td>S</td>
+                            <td>15</td>
+                            <td>39.5</td>
+                            <td>29</td>
+                        </tr>
+
+                        <tr>
+                            <td>M</td>
+                            <td>15.5</td>
+                            <td>42.75</td>
+                            <td>29.5</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>16</td>
+                            <td>45.5</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>16.5</td>
+                            <td>46.75</td>
+                            <td>30.5</td>
+                        </tr>
+                        <tr>
+                            <td>XXL</td>
+                            <td>17</td>
+                            <td>48.75</td>
+                            <td>31.25</td>
+                        </tr>
+                    </table>
+
+<!--                    Trouser Pant-->
+                    {% elif product.product_type == 'pant' %}
+                    <table border="1" cellpadding="5">
+                        <tr>
+                            <th>Size</th>
+                            <th>M</th>
+                            <th>L</th>
+                            <th>XL</th>
+                            <th>XXL</th>
+                        </tr>
+
+                        <tr>
+                            <td>Waist</td>
+                            <td>28'-30'</td>
+                            <td>32'-34'</td>
+                            <td>36'-38'</td>
+                            <td>38'-42'</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Thigh</td>
+                            <td>13.0'</td>
+                            <td>13.4'</td>
+                            <td>13.8'</td>
+                            <td>14.2</td>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td>37'</td>
+                            <td>38'</td>
+                            <td>39'</td>
+                            <td>40'</td>
+                        </tr>
+
+                    </table>
+
+<!--                    Shorts-->
+                    {% elif product.product_type == 'short' %}
+                    <table border="1" cellpadding="5">
+                        <tr>
+                            <th>Size</th>
+                            <th>M</th>
+                            <th>L</th>
+                            <th>XL</th>
+                            <th>XXL</th>
+                        </tr>
+
+                        <tr>
+                            <td>Waist</td>
+                            <td>30-34 inch</td>
+                            <td>32-36 inch</td>
+                            <td>34-38 inch</td>
+                            <td>36-40 inch</td>
+                        </tr>
+                        <tr>
+                            <td>Hip</td>
+                            <td>41 inch</td>
+                            <td>42 inch</td>
+                            <td>43.5 inch</td>
+                            <td>45.5 inch</td>
+                        </tr>
+                        <tr>
+                            <td>Thigh</td>
+                            <td>22.5 inch</td>
+                            <td>23.5 inch</td>
+                            <td>24.5 inch</td>
+                            <td>25.5 inch</td>
+                        </tr>
+
+                        <tr>
+                            <td>Length</td>
+                            <td>18 inch</td>
+                            <td>18.5 inch</td>
+                            <td>19 inch</td>
+                            <td>19.5 inch</td>
+                        </tr>
+
+                    </table>
+                    {% endif %}
                 </div>
 
                
@@ -394,8 +417,8 @@
                             </p>
                         </div>
                         <button class="write-a-review" 
-                        onclick="document.getElementById('w-a-r-p-s').style.display='block';">
-                            Wrtie a review
+                        onclick="write_review(true, '{{request.user}}', {{request.user.id}})">
+                            Write a review
                             <p>+</p>
                         </button>
 
@@ -410,19 +433,22 @@
                                 <i class="fas fa-times" onclick="document.getElementById('w-a-r-p-s').style.display='none';"></i>
                             </div>
                             
-                            <form action="">
+                            <form id="review_form" p_id="{{product.id}}">
+
+                                {% csrf_token %}
+
                                 <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                    <i val="1" class="fa fa-star"></i>
+                                    <i val="2" class="fa fa-star"></i>
+                                    <i val="3"  class="fa fa-star"></i>
+                                    <i val="4" class="fa fa-star"></i>
+                                    <i val="5" class="fa fa-star"></i>
                                 </div>
 
                                 <div class="feedback-input-btn">
-                                    <textarea name="" id="" cols="30" rows="10" placeholder="Enter your feedback"></textarea>
+                                    <textarea name="review_text" id="review_text" cols="30" rows="10" required placeholder="Enter your feedback"></textarea>
 
-                                    <button class="submit-review-and-feedback">
+                                    <button class="submit-review-and-feedback" type="submit">
                                         Submit
                                     </button>
                                 </div>
@@ -431,125 +457,79 @@
 
                     </div>
 
-                    <div class="bottom">
+                    <div class="bottom" id="review_section">
 
-                        <div class="review">
-                            <div class="left">
-                                <img src="../img/person.png" alt="">
-                            </div>
-                            <div class="right">
-                                <p class="name">Jahir Raihan</p>
+                        {% for review in product.review_set.all %}
 
-                                <div class="rates">
-                            
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-
-                                </div>
-
-                                <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officia praesentium officiis hic quidem consequuntur!</small>
-
-                                <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
-
-                                <div class="write-reply" id="write-reply">
-                                    <input type="text" placeholder="Write your reply">
-                                    <button>Submit</button>
-                                </div>
-
-                                <div class="replys-container">
-                                    <p class="title">
-                                        Replys
-                                    </p>
-
-                                    <div class="replys">
-                                        
-                                        <div class="left">
-                                            <img src="../img/person.png" alt="">
-                                        </div>
-                                        <div class="right">
-                                            <p class="name">Jahir Raihan</p>
-
-                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
-                                        </div>
+                            {% if forloop.counter < 3 %}
+                                <div class="review">
+                                    <div class="left">
+                                        {% if review.user.profile_pic %}
+                                            <img src="{{review.user.profile_pic.url}}" alt="{{review.user.name}} picture">
+                                        {% else %}
+                                            <img src="{% static 'img/person.png' %}" alt="Default person picture">
+                                        {% endif %}
                                     </div>
-                                    <div class="replys">
-                                        
-                                        <div class="left">
-                                            <img src="../img/person.png" alt="">
+                                    <div class="right" style="width:100%">
+                                        <p class="name">{{review.user.name}}</p>
+
+                                        <div class="rates">
+                                            {% for i in loop %}
+
+                                                {% if forloop.counter <= review.rating %}
+                                                    <span class="fa fa-star checked"></span>
+                                                {% else %}
+                                                    <span class="fa fa-star" style="opacity:.7"></span>
+                                                {% endif %}
+
+                                            {% endfor %}
+
+
                                         </div>
-                                        <div class="right">
-                                            <p class="name">Jahir Raihan</p>
 
-                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
+                                        <small>{{review.review_text}}</small>
+
+                                        <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
+
+                                        <form class="write-reply" id="write-reply" r_id="{{review.id}}">
+                                            <input type="text" name="replay_text" id="replay_text" placeholder="Write your reply">
+                                            <button>Submit</button>
+                                        </form>
+
+                                        <div class="replys-container">
+                                            <p class="title">
+                                                Replays
+                                            </p>
+
+                                            {% for reply in review.reviewreply_set.all %}
+                                                <div class="replys">
+
+                                                <div class="left">
+
+                                                    {% if reply.user.profile_pic %}
+                                                        <img src="{{reply.user.profile_pic.url}}" alt="{{reply.user.name}} s picture">
+                                                    {% else %}
+                                                        <img src="{% static 'img/person.png' %}">
+                                                    {% endif %}
+
+                                                </div>
+                                                <div class="right">
+                                                    <p class="name">{{reply.user.name}}</p>
+
+                                                    <small>{{reply.replay_text}}</small>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+
                                         </div>
-                                    </div>
-
-                                    
-
-                                </div>
                                 
-                            </div>
-                        </div>
-                        <div class="review">
-                            <div class="left">
-                                <img src="../img/person.png" alt="">
-                            </div>
-                            <div class="right">
-                                <p class="name">Jahir Raihan</p>
-
-                                <div class="rates">
-                            
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-
-                                </div>
-
-                                <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id officia praesentium officiis hic quidem consequuntur!</small>
-
-                                <button class="reply">Reply</button>
-
-                                <div class="replys-container">
-                                    <p class="title">
-                                        Replys
-                                    </p>
-
-                                    <div class="replys">
-                                        
-                                        <div class="left">
-                                            <img src="../img/person.png" alt="">
-                                        </div>
-                                        <div class="right">
-                                            <p class="name">Jahir Raihan</p>
-
-                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
-                                        </div>
                                     </div>
-                                    <div class="replys">
-                                        
-                                        <div class="left">
-                                            <img src="../img/person.png" alt="">
-                                        </div>
-                                        <div class="right">
-                                            <p class="name">Jahir Raihan</p>
-
-                                            <small>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus, nesciunt!</small>
-                                        </div>
-                                    </div>
-
-                                    
-
                                 </div>
-                                
-                            </div>
-                        </div>
+                            {% endif %}
 
-                        <button class="show-all-reviews">Show all</button>
+                        {% endfor %}
+
+                        <button class="show-all-reviews" onclick="show_all_reviews({{product.id}})">Show all</button>
 
                     </div>
 
@@ -560,83 +540,23 @@
                     <div class="more-items-container">
                         <p class="title">Similar products</p>
 
+                        {% for item in similar_products %}
+                            <div class="item">
 
-                        <div class="item">
+                                <div class="left">
+                                    <img src="{{item.product_primary_image.url}}" alt="{{item.product_search_keyword}}">
+                                </div>
+                                <div class="right">
 
-                            <div class="left">
-                                <img src="../img/go-pro.png" alt="">
+                                    <p class="i-title">
+                                        {{item.product_title}}
+                                    </p>
+
+                                    <p class="price">${{item.product_price}}</p>
+
+                                </div>
                             </div>
-                            <div class="right">
-
-                                <p class="i-title">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
-                                </p>
-
-                                <p class="price">$78.00</p>
-
-                            </div>
-                        </div>
-                        <div class="item">
-
-                            <div class="left">
-                                <img src="../img/go-pro.png" alt="">
-                            </div>
-                            <div class="right">
-
-                                <p class="i-title">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
-                                </p>
-
-                                <p class="price">$78.00</p>
-
-                            </div>
-                        </div>
-                        <div class="item">
-
-                            <div class="left">
-                                <img src="../img/go-pro.png" alt="">
-                            </div>
-                            <div class="right">
-
-                                <p class="i-title">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
-                                </p>
-
-                                <p class="price">$78.00</p>
-
-                            </div>
-                        </div>
-                        <div class="item">
-
-                            <div class="left">
-                                <img src="../img/go-pro.png" alt="">
-                            </div>
-                            <div class="right">
-
-                                <p class="i-title">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
-                                </p>
-
-                                <p class="price">$78.00</p>
-
-                            </div>
-                        </div>
-                        <div class="item">
-
-                            <div class="left">
-                                <img src="../img/go-pro.png" alt="">
-                            </div>
-                            <div class="right">
-
-                                <p class="i-title">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, perferendis.
-                                </p>
-
-                                <p class="price">$78.00</p>
-
-                            </div>
-                        </div>
-                        
+                        {% endfor %}
 
                     </div>
 
@@ -651,96 +571,9 @@
 
         <!-- End Reviews and More item list -->
 
-    </div>
+    {% endblock container %}
 
-     <!-- End Base Container -->
 
-     <!-- Footer -->
-
-    <footer>
-        <div class="footer-contents">
-
-        
-            <div class="footer-flex-items">
-
-                <div class="brand-details">
-                    <img src="../img/logo-white.png" alt="Logo" class="logo">
-                    <p>Company name. </p>
-                    <p>c 2018-2021 Templatemount.</p>
-                    <p>All rights reserved.</p>
-                </div>
-
-                <div class="help f-links">
-                    <p class="title">Help</p>
-
-                    <div class="links">
-                        <a href="#">Contact Us</a>
-                        <a href="#">Refunds</a>
-                        <a href="#">Live Chat</a>
-                        <a href="#">Track Info</a>
-                    </div>
-                </div>
-
-                <div class="about f-links">
-                    <p class="title">About</p>
-
-                    <div class="links">
-                        <a href="#">About Us</a>
-                        <a href="#">Services</a>
-                        <a href="#">Policy & Terms</a>
-                        <a href="#">Blog posts</a>
-                    </div>
-                </div>
-
-                <div class="partnership f-links">
-                    <p class="title">Partnership</p>
-
-                    <div class="links">
-                        <a href="#">Login / Register</a>
-                        <a href="#">Settings</a>
-                        <a href="#">My Orders</a>
-                        
-                    </div>
-                </div>
-
-                <div class="newsletter f-links">
-                    <p class="title">Newsletter</p>
-
-                    <p class="txt">Stay in touch with latest updates about our products and offers</p>
-
-                    <div class="newsletter-input">
-                        <input type="text" placeholder="Email">
-                        <button>Join</button>
-                    </div>
-
-                    
-                </div>
-
-            </div>
-
-            
-        </div>
-        <div class="footer-bottom">
-
-            <div class="f-b-contents">
-
-            
-                <div class="payment-methods">
-                    <img src="../img/Payment-methods.png" alt="">
-                </div>
-
-                <div class="links">
-                    <a href="#">Support</a>
-                    <a href="#">Privacy & Cookies</a>
-                    <a href="#">Accessibility</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- End Footer -->
-
-    <script src="/js/view_details.js"></script>
-    <script src="/js/index.js"></script>
-</body>
-</html>
+    {% block js_bottom %}
+        <script src="{% static 'js/view_details.js' %}"></script>
+    {% endblock js_bottom %}

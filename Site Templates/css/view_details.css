@@ -12,6 +12,22 @@
   align-items: center;
   margin-bottom: 1.4em;
 }
+.details-top .img .extra-msg {
+  background: gray;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.3em 1em;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.details-top .img .offer {
+  background: rgba(255, 102, 0, 0.821);
+  color: white;
+}
+.details-top .img .out {
+  background: gray;
+  color: white;
+}
 .details-top .img .details-main-img {
   height: 80%;
   margin: auto;

@@ -30,10 +30,11 @@ function showImage(imageId) {
 // ---- ---- Const ---- ---- //
 const stars = document.querySelectorAll('.stars i');
 const starsNone = document.querySelector('.rating-box');
-
+let current_stars = 1;
 // ---- ---- Stars ---- ---- //
 stars.forEach((star, index1) => {
   star.addEventListener('click', () => {
+    current_stars = star.getAttribute('val')
     stars.forEach((star, index2) => {
       // ---- ---- Active Star ---- ---- //
       index1 >= index2
@@ -62,3 +63,77 @@ q_btns.forEach( (btn) => {
     dc.getElementById('q-count').innerHTML = quantity;
   })
 })
+
+
+// Reviews and rating section
+
+function write_review(value, user, id){
+    if ((user !== 'AnonymousUser') && (!users_reviewed.includes(id))){
+        dc.getElementById('w-a-r-p-s').style.display='block'
+    }
+    else{
+        // Do something here man
+    }
+}
+
+
+// Reviews
+
+$(document).on('submit', '#review_form', function(e){
+    e.preventDefault();
+    console.log('whats the problem')
+    let req = $.ajax({
+        type:'post',
+        url: '/review/'+$(this).attr('p_id')+'/',
+        data: {
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            review_text: $('#review_text').val(),
+            rating: current_stars,
+
+        }
+    });
+    req.done(function(response){
+        dc.getElementById('w-a-r-p-s').style.display='none'
+        $('#review_section').html(response.template)
+        var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+        token.value = response['token']
+    })
+})
+
+// Replays
+
+$(document).on('submit', '#write-reply', function(e){
+    e.preventDefault();
+
+    let req = $.ajax({
+        type:'post',
+        url: '/replay/'+$(this).attr('r_id')+'/',
+        data: {
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            replay_text: $('#replay_text').val()
+
+        }
+    });
+    req.done(function(response){
+        dc.getElementById('write-reply').style.display='none'
+        $('#review_section').html(response.template)
+        var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+        token.value = response['token']
+    })
+})
+
+
+// Show all reviews
+
+function show_all_reviews(id){
+    let req = $.ajax({
+        type:'get',
+        url:'/get-all-review/'+id+'/',
+        data:{
+        }
+    })
+
+    req.done(function(response){
+        $('#review_section').html(response)
+    })
+}

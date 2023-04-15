@@ -364,16 +364,18 @@
                         {% for product in products %}
                         <li>
 
-                            <div class="product-card">
+                            <div class="product-card" id="product-{{product.id}}">
 
                                 <div class="product-card-and-view-mask">
 
+                                    <a href="{% url 'view_details' product.id %}">
                                         <div class="view-mask">
                                             <p>View Details</p>
                                         </div>
+                                    </a>
 
                                     <div class="p-c-img">
-                                        <img draggable="false" src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}">
+                                        <img draggable="false" id="p_img-{{product.id}}"  src="{{product.product_primary_image.url}}" alt="{{product.product_search_keyword}}">
                                     </div>
 
                                 </div>
@@ -381,12 +383,12 @@
 
 
                                 <div class="line"></div>
-                                <p class="price">${{product.product_price}}</p>
-                                <p class="title">{{product.product_title}}</p>
+                                <p class="price" >$<span id="p_price-{{product.id}}">{{product.product_price}}</span></p>
+                                <p class="title" id="p_title-{{product.id}}">{{product.product_title}}</p>
 
                                 <div class="p-c-btns">
-                                    <button class="add-to-cart">Add to cart</button>
-                                    <button class="add-to-wishlist">
+                                    <button class="add-to-cart" onclick="add_to_cart( {{product.id}}, `{{request.user}}`, get_size_quantity(false) )">Add to cart</button>
+                                    <button class="add-to-wishlist" onclick="add_to_wishlist({{product.id}}, '{{request.user}}')">
                                         <i class="far fa-heart"></i>
                                     </button>
                                 </div>

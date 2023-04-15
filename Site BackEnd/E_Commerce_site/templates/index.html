@@ -11,7 +11,7 @@
     <title> {% block title %} Home - Ecommerce {% endblock title %}</title>
 
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-   
+
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     {% block cssfiles %}
     {% endblock cssfiles %}
@@ -87,7 +87,7 @@
                 </div>
                 <div class="only-navicons">
                     <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="cart-item-count d-none">1</span>
+                    <span class="cart-item-count" id="cart-item-count1">0</span>
                 </div>
 
                 <button class="nav-btns wishlist-btn">
@@ -95,7 +95,7 @@
                 </button>
                 <button class="nav-btns my-cart-btn">
                     <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
-                    <span class="cart-item-count d-none">1</span>
+                    <span class="cart-item-count" id="cart-item-count">0</span>
                 </button>
 
                 {% endblock nav_buttons %}

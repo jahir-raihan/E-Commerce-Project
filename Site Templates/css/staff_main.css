@@ -118,6 +118,10 @@ body {
   padding: 0 2.5em !important;
 }
 
+.added-items .item {
+  justify-content: space-between;
+}
+
 .item {
   border-top: var(--border);
   display: flex;

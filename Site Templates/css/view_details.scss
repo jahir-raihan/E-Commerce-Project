@@ -18,6 +18,25 @@
         align-items: center;
         margin-bottom: 1.4em;
 
+        .extra-msg{
+            background:gray;
+            width:fit-content;
+            padding:.3em 1em;
+            border-radius: 4px;
+            font-size:13px;
+            
+
+            
+        }
+        .offer{
+            background:rgba(255, 102, 0, 0.821);
+            color:white;
+        }
+        .out{
+            background:gray;
+            color:white;
+        }
+
         .details-main-img{
            // width:80%;
             height:80%;

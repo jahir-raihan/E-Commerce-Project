@@ -107,3 +107,138 @@ function toggle_nav_menu(){
    colorIndex = (colorIndex + 1) % bgColors.length;
  }, 5000);
 // End change color hero
+
+
+
+// Set current cart items count
+
+function set_cart_item_count(){
+    var keys = Object.keys(localStorage)
+    console.log(keys)
+    if (keys.includes('cart_items')){
+        var item_count = JSON.parse(localStorage.cart_items).length
+        console.log(item_count)
+        document.getElementById('cart-item-count').innerHTML = item_count
+        document.getElementById('cart-item-count1').innerHTML = item_count
+
+    }
+}
+set_cart_item_count()
+
+// Add to cart and add to wishlist feature specification
+
+let ls = localStorage
+var keys = Object.keys(ls)
+
+
+// Add to cart
+
+function get_size_quantity(value){
+
+    if (value){
+        var size = $('#p_size').val()
+        var quantity = $('#q-count').text()
+        return {'size': size, 'quantity': quantity}
+    }
+    else{
+        return {'size': 'M', 'quantity': 1}
+    }
+
+}
+
+
+function add_to_cart(product_id, user, s_q){
+
+    var p_id = product_id
+
+
+    if (keys.includes('cart')){
+
+        var cart_items = JSON.parse(ls.cart_items)
+
+        if ( !cart_items.includes(p_id)){
+            var items = JSON.parse(ls.cart)
+
+            var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
+                        'p_img': $('#p_img-'+p_id).attr('src'), 'size': s_q.size, 'quantity': s_q.quantity}
+            items.push(data)
+
+            ls.setItem('cart', JSON.stringify(items))
+
+            let cart_items = JSON.parse(ls.cart_items)
+            cart_items.push(p_id)
+            ls.setItem('cart_items', JSON.stringify(cart_items))
+            set_cart_item_count()
+        }
+
+    }
+    else{
+
+
+        var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
+                    'p_img': $('#p_img-'+p_id).attr('src'),  'size': s_q.size, 'quantity': s_q.quantity}
+
+        ls.setItem('cart', JSON.stringify([data]))
+        ls.setItem('cart_items', JSON.stringify([p_id]))
+        keys = Object.keys(ls)
+        set_cart_item_count()
+    }
+
+
+
+}
+
+// Add to wishlist
+
+function add_to_wishlist(product_id, user){
+    var p_id = product_id
+
+    // If user is not authenticated
+
+    if (user  === 'AnonymousUser'){
+
+        if (keys.includes('wishlist')){
+
+            var wishlist_items = JSON.parse(ls.wishlist_items)
+
+            if ( !wishlist_items.includes(p_id)){
+                var items = JSON.parse(ls.wishlist)
+                console.log(items)
+                var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
+                            'p_img': $('#p_img-'+p_id).attr('src')}
+                items.push(data)
+                console.log(items)
+                ls.setItem('wishlist', JSON.stringify(items))
+
+
+                let wishlist_items = JSON.parse(ls.wishlist_items)
+                wishlist_items.push(p_id)
+                ls.setItem('wishlist_items', JSON.stringify(wishlist_items))
+            }
+        }
+        else{
+
+
+            var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
+                        'p_img': $('#p_img-'+p_id).attr('src')}
+
+            ls.setItem('wishlist', JSON.stringify([data]))
+            ls.setItem('wishlist_items', JSON.stringify([p_id]))
+            keys = Object.keys(ls)
+        }
+    }
+
+    // If user is authenticated
+
+    else{
+        console.log('haha')
+    }
+}
+
+function remove_from_cart(product_id){
+    console.log(product_id)
+}
+
+function remove_from_wishlist(product_id){
+    console.log(product_id)
+}

@@ -47,6 +47,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='Email Address', max_length=50, unique=True, null=True, blank=True)
     phone = models.CharField(verbose_name='Phone Number', max_length=11, unique=True)
     ip = models.GenericIPAddressField(verbose_name='Ip address', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
 
     # permissions
 

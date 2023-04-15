@@ -30,6 +30,7 @@ class Product(models.Model):
     product_tags = models.CharField(max_length=300)
     product_added_by = models.ForeignKey(User, on_delete=models.DO_NOTHING, default=1)
     product_last_update = models.DateTimeField(auto_now_add=True)
+    product_type = models.CharField(max_length=40, null=True, blank=True)
     # Product images
 
     product_primary_image = models.ImageField(upload_to='product_primary_images/')
@@ -71,4 +72,17 @@ class WishList(models.Model):
     wisher_person = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
 
 
+# Reviews and replays
 
+class Review(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+    review_text = models.CharField(max_length=500)
+    rating = models.IntegerField(default=1)
+
+
+class ReviewReply(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    replay_text = models.CharField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
