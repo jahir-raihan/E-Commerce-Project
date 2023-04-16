@@ -368,6 +368,16 @@
 
                                 <div class="product-card-and-view-mask">
 
+                                    {% if not product.product_in_stock %}
+                                        <div class="extra-msg out">
+                                            <p>Out of stock</p>
+                                        </div>
+                                    {% elif product.on_discount %}
+                                        <div class="extra-msg offer">
+                                            <p>{{product.discount_reason.discount_reason |upper}} <i>{{product.discount_percentage}}% OFF</i></p>
+                                        </div>
+                                    {% endif %}
+
                                     <a href="{% url 'view_details' product.id %}">
                                         <div class="view-mask">
                                             <p>View Details</p>
@@ -383,11 +393,27 @@
 
 
                                 <div class="line"></div>
-                                <p class="price" >$<span id="p_price-{{product.id}}">{{product.product_price}}</span></p>
+
+
+                                {% if product.on_discount %}
+                                     <div class="price">
+                                        <p class="n-price">$99.99</p>
+                                        <p class="offer-price" id="p_price-{{product.id}}">$88.00</p>
+                                     </div>
+                                {% else %}
+                                     <div class="price">
+                                        <p id="p_price-{{product.id}}">$99.99</p>
+
+                                     </div>
+                                {% endif %}
                                 <p class="title" id="p_title-{{product.id}}">{{product.product_title}}</p>
 
                                 <div class="p-c-btns">
-                                    <button class="add-to-cart" onclick="add_to_cart( {{product.id}}, `{{request.user}}`, get_size_quantity(false) )">Add to cart</button>
+                                    {% if product.product_in_stock %}
+                                        <button class="add-to-cart" onclick="add_to_cart( {{product.id}}, `{{request.user}}`, get_size_quantity(false) )">Add to cart</button>
+                                    {% else %}
+                                         <button class="add-to-cart" style="background:gray; opacity:.6; cursor:not-allowed;" disabled>Out of stock</button>
+                                    {% endif %}
                                     <button class="add-to-wishlist" onclick="add_to_wishlist({{product.id}}, '{{request.user}}')">
                                         <i class="far fa-heart"></i>
                                     </button>

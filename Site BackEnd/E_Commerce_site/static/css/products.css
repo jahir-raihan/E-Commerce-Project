@@ -524,7 +524,19 @@
   font-weight: 500;
   width: 90%;
   margin: 1em auto 0 auto;
+  display: flex;
 }
+.product-list .products-grid .product-card .price p {
+  margin-right: 0.5em;
+}
+.product-list .products-grid .product-card .price .n-price {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.product-list .products-grid .product-card .price .offer-price {
+  color: rgb(255, 111, 0);
+}
+
 .product-list .products-grid .product-card .title {
   font-size: 14px;
   width: 90%;
@@ -562,6 +574,26 @@
 .product-list .products-grid .product-card .product-card-and-view-mask {
   position: relative;
   width: 100%;
+}
+.product-list .products-grid .product-card .product-card-and-view-mask .extra-msg {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: gray;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.3em 1em;
+  border-radius: 4px;
+  font-size: 10px;
+}
+.product-list .products-grid .product-card .product-card-and-view-mask .offer {
+  background: rgba(255, 102, 0, 0.821);
+  color: white;
+}
+.product-list .products-grid .product-card .product-card-and-view-mask .out {
+  background: gray;
+  color: white;
 }
 .product-list .products-grid .product-card .product-card-and-view-mask .view-mask {
   position: absolute;
