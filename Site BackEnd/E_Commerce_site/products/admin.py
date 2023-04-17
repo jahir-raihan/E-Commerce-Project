@@ -8,4 +8,5 @@ admin.site.register(DiscountReason)
 admin.site.register(ProductImages)
 admin.site.register(Review)
 admin.site.register(ReviewReply)
+
 # Register your models here.

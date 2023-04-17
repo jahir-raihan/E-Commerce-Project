@@ -127,3 +127,28 @@ def show_all_reviews(request, pk):
     }
     return render(request, 'review_template.html', context)
 
+
+# Cart and wishlist
+
+def cart(request):
+
+    return render(request, 'cart.html')
+
+
+def wishlist(request):
+    return render(request, 'wishlist.html')
+
+
+def check_product_availability(request, pk):
+    product = Product.objects.get(pk=pk)
+    if product.product_in_stock:
+        return True
+    return False
+
+
+# Checkout
+
+def checkout(request):
+    if request.method == 'POST':
+        pass
+    return render(request, 'order_info.html')

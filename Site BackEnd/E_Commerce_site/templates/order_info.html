@@ -1,90 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shipping Details</title>
-    <link rel="stylesheet" href="../css/index.css">
+{% extends 'index.html' %}
+{% load static %}
+
+    {% block title %} Checkout {% endblock title %}
+
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/order_info.css' %}">
+    {% endblock cssfiles %}
     
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/order_info.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
 
-</head>
-<body>
 
-    <!-- Navigation Bar -->
+    {% block hclass_names %} class="order-header" {% endblock hclass_names %}>
+    {% block nclass_names %} class="nav order-nav" {% endblock nclass_names %}>
 
-    <header class="order-header">
-        <nav class="nav order-nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="../img/menu.png" alt="">
-                </div>
+    {% block nav_search %}
+    {% endblock nav_search %}
 
-                <img src="../img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
-          
+    {% block nav_buttons %}
+        <button class="nav-btns">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+        </button>
 
-            <div class="nav-buttons">
-
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
-
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-
-            </div>
-        </nav>
-
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-                <a href="#">
-                    <div >
-                        <p>Shop</p>
-                        <small>Ready made products</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p>Hot offers</p>
-                        <small>Get offer deals</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p>New arrivals</p>
-                        <small>See our new products</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
+        <div class="only-navicons">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
         </div>
-    </header>
+    {% endblock nav_buttons %}
 
+    {% block nav_2 %}
 
-    <!-- End Navigation Bar -->
+    {% endblock nav_2 %}
 
-    <!-- Base Container -->
-
-    <div class="container" id="container">
-
-        <!-- Page Navigator -->
-
+    {% block container %}
         <div class="navigator-products">
             <div class="n-p-contents">
-                <a href="#">Home > </a>
-                <a href="#">Cart ></a>
-                <a href="#" style="color:gray">Order Info ></a>
+                <a href="{% url 'home' %}}">Home > </a>
+                <a href="{% url 'cart' %}">Cart ></a>
+                <a href="{% url 'checkout' %}" style="color:gray">Order Info ></a>
             </div>
             
         </div>
@@ -99,211 +50,232 @@
             <div class="address-info-and-sign-in-option">
 
 
+                {% if not request.user.is_authenticated %}
+                    <div class="sign-in-msg">
 
-                <div class="sign-in-msg">
+                        <div class="left">
+                            <p class="title">Have an Account?</p>
+                            <small>By Creating account you will get more benefits</small>
+                        </div>
 
-                    <div class="left">
-                        <p class="title">Have an Account?</p>
-                        <small>By Creating account you will get more benefits</small>
+                        <div class="right">
+                            <button class="sign-in">Sign in</button>
+                            <button class="create-account">Create account</button>
+                        </div>
                     </div>
+                {% endif %}
+                <form id="shipping-and-address-form">
+                    <div class="shipping-and-address">
 
-                    <div class="right">
-                        <button class="sign-in">Sign in</button>
-                        <button class="create-account">Create account</button>
-                    </div>
-                </div>
 
-                <div class="shipping-and-address">
+                        <div class="address-info">
 
-                    
-                    <div class="address-info">
+                            <div class="guest-checkout">
 
-                        <p class="title">Guest checkout</p>
+<!--                    If user is logged in then show the checkbox else hide it -->
 
-                        <div class="address-flex">
+                                {% if request.user.is_authenticated %}
+                                    <input type="checkbox" name="guest_checkout" id="guest_checkout" onclick="toggle_g_d()" value="false">
+                                    <p class="title">Guest checkout</p>
+                                {% else %}
+                                    <p class="title" style="margin-left:0;">Guest checkout</p>
+                                {% endif %}
 
-                            <div class="left">
-                                <p>First name</p>
-                                <input type="text" placeholder="Type here . . .">
                             </div>
 
-                            <div class="right">
-                                <p>Last Name</p>
+                            {% if request.user.is_authenticated %}
+                            <div class="address-flex a-f-tp">
 
-                                <input type="text" placeholder="Type here">
-                            </div>
+                                <div class="left">
+                                    <p>First name</p>
 
-                        </div>
-
-                        <div class="address-flex">
-                            <div class="left">
-                                <p>Phone</p>
-                                <input type="number" placeholder="+880172393473">
-                            </div>
-                            <div class="right">
-                                <p>Email</p>
-
-                                <input type="email" placeholder="eample@email.com">
-                            </div>
-                        </div>
-
-                        <div class="news-checkup">
-
-                            <input type="checkbox">
-                            <span>Keep me up to date on news</span>
-
-                        </div>
-
-                        <div class="line"></div>
-
-                    
-
-
-                    </div>
-
-                    <div class="shipping-info">
-
-                        <p class="title">Address & Payment Type</p>
-
-                        <div class="delivery-choice">
-
-                            <div class="choice-card choice-selected cod" id="cod">
-                                
-                                <img class="cod" src="../img/cash-on-delivery.png" alt="">
-                            </div>
-
-                            <div class="choice-card bkash" id="bkash">
-                                <img src="../img/1656227518bkash-logo-png.png" alt="">
-                            </div>
-
-                            <div class="choice-card sslcom" id="sslcom">
-                                <img src="../img/sslcom-logo.png" alt="">
-                            </div>
-
-                        </div>
-
-                        <div class="saved-address-container">
-
-                            
-                            <p class="title">
-                                Saved Addresses
-                            </p>
-                            <div class="saved-addresses">
-
-                                <div class="address" id="address-1">
-                                    <div class="address-info address-selected">
-        
-                                        <div class="icon-and-info">
-                                            <div class="img">
-                                                <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
-                                            </div>
-        
-                                            <p class="address-details">
-                                                Tashkent city, Street name, Building 123, House 321 <span>(Primary address)</span> 
-                                            </p>
-                                        </div>
-                                        
-        
-                                        <div class="three-dots">
-                                            <i class="fa fa-ellipsis-v t-dots" ></i>
-                                        </div>
-                                    </div>
-                                    
+                                    <input type="text" disabled placeholder="Type here . . .">
                                 </div>
 
-                                <div class="address" id="address-2">
-                                    <div class="address-info ">
-        
-                                        <div class="icon-and-info">
-                                            <div class="img">
-                                                <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
-                                            </div>
-        
-                                            <p class="address-details">
-                                                Tashkent city, Street name, Building 123, House 321 <span>(Primary address)</span> 
-                                            </p>
-                                        </div>
-                                        
-        
-                                        <div class="three-dots">
-                                            <i class="fa fa-ellipsis-v t-dots" ></i>
-                                        </div>
-                                    </div>
-                                    
+                                <div class="right">
+                                    <p>Last Name</p>
+
+                                    <input type="text" disabled placeholder="Type here">
                                 </div>
 
                             </div>
-                        </div>
-                        
 
-                        <div class="address-flex">
+                            <div class="address-flex a-f-tp">
+                                <div class="left">
+                                    <p>Phone</p>
+                                    <input type="number" disabled placeholder="+880172393473">
+                                </div>
+                                <div class="right">
+                                    <p>Email</p>
+
+                                    <input type="email" disabled placeholder="eample@email.com">
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="address-flex">
+
+                                <div class="left">
+                                    <p>First name</p>
+
+                                    <input type="text" required placeholder="Type here . . .">
+                                </div>
+
+                                <div class="right">
+                                    <p>Last Name</p>
+
+                                    <input type="text" required placeholder="Type here">
+                                </div>
+
+                            </div>
+
+                            <div class="address-flex">
+                                <div class="left">
+                                    <p>Phone</p>
+                                    <input type="number" readonly placeholder="+880172393473">
+                                </div>
+                                <div class="right">
+                                    <p>Email</p>
+
+                                    <input type="email" required placeholder="eample@email.com">
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div class="line"></div>
+
+                        </div>
+
+                        <div class="shipping-info">
+
+                            <p class="title">Address & Payment Type</p>
+
+                            <div class="delivery-choice">
+
+                                <div class="choice-card choice-selected cod" id="cod">
+
+                                    <img class="cod" src="{% static 'img/cash-on-delivery.png' %}" alt="">
+                                </div>
+
+                                <div class="choice-card bkash" id="bkash">
+                                    <img src="{% static 'img/1656227518bkash-logo-png.png' %}" alt="">
+                                </div>
+
+                                <div class="choice-card sslcom" id="sslcom">
+                                    <img src="{% static 'img/sslcom-logo.png' %}" alt="">
+                                </div>
+
+                            </div>
+
+                            {% if not request.user.is_authenticated %}
+
+                            <div class="saved-address-container" id="saved-addresses-container-local">
+
+
+                                <p class="title">
+                                    Saved Addresses <span style="font-size:12px;">(Local memory)</span>
+
+                                </p>
+                                <div class="saved-addresses" id="saved-addresses">
+
+                                </div>
+                            </div>
+
+                            {% elif  request.user.address_set.all %}
+                                <div class="saved-address-container" id="saved-addresses-container">
+
+                                    <p class="title">Saved Addresses</p>
+                                    <div class="saved-addresses">
+                                        {% for address in request.user.address_set.all %}
+                                            <div class="address" id="{{address.id}}">
+                                                <div class="address-info">
+
+                                                    <div class="icon-and-info">
+                                                        <div class="img">
+                                                            <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i>
+                                                        </div>
+
+                                                        <p class="address-details">
+                                                            {{address.city|title}}, {{address.address|title}} , Zip: {{address.zipcode}}
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="three-dots">
+                                                        <i class="fa fa-ellipsis-v t-dots" ></i>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+
+                            <div class="address-flex a-f-btm">
 
                             <div class="left">
 
                                 <p>Address(*)</p>
-                                <input type="text" placeholder="Type here">
+                                <input type="text" required placeholder="Type here">
 
                             </div>
 
                             <div class="right">
 
                                 <p>Post / ZIP code</p>
-                                <input type="text" placeholder="Type here">
+                                <input type="text" required placeholder="Type here">
 
                             </div>
 
                         </div>
 
-                        <div class="address-flex">
+                            <div class="address-flex a-f-btm">
 
-                            <div class="left area-city">
+                                <div class="left">
 
-                                <div class="a-c-left">
-                                    <p>Area</p>
-                                    <input type="text" placeholder="Districs, Block">
-                                </div>
-
-                                <div class="a-c-right">
                                     <p>City</p>
 
-                                    <input type="text" placeholder="City, Area">
+                                    <input type="text" required placeholder="City, Area">
                                 </div>
+
+                                <div class="right">
+                                    <p>Country</p>
+                                    <select name="" id="">
+                                        <option value="">Bangladesh</option>
+                                    </select>
+                                </div>
+
                             </div>
 
-                            <div class="right">
-                                <p>Country</p>
-                                <select name="" id="">
-                                    <option value="">Bangladesh</option>
-                                </select>
+                            <div class="note-to-seller">
+                                <p class="title">Note to seller</p>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Type Anything"></textarea>
                             </div>
 
                         </div>
 
-                        <div class="note-to-seller">
-                            <p class="title">Note to seller</p>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Type Anything"></textarea>
+                        <div class="save-checkup">
+                            <input type="checkbox">
+                            <span>Save this address</span>
+                        </div>
+
+                        <div class="btns">
+                            <button class="continue" type="submit">
+                                Confirm
+                            </button>
+
+                            <a href="{% url 'products' %}" style="text-decoration:none">
+                                <button class="return-to-shop">Return to shop</button>
+                            </a>
                         </div>
 
                     </div>
-
-                    <div class="save-checkup">
-                        <input type="checkbox">
-                        <span>Save this address</span>
-                    </div>
-
-                    <div class="btns">
-                        <button class="continue">
-                            Confirm
-                        </button>
-
-                        <button class="return-to-shop">Return to shop</button>
-                    </div>
-
-                </div>
-
+                </form>
             </div>
 
-            <!-- End Recevier and Address inputs -->
+            <!-- End Receiver and Address inputs -->
 
             <!-- Cart Summary -->
 
@@ -317,31 +289,31 @@
 
                     <div class="price1">
                         <p>Unit Price : </p>
-                        <p>$1403.45</p>
+                        <p>$ <span id="unit-price">0.00</span></p>
                     </div>
 
                     <div class="discount">
                         <p>Discount : </p>
                         <p class="discount-amount">
-                            -$60.00
+                            -$<span id="discount-amount">0.00</span>
                         </p>
                     </div>
 
                     <div class="tax">
                         <p>Tax : </p>
-                        <p class="tax-amount">+$14.00</p>
+                        <p class="tax-amount">+$ <span id="tax-amount">0.00</span></p>
                     </div>
                     <div class="shipping-cost">
                         <p>Shipping Cost : </p>
-                        <p class="shipping-amount">+$14.00</p>
+                        <p class="shipping-amount">+$<span id="shipping-amount">0.00</span></p>
                     </div>
 
                     <div class="line"></div>
 
-                    <div class="total">
+                   <div class="total">
                         <p>Total : </p>
                         <p class="total-amount">
-                            $1357.00
+                            $<span id="items_total_amount">0.00</span>
                         </p>
                     </div>
 
@@ -349,94 +321,9 @@
 
                 </div>
 
-                <div class="items-in-cart">
+                <div class="items-in-cart" id="items-in-cart">
 
                     <p class="title">Items in cart</p>
-
-                    <div class="item">
-                    
-                        <div class="img">
-                            <img src="../img/image 17.png" alt="">
-                            <div class="cnt">
-                                <p>1</p>
-                            </div>
-                        </div>
-
-                        <div class="info">
-                            <p class="title">Mens T-shirt Cotton Base</p>
-                            <small>Total : $12.00</small>
-                        </div>
-
-                    
-                    </div>
-
-                    <div class="item">
-                    
-                        <div class="img">
-                            <img src="../img/image 17.png" alt="">
-                            <div class="cnt">
-                                <p>1</p>
-                            </div>
-                        </div>
-
-                        <div class="info">
-                            <p class="title">Mens T-shirt Cotton Base</p>
-                            <small>Total : $12.00</small>
-                        </div>
-
-                    
-                    </div>
-
-                    <div class="item">
-                    
-                        <div class="img">
-                            <img src="../img/image 17.png" alt="">
-                            <div class="cnt">
-                                <p>1</p>
-                            </div>
-                        </div>
-
-                        <div class="info">
-                            <p class="title">Mens T-shirt Cotton Base</p>
-                            <small>Total : $12.00</small>
-                        </div>
-
-                    
-                    </div>
-
-                    <div class="item">
-                    
-                        <div class="img">
-                            <img src="../img/image 17.png" alt="">
-                            <div class="cnt">
-                                <p>1</p>
-                            </div>
-                        </div>
-
-                        <div class="info">
-                            <p class="title">Mens T-shirt Cotton Base</p>
-                            <small>Total : $12.00</small>
-                        </div>
-
-                    
-                    </div>
-                    
-                    <div class="item">
-                    
-                        <div class="img">
-                            <img src="../img/image 17.png" alt="">
-                            <div class="cnt">
-                                <p>1</p>
-                            </div>
-                        </div>
-
-                        <div class="info">
-                            <p class="title">Mens T-shirt Cotton Base</p>
-                            <small>Total : $12.00</small>
-                        </div>
-
-                    
-                    </div>
 
                 </div>
 
@@ -446,96 +333,10 @@
 
         </div>
 
-    </div>
+   {% endblock container %}
 
+    {% block js_bottom %}
+        <script src="{% static 'js/order_info.js' %}"></script>
 
-    <!-- Footer -->
+    {% endblock js_bottom %}
 
-
-    <footer>
-        <div class="footer-contents">
-
-        
-            <div class="footer-flex-items">
-
-                <div class="brand-details">
-                    <img src="../img/logo-white.png" alt="Logo" class="logo">
-                    <p>Company name. </p>
-                    <p>c 2018-2021 Templatemount.</p>
-                    <p>All rights reserved.</p>
-                </div>
-
-                <div class="help f-links">
-                    <p class="title">Help</p>
-
-                    <div class="links">
-                        <a href="#">Contact Us</a>
-                        <a href="#">Refunds</a>
-                        <a href="#">Live Chat</a>
-                        <a href="#">Track Info</a>
-                    </div>
-                </div>
-
-                <div class="about f-links">
-                    <p class="title">About</p>
-
-                    <div class="links">
-                        <a href="#">About Us</a>
-                        <a href="#">Services</a>
-                        <a href="#">Policy & Terms</a>
-                        <a href="#">Blog posts</a>
-                    </div>
-                </div>
-
-                <div class="partnership f-links">
-                    <p class="title">Partnership</p>
-
-                    <div class="links">
-                        <a href="#">Login / Register</a>
-                        <a href="#">Settings</a>
-                        <a href="#">My Orders</a>
-                        
-                    </div>
-                </div>
-
-                <div class="newsletter f-links">
-                    <p class="title">Newsletter</p>
-
-                    <p class="txt">Stay in touch with latest updates about our products and offers</p>
-
-                    <div class="newsletter-input">
-                        <input type="text" placeholder="Email">
-                        <button>Join</button>
-                    </div>
-
-                    
-                </div>
-
-            </div>
-
-            
-        </div>
-        <div class="footer-bottom">
-
-            <div class="f-b-contents">
-
-            
-                <div class="payment-methods">
-                    <img src="../img/Payment-methods.png" alt="">
-                </div>
-
-                <div class="links">
-                    <a href="#">Support</a>
-                    <a href="#">Privacy & Cookies</a>
-                    <a href="#">Accessibility</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- End Footer -->
-
-    <script src="/js/index.js"></script>
-    <script src="/js/order_info.js"></script>
-</body>
-</html>

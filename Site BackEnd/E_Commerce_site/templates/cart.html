@@ -1,184 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/cart.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
-</head>
-<body>
+{% extends 'index.html' %}
+{% load static %}
 
-    <header>
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="../img/menu.png" alt="">
-                </div>
+    {% block title %} My Cart {% endblock title %}
 
-                <img src="../img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
-            <div>
-                <div class="nav-search search-container-global">
-                    <input type="text" name="search" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
-                    <button class="nav-search-button">
-                       
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                    <button class="nav-search-button snd-nav-srch-btn d-none"
-                    onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
-                       
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
 
-                    <div class="search-result-suggestion d-none" id="s-r-s">
-                        <ul id="s-list">
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">poke man</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Mens T-shirts</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                            <a href="#">Hello how are you</a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    {% block cssfiles %}
 
-            <div class="nav-buttons">
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
+    {% endblock cssfiles %}
 
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-                <div class="only-navicons ">
-                    <i class="fas fa-heart" aria-hidden="true"></i>
-                </div>
-                <div class="only-navicons">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="cart-item-count d-none">1</span>
-                </div>
 
-                <button class="nav-btns wishlist-btn">
-                    <i class="fas fa-heart"></i></i> Wishlist
-                </button>
-                <button class="nav-btns my-cart-btn">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
-                    <span class="cart-item-count d-none">1</span>
-                </button>
+    {% block nav_2 %}{% endblock nav_2 %}
 
-            </div>
-        </nav>
-
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-                <a href="#">
-                    <div >
-                        <p>Shop</p>
-                        <small>Ready made products</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p>Hot offers</p>
-                        <small>Get offer deals</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p>New arrivals</p>
-                        <small>See our new products</small>
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
-        </div>
-    </header>
-
-    <div class="nav-search-hidden d-none" id="n-srch-hidden">
-        <input type="text" class="nav-search-input" placeholder="search by anything">
-    </div>
-
-    <div class="container">
+    {% block container %}
 
         <div class="navigator-products">
             <div class="n-p-contents">
-                <a href="#">Home > </a>
-                <a href="#">Account ></a>
-                <a href="#" style="color:gray"> Cart </a>
+                <a href="{% url 'home' %}">Home > </a>
+                <a href="{% url 'cart' %}" style="color:gray"> Cart </a>
             </div>
             
         </div>
@@ -187,145 +28,14 @@
 
            
                 
-            <div class="cart-items-container">
+            <div class="cart-items-container" id="cart-items-container">
 
-                <div class="item">
+                <div id="item-container-item">
 
-                    <div class="img-title-details">
-
-                        <div class="left">
-                            <img src="../img/image 17.png" alt="">
-                        </div>
-
-                        <div class="right">
-                            <p class="title">T-shirts with multiple colors, for men and lady</p>
-                            <small>L, Balck Brown</small>
-                        </div>
-
-                    </div>
-                    
-                    <div class="q-p-container">
-                        <div class="quantity-price">
-
-                            <div class="quantity">
-
-                                <select name="cart-quantity" id="">
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                </select>
-
-                            </div>
-
-                            <div class="price">
-
-                                <p class="price">$99.50</p>
-                                <p class="price-per-pc">20$/ per item</p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="like-and-remove-btn">
-
-                        
-
-                            <button class="remove">
-                                Remove
-                            </button>
-
-                        </div>
-                    </div>
-                    
 
                 </div>
 
-                <div class="line"></div>
 
-                <div class="item">
-
-                    <div class="img-title-details">
-
-                        <div class="left">
-                            <img src="../img/test_image.jpeg" alt="">
-                        </div>
-
-                        <div class="right">
-                            <p class="title">T-shirts with multiple colors, for men and lady</p>
-                            <small>L, Balck Brown</small>
-                        </div>
-
-                    </div>
-                    
-                    <div class="q-p-container">
-                        <div class="quantity-price">
-
-                            <div class="quantity">
-
-                                <select name="cart-quantity" id="">
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                    <option value="">1</option>
-                                </select>
-
-                            </div>
-
-                            <div class="price">
-
-                                <p class="price">$99.50</p>
-                                <p class="price-per-pc">20$/ per item</p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="like-and-remove-btn">
-
-                        
-
-                            <button class="remove">
-                                Remove
-                            </button>
-
-                        </div>
-                    </div>
-                    
-
-                </div>
-
-                <div class="line"></div>
 
                 <div class="prompt-msg">
                     <p class="title">Free Delivery within 1-2 weeks</p>
@@ -337,9 +47,6 @@
 
             </div>
 
-           
-
-        
             <div class="cart-checkout">
 
                 <div class="coupon">
@@ -355,19 +62,19 @@
 
                     <div class="price1">
                         <p>Unit Price : </p>
-                        <p>$1403.45</p>
+                        <p>$ <span id="unit-price">0.00</span></p>
                     </div>
 
                     <div class="discount">
                         <p>Discount : </p>
                         <p class="discount-amount">
-                            -$60.00
+                            -$<span id="discount-amount">0.00</span>
                         </p>
                     </div>
 
                     <div class="tax">
                         <p>Tax : </p>
-                        <p class="tax-amount">+$14.00</p>
+                        <p class="tax-amount">+$ <span id="tax-amount">0.00</span></p>
                     </div>
 
                     <div class="line"></div>
@@ -375,17 +82,15 @@
                     <div class="total">
                         <p>Total : </p>
                         <p class="total-amount">
-                            $1357.00
+                            $<span id="items_total_amount">0.00</span>
                         </p>
                     </div>
 
-                    <button class="checkout-btn">Checkout</button>
-                    <button class="back-to-shop">Back to shop</button>
+                    <a href="{% url 'checkout' %}" style="text-decoration:none;"><button class="checkout-btn">Checkout</button></a>
+                    <a href="{% url 'products' %}" style="text-decoration:none;"><button class="back-to-shop">Back to shop</button></a>
 
                 </div>
             </div>
-
-            
 
         </div>
 
@@ -480,90 +185,9 @@
         </div>
 
 
-    </div>
+    {% endblock container %}
 
-    <footer>
-        <div class="footer-contents">
+    {% block js_bottom %}
+        <script src="{% static 'js/cart.js' %}"></script>
 
-        
-            <div class="footer-flex-items">
-
-                <div class="brand-details">
-                    <img src="../img/logo-white.png" alt="Logo" class="logo">
-                    <p>Company name. </p>
-                    <p>c 2018-2021 Templatemount.</p>
-                    <p>All rights reserved.</p>
-                </div>
-
-                <div class="help f-links">
-                    <p class="title">Help</p>
-
-                    <div class="links">
-                        <a href="#">Contact Us</a>
-                        <a href="#">Refunds</a>
-                        <a href="#">Live Chat</a>
-                        <a href="#">Track Info</a>
-                    </div>
-                </div>
-
-                <div class="about f-links">
-                    <p class="title">About</p>
-
-                    <div class="links">
-                        <a href="#">About Us</a>
-                        <a href="#">Services</a>
-                        <a href="#">Policy & Terms</a>
-                        <a href="#">Blog posts</a>
-                    </div>
-                </div>
-
-                <div class="partnership f-links">
-                    <p class="title">Partnership</p>
-
-                    <div class="links">
-                        <a href="#">Login / Register</a>
-                        <a href="#">Settings</a>
-                        <a href="#">My Orders</a>
-                        
-                    </div>
-                </div>
-
-                <div class="newsletter f-links">
-                    <p class="title">Newsletter</p>
-
-                    <p class="txt">Stay in touch with latest updates about our products and offers</p>
-
-                    <div class="newsletter-input">
-                        <input type="text" placeholder="Email">
-                        <button>Join</button>
-                    </div>
-
-                    
-                </div>
-
-            </div>
-
-            
-        </div>
-        <div class="footer-bottom">
-
-            <div class="f-b-contents">
-
-            
-                <div class="payment-methods">
-                    <img src="../img/Payment-methods.png" alt="">
-                </div>
-
-                <div class="links">
-                    <a href="#">Support</a>
-                    <a href="#">Privacy & Cookies</a>
-                    <a href="#">Accessibility</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="/js/index.js"></script>
-</body>
-</html>
+    {% endblock js_bottom %}

@@ -36,7 +36,7 @@
     <!-- Navigation bar -->
 
     <header {% block hclass_names %} {% endblock hclass_names %}>
-        <nav class="nav">
+        <nav {% block nclass_names %} class="nav" {% endblock nclass_names %}>
             <div class="nav-logo nav-ham-logo">
                 <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
                     <i class="fa fa-bars" aria-hidden="true"></i>
@@ -128,6 +128,46 @@
                     <div >
                         <p>New arrivals</p>
                         <small>See our new products</small>
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Account main</p>
+
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Order history</p>
+
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">My wishlist</p>
+
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Transactions</p>
+
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+
                     </div>
 
                     <p class="g-icon">></p>

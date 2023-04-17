@@ -70,6 +70,26 @@ body {
   grid-template-columns: 49% 49%;
   gap: 1.5%;
 }
+
+.guest-checkout{
+    display:flex;
+    align-items:center;
+    margin-bottom:1em;
+
+}
+.guest-checkout .title{
+    margin-left:.5em;
+}
+
+.guest-checkout input{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+
+.a-f-tp{
+    opacity:.6;
+}
 .address-info-and-sign-in-option .saved-addresses .address-info {
   padding: 1em;
   display: flex;
@@ -137,7 +157,7 @@ body {
   font-weight: 500;
   opacity: 0.8;
   font-size: 18px;
-  margin-bottom: 1em;
+
 }
 .address-info-and-sign-in-option .address-info .address-flex {
   display: grid;

@@ -91,8 +91,9 @@ class Profile(models.Model):
 # Model for saving addresses
 
 class Address(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     city = models.CharField(max_length=30)
-    street = models.CharField(max_length=40)
+    address = models.CharField(max_length=40)
     zipcode = models.IntegerField()
-    full_address = models.CharField(max_length=150)
+
 

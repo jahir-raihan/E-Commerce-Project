@@ -765,6 +765,17 @@
           font-weight: 500;
           width:90%;
           margin:1em auto 0 auto;
+          display: flex;
+          p{
+            margin-right:.5em;
+          }
+          .n-price{
+            text-decoration: line-through;
+            opacity: .7;
+          }
+          .offer-price{
+            color:rgb(255, 111, 0);
+          }
           
       }
       .title{
@@ -808,6 +819,27 @@
       .product-card-and-view-mask{
           position: relative;
           width:100%;
+
+          .extra-msg{
+            position: absolute;
+            top:10px;
+            left:10px;
+            z-index:2;
+            background:gray;
+            width:fit-content;
+            padding:.3em 1em;
+            border-radius:4px;
+            font-size:10px;
+          }
+          
+          .offer{
+              background:rgba(255, 102, 0, 0.821);
+              color:white;
+          }
+          .out{
+              background:gray;
+              color:white;
+          }
 
           .view-mask{
               position: absolute;

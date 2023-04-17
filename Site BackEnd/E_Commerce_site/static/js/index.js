@@ -1,3 +1,6 @@
+var discount_amount = 0;
+var tax_percentage = 10;
+var shipping_fee = 150;
 // Search suggestion and selection
 
 var s_list = document.getElementById('s-list')
@@ -114,14 +117,14 @@ function toggle_nav_menu(){
 
 function set_cart_item_count(){
     var keys = Object.keys(localStorage)
-    console.log(keys)
+    try{
     if (keys.includes('cart_items')){
         var item_count = JSON.parse(localStorage.cart_items).length
         console.log(item_count)
         document.getElementById('cart-item-count').innerHTML = item_count
         document.getElementById('cart-item-count1').innerHTML = item_count
 
-    }
+    }}catch{}
 }
 set_cart_item_count()
 
@@ -160,7 +163,8 @@ function add_to_cart(product_id, user, s_q){
             var items = JSON.parse(ls.cart)
 
             var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
-                        'p_img': $('#p_img-'+p_id).attr('src'), 'size': s_q.size, 'quantity': s_q.quantity}
+                        'p_img': $('#p_img-'+p_id).attr('src'), 'size': s_q.size, 'quantity': s_q.quantity,
+                        'in_stock': $('#p_status-'+p_id).val(), 'p_total_price': Number($('#p_price-'+p_id).text()) * Number(s_q.quantity)}
             items.push(data)
 
             ls.setItem('cart', JSON.stringify(items))
@@ -176,7 +180,8 @@ function add_to_cart(product_id, user, s_q){
 
 
         var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
-                    'p_img': $('#p_img-'+p_id).attr('src'),  'size': s_q.size, 'quantity': s_q.quantity}
+                    'p_img': $('#p_img-'+p_id).attr('src'),  'size': s_q.size, 'quantity': s_q.quantity,
+                    'in_stock': $('#p_status-'+p_id).val(), 'p_total_price': Number($('#p_price-'+p_id).text()) * Number(s_q.quantity)}
 
         ls.setItem('cart', JSON.stringify([data]))
         ls.setItem('cart_items', JSON.stringify([p_id]))
