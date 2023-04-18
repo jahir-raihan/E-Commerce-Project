@@ -66,6 +66,8 @@ function toggle_g_d(){
             a.style.opacity = '.6'
         })
     }
+    dc.getElementById('phone').disabled = false
+    dc.getElementById('phone').required = true
 
 }
 
@@ -214,3 +216,94 @@ function calculate_total_price(){
     $('#items_total_amount').text(total + cal_tax + shipping_fee - cal_discount)
 }
 calculate_total_price()
+
+
+// Submit form section
+
+$(document).on('submit', '#shipping-and-address-form', function(e){
+
+    e.preventDefault();
+    // Get the fucking address
+
+    if (saved_address_selected === null){
+        var address = {
+            'city': $('#city').val(),
+            'address': $('#address').val(),
+            'zipcode': $('#zipcode').val(),
+            'country': $('#country').val()
+        }
+        var save_address_check_box = dc.getElementById('save-this-address')
+        if (save_address_check_box.checked){
+
+            if ($('#user').val() === 'AnonymousUser'){
+                var address_list = JSON.parse(ls.addresses)
+                address_list.push(address)
+                ls.setItem('addresses', JSON.stringify(address_list))
+            }else{
+                address.save_it = true
+            }
+
+
+        }else{
+            address.save_it = false
+        }
+    }
+    else{
+        var address = {
+        }
+        console.log($('#user').val())
+        if ($('#user').val() === 'AnonymousUser'){
+            var address_list = JSON.parse(ls.addresses)
+            address_list.forEach((adrs) => {
+                if (adrs.address_id == saved_address_selected){
+                    address = adrs
+                }
+            });
+        }else{
+            address = saved_address_selected
+        }
+    }
+
+    // End Address
+
+    var items_ids = []
+    var items_quantities = []
+    var items_prices = [];
+    var items_sizes = [];
+
+    JSON.parse(ls.cart).forEach( (itm) => {
+        items_ids.push(itm.p_id)
+        items_quantities.push(itm.quantity)
+        items_prices.push(itm.p_total_price)
+        items_sizes.push(itm.size)
+
+    })
+
+    // End cart items
+
+    let req = $.ajax({
+        type:'post',
+        url:'/order/checkout/',
+        data:{
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            address: address,
+            items_ids: items_ids,
+            items_quantities: items_quantities,
+            items_prices: items_prices,
+            items_sizes: items_sizes,
+            first_name : $('#first_name').val(),
+            last_name : $('#last_name').val(),
+            phone : $('#phone').val(),
+            email : $('#email').val(),
+            user : $('#user').val(),
+            payment_method: payment_method,
+            note_to_seller: $('#note_to_seller').val(),
+            guest_checkout: is_guest_checkout,
+        }
+    });
+    req.done(function(response){
+        console.log('got response')
+    })
+
+
+})

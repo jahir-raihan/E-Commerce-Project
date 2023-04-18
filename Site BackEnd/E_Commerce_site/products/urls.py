@@ -11,6 +11,4 @@ urlpatterns = [
     path('cart/', cart, name='cart'),
     path('wishlist/', wishlist, name='wishlist'),
     path('check-product-availability/<str:pk>/', check_product_availability, name='check_product_availability'),
-    path('cart/checkout/', checkout, name='checkout')
-
 ]

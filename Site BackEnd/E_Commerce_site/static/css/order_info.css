@@ -90,6 +90,13 @@ body {
 .a-f-tp{
     opacity:.6;
 }
+.a-f-tp-phone-email{
+    opacity:1 !important;
+}
+
+.a-f-tp-phone-email .left {
+    opacity:1;
+}
 .address-info-and-sign-in-option .saved-addresses .address-info {
   padding: 1em;
   display: flex;

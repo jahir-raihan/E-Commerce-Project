@@ -145,10 +145,3 @@ def check_product_availability(request, pk):
         return True
     return False
 
-
-# Checkout
-
-def checkout(request):
-    if request.method == 'POST':
-        pass
-    return render(request, 'order_info.html')

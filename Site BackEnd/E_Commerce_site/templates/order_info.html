@@ -65,6 +65,8 @@
                     </div>
                 {% endif %}
                 <form id="shipping-and-address-form">
+                    <input type="hidden" id="user" value="{{request.user}}">
+                    {% csrf_token %}
                     <div class="shipping-and-address">
 
 
@@ -89,26 +91,26 @@
                                 <div class="left">
                                     <p>First name</p>
 
-                                    <input type="text" disabled placeholder="Type here . . .">
+                                    <input type="text" id="first_name" disabled placeholder="Type here . . .">
                                 </div>
 
                                 <div class="right">
                                     <p>Last Name</p>
 
-                                    <input type="text" disabled placeholder="Type here">
+                                    <input type="text" id="last_name" disabled placeholder="Type here">
                                 </div>
 
                             </div>
 
-                            <div class="address-flex a-f-tp">
+                            <div class="address-flex a-f-tp a-f-tp-phone-email">
                                 <div class="left">
                                     <p>Phone</p>
-                                    <input type="number" disabled placeholder="+880172393473">
+                                    <input type="number" id="phone" required placeholder="+880172393473">
                                 </div>
                                 <div class="right">
                                     <p>Email</p>
 
-                                    <input type="email" disabled placeholder="eample@email.com">
+                                    <input type="email" id="email" disabled placeholder="eample@email.com">
                                 </div>
                             </div>
                             {% else %}
@@ -117,13 +119,13 @@
                                 <div class="left">
                                     <p>First name</p>
 
-                                    <input type="text" required placeholder="Type here . . .">
+                                    <input type="text" id="first_name" required placeholder="Type here . . .">
                                 </div>
 
                                 <div class="right">
                                     <p>Last Name</p>
 
-                                    <input type="text" required placeholder="Type here">
+                                    <input type="text" id="last_name" required placeholder="Type here">
                                 </div>
 
                             </div>
@@ -131,12 +133,12 @@
                             <div class="address-flex">
                                 <div class="left">
                                     <p>Phone</p>
-                                    <input type="number" readonly placeholder="+880172393473">
+                                    <input type="number" id="phone" required placeholder="+880172393473">
                                 </div>
                                 <div class="right">
                                     <p>Email</p>
 
-                                    <input type="email" required placeholder="eample@email.com">
+                                    <input type="email" id="email" required placeholder="eample@email.com">
                                 </div>
                             </div>
                             {% endif %}
@@ -218,14 +220,14 @@
                             <div class="left">
 
                                 <p>Address(*)</p>
-                                <input type="text" required placeholder="Type here">
+                                <input type="text" id="address" required placeholder="Type here">
 
                             </div>
 
                             <div class="right">
 
                                 <p>Post / ZIP code</p>
-                                <input type="text" required placeholder="Type here">
+                                <input type="text" id="zipcode" required placeholder="Type here">
 
                             </div>
 
@@ -237,13 +239,13 @@
 
                                     <p>City</p>
 
-                                    <input type="text" required placeholder="City, Area">
+                                    <input type="text" id="city" required placeholder="City, Area">
                                 </div>
 
                                 <div class="right">
                                     <p>Country</p>
-                                    <select name="" id="">
-                                        <option value="">Bangladesh</option>
+                                    <select name="" id="country">
+                                        <option value="bangladesh">Bangladesh</option>
                                     </select>
                                 </div>
 
@@ -251,13 +253,13 @@
 
                             <div class="note-to-seller">
                                 <p class="title">Note to seller</p>
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Type Anything"></textarea>
+                                <textarea name="" id="note_to_seller" cols="30" rows="10" placeholder="Type Anything"></textarea>
                             </div>
 
                         </div>
 
                         <div class="save-checkup">
-                            <input type="checkbox">
+                            <input type="checkbox" id="save-this-address">
                             <span>Save this address</span>
                         </div>
 
