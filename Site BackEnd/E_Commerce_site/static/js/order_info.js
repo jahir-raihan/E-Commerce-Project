@@ -302,7 +302,7 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
         }
     });
     req.done(function(response){
-        console.log('got response')
+        window.location.href = response.url
     })
 
 

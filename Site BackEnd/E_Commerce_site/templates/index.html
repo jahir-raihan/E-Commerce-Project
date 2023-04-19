@@ -82,21 +82,40 @@
                 <div class="only-navicons">
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                 </div>
-                <div class="only-navicons ">
-                    <i class="fas fa-heart" aria-hidden="true"></i>
-                </div>
-                <div class="only-navicons">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                    <span class="cart-item-count" id="cart-item-count1">0</span>
-                </div>
 
-                <button class="nav-btns wishlist-btn">
-                    <i class="fas fa-heart"></i></i> Wishlist
-                </button>
-                <button class="nav-btns my-cart-btn">
-                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
-                    <span class="cart-item-count" id="cart-item-count">0</span>
-                </button>
+                <a href="{% url 'wishlist' %}">
+
+                    <div class="only-navicons ">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                    </div>
+
+                </a>
+
+                <a href="{% url 'cart' %}">
+
+                    <div class="only-navicons">
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                        <span class="cart-item-count" id="cart-item-count1">0</span>
+                    </div>
+
+                </a>
+
+                <a href="{% url 'wishlist' %}">
+
+                    <button class="nav-btns wishlist-btn">
+                        <i class="fas fa-heart"></i> Wishlist
+                    </button>
+
+                </a>
+
+                <a href="{% url 'cart' %}">
+
+                    <button class="nav-btns my-cart-btn">
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i> Cart
+                        <span class="cart-item-count" id="cart-item-count">0</span>
+                    </button>
+
+                </a>
 
                 {% endblock nav_buttons %}
 

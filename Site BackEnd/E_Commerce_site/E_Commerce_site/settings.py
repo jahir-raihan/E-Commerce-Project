@@ -29,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'rest_framework',
+
     'order',
     'products',
     'user',
@@ -187,6 +189,11 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 
-# 1071218854822-l5gce0oia4rp7tv1mmo6gode8a2ae43e.apps.googleusercontent.com
-# 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
+# Payment gateways
+
+
+# sllcom
+
+STORE_ID = 'test62de0ee49a1e5'
+STORE_PASS = 'test62de0ee49a1e5@ssl'
 

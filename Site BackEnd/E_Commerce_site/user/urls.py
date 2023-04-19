@@ -17,7 +17,14 @@ urlpatterns = [
 
     path('staff-main-2/', staff_main2, name='staff_main2'),
     path('add-edit-products/', add_products, name='add_products'),
-    path('add-edit-products/<str:pk>/', edit_products, name='edit_products')
+    path('add-edit-products/<str:pk>/', edit_products, name='edit_products'),
+
+    # Normal & unregistered user
+
+    path('', account, name='account'),
+    path('order-history/', order_history, name='order_history'),
+    path('wishlist/', wishlist, name='wishlist'),
+
 
 
 

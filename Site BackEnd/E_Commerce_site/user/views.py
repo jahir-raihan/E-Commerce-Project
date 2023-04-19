@@ -2,11 +2,13 @@ from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.views.decorators.csrf import csrf_exempt
+from order.models import Order
 from .forms import UserRegisterForm
 from products.models import Product, ProductImages, Category, DiscountReason
 from django.middleware.csrf import get_token
 from .algorithms import *
-
+import json
 User = get_user_model()
 
 
@@ -156,3 +158,77 @@ def edit_products(request, pk):
     }
 
     return render(request, 'add_a_product.html', context)
+
+# User Section
+
+
+@csrf_exempt
+def account(request):
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(order_person=request.user)
+    else:
+        orders = Order.objects.filter(order_person_ip=get_client_ip(request))
+    real_orders = []
+
+    for order in orders:
+        o_items = json.loads(order.order_items)
+        items = []
+        for idx in range(len(o_items['ids'])):
+            tmp = {
+                'item': Product.objects.get(pk=o_items['ids'][idx]),
+                'quantity': o_items['quantities'][idx],
+                'size': o_items['sizes'][idx],
+                'price': o_items['prices'][idx]
+            }
+            items.append(tmp)
+
+        real_orders.append(
+            {
+                "order": order,
+                "items": items
+            }
+        )
+
+    context = {
+        'orders': real_orders
+    }
+
+    return render(request, 'page_profile.html', context)
+
+
+@csrf_exempt
+def order_history(request):
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(order_person=request.user)
+    else:
+        orders = Order.objects.filter(order_person_ip=get_client_ip(request))
+    real_orders = []
+
+    for order in orders:
+        o_items = json.loads(order.order_items)
+        items = []
+        for idx in range(len(o_items['ids'])):
+            tmp = {
+                'item': Product.objects.get(pk=o_items['ids'][idx]),
+                'quantity': o_items['quantities'][idx],
+                'size': o_items['sizes'][idx],
+                'price': o_items['prices'][idx]
+            }
+            items.append(tmp)
+
+        real_orders.append(
+            {
+                "order": order,
+                "items": items
+            }
+        )
+    print(real_orders)
+    context = {
+        'orders': real_orders
+    }
+
+    return render(request, 'order_history.html', context)
+
+
+def wishlist(request):
+    return render(request, 'wishlist.html')
