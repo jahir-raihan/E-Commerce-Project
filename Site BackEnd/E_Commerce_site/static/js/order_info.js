@@ -14,7 +14,7 @@ function load_saved_address(){
             address.setAttribute('id', adrs.address_id)
             var template = `<div class="address-info"><div class="icon-and-info"><div class="img">
                             <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i></div>
-                            <p class="address-details">${adrs.city}, ${adrs.address}, zip: ${adrs.zip}
+                            <p class="address-details">${adrs.city}, ${adrs.address}, zip: ${adrs.zipcode}
                             </p></div><div class="three-dots"><i class="fa fa-ellipsis-v t-dots" ></i></div>
                             </div>`
 
@@ -227,6 +227,7 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
 
     if (saved_address_selected === null){
         var address = {
+
             'city': $('#city').val(),
             'address': $('#address').val(),
             'zipcode': $('#zipcode').val(),
@@ -236,9 +237,19 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
         if (save_address_check_box.checked){
 
             if ($('#user').val() === 'AnonymousUser'){
-                var address_list = JSON.parse(ls.addresses)
-                address_list.push(address)
+                try{
+                    var address_list = JSON.parse(ls.addresses)
+                    var address_count = JSON.parse(ls.address_count) + 1
+                    address.address_id = address_count
+
+                    address_list.push(address)
+                }catch{
+                    var address_count = 0
+                    var address_list = [address]
+                    address_list[0].address_id = address_count
+                }
                 ls.setItem('addresses', JSON.stringify(address_list))
+                ls.setItem('address_count', JSON.stringify(address_count))
             }else{
                 address.save_it = true
             }
@@ -302,6 +313,8 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
         }
     });
     req.done(function(response){
+        ls.setItem('cart', '[]')
+        ls.setItem('cart_items', '[]')
         window.location.href = response.url
     })
 

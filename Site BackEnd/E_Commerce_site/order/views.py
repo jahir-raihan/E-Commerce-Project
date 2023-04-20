@@ -13,6 +13,7 @@ import shortuuid
 def checkout(request):
     if request.method == 'POST':
         data = request.POST
+        print(data)
 
         # Drilling out address from anywhere
         address = ''
@@ -33,9 +34,13 @@ def checkout(request):
         if data['guest_checkout'] == 'true':
             name = data['first_name'] + ' ' + data['last_name']
             email = data['email']
-        else:
+        elif request.user.is_authenticated:
             name = request.user.name
             email = request.user.email
+        else:
+            name = data['first_name'] + ' ' + data['last_name']
+            email = data['email']
+        if request.user.is_authenticated:
             user = request.user
 
         # Calculating asshole price of shitty cart items

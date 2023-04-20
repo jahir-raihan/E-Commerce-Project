@@ -167,9 +167,9 @@ def edit_products(request, pk):
 @csrf_exempt
 def account(request):
     if request.user.is_authenticated:
-        orders = Order.objects.filter(order_person=request.user)
+        orders = Order.objects.filter(order_person=request.user).order_by('-order_date')
     else:
-        orders = Order.objects.filter(order_person_ip=get_client_ip(request))
+        orders = Order.objects.filter(order_person_ip=get_client_ip(request)).order_by('-order_date')
     real_orders = []
 
     for order in orders:
@@ -201,9 +201,9 @@ def account(request):
 @csrf_exempt
 def order_history(request):
     if request.user.is_authenticated:
-        orders = Order.objects.filter(order_person=request.user)
+        orders = Order.objects.filter(order_person=request.user).order_by('-order_date')
     else:
-        orders = Order.objects.filter(order_person_ip=get_client_ip(request))
+        orders = Order.objects.filter(order_person_ip=get_client_ip(request)).order_by('-order_date')
     real_orders = []
 
     for order in orders:
@@ -224,7 +224,7 @@ def order_history(request):
                 "items": items
             }
         )
-    print(real_orders)
+
     token = get_token(request)
     context = {
         'orders': real_orders,
@@ -301,7 +301,7 @@ def remove_wishlist_item(request):
     items.remove(product.id)
     wishlist_obj.wishlist_items = f'{items}'
     wishlist_obj.save()
-    print(items)
+
 
     return JsonResponse({'success': True, 'items_count': len(items)})
 

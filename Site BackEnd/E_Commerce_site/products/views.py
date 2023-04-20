@@ -11,7 +11,7 @@ from django.middleware.csrf import get_token
 
 
 def home(request):
-    products = Product.objects.all().order_by('product_last_update')[:20]
+    products = Product.objects.filter(product_in_stock=True).order_by('product_last_update')[:20]
     categories = Category.objects.all()
     context = {
         'products': products,

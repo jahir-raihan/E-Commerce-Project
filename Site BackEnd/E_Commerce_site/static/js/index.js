@@ -252,3 +252,34 @@ function add_to_wishlist(product_id, user, user_id=null){
        })
     }
 }
+
+
+
+// Load locally saved addresses
+
+function load_saved_address_local(){
+
+    ls = localStorage
+    try{
+        var ele = document.getElementById('locally_saved_addresses_user')
+        var addresses = JSON.parse(ls.addresses)
+        addresses.forEach( (adrs) => {
+            console.log(address)
+            var address = document.createElement('div')
+            address.classList.add('address')
+            address.setAttribute('id', adrs.address_id)
+            var template = `<div class="address-info"><div class="icon-and-info"><div class="img">
+                            <i class="fa fa-map-marker loc-icon" aria-hidden="true"></i></div>
+                            <p class="address-details">${adrs.city}, ${adrs.address}, zip: ${adrs.zipcode}
+                            </p></div><div class="three-dots"><i class="fa fa-ellipsis-v t-dots" ></i></div>
+                            </div>`
+
+            address.innerHTML = template
+
+            ele.appendChild(address)
+        })
+    }catch{}
+
+}
+load_saved_address_local()
+
