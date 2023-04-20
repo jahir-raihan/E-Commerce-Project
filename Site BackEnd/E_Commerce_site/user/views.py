@@ -2,12 +2,14 @@ from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from order.models import Order
 from .forms import UserRegisterForm
-from products.models import Product, ProductImages, Category, DiscountReason
 from django.middleware.csrf import get_token
 from .algorithms import *
+from products.models import *
+from django.db.models import Q
 import json
 User = get_user_model()
 
@@ -223,12 +225,105 @@ def order_history(request):
             }
         )
     print(real_orders)
+    token = get_token(request)
     context = {
-        'orders': real_orders
+        'orders': real_orders,
+        'token': token
     }
 
     return render(request, 'order_history.html', context)
 
 
+def query_order_history(request):
+    if request.method == 'POST':
+        query = request.POST['query']
+        orders = Order.objects.filter(
+            Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(order_person_email__icontains=query)
+            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query)
+        )
+        real_orders = []
+        for order in orders:
+            o_items = json.loads(order.order_items)
+            items = []
+            for idx in range(len(o_items['ids'])):
+                tmp = {
+                    'item': Product.objects.get(pk=o_items['ids'][idx]),
+                    'quantity': o_items['quantities'][idx],
+                    'size': o_items['sizes'][idx],
+                    'price': o_items['prices'][idx]
+                }
+                items.append(tmp)
+
+            real_orders.append(
+                {
+                    "order": order,
+                    "items": items
+                }
+            )
+
+        token = get_token(request)
+        context = {
+            'orders': real_orders,
+            'token': token
+        }
+        template = render_to_string('order_history_search_template.html', request=request, context=context)
+
+        return JsonResponse({'template': template, 'token': token})
+# Wishlist section
+
+
+def save_wishlist_item(request):
+    product = Product.objects.get(pk=request.POST['product_id'])
+    product.wish_count += 1
+    product.save()
+    try:
+        wishlist_obj = WishList.objects.get(wisher_person=request.user)
+        items = json.loads(wishlist_obj.wishlist_items)
+        items.append(product.id)
+        wishlist_obj.wishlist_items = f'{items}'
+        wishlist_obj.save()
+    except:
+        wishlist_obj = WishList(wishlist_items=f'[{product.id}]', wisher_person=request.user,
+                                wisher_person_ip=get_client_ip(request))
+        wishlist_obj.save()
+    token = get_token(request)
+    return JsonResponse({'success': True, 'token': token})
+
+
+def remove_wishlist_item(request):
+
+    product = Product.objects.get(pk=request.GET['product_id'])
+    product.wish_count -= 1
+    product.save()
+
+    wishlist_obj = WishList.objects.get(wisher_person=request.user)
+    items = json.loads(wishlist_obj.wishlist_items)
+    items.remove(product.id)
+    wishlist_obj.wishlist_items = f'{items}'
+    wishlist_obj.save()
+    print(items)
+
+    return JsonResponse({'success': True, 'items_count': len(items)})
+
+
 def wishlist(request):
-    return render(request, 'wishlist.html')
+    items = []
+    try:
+        wishlist_itm = WishList.objects.get(wisher_person=request.user)
+
+        for p_id in json.loads(wishlist_itm.wishlist_items):
+            product = Product.objects.get(pk=p_id)
+            items.append(product)
+    except:pass
+    context = {
+        'items': items
+    }
+    return render(request, 'wishlist.html', context)
+
+
+def check_product_availability(request):
+    product = Product.objects.get(pk=request.GET['p_id'])
+    context = {
+        'status': True if product.product_in_stock else False
+    }
+    return JsonResponse(context)

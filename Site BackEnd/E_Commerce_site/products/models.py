@@ -48,6 +48,8 @@ class Product(models.Model):
     discount_reason = models.ForeignKey(DiscountReason, on_delete=models.DO_NOTHING, null=True, blank=True)
     discount_expiry = models.DateTimeField(null=True, blank=True)
 
+    wish_count = models.IntegerField(default=0)
+
 
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

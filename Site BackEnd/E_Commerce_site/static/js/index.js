@@ -195,7 +195,7 @@ function add_to_cart(product_id, user, s_q){
 
 // Add to wishlist
 
-function add_to_wishlist(product_id, user){
+function add_to_wishlist(product_id, user, user_id=null){
     var p_id = product_id
 
     // If user is not authenticated
@@ -236,14 +236,19 @@ function add_to_wishlist(product_id, user){
     // If user is authenticated
 
     else{
-        console.log('haha')
+       let req = $.ajax({
+            type:'post',
+            url:'/account/save-wishlist-item/',
+            data:{
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+                product_id: product_id,
+                user_id: user_id
+            }
+       })
+       req.done(function(response){
+
+            var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+            token.value = response['token']
+       })
     }
-}
-
-function remove_from_cart(product_id){
-    console.log(product_id)
-}
-
-function remove_from_wishlist(product_id){
-    console.log(product_id)
 }

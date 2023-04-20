@@ -1,7 +1,14 @@
 
 // Wishlist items
 
+.wishlist-items{
+    .item{
+        display: grid;
+        grid-template-columns: 10% 45% 20% 25%;
 
+    }
+
+}
 .item{
 
     border-top:var(--border);
@@ -25,6 +32,8 @@
 
     .trash-right{
         display: none;
+        position:absolute;
+        right:0;
         opacity: .8;
         i{
             font-size:20px;
@@ -38,6 +47,7 @@
         display: flex;
         align-items: center;
         align-items: center;
+        position: relative;
         img{
             width:60px;
             height:60px;

@@ -415,7 +415,7 @@
                                     {% else %}
                                          <button class="add-to-cart" style="background:gray; opacity:.6; cursor:not-allowed;" disabled>Out of stock</button>
                                     {% endif %}
-                                    <button class="add-to-wishlist" onclick="add_to_wishlist({{product.id}}, '{{request.user}}')">
+                                    <button class="add-to-wishlist" onclick="add_to_wishlist({{product.id}}, '{{request.user}}', '{{request.user.id}}')">
                                         <i class="far fa-heart"></i>
                                     </button>
                                 </div>

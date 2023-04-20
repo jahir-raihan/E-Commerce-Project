@@ -23,6 +23,10 @@ urlpatterns = [
 
     path('', account, name='account'),
     path('order-history/', order_history, name='order_history'),
+    path('query-order-history/', query_order_history, name='query_order_history'),
+    path('save-wishlist-item/', save_wishlist_item, name='save_wishlist_item'),
+    path('check-wishlist-item-availability/', check_product_availability, name='check_product_availability'),
+    path('remove-wishlist-item/', remove_wishlist_item, name='remove_wishlist_item'),
     path('wishlist/', wishlist, name='wishlist'),
 
 

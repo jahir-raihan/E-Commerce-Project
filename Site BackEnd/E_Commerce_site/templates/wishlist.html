@@ -36,9 +36,9 @@
             <div class="profile-nav">
 
                 <ul>
-                    <a href="#"><li class="">Account main</li></a>
-                    <a href="#"><li class="">Orders history</li></a>
-                    <a href="#"><li class="current-tab-profile">My wishlist</li></a>
+                    <a href="{% url 'account' %}"><li class="">Account main</li></a>
+                    <a href="{% url 'order_history' %}"><li class="">Orders history</li></a>
+                    <a href="{% url 'wishlist' %}"><li class="current-tab-profile">My wishlist</li></a>
                     <a href="#"><li class="">Transactions</li></a>
                     <a href="#"><li class="">Log out</li></a>
                 </ul>
@@ -53,182 +53,72 @@
             <div class="profile-content">
 
                 <div class="current-orders">
+                    {% if request.user.is_authenticated %}
+                        {% if items %}
+                        <p class="title" id="wishlist-item-title"> Items </p>
 
-                    <p class="title"> Items </p>
+                        <div class="wishlist-items">
 
-                    <div class="wishlist-items">
+                            {% for item in items %}
+                                <div class="item" id="wish-list-item-{{item.id}}">
 
-                        <div class="item">
-                            
-                            <div class="trash">
+                                    <div class="trash">
 
-                                <i class="fas fa-trash"></i>
+                                        <i class="fas fa-trash" onclick="remove_wishlist_item({{item.id}})"></i>
 
-                            </div>
+                                    </div>
 
-                            <div class="img-and-details">
-                                <img src="../img/image 17.png" alt="">
+                                    <div class="img-and-details">
+                                        <img id="p_img-{{item.id}}" src="{{item.product_primary_image.url}}" alt="{{item.product_title}}">
 
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
+                                        <div>
+                                             <p class="wish-item-title" id="p_title-{{item.id}}">{{item.product_title}}</p>
+                                            <small>$ <span id="p_price-{{item.id}}">{{item.product_price}}</span></small>
+                                        </div>
+
+                                        <div class="trash-right">
+
+                                            <i class="fas fa-trash" onclick="remove_wishlist_item({{item.id}})"></i>
+
+                                        </div>
+
+                                    </div>
+
+                                    {% if item.product_in_stock %}
+                                        <p class="status" id="{{item.id}}">In Stock</p>
+                                        <div class="add-to-cart-and-datetime">
+                                            <div class="date"></div>
+                                            <button class="add-to-cart"  id="wishlist-cart-btn-{{item.id}}" onclick="add_to_cart( {{item.id}}, `{{request.user}}`, get_size_quantity(false) )">
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    {% else %}
+                                        <p class="status" id="{{item.id}}" style="color:red;">Out of Stock</p>
+                                        <div class="add-to-cart-and-datetime">
+                                            <div class="date"></div>
+
+                                            <button class="add-to-cart" style="background-color:gray; opacity:.6;cursor:not-allowed;" disabled id="wishlist-cart-btn-{{item.id}}" onclick="add_to_cart( {{item.id}}, `{{request.user}}`, get_size_quantity(false) )">
+                                                Add to cart
+                                            </button>
+                                        </div>
+                                    {% endif %}
+
+
+
+
+
                                 </div>
-
-                                <div class="trash-right">
-
-                                    <i class="fas fa-trash"></i>
-    
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                                <button class="add-to-cart">
-                                    Add to cart
-                                </button>
-                            </div>
-
-
+                            {% endfor %}
 
                         </div>
-                        <div class="item">
-                            
-                            <div class="trash">
-
-                                <i class="fas fa-trash"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="../img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                                <div class="trash-right">
-
-                                    <i class="fas fa-trash"></i>
-    
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                                <button class="add-to-cart">
-                                    Add to cart
-                                </button>
-                            </div>
-
-
+                        {% else %}
+                        <p class="title" style="text-align:center;"> Wishlist is empty ! </p>
+                        {% endif %}
+                    {% else %}
+                        <div class="wishlist-items" id="load-wishlist-items">
 
                         </div>
-                        <div class="item">
-                            
-                            <div class="trash">
-
-                                <i class="fas fa-trash"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="../img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                                <div class="trash-right">
-
-                                    <i class="fas fa-trash"></i>
-    
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                                <button class="add-to-cart">
-                                    Add to cart
-                                </button>
-                            </div>
-
-
-
-                        </div>
-                        <div class="item">
-                            
-                            <div class="trash">
-
-                                <i class="fas fa-trash"></i>
-
-                            </div>
-
-                            <div class="img-and-details">
-                                <img src="../img/image 17.png" alt="">
-
-                                <div>
-                                     <p class="wish-item-title">White Brown logistic Jeans, full sleeve pure cotton with rush</p>
-                                    <small>$99.00</small>
-                                </div>
-
-                                <div class="trash-right">
-
-                                    <i class="fas fa-trash"></i>
-    
-                                </div>
-
-                               
-
-                            </div>
-
-                            <p class="status">In Stock</p>
-
-                            <div class="add-to-cart-and-datetime">
-                                <div class="date">
-                                    <small>Added on 19 July, 2022</small>
-                                </div>
-                                
-
-                                <button class="add-to-cart">
-                                    Add to cart
-                                </button>
-                            </div>
-
-
-
-                        </div>
-
-                    </div>
-
+                    {% endif %}
 
                 </div>
 
@@ -242,3 +132,7 @@
 
 
     {% endblock container %}
+
+    {% block js_bottom %}
+        <script src="{% static 'js/wishlist.js' %}"></script>
+    {% endblock js_bottom %}

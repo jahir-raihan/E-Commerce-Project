@@ -15,7 +15,16 @@ function load_cart_items(){
                                     </div>
                                     <div class="right">
                                         <p class="title">${item.p_title}</p>
-                                        <small>Size: ${item.size}</small>
+
+                                        <small>Size:
+                                            <select onchange="change_size(${item.p_id})" id="cart-item-size-${item.p_id}">
+                                                <option value="${item.size}" >${item.size}</option>
+                                                <option value="M">M</option>
+                                                <option value="XL">XL</option>
+                                                <option value="XXL">XXL</option>
+
+                                            </select>
+                                        </small>
                                     </div>
                                 </div>
                                 <div class="q-p-container">
@@ -76,12 +85,14 @@ function remove_cart_item(id){
     var cart_items = JSON.parse(ls.cart)
     var cart_items_ids = JSON.parse(ls.cart_items)
     cart_items.forEach( (item) => {
-        if (item.p_id == id){
+        if (Number(item.p_id) === Number(id)){
             var idx = cart_items.indexOf(item)
-            cart_items.splice(idx)
-            cart_items_ids.splice(cart_items_ids.indexOf(id))
+            cart_items.splice(idx, 1)
+            cart_items_ids.splice(cart_items_ids.indexOf(id), 1)
             $('#cart_item-'+id).remove()
             $('#line-'+id).remove()
+            console.log('removed')
+            console.log(cart_items)
         }
     })
     ls.setItem('cart', JSON.stringify(cart_items))
@@ -91,7 +102,7 @@ function remove_cart_item(id){
 
 }
 
-// Change cart item quantity
+// Change cart item quantity - change size
 
 function change_quantity(id){
     var cart_items = JSON.parse(ls.cart)
@@ -105,6 +116,20 @@ function change_quantity(id){
     });
     ls.setItem('cart', JSON.stringify(cart_items))
     calculate_total_price()
+}
+
+// Size
+
+function change_size(id){
+    var cart_items = JSON.parse(ls.cart)
+
+    cart_items.forEach( (item) => {
+        if (item.p_id == id){
+            item.size = $('#cart-item-size-'+id).val()
+        }
+    });
+    ls.setItem('cart', JSON.stringify(cart_items))
+
 }
 
 // Update price according to quantity

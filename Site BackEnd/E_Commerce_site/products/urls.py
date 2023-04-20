@@ -10,5 +10,4 @@ urlpatterns = [
     path('get-all-review/<str:pk>/', show_all_reviews, name='show_all_reviews'),
     path('cart/', cart, name='cart'),
 
-    path('check-product-availability/<str:pk>/', check_product_availability, name='check_product_availability'),
 ]

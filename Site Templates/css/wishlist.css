@@ -1,3 +1,8 @@
+.wishlist-items .item {
+  display: grid;
+  grid-template-columns: 10% 45% 20% 25%;
+}
+
 .item {
   border-top: var(--border);
   display: flex;
@@ -19,6 +24,8 @@
 }
 .item .trash-right {
   display: none;
+  position: absolute;
+  right: 0;
   opacity: 0.8;
 }
 .item .trash-right i {
@@ -31,6 +38,7 @@
   display: flex;
   align-items: center;
   align-items: center;
+  position: relative;
 }
 .item .img-and-details img {
   width: 60px;
