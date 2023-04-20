@@ -42,7 +42,9 @@
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </div>
 
-                <img src="{% static 'img/ logo.png' %}" alt="Logo" class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'img/ logo.png' %}" alt="Logo" class="logo">
+                </a>
             </div>
 
             {% block nav_search %}
@@ -88,12 +90,16 @@
                         </div>
                     </a>
                 {% else %}
-                    <div class="only-navicons">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+
+                    <div class="only-navicons" >
+                        <i class="fa fa-sign-in" aria-hidden="true" onclick="login(window.location.href)"></i>
                     </div>
-                    <button class="nav-btns">
+
+
+                    <button class="nav-btns" onclick="login(window.location.href)">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
                     </button>
+
                 {% endif %}
 
 
@@ -243,8 +249,9 @@
                 <div class="menu">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </div>
-                <p>Shop</p>
-
+                <a href="{% url 'products' %}">
+                    <p>Shop</p>
+                </a>
 
                 <div class="hover-menu-category-menu">
 
@@ -409,7 +416,7 @@
                                         {% else %}
                                              <button class="add-to-cart" style="background:gray; opacity:.6; cursor:not-allowed;" disabled>Out of stock</button>
                                         {% endif %}
-                                        <button class="add-to-wishlist" onclick="add_to_wishlist({{product.id}}, '{{request.user}}', '{{request.user.id}}')">
+                                        <button class="add-to-wishlist" onclick="add_to_wishlist({{product.id}}, `{{request.user}}`, `{{request.user.id}}`)">
                                             <i class="far fa-heart"></i>
                                         </button>
                                     </div>

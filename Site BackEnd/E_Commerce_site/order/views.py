@@ -14,6 +14,14 @@ def checkout(request):
     if request.method == 'POST':
         data = request.POST
         print(data)
+        if request.user.is_authenticated and data['save_address'] == 'true':
+            adrs = Address(
+                address=data['address[address]'],
+                city=data['address[city]'],
+                zipcode=data['address[zipcode]'],
+                user=request.user
+            )
+            adrs.save()
 
         # Drilling out address from anywhere
         address = ''
@@ -91,7 +99,7 @@ def checkout(request):
         # If Cash on delivery (I don't trust you bitch) Do your job here -- Redirect user to account page
 
         if data['payment_method'] == 'cod':
-            return JsonResponse({'url': f"{request.META['HTTP_ORIGIN']}/account/"})
+            return JsonResponse({'url': f"{request.META['HTTP_ORIGIN']}/account/order-history/"})
 
         # If bkash do it here , what the fuck is this
 

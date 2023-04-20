@@ -310,6 +310,7 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
             payment_method: payment_method,
             note_to_seller: $('#note_to_seller').val(),
             guest_checkout: is_guest_checkout,
+            save_address: dc.getElementById('save-this-address').checked
         }
     });
     req.done(function(response){

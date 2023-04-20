@@ -17,13 +17,32 @@
     {% endblock nav_search %}
 
     {% block nav_buttons %}
-        <button class="nav-btns">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-        </button>
 
-        <div class="only-navicons">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-        </div>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'account' %}">
+                <button class="nav-btns">
+                    <i class="fa fa-user" aria-hidden="true"></i> Account
+                </button>
+            </a>
+
+            <a href="{% url 'account' %}">
+                <div class="only-navicons">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+            </a>
+        {% else %}
+
+            <div class="only-navicons" >
+                <i class="fa fa-sign-in" aria-hidden="true" onclick="login(window.location.href)"></i>
+            </div>
+
+
+            <button class="nav-btns" onclick="login(window.location.href)">
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+            </button>
+
+        {% endif %}
+
     {% endblock nav_buttons %}
 
     {% block nav_2 %}
@@ -59,8 +78,9 @@
                         </div>
 
                         <div class="right">
-                            <button class="sign-in">Sign in</button>
-                            <button class="create-account">Create account</button>
+                            <button class="sign-in" onclick="login(window.location.href)">Sign in</button>
+
+                            <button class="create-account" onclick="register(window.location.href)">Create account</button>
                         </div>
                     </div>
                 {% endif %}

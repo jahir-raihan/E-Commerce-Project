@@ -29,8 +29,8 @@ def register_user(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid:
             form.save()
-            user = authenticate(request, email=request.POST['email'], password=request.POST['password1'])
-            login(user, request)
+            user = authenticate(request, email=form.cleaned_data['email'], password=request.POST['password1'])
+            login(request, user)
             if 'redirect_url' in request.POST:
                 return JsonResponse({'success': True, 'redirect': f'{request.POST["redirect_url"]}'})
             else:
@@ -38,7 +38,7 @@ def register_user(request):
         else:
             return JsonResponse({'error': True})
 
-    return render(request, 'register.html')
+    return render(request, 'account/register.html')
 
 
 def login_user(request):
@@ -58,7 +58,7 @@ def login_user(request):
                 return JsonResponse({'success': True, 'redirect': '/'})
         else:
             return JsonResponse({'error': True})
-    return render(request, 'login.html')
+    return render(request, 'account/login.html')
 
 
 @login_required

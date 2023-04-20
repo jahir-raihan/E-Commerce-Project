@@ -50,52 +50,54 @@ setInterval(() => {
 // Load wishlist items local users
 
 function load_wishlist_items(){
-    var ls = localStorage
-    var items = JSON.parse(ls.wishlist)
-    items.forEach( (item) => {
-        var ele = document.createElement('div')
-        ele.classList.add('item')
-        var wishlist_container = dc.getElementById('load-wishlist-items')
-        ele.setAttribute('id', 'wish-list-item-'+item.p_id)
-        var template = `<div class="trash">
-
-                            <i class="fas fa-trash" onclick="remove_wishlist_item_local(${item.p_id})"></i>
-
-                        </div>
-
-                        <div class="img-and-details">
-                            <img id="p_img-${item.p_id}" src="${item.p_img}" alt="${item.p_title}">
-
-                            <div>
-                                 <p class="wish-item-title" id="p_title-${item.p_id}">${item.p_title}</p>
-                                <small>$ <span id="p_price-${item.id}">${item.p_price}</span></small>
-                            </div>
-
-                            <div class="trash-right">
+    try{
+        var ls = localStorage
+        var items = JSON.parse(ls.wishlist)
+        items.forEach( (item) => {
+            var ele = document.createElement('div')
+            ele.classList.add('item')
+            var wishlist_container = dc.getElementById('load-wishlist-items')
+            ele.setAttribute('id', 'wish-list-item-'+item.p_id)
+            var template = `<div class="trash">
 
                                 <i class="fas fa-trash" onclick="remove_wishlist_item_local(${item.p_id})"></i>
 
                             </div>
 
-                        </div>
+                            <div class="img-and-details">
+                                <img id="p_img-${item.p_id}" src="${item.p_img}" alt="${item.p_title}">
+
+                                <div>
+                                     <p class="wish-item-title" id="p_title-${item.p_id}">${item.p_title}</p>
+                                    <small>$ <span id="p_price-${item.id}">${item.p_price}</span></small>
+                                </div>
+
+                                <div class="trash-right">
+
+                                    <i class="fas fa-trash" onclick="remove_wishlist_item_local(${item.p_id})"></i>
+
+                                </div>
+
+                            </div>
 
 
-                        <p class="status" style="color:red;" id="${item.p_id}">Out of stock</p>
-                        <div class="add-to-cart-and-datetime">
-                            <div class="date"></div>
+                            <p class="status" style="color:red;" id="${item.p_id}">Out of stock</p>
+                            <div class="add-to-cart-and-datetime">
+                                <div class="date"></div>
 
-                            <button class="add-to-cart" style="background-color:gray; opacity:.6;cursor:not-allowed;" disabled id="wishlist-cart-btn-${item.p_id}" onclick="add_to_cart( ${item.p_id}, 'AnnymousUser', get_size_quantity(false) )">
-                                Add to cart
-                            </button>
-                        </div>
-                        `
-        ele.innerHTML = template
-        wishlist_container.appendChild(ele)
-    })
+                                <button class="add-to-cart" style="background-color:gray; opacity:.6;cursor:not-allowed;" disabled id="wishlist-cart-btn-${item.p_id}" onclick="add_to_cart( ${item.p_id}, 'AnnymousUser', get_size_quantity(false) )">
+                                    Add to cart
+                                </button>
+                            </div>
+                            `
+            ele.innerHTML = template
+            wishlist_container.appendChild(ele)
+        })
 
-    if (JSON.parse(ls.wishlist_items).length === 0){
-        dc.getElementById('load-wishlist-items').innerHTML = '<p class="title" style="text-align:center;"> Wishlist is empty ! </p>'
-    }
+        if (JSON.parse(ls.wishlist_items).length === 0){
+            dc.getElementById('load-wishlist-items').innerHTML = '<p class="title" style="text-align:center;"> Wishlist is empty ! </p>'
+        }
+    }catch{}
 }
 load_wishlist_items()
 

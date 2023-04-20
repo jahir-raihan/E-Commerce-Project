@@ -130,7 +130,7 @@ set_cart_item_count()
 
 // Add to cart and add to wishlist feature specification
 
-let ls = localStorage
+var ls = localStorage
 var keys = Object.keys(ls)
 
 
@@ -283,3 +283,16 @@ function load_saved_address_local(){
 }
 load_saved_address_local()
 
+
+// Login - Register Redirect
+
+
+function login(url){
+
+    ls.setItem('redirect_url', url)
+    window.location.href = '/account/login/'
+}
+function register(url){
+    ls.setItem('redirect_url', url)
+    window.location.href = '/account/register/'
+}

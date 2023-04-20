@@ -20,7 +20,7 @@ class Order(models.Model):
     order_person_email = models.EmailField()
     order_person_phone = models.CharField(max_length=14)
     order_person_ip = models.GenericIPAddressField()
-    order_person = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
+    order_person = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     order_date = models.DateTimeField(auto_now_add=True)
     order_handle_date = models.DateTimeField(blank=True, null=True)
     order_handled_by = models.IntegerField(default=0)

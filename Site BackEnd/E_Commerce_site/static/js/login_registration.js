@@ -1,4 +1,4 @@
-let ls = localStorage
+var ls = localStorage
 let dc = document
 
 
@@ -25,11 +25,9 @@ $(document).on('submit', '#login-form', function(e){
     // Checking for local storage data
 
     const keys = Object.keys(ls);
-    if (keys.includes('cart_items')){
-        cart_items = Json.parse(ls.getItem('cart_items'));
-    }
+
     if (keys.includes('wishlist_items')){
-        wishlist_items = Json.parse(ls.getItem('wishlist_items'))
+        wishlist_items = JSON.parse(ls.getItem('wishlist_items'))
     }
     if (keys.includes('redirect_url')){
         redirect_url = ls.getItem('redirect_url')
@@ -106,11 +104,9 @@ $(document).on('submit', '#register-form', function(e){
     // Checking for local storage data
 
     const keys = Object.keys(ls);
-    if (keys.includes('cart_items')){
-        cart_items = Json.parse(ls.getItem('cart_items'));
-    }
+
     if (keys.includes('wishlist_items')){
-        wishlist_items = Json.parse(ls.getItem('wishlist_items'))
+        wishlist_items = JSON.parse(ls.getItem('wishlist_items'))
     }
     if (keys.includes('redirect_url')){
         redirect_url = ls.getItem('redirect_url')
@@ -121,7 +117,7 @@ $(document).on('submit', '#register-form', function(e){
 
     let req = $.ajax({
         type:'post',
-        url:'/user/register/',
+        url:'/account/register/',
         data:{
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             name: $('#name').val(),
