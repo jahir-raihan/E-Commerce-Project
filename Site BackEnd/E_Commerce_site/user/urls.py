@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('staff-main-1/', staff_main1, name='staff_main1'),
     path('pending-orders/', pending_orders, name='pending_orders'),
+    path('pending-order-action/', pending_order_action, name='pending_order_action'),
 
     # Product Adder
 

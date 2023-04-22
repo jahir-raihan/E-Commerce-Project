@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from order.models import Order
 from .forms import UserRegisterForm
@@ -77,9 +78,52 @@ def redirect_origin(request):
 
 def staff_main1(request):
     if request.method == 'POST':
-        pass
+        query = request.POST['query']
+        orders = Order.objects.filter(
+            Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(
+                order_person_email__icontains=query)
+            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query)
+        )
+    else:
+        orders = Order.objects.filter(order_handled_by=request.user.id).order_by('order_handle_date')
 
-    return render(request, 'staff_main.html')
+    real_orders = []
+    for order in orders:
+        o_items = json.loads(order.order_items)
+        items = []
+        for idx in range(len(o_items['ids'])):
+            tmp = {
+                'item': Product.objects.get(pk=o_items['ids'][idx]),
+                'quantity': o_items['quantities'][idx],
+                'size': o_items['sizes'][idx],
+                'price': o_items['prices'][idx]
+            }
+            items.append(tmp)
+
+        real_orders.append(
+            {
+                "order": order,
+                "items": items
+            }
+        )
+
+    confirmed_orders = len(orders.filter(
+        Q(order_is_confirmed=True) | Q(order_is_delivered=True)
+    ))
+    cancelled_orders = len(orders.filter(order_is_cancelled=True))
+    token = get_token(request)
+    context = {
+        'orders': real_orders,
+        'token': token,
+        'confirmed_orders': confirmed_orders,
+        'cancelled_orders': cancelled_orders
+    }
+    if request.method == 'POST':
+        template = render_to_string('pending_orders_template.html', request=request, context=context)
+
+        return JsonResponse({'template': template, 'token': token})
+
+    return render(request, 'staff_main.html', context)
 
 
 def staff_main2(request):
@@ -92,9 +136,66 @@ def staff_main2(request):
 
 def pending_orders(request):
     if request.method == 'POST':
-        pass
+        query = request.POST['query']
+        orders = Order.objects.filter(
+            Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(
+                order_person_email__icontains=query)
+            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query)
+        )
+    else:
+        orders = Order.objects.filter(order_is_pending=True).order_by('order_date')
 
-    return render(request, 'staff_pending_orders.html')
+    real_orders = []
+    for order in orders:
+        o_items = json.loads(order.order_items)
+        items = []
+        for idx in range(len(o_items['ids'])):
+            tmp = {
+                'item': Product.objects.get(pk=o_items['ids'][idx]),
+                'quantity': o_items['quantities'][idx],
+                'size': o_items['sizes'][idx],
+                'price': o_items['prices'][idx]
+            }
+            items.append(tmp)
+
+        real_orders.append(
+            {
+                "order": order,
+                "items": items
+            }
+        )
+
+    token = get_token(request)
+    context = {
+        'orders': real_orders,
+        'token': token
+    }
+    if request.method == 'POST':
+        template = render_to_string('pending_orders_template.html', request=request, context=context)
+
+        return JsonResponse({'template': template, 'token': token})
+
+    return render(request, 'staff_pending_orders.html', context)
+
+
+def pending_order_action(request):
+
+    action = request.POST['action']
+    order = Order.objects.get(pk=request.POST['order_id'])
+
+    if action == 'confirm':
+        order.order_is_confirmed = True
+        order.order_is_pending = False
+    else:
+        order.order_is_cancelled = True
+        order.order_is_pending = False
+    order.order_handle_date = timezone.now
+    order.order_handled_by = request.user.id
+    order.save()
+    token = get_token(request)
+
+    return JsonResponse({'success': True, 'token': token, 'cancelled': order.order_is_cancelled,
+                         'confirmed': order.order_is_confirmed})
 
 
 def add_products(request):

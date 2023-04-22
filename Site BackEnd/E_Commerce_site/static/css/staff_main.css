@@ -225,6 +225,7 @@ body {
   position: absolute;
   left: 48.1%;
   bottom: -40px;
+  opacity:.6;
 }
 .search-loader-stf-main i {
   font-size: 18px;
