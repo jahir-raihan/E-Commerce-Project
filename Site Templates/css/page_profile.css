@@ -26,7 +26,8 @@ button {
   color: #0D6EFD;
 }
 .profile-container .profile-nav ul a {
-  display: block;
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid #f7f7f7;
   margin-bottom: 1em;
 }

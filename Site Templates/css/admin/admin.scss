@@ -1,0 +1,222 @@
+.admin-dashboard-container{
+    grid-template-columns: 20% 78% !important;
+    .profile-nav{
+
+        a{
+            img, i{
+                display: block;
+                height:15px;
+                width:15px;
+                margin-right:1em;
+            }
+        }
+    }
+}
+
+.dashboard-contents{
+    .title{
+        margin-bottom: 1em;
+        font-weight: 500;
+    }
+}
+
+.total-sales-order-products{
+    display: grid;
+    grid-template-columns: 68% 29%;
+    gap:3%;
+    margin-bottom: 1em;
+
+    .total-sales-orders{
+        display: flex;
+        justify-content: space-between;
+
+        .total-orders{
+            .icon{
+                background:rgba(0, 128, 0, 0.271);
+            }
+        }
+        .total-sales{
+            .icon{
+                background:rgba(255, 166, 0, 0.232);
+            }
+        }
+
+        .icon-t-s{
+            
+            background:orange;
+            i{
+                color:white;
+            }
+        }
+        .icon-t-o{
+            background:green;
+            i{
+                color:white;
+            }
+        }
+
+        
+    }
+    .icon{
+        width:50px;
+        height:50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right:1em;
+        
+    }
+
+    .total-orders, .total-sales, .total-products{
+        width:47.7%;
+        border-radius: 4px;
+        padding:1em;
+        display: flex;
+        align-items: center;
+        background:white;
+        box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+    }
+    .total-products{
+        width:100%;
+    }
+
+    .icon-t-s, .icon-t-o, .icon-t-p{
+            
+        width:40px;
+        height:40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+    }
+    .total-products{
+        .icon{
+            background:#0d6dfd48;
+        }
+    }
+
+    .icon-t-p{
+        background:#0D6EFD;
+        i{
+            color:white;
+        }
+    }
+    .text-details{
+
+        p{
+            opacity: .7;
+            
+        }
+        .amount{
+            opacity: .9;
+            font-weight: 500;
+        }
+    }
+
+}
+
+.sales-statistics-visitors{
+
+    display: grid;
+    grid-template-columns: 68% 29%;
+    gap:3%;
+    margin-bottom: 1em;
+
+    .sales-statistics{
+        padding:1em;
+        min-height:300px;
+        border-radius: 4px;
+        background:white;
+        box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+    }
+
+    .visitors{
+        padding:1em;
+        min-height:300px;
+        background:white;
+        border-radius: 4px;
+        box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+        -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+    }
+}
+
+.latest-orders{
+    padding:1em;
+    border-radius: 4px;
+    background:white;
+    box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+    -webkit-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+    -moz-box-shadow: -1px 0px 19px -16px rgba(0,0,0,0.67);
+
+    .title{
+        font-weight: 500;
+        opacity: .8;
+        margin-bottom: 1em;
+        font-size:18px;
+    }
+
+    .order-container{
+
+        .order{
+            margin:.5em 0;
+
+            display: grid;
+            grid-template-columns:5% 25% 34% 10% 8% 12% ;
+            gap:1%;
+
+            .order-id, .order-person-email, .order-total-amount, .order-date{
+                opacity: .6;
+
+            }
+            p{
+                font-size:14px;
+            }
+            .order-person{
+                font-weight: 500;
+                opacity: .7;
+            }
+
+            .order-status{
+                padding:.2em 1em;
+                border-radius: 22px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width:fit-content;
+                p{
+                    font-size:11px;
+                    color:white;
+                }
+                width:80px;
+            }
+            .order-pending{
+                background:rgba(255, 166, 0, 0.248);
+                p{
+                    color:orange;
+                }
+                
+            }
+            .order-cancelled{
+                background:rgba(255, 0, 0, 0.308);
+                p{
+                    color:red;
+                }
+            }
+            .order-confirmed, .order-delivered{
+                background:rgba(0, 128, 0, 0.323);
+                p{
+                    color:green;
+                }
+            }
+            
+        }
+    }
+}
