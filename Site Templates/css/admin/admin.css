@@ -215,4 +215,8 @@
 }
 .product-card-admin .p-c-btns i {
   font-size: 18px;
+}
+
+.order .order-top .order-util-btns button {
+  min-width: 100px !important;
 }/*# sourceMappingURL=admin.css.map */

@@ -977,6 +977,11 @@
     margin: 2em auto !important;
   }
 }
+@media only screen and (max-width: 775px) {
+  .admin-orders {
+    padding: 0 !important;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;
