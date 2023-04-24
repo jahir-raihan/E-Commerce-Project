@@ -11,6 +11,8 @@ from django.middleware.csrf import get_token
 from .algorithms import *
 from products.models import *
 from django.db.models import Q
+
+from django.db.models import Sum
 import json
 User = get_user_model()
 
@@ -439,10 +441,45 @@ def check_product_availability(request):
 
 
 def dashboard(request):
-    return render(request, 'admin/dashboard.html')
+
+    total_earnings = Order.objects.filter(order_is_confirmed=True).aggregate(Sum('order_total_price'))['order_total_price__sum']
+    total_orders = Order.objects.filter(order_is_confirmed=True).count()
+    total_products = Product.objects.all().count()
+
+    orders = Order.objects.all().order_by('-order_date')[:50]
+
+    context = {
+        'total_earnings': total_earnings,
+        'total_orders': total_orders,
+        'total_products': total_products,
+        'orders': orders
+    }
+    return render(request, 'admin/dashboard.html', context)
 
 
 def admin_product_list(request):
+
+    if request.method == 'POST':
+
+        query = request.POST['query']
+        category = Category.objects.filter(category_name__icontains=query)
+        reasons = DiscountReason.objects.filter(discount_reason__icontains=query)
+
+        products_list = Product.objects.filter(
+            Q(product_title__icontains=query) | Q(brand__icontains=query) | Q(product_tags__icontains=query) |
+            Q(product_search_keyword__icontains=query) | Q(product_more_information__icontains=query) |
+            Q(product_category__in=category) | Q(discount_reason__in=reasons)
+
+        )
+
+        token = get_token(request)
+        context = {
+            'products': products_list,
+        }
+        template = render_to_string('admin/product_list_template.html', context=context, request=request)
+
+        return JsonResponse({'template': template, 'token': token})
+
     products = Product.objects.all().order_by('-product_last_update')
     context = {
         'products': products
@@ -565,4 +602,14 @@ def admin_orders(request):
 
 
 def admin_transactions(request):
+    if request.method == 'POST':
+        query = request.POST['query']
+        context = {
+            'transactions': 'transactions',
+        }
+        token = get_token(request)
+        template = render_to_string('admin/transactions_template.html', context, request)
+
+        return JsonResponse({'template': template, 'token': token})
+
     return render(request, 'admin/transactions.html')

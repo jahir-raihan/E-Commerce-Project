@@ -147,15 +147,18 @@
            
             
             <div class="product-list  dashboard-contents  p-grid-container">
-                
-                <div class="admin-dashboard-products-search">
-                    <input type="text" id="nav-search" placeholder="Search a product . . . ">
-                    <button><i class="fa fa-fw fa-search"></i></button>
-                </div>
+
+                <form id="search_admin_products">
+                    {% csrf_token %}
+                    <div class="admin-dashboard-products-search">
+                        <input type="text" id="query" placeholder="Search a product . . . ">
+                        <button type="submit"><i class="fa fa-fw fa-search"></i></button>
+                    </div>
+                </form>
 
                 <p class="title">Products List</p>
 
-                    <ol class="products-grid">
+                    <ol class="products-grid" id="admin_products_grid">
 
                         {% for product in products %}
                             <li>
@@ -174,9 +177,11 @@
 
                                     <div class="p-c-btns">
 
-                                        <div class="pen">h
-                                            <i class="fas fa-pen"></i>
-                                        </div>
+                                        <a href="{% url 'admin_edit_product' product.id %}" style="color:black">
+                                            <div class="pen">
+                                                <i class="fas fa-pen"></i>
+                                            </div>
+                                        </a>
 
 
                                         <p >${{product.product_price}}</p>
@@ -185,59 +190,6 @@
                             </li>
                         {% endfor %}
 
-                        <li>
-
-                            <div class="product-card product-card-admin">
-
-                                <div class="product-card-and-view-mask"> 
-                                    <div class="p-c-img">
-                                        <img draggable="false" src="/img/towfiqu-barbhuiya-0ZUoBtLw3y4-unsplash.jpg" alt="">
-                                    </div>
-                                </div>
-
-                                <div class="line"></div>
-                               
-                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
-            
-                                <div class="p-c-btns">
-                                   
-                                    <div class="pen">h
-                                        <i class="fas fa-pen"></i>
-                                    </div>
-                                    
-                                    
-                                    <p >$99.00</p>
-                                </div>
-                            </div> 
-                
-                        </li>
-                        <li>
-
-                            <div class="product-card product-card-admin">
-
-                                <div class="product-card-and-view-mask"> 
-                                    <div class="p-c-img">
-                                        <img draggable="false" src="/img/test_image.jpeg" alt="">
-                                    </div>
-                                </div>
-
-                                <div class="line"></div>
-                               
-                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
-            
-                                <div class="p-c-btns">
-                                   
-                                    <div class="pen">h
-                                        <i class="fas fa-pen"></i>
-                                    </div>
-                                    
-                                    
-                                    <p >$99.00</p>
-                                </div>
-                            </div> 
-                
-                        </li>
-                        
 
                     </ol>
     
@@ -254,3 +206,7 @@
     {% endblock footer_top %}
     {% block footer_bottom %}
     {% endblock footer_bottom %}
+
+    {% block js_bottom %}
+        <script src="{% static 'js/admin.js' %}"></script>
+    {% endblock js_bottom %}

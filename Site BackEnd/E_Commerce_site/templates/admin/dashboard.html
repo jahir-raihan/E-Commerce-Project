@@ -24,11 +24,11 @@
 
     {% block nav_buttons %}
         <button class="nav-btns">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
         </button>
 
         <div class="only-navicons">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
         </div>
     {% endblock nav_buttons %}
 
@@ -162,7 +162,7 @@
 
                             <div class="text-details">
                                 <p>Total Sales</p>
-                                <p class="amount">$ <span>19,232,322</span></p>
+                                <p class="amount">$ <span>{{total_earnings}}</span></p>
                             </div>
                             
 
@@ -180,7 +180,7 @@
 
                             <div class="text-details">
                                 <p>Total Orders</p>
-                                <p class="amount">19,232</p>
+                                <p class="amount">{{total_orders}}</p>
                             </div>
                         </div>
 
@@ -198,7 +198,7 @@
 
                         <div class="text-details">
                             <p>Total Products</p>
-                            <p class="amount">19,22</p>
+                            <p class="amount">{{total_products}}</p>
                         </div>
                     </div>
 
@@ -220,21 +220,23 @@
 
                     <div class="order-container">
 
+                        {% for order in orders %}
+
                         <div class="admin-order">
 
                             <div class="segment-one">
 
                                 <div class="segment-one-sub">
                                     <p class="order-id">
-                                        23333
+                                        {{order.order_id}}
                                     </p>
 
                                     <p class="order-person">
-                                        Jahir Raihan Joy
+                                        {{order.order_person_name}}
                                     </p>
                                 </div>
                                 <p class="order-person-email">
-                                    hello@gmail.com
+                                    {{order.order_person_email}}
                                 </p>
 
                             </div>
@@ -243,60 +245,37 @@
 
                             <div class="segment-two">
                                 <p class="order-total-amount">
-                                    $2424.56
+                                    ${{order.order_total_price}}
                                 </p>
                                 <p class="order-date">
-                                    20.05.2023
+                                    {{order.order_date|date:"d-m-y"}}
                                 </p>
                             </div>
 
-
-                            <div class="order-status order-pending">
-                                <p>Pending</p>
-                            </div>
-
-                        </div>
-
-                        <div class="line"></div>
-
-                        <div class="admin-order">
-
-                            <div class="segment-one">
-
-                                <div class="segment-one-sub">
-                                    <p class="order-id">
-                                        23333
-                                    </p>
-
-                                    <p class="order-person">
-                                        Jahir Raihan Joy
-                                    </p>
+                            {% if order.order_is_pending %}
+                                <div class="order-status order-pending">
+                                    <p>Pending</p>
                                 </div>
-                                <p class="order-person-email">
-                                    rahmanbhuiyan2022@gmail.com
-                                </p>
+                            {% elif order.order_is_cancelled %}
+                                <div class="order-status order-cancelled">
+                                    <p>Cancelled</p>
+                                </div>
+                            {% elif order.order_is_confirmed %}
+                                <div class="order-status order-confirmed">
+                                    <p>Confirmed</p>
+                                </div>
+                            {% else %}
+                                <div class="order-status order-delivered">
+                                    <p>Delivered</p>
+                                </div>
+                            {% endif %}
 
-                            </div>
-
-
-
-                            <div class="segment-two">
-                                <p class="order-total-amount">
-                                    $2424.56
-                                </p>
-                                <p class="order-date">
-                                    20.05.2023
-                                </p>
-                            </div>
-
-
-                            <div class="order-status order-pending">
-                                <p>Pending</p>
-                            </div>
 
                         </div>
 
                         <div class="line"></div>
+                        {% endfor %}
+
 
 
                     

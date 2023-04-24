@@ -1,0 +1,27 @@
+{% for product in products %}
+    <li>
+
+        <div class="product-card product-card-admin">
+
+            <div class="product-card-and-view-mask">
+                <div class="p-c-img">
+                    <img draggable="false" src="{{product.product_primary_image.url}}" alt="">
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <p class="title">{{product.product_title}}</p>
+
+            <div class="p-c-btns">
+
+                <div class="pen">
+                    <i class="fas fa-pen"></i>
+                </div>
+
+
+                <p >${{product.product_price}}</p>
+            </div>
+        </div>
+    </li>
+{% endfor %}

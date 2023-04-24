@@ -6,8 +6,10 @@ var shipping_fee = 150;
 var s_list = document.getElementById('s-list')
 all_keywords.forEach((item) => {
     var ele = document.createElement('small')
-    ele.innerHTML = item
-    s_list.appendChild(ele)
+    try{
+        ele.innerHTML = item
+        s_list.appendChild(ele)
+    }catch{}
 });
 
 

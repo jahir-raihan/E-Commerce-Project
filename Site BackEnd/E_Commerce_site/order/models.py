@@ -6,7 +6,9 @@ User = get_user_model()
 
 class Transaction(models.Model):
     # All transaction information goes here
-    pass
+    transaction_id = models.CharField(max_length=34)
+    transaction_amount = models.IntegerField()
+    transaction_method = models.CharField(max_length=20)
 
 
 class Order(models.Model):

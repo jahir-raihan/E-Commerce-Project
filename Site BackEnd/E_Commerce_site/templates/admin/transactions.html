@@ -146,43 +146,48 @@
 
                 <div class="current-orders transactions">
 
-                    <form action="">
+                    <form id="admin-transaction-search">
+                        {% csrf_token %}
                         <div class="search-facility admin-dashboard-products-search">
-                            <input type="search" placeholder="search by anything">
+                            <input type="search" id="query" placeholder="search by anything">
                             <button><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </form>
 
                     <p class="title"> Transactions </p>
 
-                    <div class="transaction-list">
+                    <div class="transaction-list" id="transaction-list">
+                        {% for tran in transactions %}
+                            <div class="item">
 
-                        <div class="item">
+                                <div class="operator-logo">
 
-                            <div class="operator-logo">
+                                    <img src="{% static 'img/1656227518bkash-logo-png.png' %}" alt="">
 
-                                <img src="{% static 'img/1656227518bkash-logo-png.png' %}" alt="">
+                                </div>
+
+                                <div class="trans-id-and-amount">
+
+                                    <p class="trans-id "> <span>Trans ID:</span> {{tran.transaction_id}}</p>
+                                    <p class="trans-id"><span>Amount:</span> ${{tran.transaction_amount}}</p>
+
+                                </div>
+
+                                <p class="date">{{tran.transaction_time}}</p>
+
+
+
+                                <a href="/account/admin/orders/?s={{tran.order.id}}" style="text-decoration:none">
+                                    <button class="view-order-btn">
+                                        View order
+                                    </button>
+                                </a>
 
                             </div>
-
-                            <div class="trans-id-and-amount">
-
-                                <p class="trans-id "> <span>Trans ID:</span> xypk87*****45534</p>
-                                <p class="trans-id"><span>Amount:</span> $99.00</p>
-
-                            </div>
-
-                            <p class="date">12:30 PM, 19 July 2022</p>
-
-
-                            <button class="view-order-btn">
-                                View order
-                            </button>
+                        {% endfor %}
 
 
 
-
-                        </div>
                         <div class="item">
 
                             <div class="operator-logo">
