@@ -1,14 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+
 User = get_user_model()
-
-
-class Transaction(models.Model):
-    # All transaction information goes here
-    transaction_id = models.CharField(max_length=34)
-    transaction_amount = models.IntegerField()
-    transaction_method = models.CharField(max_length=20)
 
 
 class Order(models.Model):
@@ -36,13 +30,12 @@ class Order(models.Model):
 
     # Order price
 
-    order_total_price = models.IntegerField()
+    order_total_price = models.FloatField()
 
     # Order payment method
     payment_choices = (('cash_on_delivery', 'cash_on_delivery'), ('bkash', 'bkash'), ('sslcom', 'sslcom'))
 
     order_payment_method = models.CharField(max_length=50, choices=payment_choices, default='cash_on_delivery')
-    order_transaction = models.OneToOneField(Transaction, on_delete=models.DO_NOTHING, null=True, blank=True)
     note_msg = models.CharField(max_length=300, blank=True, null=True)
 
     def __str__(self):
@@ -53,4 +46,17 @@ class OrderID(models.Model):
     order_id = models.BigIntegerField(default=1000)
 
 
+class Transaction(models.Model):
+    # All transaction information goes here
+    transaction_id = models.CharField(max_length=34)
+    transaction_amount = models.FloatField()
+    transaction_method = models.CharField(max_length=20)
+    bank_tran_id = models.CharField(max_length=50)
+    transaction_date = models.DateTimeField(auto_now_add=True)
+    transaction_person = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, blank=True)
+    transaction_person_name = models.CharField(max_length=30)
+    transaction_person_phone = models.CharField(max_length=14)
+    transaction_person_email = models.EmailField()
+    transaction_person_ip = models.GenericIPAddressField()
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
 

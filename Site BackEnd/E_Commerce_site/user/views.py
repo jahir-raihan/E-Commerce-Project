@@ -309,6 +309,32 @@ def account(request):
 
 @csrf_exempt
 def order_history(request):
+    if request.method == 'POST':
+
+        # Response from sslcommerze payment system
+
+        data = request.POST
+        order_id = data['value_a']
+        order = Order.objects.get(pk=order_id)
+
+        transaction_method = 'sslcom'
+        if data['card_issuer'] == 'Bkash Mobile Banking':
+            transaction_method = 'bkash'
+
+        tran = Transaction(
+            transaction_id=data['tran_id'],
+            transaction_amount=float(data['store_amount']),
+            transaction_method=transaction_method,
+            bank_tran_id=data['bank_tran_id'],
+            transaction_person=order.order_person,
+            transaction_person_name=order.order_person_name,
+            transaction_person_phone=order.order_person_phone,
+            transaction_person_email=order.order_person_email,
+            transaction_person_ip=order.order_person_ip,
+            order=order
+        )
+        tran.save()
+
     if request.user.is_authenticated:
         orders = Order.objects.filter(order_person=request.user).order_by('-order_date')
     else:

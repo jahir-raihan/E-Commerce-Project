@@ -3,4 +3,5 @@ from .models import *
 
 
 admin.site.register(Order)
+admin.site.register(Transaction)
 # Register your models here.

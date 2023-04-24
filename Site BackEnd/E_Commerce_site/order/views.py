@@ -87,7 +87,7 @@ def checkout(request):
             order_person_email=email,
             order_person_ip=get_client_ip(request),
             order_person=user,
-            order_total_price=price,
+            order_total_price=float(data['total_price']),
             order_payment_method=data['payment_method'],
             note_msg=data['note_to_seller'],
         )
@@ -108,7 +108,7 @@ def checkout(request):
         if data['payment_method'] == 'sslcom':
             setting = {'store_id': settings.STORE_ID, 'store_pass': settings.STORE_PASS, 'issandbox': True}
             sslcz = SSLCOMMERZ(setting)
-            post_body = {'total_amount': price, 'currency': "BDT", 'tran_id': f'{tran_id}',
+            post_body = {'total_amount': data['total_price'], 'currency': "BDT", 'tran_id': f'{tran_id}',
                          'success_url': f"{request.META['HTTP_ORIGIN']}/account/order-history/",
                          'fail_url': f"{request.META['HTTP_ORIGIN']}/cart/",
                          'cancel_url': f"{request.META['HTTP_ORIGIN']}/cart/",
@@ -117,7 +117,7 @@ def checkout(request):
                          'cus_email': email, 'cus_phone': phone, 'cus_add1': "Null",
                          'cus_city': city, 'cus_country': "Bangladesh", 'shipping_method': "NO", 'multi_card_name': "",
                          'num_of_item': items_count, 'product_name': 'Cloths', 'product_category': "Cloths",
-                         'product_profile': "general",
+                         'product_profile': "general", 'value_a': [order.id]
                          }
 
             response = sslcz.createSession(post_body)  # API response

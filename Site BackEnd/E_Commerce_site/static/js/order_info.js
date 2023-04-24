@@ -76,7 +76,7 @@ function toggle_g_d(){
 let payment_method = 'cod';
 
 let cod = dc.getElementById('cod')
-let bksh = dc.getElementById('bkash')
+//let bksh = dc.getElementById('bkash')
 let sslcom = dc.getElementById('sslcom')
 let choices = dc.querySelectorAll('.choice-card')
 choices.forEach ( (choice) => {
@@ -85,21 +85,21 @@ choices.forEach ( (choice) => {
         if (choice.id == 'cod'){
             payment_method = 'cod';
             cod.classList.add('choice-selected')
-            bksh.classList.remove('choice-selected')
+//            bksh.classList.remove('choice-selected')
             sslcom.classList.remove('choice-selected')
 
         }
-        else if (choice.id == 'bkash'){
-            payment_method = 'bkash';
-            bksh.classList.add('choice-selected')
-            cod.classList.remove('choice-selected')
-            sslcom.classList.remove('choice-selected')
-
-        }
+//        else if (choice.id == 'bkash'){
+//            payment_method = 'bkash';
+//            bksh.classList.add('choice-selected')
+//            cod.classList.remove('choice-selected')
+//            sslcom.classList.remove('choice-selected')
+//
+//        }
         else if (choice.id == 'sslcom'){
             payment_method = 'sslcom';
             sslcom.classList.add('choice-selected')
-            bksh.classList.remove('choice-selected')
+//            bksh.classList.remove('choice-selected')
             cod.classList.remove('choice-selected')
 
         }
@@ -309,6 +309,7 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
             user : $('#user').val(),
             payment_method: payment_method,
             note_to_seller: $('#note_to_seller').val(),
+            total_price: $('#items_total_amount').text(),
             guest_checkout: is_guest_checkout,
             save_address: dc.getElementById('save-this-address').checked
         }
