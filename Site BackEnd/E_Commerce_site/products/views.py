@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import *
 from .algorithms import *
@@ -130,8 +131,8 @@ def show_all_reviews(request, pk):
 
 # Cart and wishlist
 
+@csrf_exempt
 def cart(request):
-
     return render(request, 'cart.html')
 
 

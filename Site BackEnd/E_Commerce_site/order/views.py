@@ -52,10 +52,6 @@ def checkout(request):
             user = request.user
 
         # Calculating asshole price of shitty cart items
-
-        price = 0
-        for i in map(int, data.getlist('items_prices[]')):
-            price += i
         items_count = 0
         for i in map(int, data.getlist('items_quantity[]')):
             items_count += i
@@ -93,6 +89,8 @@ def checkout(request):
         )
 
         order.save()
+
+        print('Amount ', data['total_price'])
 
         # Payment method stuff
 

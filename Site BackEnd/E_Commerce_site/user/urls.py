@@ -5,6 +5,7 @@ urlpatterns = [
     path('login/', login_user, name='login'),
     path('register/', register_user, name='register'),
     path('redirect-user/base-location/', redirect_origin, name='redirect_origin'),
+    path('logout/', logout_user, name='logout'),
 
     # Staff Area
 
@@ -29,6 +30,7 @@ urlpatterns = [
     path('check-wishlist-item-availability/', check_product_availability, name='check_product_availability'),
     path('remove-wishlist-item/', remove_wishlist_item, name='remove_wishlist_item'),
     path('wishlist/', wishlist, name='wishlist'),
+    path('transaction/', transactions, name='transaction'),
 
     # Admin
 

@@ -69,7 +69,8 @@ def logout_user(request):
 
     """Logs out a user"""
 
-    pass
+    logout(request)
+    return redirect('login')
 
 
 def redirect_origin(request):
@@ -314,6 +315,7 @@ def order_history(request):
         # Response from sslcommerze payment system
 
         data = request.POST
+        print('Data', data)
         order_id = data['value_a']
         order = Order.objects.get(pk=order_id)
 
@@ -323,7 +325,7 @@ def order_history(request):
 
         tran = Transaction(
             transaction_id=data['tran_id'],
-            transaction_amount=float(data['store_amount']),
+            transaction_amount=float(data['amount']),
             transaction_method=transaction_method,
             bank_tran_id=data['bank_tran_id'],
             transaction_person=order.order_person,
@@ -334,6 +336,9 @@ def order_history(request):
             order=order
         )
         tran.save()
+        order.order_is_pending = False
+        order.order_is_confirmed = True
+        order.save()
 
     if request.user.is_authenticated:
         orders = Order.objects.filter(order_person=request.user).order_by('-order_date')
@@ -370,40 +375,53 @@ def order_history(request):
 
 
 def query_order_history(request):
-    if request.method == 'POST':
+    if 's' in request.GET:
+        query = request.GET['s']
+    else:
         query = request.POST['query']
-        orders = Order.objects.filter(
-            Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(order_person_email__icontains=query)
-            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query)
+
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(order_person=request.user)
+    else:
+        orders = Order.objects.filter(order_person_ip=get_client_ip(request))
+    orders = orders.filter(
+        Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(order_person_email__icontains=query)
+        | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query) |
+        Q(id__icontains=query)
+    )
+    real_orders = []
+    for order in orders:
+        o_items = json.loads(order.order_items)
+        items = []
+        for idx in range(len(o_items['ids'])):
+            tmp = {
+                'item': Product.objects.get(pk=o_items['ids'][idx]),
+                'quantity': o_items['quantities'][idx],
+                'size': o_items['sizes'][idx],
+                'price': o_items['prices'][idx]
+            }
+            items.append(tmp)
+
+        real_orders.append(
+            {
+                "order": order,
+                "items": items
+            }
         )
-        real_orders = []
-        for order in orders:
-            o_items = json.loads(order.order_items)
-            items = []
-            for idx in range(len(o_items['ids'])):
-                tmp = {
-                    'item': Product.objects.get(pk=o_items['ids'][idx]),
-                    'quantity': o_items['quantities'][idx],
-                    'size': o_items['sizes'][idx],
-                    'price': o_items['prices'][idx]
-                }
-                items.append(tmp)
 
-            real_orders.append(
-                {
-                    "order": order,
-                    "items": items
-                }
-            )
+    token = get_token(request)
+    context = {
+        'orders': real_orders,
+        'token': token
+    }
+    template = render_to_string('order_history_search_template.html', request=request, context=context)
 
-        token = get_token(request)
-        context = {
-            'orders': real_orders,
-            'token': token
-        }
-        template = render_to_string('order_history_search_template.html', request=request, context=context)
-
+    if request.method == 'POST':
         return JsonResponse({'template': template, 'token': token})
+    else:
+        return render(request, 'order_history.html', context)
+
+
 # Wishlist section
 
 
@@ -462,6 +480,21 @@ def check_product_availability(request):
         'status': True if product.product_in_stock else False
     }
     return JsonResponse(context)
+
+
+def transactions(request):
+
+    if request.user.is_authenticated:
+        user = request.user
+        trans = Transaction.objects.filter(transaction_person=user)
+    else:
+        user_ip = get_client_ip(request)
+        trans = Transaction.objects.filter(transaction_person_ip=user_ip)
+
+    context = {
+        'transactions': trans
+    }
+    return render(request, 'transactions.html', context)
 
 # Admin section
 
@@ -589,7 +622,8 @@ def admin_orders(request):
         orders = Order.objects.filter(
             Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(
                 order_person_email__icontains=query)
-            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query)
+            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query) |
+            Q(id__icontains=query)
         )
     else:
         orders = Order.objects.filter(order_is_pending=True).order_by('order_date')
@@ -630,12 +664,18 @@ def admin_orders(request):
 def admin_transactions(request):
     if request.method == 'POST':
         query = request.POST['query']
+        transactions = Transaction.objects.filter(
+            Q(transaction_person_name__icontains=query) | Q(transaction_person_phone__icontains=query) |
+            Q(transaction_person_email__icontains=query) | Q(transaction_id__icontains=query) |
+            Q(transaction_person_ip__icontains=query)
+        )
         context = {
-            'transactions': 'transactions',
+            'transactions': transactions,
         }
         token = get_token(request)
         template = render_to_string('admin/transactions_template.html', context, request)
 
         return JsonResponse({'template': template, 'token': token})
 
-    return render(request, 'admin/transactions.html')
+    transactions = Transaction.objects.all()
+    return render(request, 'admin/transactions.html', {'transactions': transactions})
