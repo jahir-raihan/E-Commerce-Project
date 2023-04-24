@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Dashboard</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/page_profile.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
+                <img src="/img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+
+            <div class="nav-buttons">
+
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+               
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Dashboard</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Products</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Orders</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Transactions</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- End Navigation Bar -->
+
+    <!-- Base Container -->
+
+    <div class="container" >
+
+        <!-- Page Navigator -->
+
+        <div class="navigator-products">
+
+            <div class="n-p-contents">
+                <a href="#">Admin > </a>
+                
+                <a href="#" style="color:gray">Products</a>
+            </div>
+            
+        </div>
+
+        <!-- End Page Navigator -->
+
+
+        <!-- Profile Container -->
+
+        <div class="profile-container product-container  admin-dashboard-container" >
+
+            <!-- Profile Navigation -->
+
+            <div class="profile-nav">
+
+                <ul>
+                    <a href="#" >
+                        <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
+                        <li >Dashboard</li>
+                    </a>
+                    
+                    <a href="#" class="current-tab-profile">
+                        <i class="fa-sharp fa-solid fa-box-open-full"></i>
+                        <li class="">Products</li>
+                    </a>
+
+                    <a href="#" >
+                        <i class="fas fa-edit"></i>
+                        <li class="">Add | Edit Products</li>
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-cart-shopping"></i>
+                        <li class="">Orders</li>
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-right-left"></i>
+                        <li class="">Transactions</li>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-sign-out"></i>
+                        <li class="">Log out</li>
+                    </a>
+                </ul>
+
+            </div>
+
+            <!-- End Profile Navigation -->
+
+
+           
+            
+            <div class="product-list  dashboard-contents  p-grid-container">
+                
+                <div class="admin-dashboard-products-search">
+                    <input type="text" id="nav-search" placeholder="Search a product . . . ">
+                    <button><i class="fa fa-fw fa-search"></i></button>
+                </div>
+
+                <p class="title">Products List</p>
+
+                    <ol class="products-grid">
+
+                        <li>
+
+                            <div class="product-card product-card-admin">
+
+                                <div class="product-card-and-view-mask"> 
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="/img/test_image.jpeg" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="line"></div>
+                               
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                   
+                                    <div class="pen">h
+                                        <i class="fas fa-pen"></i>
+                                    </div>
+                                    
+                                    
+                                    <p >$99.00</p>
+                                </div>
+                            </div> 
+                
+                        </li>
+                        <li>
+
+                            <div class="product-card product-card-admin">
+
+                                <div class="product-card-and-view-mask"> 
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="/img/towfiqu-barbhuiya-0ZUoBtLw3y4-unsplash.jpg" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="line"></div>
+                               
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                   
+                                    <div class="pen">h
+                                        <i class="fas fa-pen"></i>
+                                    </div>
+                                    
+                                    
+                                    <p >$99.00</p>
+                                </div>
+                            </div> 
+                
+                        </li>
+                        <li>
+
+                            <div class="product-card product-card-admin">
+
+                                <div class="product-card-and-view-mask"> 
+                                    <div class="p-c-img">
+                                        <img draggable="false" src="/img/test_image.jpeg" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="line"></div>
+                               
+                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
+            
+                                <div class="p-c-btns">
+                                   
+                                    <div class="pen">h
+                                        <i class="fas fa-pen"></i>
+                                    </div>
+                                    
+                                    
+                                    <p >$99.00</p>
+                                </div>
+                            </div> 
+                
+                        </li>
+                        
+
+                    </ol>
+    
+            </div>
+
+        </div>
+
+        <!-- End Profile Container -->
+
+
+    </div>
+    
+    <!-- End Base Container -->
+
+
+    <!-- Footer-->
+
+  
+    <!-- End Footer -->
+
+    <script src="../js/index.js"></script>
+</body>
+</html>

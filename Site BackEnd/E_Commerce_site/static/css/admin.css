@@ -1,0 +1,222 @@
+.admin-dashboard-container {
+  grid-template-columns: 20% 78% !important;
+}
+.admin-dashboard-container .profile-nav a img, .admin-dashboard-container .profile-nav a i {
+  display: block;
+  height: 15px;
+  width: 15px;
+  margin-right: 1em;
+}
+
+.dashboard-contents .title {
+  margin-bottom: 1em;
+  font-weight: 500;
+}
+
+.total-sales-order-products {
+  display: grid;
+  grid-template-columns: 68% 29%;
+  gap: 3%;
+  margin-bottom: 1em;
+}
+.total-sales-order-products .total-sales-orders {
+  display: flex;
+  justify-content: space-between;
+}
+.total-sales-order-products .total-sales-orders .total-orders .icon {
+  background: rgba(0, 128, 0, 0.271);
+}
+.total-sales-order-products .total-sales-orders .total-sales .icon {
+  background: rgba(255, 166, 0, 0.232);
+}
+.total-sales-order-products .total-sales-orders .icon-t-s {
+  background: orange;
+}
+.total-sales-order-products .total-sales-orders .icon-t-s i {
+  color: white;
+}
+.total-sales-order-products .total-sales-orders .icon-t-o {
+  background: green;
+}
+.total-sales-order-products .total-sales-orders .icon-t-o i {
+  color: white;
+}
+.total-sales-order-products .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1em;
+}
+.total-sales-order-products .total-orders, .total-sales-order-products .total-sales, .total-sales-order-products .total-products {
+  width: 47.7%;
+  border-radius: 4px;
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  background: white;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.total-sales-order-products .total-products {
+  width: 100%;
+}
+.total-sales-order-products .icon-t-s, .total-sales-order-products .icon-t-o, .total-sales-order-products .icon-t-p {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.total-sales-order-products .total-products .icon {
+  background: rgba(13, 109, 253, 0.2823529412);
+}
+.total-sales-order-products .icon-t-p {
+  background: #0D6EFD;
+}
+.total-sales-order-products .icon-t-p i {
+  color: white;
+}
+.total-sales-order-products .text-details p {
+  opacity: 0.7;
+}
+.total-sales-order-products .text-details .amount {
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.sales-statistics-visitors {
+  display: grid;
+  grid-template-columns: 68% 29%;
+  gap: 3%;
+  margin-bottom: 1em;
+}
+.sales-statistics-visitors .sales-statistics {
+  padding: 1em;
+  min-height: 300px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.sales-statistics-visitors .visitors {
+  padding: 1em;
+  min-height: 300px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+
+.latest-orders {
+  padding: 1em;
+  border-radius: 4px;
+  background: white;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.latest-orders .title {
+  font-weight: 500;
+  opacity: 0.8;
+  margin-bottom: 1em;
+  font-size: 18px;
+}
+.latest-orders .order-container .order {
+  margin: 0.5em 0;
+  display: grid;
+  grid-template-columns: 5% 25% 34% 10% 8% 12%;
+  gap: 1%;
+}
+.latest-orders .order-container .order .order-id, .latest-orders .order-container .order .order-person-email, .latest-orders .order-container .order .order-total-amount, .latest-orders .order-container .order .order-date {
+  opacity: 0.6;
+}
+.latest-orders .order-container .order p {
+  font-size: 14px;
+}
+.latest-orders .order-container .order .order-person {
+  font-weight: 500;
+  opacity: 0.7;
+}
+.latest-orders .order-container .order .order-status {
+  padding: 0.2em 1em;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  width: 80px;
+}
+.latest-orders .order-container .order .order-status p {
+  font-size: 11px;
+  color: white;
+}
+.latest-orders .order-container .order .order-pending {
+  background: rgba(255, 166, 0, 0.248);
+}
+.latest-orders .order-container .order .order-pending p {
+  color: orange;
+}
+.latest-orders .order-container .order .order-cancelled {
+  background: rgba(255, 0, 0, 0.308);
+}
+.latest-orders .order-container .order .order-cancelled p {
+  color: red;
+}
+.latest-orders .order-container .order .order-confirmed, .latest-orders .order-container .order .order-delivered {
+  background: rgba(0, 128, 0, 0.323);
+}
+.latest-orders .order-container .order .order-confirmed p, .latest-orders .order-container .order .order-delivered p {
+  color: green;
+}
+
+.dashboard-contents .title {
+  opacity: 0.8;
+}
+
+.admin-dashboard-products-search {
+  display: flex;
+  margin-bottom: 1.5em;
+}
+.admin-dashboard-products-search input {
+  height: 40px;
+  border-radius: 4px 0 0 4px;
+  outline-color: #0D6EFD;
+  opacity: 0.8;
+  padding: 0.5em 1em;
+  width: 80%;
+  border: var(--border);
+}
+.admin-dashboard-products-search button {
+  border: none;
+  width: 20%;
+  height: 40px;
+  border-radius: 0 4px 4px 0;
+}
+
+.product-card-admin {
+  background: white;
+  box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -webkit-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+  -moz-box-shadow: -1px 0px 19px -16px rgba(0, 0, 0, 0.67);
+}
+.product-card-admin .p-c-img {
+  min-height: 220px;
+}
+.product-card-admin .p-c-btns {
+  justify-content: space-between;
+}
+.product-card-admin .p-c-btns i {
+  font-size: 18px;
+}
+
+.order .order-top .order-util-btns button {
+  min-width: 100px !important;
+}/*# sourceMappingURL=admin.css.map */

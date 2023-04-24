@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Dashboard</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/products.css">
+    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="/css/admin/admin.css">
+    <link rel="stylesheet" href="/css/page_profile.css">
+    <link rel="stylesheet" href="/css/media_queries.css">
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+
+    <header class="staff-header">
+        <nav class="nav">
+            <div class="nav-logo nav-ham-logo">
+                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
+                    <img src="/img/menu.png" alt="">
+                </div>
+
+                <img src="/img/ logo.png" alt="Logo" class="logo">
+            </div>
+            
+
+            <div class="nav-buttons">
+
+                <button class="nav-btns">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+                </button>
+
+                <div class="only-navicons">
+                    <i class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>
+                
+            </div>
+        </nav>
+
+        <div class="toggle-nav " id="toggle-nav">
+            <ul>
+               
+                <a href="#">
+                    <div >
+                        <p class="p-link" >Dashboard</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div  >
+                        <p class="p-link">Products</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Orders</p>
+                       
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Transactions</p>
+                      
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+                <a href="#">
+                    <div >
+                        <p class="p-link">Logout</p>
+                        
+                    </div>
+
+                    <p class="g-icon">></p>
+                </a>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- End Navigation Bar -->
+
+    <!-- Base Container -->
+
+    <div class="container" >
+
+        <!-- Page Navigator -->
+
+        <div class="navigator-products">
+
+            <div class="n-p-contents">
+                <a href="#">Admin > </a>
+                
+                <a href="#" style="color:gray">Dashboard</a>
+            </div>
+            
+        </div>
+
+        <!-- End Page Navigator -->
+
+
+        <!-- Profile Container -->
+
+        <div class="profile-container admin-dashboard-container">
+
+            <!-- Profile Navigation -->
+
+            <div class="profile-nav">
+
+                <ul>
+                    <a href="#" class="current-tab-profile">
+                        <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
+                        <li >Dashboard</li>
+                    </a>
+                    
+                    <a href="#">
+                        <i class="fa-sharp fa-solid fa-box-open-full"></i>
+                        <li class="">Products</li>
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-edit"></i>
+                        <li class="">Add | Edit Products</li>
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-cart-shopping"></i>
+                        <li class="">Orders</li>
+                    </a>
+
+                    <a href="#">
+                        <i class="fas fa-right-left"></i>
+                        <li class="">Transactions</li>
+                    </a>
+                    <a href="#">
+                        <i class="fas fa-sign-out"></i>
+                        <li class="">Log out</li>
+                    </a>
+                </ul>
+
+            </div>
+
+            <!-- End Profile Navigation -->
+
+
+           
+            
+            <div class="dashboard-contents">
+                
+                <div class="title">Dashboard</div>
+
+                <div class="total-sales-order-products">
+
+                    <div class="total-sales-orders">
+
+                        <div class="total-sales">
+
+                            <div class="icon">
+                                <div class="icon-t-s">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                            
+                            
+
+                            <div class="text-details">
+                                <p>Total Sales</p>
+                                <p class="amount">$ <span>19,232,322</span></p>
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="total-orders">
+
+                            <div class="icon">
+                                <div class="icon-t-o">
+                                    <i class="fas fa-cart-shopping"></i>
+                                </div>
+                            </div>      
+                            
+                            
+
+                            <div class="text-details">
+                                <p>Total Orders</p>
+                                <p class="amount">19,232</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="total-products">
+
+                        <div class="icon">
+                            <div class="icon-t-p">
+                            
+                                <i class="fas fa-bag-shopping"></i>
+                            </div>
+                        </div>      
+                        
+
+                        <div class="text-details">
+                            <p>Total Products</p>
+                            <p class="amount">19,22</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sales-statistics-visitors">
+
+                    <div class="sales-statistics"></div>
+
+                    <div class="visitors"></div>
+
+                </div>
+
+                <div class="latest-orders">
+                    
+                    <div class="title">Latest Orders</div>
+
+                   
+
+                    <div class="order-container">
+
+                        <div class="order">
+                            <p class="order-id">
+                                23333
+                            </p>
+
+                            <p class="order-person">
+                                Jahir Raihan Joy
+                            </p>
+                            <p class="order-person-email">
+                                hello@gmail.com
+                            </p>
+
+                            <p class="order-total-amount">
+                                $2424.56
+                            </p>
+                            <p class="order-date">
+                                20.05.2023
+                            </p>
+
+                            <div class="order-status order-pending">
+                                <p>Pending</p>
+                            </div>
+
+                        </div>
+                        
+                        <div class="line"></div>
+
+                        <div class="order">
+                            <p class="order-id">
+                                23334
+                            </p>
+
+                            <p class="order-person">
+                                Abdullah Al Rahman
+                            </p>
+                            <p class="order-person-email">
+                                rahmanbhuiyan20223@gmail.com
+                            </p>
+
+                            <p class="order-total-amount">
+                                $2424.56
+                            </p>
+                            <p class="order-date">
+                                10.05.2023
+                            </p>
+
+                            <div class="order-status order-delivered">
+                                <p>Delivered</p>
+                            </div>
+
+                        </div>
+                        <div class="line"></div>
+
+                        <div class="order">
+                            <p class="order-id">
+                                23334
+                            </p>
+
+                            <p class="order-person">
+                                Dhrba Majumdar
+                            </p>
+                            <p class="order-person-email">
+                                dhurabapaly@gmail.com
+                            </p>
+
+                            <p class="order-total-amount">
+                                $244.56
+                            </p>
+                            <p class="order-date">
+                                20.08.2023
+                            </p>
+
+                            <div class="order-status order-cancelled">
+                                <p>Cancelled</p>
+                            </div>
+
+                        </div>
+                    
+                    </div>
+                    
+
+                    <div class="line"></div>
+
+                </div>
+            
+
+            </div>
+
+            
+
+        </div>
+
+        <!-- End Profile Container -->
+
+
+    </div>
+    
+    <!-- End Base Container -->
+
+
+    <!-- Footer-->
+
+  
+    <!-- End Footer -->
+
+    <script src="../js/index.js"></script>
+</body>
+</html>
