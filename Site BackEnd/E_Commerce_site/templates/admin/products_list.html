@@ -1,101 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Dashboard</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+{% extends 'index.html' %}
+{% load static %}
 
-    <link rel="stylesheet" href="/css/admin/admin.css">
-    <link rel="stylesheet" href="/css/page_profile.css">
-    <link rel="stylesheet" href="/css/media_queries.css">
+    {% block jsfiles %}
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    {% endblock jsfiles %}
 
-</head>
-<body>
+    {% block title %}
+        Admin - Product List
+    {% endblock title %}
 
-    <!-- Navigation Bar -->
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+        <link rel="stylesheet" href="{% static 'css/transactions.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    {% endblock cssfiles %}
 
-    <header class="staff-header">
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="/img/menu.png" alt="">
-                </div>
+    {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
 
-                <img src="/img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
+    {% block nav_search %} {% endblock nav_search %}
 
-            <div class="nav-buttons">
+    {% block nav_buttons %}
+        <button class="nav-btns">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+        </button>
 
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
-
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-                
-            </div>
-        </nav>
-
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-               
-                <a href="#">
-                    <div >
-                        <p class="p-link" >Dashboard</p>
-                      
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div  >
-                        <p class="p-link">Products</p>
-                       
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p class="p-link">Orders</p>
-                       
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p class="p-link">Transactions</p>
-                      
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p class="p-link">Logout</p>
-                        
-                    </div>
-
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
+        <div class="only-navicons">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
         </div>
-    </header>
+    {% endblock nav_buttons %}
 
+    {% block toggle_nav_user_part %}
+    {% endblock toggle_nav_user_part %}
 
-    <!-- End Navigation Bar -->
+    {% block toggle_nav_staff_part %}
+         <ul>
 
-    <!-- Base Container -->
+            <a href="#">
+                <div >
+                    <p class="p-link" >Dashboard</p>
 
-    <div class="container" >
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="#">
+                <div  >
+                    <p class="p-link">Products</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="#">
+                <div >
+                    <p class="p-link">Orders</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="#">
+                <div >
+                    <p class="p-link">Transactions</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="#">
+                <div >
+                    <p class="p-link">Logout</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+        </ul>
+    {% endblock toggle_nav_staff_part %}
+
+    {% block nav_2 %}{% endblock nav_2 %}
+
+    {% block container %}
 
         <!-- Page Navigator -->
 
@@ -121,27 +109,27 @@
             <div class="profile-nav">
 
                 <ul>
-                    <a href="#" >
+                    <a href="{% url 'admin_dashboard' %}" >
                         <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
                         <li >Dashboard</li>
                     </a>
-                    
-                    <a href="#" class="current-tab-profile">
+
+                    <a href="{% url 'admin_product_list' %}" class="current-tab-profile">
                         <i class="fa-sharp fa-solid fa-box-open-full"></i>
                         <li class="">Products</li>
                     </a>
 
-                    <a href="#" >
+                    <a href="{% url 'admin_add_product' %}">
                         <i class="fas fa-edit"></i>
                         <li class="">Add | Edit Products</li>
                     </a>
 
-                    <a href="#">
+                    <a href="{% url 'admin_orders' %}">
                         <i class="fas fa-cart-shopping"></i>
                         <li class="">Orders</li>
                     </a>
 
-                    <a href="#">
+                    <a href="{% url 'admin_transactions' %}">
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
@@ -169,32 +157,34 @@
 
                     <ol class="products-grid">
 
-                        <li>
+                        {% for product in products %}
+                            <li>
 
-                            <div class="product-card product-card-admin">
+                                <div class="product-card product-card-admin">
 
-                                <div class="product-card-and-view-mask"> 
-                                    <div class="p-c-img">
-                                        <img draggable="false" src="/img/test_image.jpeg" alt="">
+                                    <div class="product-card-and-view-mask">
+                                        <div class="p-c-img">
+                                            <img draggable="false" src="{{product.product_primary_image.url}}" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="line"></div>
+
+                                    <p class="title">{{product.product_title}}</p>
+
+                                    <div class="p-c-btns">
+
+                                        <div class="pen">h
+                                            <i class="fas fa-pen"></i>
+                                        </div>
+
+
+                                        <p >${{product.product_price}}</p>
                                     </div>
                                 </div>
+                            </li>
+                        {% endfor %}
 
-                                <div class="line"></div>
-                               
-                                <p class="title">GoPro HERO 4k Action Camera-Black</p>
-            
-                                <div class="p-c-btns">
-                                   
-                                    <div class="pen">h
-                                        <i class="fas fa-pen"></i>
-                                    </div>
-                                    
-                                    
-                                    <p >$99.00</p>
-                                </div>
-                            </div> 
-                
-                        </li>
                         <li>
 
                             <div class="product-card product-card-admin">
@@ -258,16 +248,9 @@
         <!-- End Profile Container -->
 
 
-    </div>
-    
-    <!-- End Base Container -->
+    {% endblock container %}
 
-
-    <!-- Footer-->
-
-  
-    <!-- End Footer -->
-
-    <script src="../js/index.js"></script>
-</body>
-</html>
+    {% block footer_top %}
+    {% endblock footer_top %}
+    {% block footer_bottom %}
+    {% endblock footer_bottom %}

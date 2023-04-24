@@ -214,9 +214,15 @@
 }
 .admin-dashboard-products-search button {
   border: none;
+  background:#0D6EFD;
   width: 20%;
   height: 40px;
   border-radius: 0 4px 4px 0;
+}
+
+.admin-dashboard-products-search button i{
+    color:white;
+    font-size:18px;
 }
 
 .product-card-admin {

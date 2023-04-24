@@ -1015,6 +1015,9 @@
     width: 90%;
     margin: auto;
   }
+  .product-list{
+    width:100%;
+  }
 }
 @media only screen and (max-width: 500px) {
   .sales-statistics-visitors {

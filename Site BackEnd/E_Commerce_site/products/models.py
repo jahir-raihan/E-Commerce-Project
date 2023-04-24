@@ -50,6 +50,9 @@ class Product(models.Model):
 
     wish_count = models.IntegerField(default=0)
 
+    def __str__(self):
+        return f'{self.id}'
+
 
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

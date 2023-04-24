@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
-from order.models import Order
+from order.models import *
 from .forms import UserRegisterForm
 from django.middleware.csrf import get_token
 from .algorithms import *
@@ -135,8 +135,13 @@ def staff_main2(request):
 
 
 def pending_orders(request):
-    if request.method == 'POST':
-        query = request.POST['query']
+    if request.method == 'POST' or 's' in request.GET:
+        try:
+            query = request.POST['query']
+        except:
+            if 's' in request.GET:
+                query = request.GET['s']
+
         orders = Order.objects.filter(
             Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(
                 order_person_email__icontains=query)
@@ -170,7 +175,7 @@ def pending_orders(request):
         'orders': real_orders,
         'token': token
     }
-    if request.method == 'POST':
+    if request.method == 'POST' or 's' in request.GET:
         template = render_to_string('pending_orders_template.html', request=request, context=context)
 
         return JsonResponse({'template': template, 'token': token})
@@ -189,7 +194,8 @@ def pending_order_action(request):
     else:
         order.order_is_cancelled = True
         order.order_is_pending = False
-    order.order_handle_date = timezone.now
+    import datetime
+    order.order_handle_date = datetime.datetime.now()
     order.order_handled_by = request.user.id
     order.save()
     token = get_token(request)
@@ -434,3 +440,129 @@ def check_product_availability(request):
 
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
+
+
+def admin_product_list(request):
+    products = Product.objects.all().order_by('-product_last_update')
+    context = {
+        'products': products
+    }
+    return render(request, 'admin/products_list.html', context)
+
+
+def admin_add_product(request):
+    if request.method == 'POST':
+        data = request.POST
+        if data['category'] == '':
+            category = Category(category_name=data['category_new'])
+            category.save()
+        else:
+            category = Category.objects.get(pk=data['category'])
+
+        product = Product(
+            product_title=data['title'].lower(),
+            product_code=data['product_code'],
+            product_price=data['price'],
+            product_category=category,
+            color_type=data['color_type'],
+            yarn_type=data['yarn_type'],
+            yarn_count=data['yarn_count'],
+            brand=data['brand'],
+            product_in_stock=bool(data['status']),
+            product_tags=data['tags'].lower(),
+            product_primary_image=request.FILES['primary_image'],
+            product_more_information=data['more_info'].lower(),
+            product_search_keyword=data['search_keywords'].lower(),
+        )
+
+        if 'on_discount' in data:
+            on_discount(data, product)
+        product.save()
+        #  Save all images
+
+        alt_texts = request.POST['image_alt_texts']
+        images = request.FILES.getlist('images')
+        save_product_images(product, alt_texts.split(','), images)
+
+        new_token = get_token(request)
+
+        return JsonResponse({'success': True, 'token': new_token, 'edit': False})
+
+    categories = Category.objects.all()
+    discount_reasons = DiscountReason.objects.all()
+
+    context = {
+        'categories': categories,
+        'discount_reasons': discount_reasons
+    }
+    return render(request, 'admin/add_edit_products.html', context)
+
+
+def admin_edit_product(request, pk):
+    if request.method == 'POST':
+        product = Product.objects.get(pk=pk)
+        save_edited_product(product, request)
+        new_token = get_token(request)
+        return JsonResponse({'success': True, 'token': new_token, 'edit': True})
+
+    product = Product.objects.get(pk=pk)
+    product_images = product.productimages_set.all()
+    context = {
+        'product': product,
+        'product_images': product_images
+    }
+
+    return render(request, 'admin/add_edit_products.html', context)
+
+
+def admin_orders(request):
+    if request.method == 'POST' or 's' in request.GET:
+        try:
+            query = request.POST['query']
+        except:
+            if 's' in request.GET:
+                query = request.GET['s']
+
+        orders = Order.objects.filter(
+            Q(order_id__icontains=query) | Q(order_person_name__icontains=query) | Q(
+                order_person_email__icontains=query)
+            | Q(order_person_phone__icontains=query) | Q(order_payment_method__icontains=query)
+        )
+    else:
+        orders = Order.objects.filter(order_is_pending=True).order_by('order_date')
+
+    real_orders = []
+    for order in orders:
+        o_items = json.loads(order.order_items)
+        items = []
+        for idx in range(len(o_items['ids'])):
+            tmp = {
+                'item': Product.objects.get(pk=o_items['ids'][idx]),
+                'quantity': o_items['quantities'][idx],
+                'size': o_items['sizes'][idx],
+                'price': o_items['prices'][idx]
+            }
+            items.append(tmp)
+
+        real_orders.append(
+            {
+                "order": order,
+                "items": items
+            }
+        )
+
+    token = get_token(request)
+    context = {
+        'orders': real_orders,
+        'token': token
+    }
+    if request.method == 'POST':
+        template = render_to_string('pending_orders_template.html', request=request, context=context)
+
+        return JsonResponse({'template': template, 'token': token})
+
+    return render(request, 'admin/orders.html', context)
+
+
+def admin_transactions(request):
+    return render(request, 'admin/transactions.html')

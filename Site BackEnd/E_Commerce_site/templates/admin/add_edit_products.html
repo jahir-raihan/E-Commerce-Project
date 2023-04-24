@@ -1,57 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add | Edit a product</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/admin/admin.css">
-    <link rel="stylesheet" href="/css/page_profile.css">
-    <link rel="stylesheet" href="/css/staff_main.css">
-    <link rel="stylesheet" href="/css/add_product.css">
-    <link rel="stylesheet" href="/css/media_queries.css">
-</head>
-<body>
+{% extends 'index.html' %}
+{% load static %}
 
-    <div class="success-msg" id="success-msg">
-        <p class="" id="success-msg-p">Product added successfully</p>
-    </div>
+    {% block jsfiles %}
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    {% endblock jsfiles %}
+
+    {% block title %} Add | Edit a product {% endblock title %}
+
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/add_product.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    {% endblock cssfiles %}
+
     <!-- Navigation Bar -->
+    {% block msg_box %}
+        <div class="success-msg" id="success-msg">
+            <p class="" id="success-msg-p">Product added successfully</p>
+        </div>
+    {% endblock msg_box %}
 
-    <header class="staff-header">
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="/img/menu.png" alt="">
-                </div>
+    {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
+    {% block nav_search %}
+    {% endblock nav_search %}
 
-                <img src="/img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
+    {% block nav_buttons %}
 
-            <div class="nav-buttons">
+        <button class="nav-btns">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+        </button>
 
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
+        <div class="only-navicons">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </div>
 
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-                
-            </div>
-        </nav>
+    {% endblock nav_buttons %}
 
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-               
+
+    {% block toggle_nav_user_part %}
+    {% endblock toggle_nav_user_part %}
+
+    {% block toggle_nav_staff_part %}
+
+         <ul>
+
                 <a href="#">
                     <div >
                         <p class="p-link" >Dashboard</p>
-                      
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -59,7 +58,7 @@
                 <a href="#">
                     <div  >
                         <p class="p-link">Products</p>
-                       
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -67,7 +66,7 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Orders</p>
-                       
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -75,7 +74,7 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Transactions</p>
-                      
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -83,31 +82,29 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Logout</p>
-                        
+
                     </div>
 
                     <p class="g-icon">></p>
                 </a>
             </ul>
-        </div>
+    {% endblock toggle_nav_staff_part %}
 
-    </header>
+    {% block nav_2 %}
+    {% endblock nav_2 %}
 
-    <!-- End Navigation Bar -->
 
-    <!-- Base Container -->
 
-    <div class="container">
+    {% block container %}
 
-        <!-- Page Navigator -->
 
         <div class="navigator-products">
 
-            <div class="n-p-contents">
+              <div class="n-p-contents">
                 <a href="#">Admin > </a>
                 <a href="#" style="color:gray">Add or edit a product</a>
-            </div>
-            
+              </div>
+
         </div>
 
         <!-- End Page Navigator -->
@@ -115,34 +112,34 @@
 
         <!-- Profile Container -->
 
-        <div class="profile-container  admin-dashboard-container">
+        <div class="profile-container admin-dashboard-container">
 
             <!-- Profile Navigation -->
 
             <div class="profile-nav">
 
                 <ul>
-                    <a href="#" >
+                    <a href="{% url 'admin_dashboard' %}" >
                         <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
                         <li >Dashboard</li>
                     </a>
-                    
-                    <a href="#" >
+
+                    <a href="{% url 'admin_product_list' %}">
                         <i class="fa-sharp fa-solid fa-box-open-full"></i>
                         <li class="">Products</li>
                     </a>
 
-                    <a href="#" class="current-tab-profile">
+                    <a href="{% url 'admin_add_product' %}" class="current-tab-profile">
                         <i class="fas fa-edit"></i>
                         <li class="">Add | Edit Products</li>
                     </a>
 
-                    <a href="#" >
+                    <a href="{% url 'admin_orders' %}">
                         <i class="fas fa-cart-shopping"></i>
                         <li class="">Orders</li>
                     </a>
 
-                    <a href="#">
+                    <a href="{% url 'admin_transactions' %}">
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
@@ -158,21 +155,23 @@
 
 
             <!-- Profile User & Orders List & Status -->
-            
+
             <div class="profile-content bg-white">
 
-                <form action="">
+                <form id="add-a-product{{product.id}}" enctype="multipart/form-data">
+                    <input type="hidden" name="product_id" value="{{product.id}}" id="product_id">
+                    {% csrf_token %}
 
                     <div class="p-name-and-code m-1">
 
                         <div class="p-name ">
                             <p>Product title</p>
-                            <input type="text" placeholder="Enter title">
+                            <input type="text" name="title" placeholder="Enter title" value="{{product.product_title}}" title="Title can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-code">
                             <p>Product Code</p>
-                            <input type="text">
+                            <input type="text" name="product_code" value="{{product.product_code}}" title="Product code can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                     </div>
@@ -181,20 +180,34 @@
 
                         <div class="p-price">
                             <p>Price</p>
-                            <input type="number">
+                            <input type="number" name="price" value="{{product.product_price}}" required>
 
                         </div>
 
                         <div class="p-category m-1">
                             <p>Category</p>
-                            <select name="" id="">
-                                <option value="">Select Category</option>
+                            <select name="category" id="category">
+                                {% if product %}
+                                    <option value="{{product.product_category.id}}">
+                                        {{product.product_category.category_name}}
+                                    </option>
+
+                                {% endif %}
+                                 <option value="">
+                                        Select Category
+                                 </option>
+
+
+
+                                {% for cat in categories %}
+                                    <option value="{{cat.id}}">{{cat.category_name}}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
                         <div class="p-category category-new">
                             <p>Category (New)</p>
-                            <input type="text" placeholder="Type new category name">
+                            <input type="text" name="category_new" id="category_new" placeholder="Type new category name">
                         </div>
 
                     </div>
@@ -203,12 +216,12 @@
 
                         <div class="p-color">
                             <p>Color Type</p>
-                            <input type="text" >
+                            <input type="text" name="color_type" value="{{product.color_type}}" title="Color type can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-yarn">
                             <p>Yarn Type</p>
-                            <input type="text">
+                            <input type="text" name="yarn_type" value="{{product.yarn_type}}" title="Yarn type can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                     </div>
@@ -217,19 +230,19 @@
 
                         <div class="p-yarn-count">
                             <p>Yarn Count</p>
-                            <input type="text">
+                            <input type="number" name="yarn_count" value="{{product.yarn_count}}" title="Yarn count can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-brand m-1">
                             <p>Brand</p>
-                            <input type="text">
+                            <input type="text" name="brand" value="{{product.brand}}" title="Brand name can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
                         <div class="p-status">
                             <p>Status</p>
-                            <select name="" id="">
-                                <option value="in_stock">In Stock</option>
-                                <option value="out_of_stock">Out of Stock</option>
+                            <select name="status" required>
+                                <option value="True">In Stock</option>
+                                <option value="False">Out of Stock</option>
                             </select>
                         </div>
 
@@ -237,13 +250,19 @@
 
                     <div class="p-tags m-1">
                         <p>Tags</p>
-                        <input type="text" placeholder="Insert tags eg: Black hoodie, white t-shirt etc">
+                        <input type="text" name="tags" placeholder="Insert tags eg: Black hoodie, white t-shirt etc" value="{{product.product_tags}}"  required>
                     </div>
 
                     <div class="p-primary-image m-1">
-
                         <p>Product Primary Image</p>
-                        <input type="file" name="images" >
+
+                        {% if product %}
+                            <input type="file" name="primary_image" id="primary_image" value="false">
+                        {% else %}
+                            <input type="file" name="primary_image" id="primary_image"  required>
+                        {% endif %}
+
+
                     </div>
 
                     <div class="p-images-and-preview">
@@ -252,13 +271,18 @@
                             <p>Product Images</p>
 
                             <div class="input-and-preview">
-                                <input type="file"  name="images" id="images" multiple>
+
+                                {% if product %}
+                                    <input type="file" name="images" id="images" value="false" multiple>
+                                {% else %}
+                                    <input type="file" name="images" id="images" multiple  required>
+                                {% endif %}
                                 <div id="image-preview"></div>
                             </div>
-                           
+
                         </div>
 
-                       
+
 
                     </div>
 
@@ -266,54 +290,64 @@
 
                         <p>Image alternative texts</p>
 
-                        <input type="text" placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc">
+                        <input type="text" name="image_alt_texts" value="{% for alt in product_images %}{{alt.image_alt_tag}}, {% endfor %}"
+                               placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc" required>
                     </div>
 
                     <div class="p-more-info m-1">
                         <p>More information</p>
-                        <input type="text">
+                        <input type="text" name="more_info" value="{{product.product_more_information}}" required>
                     </div>
 
                     <div class="p-search-keywords m-1">
                         <p>Search Keywords</p>
 
-                        <textarea name="" placeholder="Separate with commas. Ex: black hoodie, white bra, etc"></textarea>
+                        <textarea name="search_keywords" placeholder="Separate with commas. Ex: black hoodie, white bra, etc"  required>{{product.product_search_keyword}}</textarea>
                     </div>
 
 
                     <div class="on-discount-checkbox m-1">
-                        <input type="checkbox"> <span>On Discount</span>
+                        <input name="on_discount" id="on_discount" type="checkbox"> <span>On Discount</span>
                     </div>
 
                     <div class="discount-price-and-expiry m-1">
                         <div class="discount-price m-1">
                             <p>Discount Percentage</p>
-                            <input type="number">
+                            <input name="discount_percentage" id="discount_percentage" type="number">
                         </div>
 
                         <div class="discount-reason">
-                            
+
                             <p>Discount reason</p>
-                            <select name="" id="">
+                            <select name="discount_reason" id="discount_reason">
                                 <option value="">Select reason</option>
-                                <option value="">New Arrival</option>
-                                <option value="">Hot Summer</option>
-                                <option value="">Event Name</option>
+
+                                {% for reason in discount_reasons %}
+
+                                    <option value="{{reason.id}}">{{reason.discount_reason}}</option>
+
+                                {% endfor %}
+
                             </select>
-                            
+
+                        </div>
+
+                         <div class="discount-reason m-1">
+                            <p>Discount Reason (New)</p>
+                            <input name="discount_reason_new" id="discount_reason_new" type="text">
                         </div>
 
                         <div class="discount-expiry">
                             <p>Discount Expiry</p>
 
-                            <input type="date">
+                            <input name="discount_expiry_date" type="date" id="discount_expiry">
                         </div>
 
                     </div>
 
                     <div class="save-and-clear-btn m-1">
                         <button class="clear">Clear</button>
-                        <button class="save">Save</button>
+                        <button class="save" id="product_save_btn" type="submit">Save</button>
                     </div>
 
 
@@ -330,17 +364,16 @@
         <!-- End Profile Container -->
 
 
-    </div>
-    
-    <!-- End Base Container -->
+    {% endblock container %}
 
+    {% block footer_top %}
+    {% endblock footer_top %}
+    {% block footer_bottom %}
+    {% endblock footer_bottom %}
 
-    <!-- Footer-->
+    {% block js_bottom %}
 
+        <script src="{% static 'js/add_a_product.js' %}"></script>
 
-    <!-- End Footer -->
+    {% endblock js_bottom %}
 
-<script src="/js/add_a_product.js"></script>
-<script src="/js/index.js"></script>
-</body>
-</html>

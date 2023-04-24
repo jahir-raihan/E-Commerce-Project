@@ -1,57 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Dashboard</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/css/transactions.css">
-    <link rel="stylesheet" href="/css/wishlist.css">
-    <link rel="stylesheet" href="/css/admin/admin.css">
-    <link rel="stylesheet" href="/css/page_profile.css">
-    <link rel="stylesheet" href="/css/media_queries.css">
-    
+{% extends 'index.html' %}
+{% load static %}
 
-</head>
-<body>
+
+    {% block jsfiles %}
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    {% endblock jsfiles %}
+
+    {% block title %} Pending Orders {% endblock title %}
+
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/transactions.css' %}">
+        <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+        <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    {% endblock cssfiles %}
 
     <!-- Navigation Bar -->
+    {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
+    {% block nav_search %}
+    {% endblock nav_search %}
 
-    <header>
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="/img/menu.png" alt="">
-                </div>
+    {% block nav_buttons %}
 
-                <img src="/img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
+        <button class="nav-btns">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+        </button>
 
-            <div class="nav-buttons">
+        <div class="only-navicons">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </div>
 
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
+    {% endblock nav_buttons %}
 
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-                
-            </div>
-        </nav>
+    {% block toggle_nav_user_part %}
+    {% endblock toggle_nav_user_part %}
 
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-               
+    {% block toggle_nav_staff_part %}
+       <ul>
+
                 <a href="#">
                     <div >
                         <p class="p-link" >Dashboard</p>
-                      
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -59,7 +52,7 @@
                 <a href="#">
                     <div  >
                         <p class="p-link">Products</p>
-                       
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -67,7 +60,7 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Orders</p>
-                       
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -75,7 +68,7 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Transactions</p>
-                      
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -83,67 +76,59 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Logout</p>
-                        
+
                     </div>
 
                     <p class="g-icon">></p>
                 </a>
             </ul>
-        </div>
-    </header>
+    {% endblock toggle_nav_staff_part %}
 
+    {% block nav_2 %}
+    {% endblock nav_2 %}
 
-    <!-- End Navigation Bar -->
-
-    <!-- Base Container -->
-
-    <div class="container" >
+    {% block container %}
 
         <!-- Page Navigator -->
 
         <div class="navigator-products">
 
-            <div class="n-p-contents">
+             <div class="n-p-contents">
                 <a href="#">Admin > </a>
-                
+
                 <a href="#" style="color:gray">Orders</a>
             </div>
-            
+
         </div>
 
-        <!-- End Page Navigator -->
-
-
-        <!-- Profile Container -->
-
-        <div class="admin-dashboard-container profile-container " >
+        <div class="profile-container admin-dashboard-container " >
 
             <!-- Profile Navigation -->
 
             <div class="profile-nav">
 
                 <ul>
-                    <a href="#" >
+                    <a href="{% url 'admin_dashboard' %}">
                         <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
                         <li >Dashboard</li>
                     </a>
-                    
-                    <a href="#" >
+
+                    <a href="{% url 'admin_product_list' %}">
                         <i class="fa-sharp fa-solid fa-box-open-full"></i>
                         <li class="">Products</li>
                     </a>
-                    
-                    <a href="#">
-                        <i class="fa-sharp fa-solid fa-box-open-full"></i>
+
+                    <a href="{% url 'admin_add_product' %}">
+                        <i class="fas fa-edit"></i>
                         <li class="">Add | Edit Products</li>
                     </a>
 
-                    <a href="#" >
+                    <a href="{% url 'admin_orders' %}">
                         <i class="fas fa-cart-shopping"></i>
                         <li class="">Orders</li>
                     </a>
 
-                    <a href="#" class="current-tab-profile">
+                    <a href="{% url 'admin_transactions' %}" class="current-tab-profile">
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
@@ -173,53 +158,54 @@
                     <div class="transaction-list">
 
                         <div class="item">
-                            
+
                             <div class="operator-logo">
 
-                                <img src="/img/1656227518bkash-logo-png.png" alt="">
+                                <img src="{% static 'img/1656227518bkash-logo-png.png' %}" alt="">
 
                             </div>
 
                             <div class="trans-id-and-amount">
-                                
+
                                 <p class="trans-id "> <span>Trans ID:</span> xypk87*****45534</p>
                                 <p class="trans-id"><span>Amount:</span> $99.00</p>
-                                
+
                             </div>
 
                             <p class="date">12:30 PM, 19 July 2022</p>
 
-                           
+
                             <button class="view-order-btn">
                                 View order
                             </button>
-                            
+
 
 
 
                         </div>
                         <div class="item">
-                            
+
                             <div class="operator-logo">
 
-                                <img src="/img/sslcom-logo.png" alt="">
+                                <img src="{% static 'img/sslcom-logo.png' %}" alt="">
 
                             </div>
 
                             <div class="trans-id-and-amount">
-                                
+
                                 <p class="trans-id "> <span>Trans ID:</span> yehsghses*****45534</p>
                                 <p class="trans-id"><span>Amount:</span> $99.00</p>
-                                
+
                             </div>
 
                             <p class="date">12:30 PM, 19 July 2022</p>
 
-                           
-                            <button class="view-order-btn">
-                                View order
-                            </button>
-                            
+                            <a href="/account/admin/orders/?s={{tran.order.id}}" style="text-decoration:none">
+                                <button class="view-order-btn">
+                                    View order
+                                </button>
+                            </a>
+
 
 
 
@@ -234,19 +220,8 @@
 
         </div>
 
-        <!-- End Profile Container -->
-
-
-    </div>
-    
-    <!-- End Base Container -->
-
-
-    <!-- Footer-->
-
-  
-    <!-- End Footer -->
-
-    <script src="../js/index.js"></script>
-</body>
-</html>
+    {% endblock container %}
+    {% block footer_top %}
+    {% endblock footer_top %}
+    {% block footer_bottom %}
+    {% endblock footer_bottom %}

@@ -1,55 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - Dashboard</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/products.css">
-    <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+{% extends 'index.html' %}
+{% load static %}
 
-    <link rel="stylesheet" href="/css/admin/admin.css">
-    <link rel="stylesheet" href="/css/page_profile.css">
-    <link rel="stylesheet" href="/css/media_queries.css">
+    {% block jsfiles %}
+        <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
+    {% endblock jsfiles %}
 
-</head>
-<body>
+    {% block title %} Pending Orders {% endblock title %}
+
+
+    {% block cssfiles %}
+        <link rel="stylesheet" href="{% static 'css/products.css' %}">
+        <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
+        <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    {% endblock cssfiles %}
 
     <!-- Navigation Bar -->
+    {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
+    {% block nav_search %}
+    {% endblock nav_search %}
 
-    <header class="staff-header">
-        <nav class="nav">
-            <div class="nav-logo nav-ham-logo">
-                <div class="ham-menu " id="nav-ham-menu" onclick="toggle_nav_menu()">
-                    <img src="/img/menu.png" alt="">
-                </div>
+    {% block nav_buttons %}
 
-                <img src="/img/ logo.png" alt="Logo" class="logo">
-            </div>
-            
+        <button class="nav-btns">
+            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
+        </button>
 
-            <div class="nav-buttons">
+        <div class="only-navicons">
+            <i class="fa fa-sign-in" aria-hidden="true"></i>
+        </div>
 
-                <button class="nav-btns">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-                </button>
+    {% endblock nav_buttons %}
 
-                <div class="only-navicons">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>
-                
-            </div>
-        </nav>
+    {% block toggle_nav_user_part %}
+    {% endblock toggle_nav_user_part %}
 
-        <div class="toggle-nav " id="toggle-nav">
-            <ul>
-               
+    {% block toggle_nav_staff_part %}
+       <ul>
+
                 <a href="#">
                     <div >
                         <p class="p-link" >Dashboard</p>
-                      
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -57,7 +49,7 @@
                 <a href="#">
                     <div  >
                         <p class="p-link">Products</p>
-                       
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -65,7 +57,7 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Orders</p>
-                       
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -73,7 +65,7 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Transactions</p>
-                      
+
                     </div>
 
                     <p class="g-icon">></p>
@@ -81,32 +73,29 @@
                 <a href="#">
                     <div >
                         <p class="p-link">Logout</p>
-                        
+
                     </div>
 
                     <p class="g-icon">></p>
                 </a>
             </ul>
-        </div>
-    </header>
+    {% endblock toggle_nav_staff_part %}
 
+    {% block nav_2 %}
+    {% endblock nav_2 %}
 
-    <!-- End Navigation Bar -->
-
-    <!-- Base Container -->
-
-    <div class="container" >
+    {% block container %}
 
         <!-- Page Navigator -->
 
         <div class="navigator-products">
 
-            <div class="n-p-contents">
+             <div class="n-p-contents">
                 <a href="#">Admin > </a>
-                
+
                 <a href="#" style="color:gray">Orders</a>
             </div>
-            
+
         </div>
 
         <!-- End Page Navigator -->
@@ -114,34 +103,34 @@
 
         <!-- Profile Container -->
 
-        <div class="profile-container product-container  admin-dashboard-container" >
+        <div class="profile-container product-container  admin-dashboard-container">
 
             <!-- Profile Navigation -->
 
-            <div class="profile-nav">
+             <div class="profile-nav">
 
                 <ul>
-                    <a href="#" >
+                    <a href="{% url 'admin_dashboard' %}" >
                         <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
                         <li >Dashboard</li>
                     </a>
-                    
-                    <a href="#" >
+
+                    <a href="{% url 'admin_product_list' %}">
                         <i class="fa-sharp fa-solid fa-box-open-full"></i>
                         <li class="">Products</li>
                     </a>
 
-                    <a href="#">
+                    <a href="{% url 'admin_add_product' %}">
                         <i class="fas fa-edit"></i>
                         <li class="">Add | Edit Products</li>
                     </a>
 
-                    <a href="#" class="current-tab-profile">
+                    <a href="{% url 'admin_orders' %}" class="current-tab-profile">
                         <i class="fas fa-cart-shopping"></i>
                         <li class="">Orders</li>
                     </a>
 
-                    <a href="#">
+                    <a href="{% url 'admin_transactions' %}">
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
@@ -155,183 +144,137 @@
 
             <!-- End Profile Navigation -->
 
-            <div class="profile-content">
 
+            <!-- Profile User & Orders List & Status -->
+
+            <div class="profile-content">
                 <div class="current-orders admin-orders">
 
-                    <form action="">
-                        <div class="search-facility admin-dashboard-products-search">
-                            <input type="search" placeholder="search by anything">
-                            <button><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <form id="search_pending_order">
+
+                        <div class="search-facility">
+                            <input type="search" id="query" placeholder="search by anything">
+                            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                            <div class="search-loader-stf-main" id="search-loader-staff-main">
+                                <i class="fas fa-cog fa-spin"></i>
+                            </div>
+
                         </div>
+
                     </form>
 
                     <p class="title"> Pending orders</p>
+                    {% csrf_token %}
+                    <div id="pending-orders-container">
+                    {% for order in orders %}
 
-                    <div class="order pending-order">
+                            <div class="order pending-order">
 
-                        <div class="order-top">
+                                <div class="order-top">
 
-                            <div class="o-id-date">
-                                <p>Order ID : 234 <span>Mon, Dec 28, 2023</span></p>
-                                <p class="status status-pending">Pending</p>
-                            </div>
-
-                            <div class="order-util-btns">
-                                <button class="cancel-order pending-order">Cancel</button>
-                                <button class="track-order pending">Confirm</button>
-                            </div>
-
-                        </div>
-
-                        <div class="order-middle">
-
-                            <div class="delivery-person">
-
-                                <p class="o-m-title">
-                                    Person
-                                </p>
-
-                                <p>Jahir Raihan Joy </p>
-                                <p>Phone : 3002420424</p>
-                                <p>Email : hello@gmail.com</p>
-
-                            </div>
-
-                            <div class="delivery-address">
-                                <p class="o-m-title">
-                                    Delivery address
-                                </p>
-
-                                <p class="d-address">4715 madisen Troughway, That street 343 Palo Alto, Dhaka</p>
-                                
-                            </div>
-
-                            <div class="payment">
-                                <div class="o-m-title">
-                                    Payment
-                                </div>
-
-                                <p class="payment-type">
-                                    Visa Card
-                                </p>
-
-                                <p>Shipping fee : $3.00</p>
-                                <p>Total paid : $434.89</p>
-                            </div>
-
-                        </div>
-
-                        <div class="line"></div>
-
-                        <div class="ordered-items">
-
-                            <div class="item">
-                   
-                                <div class="img">
-                                    <img src="../img/image 17.png" alt="">
-                                    <div class="cnt">
-                                        <p>1</p>
+                                    <div class="o-id-date">
+                                        <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d M, Y'}}</span></p>
+                                        <p class="status status-pending" id="order-status{{order.order.id}}">Pending</p>
                                     </div>
-                                </div>
-            
-                                <div class="info">
-                                    <p class="title">Mens T-shirt Cotton Base</p>
-                                    <small>Total : $12.00</small>
-                                </div>
-            
-                               
-                            </div>
-                            <div class="item">
-                   
-                                <div class="img">
-                                    <img src="../img/image 17.png" alt="">
-                                    <div class="cnt">
-                                        <p>1</p>
+
+                                    <div class="order-util-btns">
+                                        <button class="cancel-order pending-order" id="cancelled-btn{{order.order.id}}" onclick="order_action('cancel', {{order.order.id}})">Cancel</button>
+                                        <button class="track-order pending" id="confirm-btn{{order.order.id}}" onclick="order_action('confirm', {{order.order.id}})">Confirm</button>
                                     </div>
+
                                 </div>
-            
-                                <div class="info">
-                                    <p class="title">Mens T-shirt Cotton Base</p>
-                                    <small>Total : $12.00</small>
-                                </div>
-            
-                               
-                            </div>
-                            <div class="item">
-                   
-                                <div class="img">
-                                    <img src="../img/image 17.png" alt="">
-                                    <div class="cnt">
-                                        <p>1</p>
-                                    </div>
-                                </div>
-            
-                                <div class="info">
-                                    <p class="title">Mens T-shirt Cotton Base</p>
-                                    <small>Total : $12.00</small>
-                                </div>
-            
-                               
-                            </div>
-                            <div class="item">
-                   
-                                <div class="img">
-                                    <img src="../img/image 17.png" alt="">
-                                    <div class="cnt">
-                                        <p>1</p>
-                                    </div>
-                                </div>
-            
-                                <div class="info">
-                                    <p class="title">Mens T-shirt Cotton Base</p>
-                                    <small>Total : $12.00</small>
-                                </div>
-            
-                               
-                            </div>
-                            <div class="item">
-                   
-                                <div class="img">
-                                    <img src="../img/image 17.png" alt="">
-                                    <div class="cnt">
-                                        <p>1</p>
-                                    </div>
-                                </div>
-            
-                                <div class="info">
-                                    <p class="title">Mens T-shirt Cotton Base</p>
-                                    <small>Total : $12.00</small>
-                                </div>
-            
-                               
+
+                                <div class="order-middle">
+
+                                            <div class="delivery-person">
+
+                                                <p class="o-m-title">
+                                                    Person
+                                                </p>
+
+                                                <p>{{order.order.order_person_name|title}}</p>
+                                                <p>Phone : {{order.order.order_person_phone}}</p>
+                                                <p>Email : {{order.order.order_person_email}}</p>
+
+                                            </div>
+
+                                            <div class="delivery-address">
+                                                <p class="o-m-title">
+                                                    Delivery address
+                                                </p>
+
+                                                <p class="d-address">{{order.order.delivery_location|title}}</p>
+
+                                            </div>
+
+                                            <div class="payment">
+                                                <div class="o-m-title">
+                                                    Payment
+                                                </div>
+
+                                                <p class="payment-type">
+                                                    {{order.order.order_payment_method}}
+                                                </p>
+
+                                                <p>Shipping fee : $150</p>
+                                                <p>Total paid : ${{order.order.order_total_price}}</p>
+                                            </div>
+
+                                        </div>
+
+                                <div class="line"></div>
+
+                                <div class="ordered-items">
+
+                                            {% for item in order.items %}
+                                             <div class="item">
+
+                                                <div class="img">
+                                                    <img src="{{item.item.product_primary_image.url}}" alt="">
+                                                    <div class="cnt">
+                                                        <p>{{item.quantity}}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="info">
+                                                    <p class="title">{{item.item.product_title}}</p>
+                                                    <small>Total : ${{item.price}}</small>
+                                                </div>
+
+
+                                            </div>
+                                            {% endfor %}
+
+
+                                        </div>
+
                             </div>
 
-                        </div>
-
+                    {% endfor %}
                     </div>
-                   
 
 
                 </div>
 
             </div>
 
+            <!-- End Profile User & Orders List & Status -->
+
         </div>
 
         <!-- End Profile Container -->
 
 
-    </div>
-    
+    {% endblock container %}
+
     <!-- End Base Container -->
 
+    {% block footer_top %}
+    {% endblock footer_top %}
+    {% block footer_bottom %}
+    {% endblock footer_bottom %}
 
-    <!-- Footer-->
-
-  
-    <!-- End Footer -->
-
-    <script src="../js/index.js"></script>
-</body>
-</html>
+    {% block js_bottom %}
+    <script src="{% static 'js/staff.js' %}"></script>
+    {% endblock js_bottom %}
