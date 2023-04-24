@@ -128,23 +128,38 @@
   margin-bottom: 1em;
   font-size: 18px;
 }
-.latest-orders .order-container .order {
+.latest-orders .order-container .admin-order {
   margin: 0.5em 0;
+  position: relative;
   display: grid;
-  grid-template-columns: 5% 25% 34% 10% 8% 12%;
+  grid-template-columns: 60% 20% 17%;
   gap: 1%;
 }
-.latest-orders .order-container .order .order-id, .latest-orders .order-container .order .order-person-email, .latest-orders .order-container .order .order-total-amount, .latest-orders .order-container .order .order-date {
-  opacity: 0.6;
+.latest-orders .order-container .admin-order .segment-one {
+  display: flex;
 }
-.latest-orders .order-container .order p {
+.latest-orders .order-container .admin-order .segment-one .segment-one-sub {
+  display: flex;
+  margin-right: 1em;
+}
+.latest-orders .order-container .admin-order .segment-two {
+  display: flex;
+}
+.latest-orders .order-container .admin-order .segment-two p {
+  margin-right: 1em;
+}
+.latest-orders .order-container .admin-order .order-id, .latest-orders .order-container .admin-order .order-person-email, .latest-orders .order-container .admin-order .order-total-amount, .latest-orders .order-container .admin-order .order-date {
+  opacity: 0.6;
+  margin-right: 0.3em;
+}
+.latest-orders .order-container .admin-order p {
   font-size: 14px;
 }
-.latest-orders .order-container .order .order-person {
+.latest-orders .order-container .admin-order .order-person {
   font-weight: 500;
   opacity: 0.7;
 }
-.latest-orders .order-container .order .order-status {
+.latest-orders .order-container .admin-order .order-status {
   padding: 0.2em 1em;
   border-radius: 22px;
   display: flex;
@@ -152,28 +167,30 @@
   justify-content: center;
   width: -moz-fit-content;
   width: fit-content;
+  position: absolute;
+  right: 0;
   width: 80px;
 }
-.latest-orders .order-container .order .order-status p {
+.latest-orders .order-container .admin-order .order-status p {
   font-size: 11px;
   color: white;
 }
-.latest-orders .order-container .order .order-pending {
+.latest-orders .order-container .admin-order .order-pending {
   background: rgba(255, 166, 0, 0.248);
 }
-.latest-orders .order-container .order .order-pending p {
+.latest-orders .order-container .admin-order .order-pending p {
   color: orange;
 }
-.latest-orders .order-container .order .order-cancelled {
+.latest-orders .order-container .admin-order .order-cancelled {
   background: rgba(255, 0, 0, 0.308);
 }
-.latest-orders .order-container .order .order-cancelled p {
+.latest-orders .order-container .admin-order .order-cancelled p {
   color: red;
 }
-.latest-orders .order-container .order .order-confirmed, .latest-orders .order-container .order .order-delivered {
+.latest-orders .order-container .admin-order .order-confirmed, .latest-orders .order-container .admin-order .order-delivered {
   background: rgba(0, 128, 0, 0.323);
 }
-.latest-orders .order-container .order .order-confirmed p, .latest-orders .order-container .order .order-delivered p {
+.latest-orders .order-container .admin-order .order-confirmed p, .latest-orders .order-container .admin-order .order-delivered p {
   color: green;
 }
 

@@ -428,3 +428,9 @@ def check_product_availability(request):
         'status': True if product.product_in_stock else False
     }
     return JsonResponse(context)
+
+# Admin section
+
+
+def dashboard(request):
+    return render(request, 'admin/dashboard.html')

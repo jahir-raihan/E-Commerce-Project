@@ -30,6 +30,11 @@ urlpatterns = [
     path('remove-wishlist-item/', remove_wishlist_item, name='remove_wishlist_item'),
     path('wishlist/', wishlist, name='wishlist'),
 
+    # Admin
+
+    path('admin/', dashboard, name='admin_dashboard'),
+
+
 
 
 

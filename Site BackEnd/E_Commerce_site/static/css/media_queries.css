@@ -988,6 +988,69 @@
     margin: 2em auto !important;
   }
 }
+@media only screen and (max-width: 1200px) {
+  .admin-order {
+    grid-template-columns: 40% 40% 17% !important;
+  }
+  .admin-order .segment-one {
+    display: block !important;
+  }
+  .admin-order .segment-one .segment-one-sub {
+    margin-bottom: 1em;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .total-sales-order-products {
+    display: block !important;
+  }
+  .total-sales-order-products .total-sales-orders {
+    margin-bottom: 1em;
+  }
+}
+@media only screen and (max-width: 775px) {
+  .admin-orders {
+    padding: 0 !important;
+  }
+  .dashboard-contents {
+    width: 90%;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .sales-statistics-visitors {
+    display: block;
+  }
+  .sales-statistics-visitors .sales-statistics {
+    margin-bottom: 1em;
+  }
+  .admin-orders {
+    padding: 0 !important;
+  }
+  .admin-order {
+    grid-template-columns: 59% 39% !important;
+  }
+  .admin-order .order-status {
+    position: unset !important;
+    margin-top: 0.5em;
+  }
+}
+@media only screen and (max-width: 460px) {
+  .total-sales-orders {
+    display: block !important;
+  }
+  .total-sales-orders .total-sales, .total-sales-orders .total-orders {
+    width: 100%;
+  }
+  .total-sales-orders .total-sales {
+    margin-bottom: 1em;
+  }
+  .admin-order {
+    grid-template-columns: 69% 29% !important;
+  }
+  .admin-order .segment-two {
+    display: block !important;
+  }
+}
 @media only screen and (min-width: 775px) {
   .toggle-nav {
     display: none !important;

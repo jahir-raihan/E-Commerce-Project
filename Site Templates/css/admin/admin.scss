@@ -165,17 +165,34 @@
 
     .order-container{
 
-        .order{
+        .admin-order{
             margin:.5em 0;
-
+            position:relative;
             display: grid;
-            grid-template-columns:5% 25% 34% 10% 8% 12% ;
+            grid-template-columns: 60% 20% 17%;
             gap:1%;
+
+            .segment-one{
+                display: flex;
+
+                .segment-one-sub{
+                    display: flex;
+                    margin-right:1em;
+                }
+            }
+            .segment-two{
+                display: flex;
+                p{
+                    margin-right:1em;
+                }
+            }
 
             .order-id, .order-person-email, .order-total-amount, .order-date{
                 opacity: .6;
+                margin-right:.3em;
 
             }
+            
             p{
                 font-size:14px;
             }
@@ -191,6 +208,8 @@
                 align-items: center;
                 justify-content: center;
                 width:fit-content;
+                position: absolute;
+                right:0;
                 p{
                     font-size:11px;
                     color:white;

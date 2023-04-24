@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{% static 'js/jquery.js' %}"></script>
-    {% block jsfiles %} {% endblock jsfiles %}
+
 
     <title> {% block title %} Home - Ecommerce {% endblock title %}</title>
 
     <script src="https://kit.fontawesome.com/a222b9eccb.js" crossorigin="anonymous"></script>
-
+    {% block jsfiles %} {% endblock jsfiles %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     {% block cssfiles %}
     {% endblock cssfiles %}

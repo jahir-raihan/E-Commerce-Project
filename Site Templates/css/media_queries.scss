@@ -1609,12 +1609,86 @@
 
 // Admin page
 
+@media only screen and (max-width:1200px){
+
+
+    .admin-order{
+        grid-template-columns: 40% 40% 17% !important;
+        .segment-one{
+
+            display: block !important;
+            .segment-one-sub{
+                margin-bottom: 1em;
+            }
+        }
+    }
+     
+    
+}
+
+@media only screen and (max-width:1000px){
+
+    .total-sales-order-products{
+        display: block !important;
+
+        .total-sales-orders{
+            margin-bottom: 1em;
+        }
+    }
+}
+
 @media only screen and (max-width:775px){
     .admin-orders{
         padding:0 !important;
     }
+    .dashboard-contents{
+        width:90%;
+        margin:auto;
+    }
+}
+@media only screen and (max-width:500px){
+
+    .sales-statistics-visitors{
+        display: block;
+
+        .sales-statistics{
+            margin-bottom:1em;
+        }
+    }
+    .admin-orders{
+        padding:0 !important;
+    }
+
+    .admin-order{
+        grid-template-columns: 59% 39% !important;
+
+        .order-status{
+            position: unset !important;
+            margin-top:.5em;
+        }
+    }
 }
 
+
+@media only screen and (max-width:460px){
+    .total-sales-orders{
+        display:block !important;
+
+        .total-sales, .total-orders{
+            width:100%;
+
+        }
+        .total-sales{
+            margin-bottom: 1em;
+        }
+    }
+    .admin-order{
+        grid-template-columns: 69% 29% !important;
+        .segment-two{
+            display: block !important;
+        }
+    }
+}
 
 // For all
 
