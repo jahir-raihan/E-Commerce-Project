@@ -38,7 +38,7 @@ $(document).on('submit', '#login-form', function(e){
 
     let req = $.ajax({
         type:'post',
-        url:'/user/login/',
+        url:'/account/login/',
         data:{
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
             email:$('#email').val(),

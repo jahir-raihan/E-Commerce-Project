@@ -52,17 +52,17 @@
                 <form action="/products/" method="get">
                     <div class="nav-search search-container-global">
 
-                            <input type="text" name="s" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
+                            <input type="search" name="s" id="nav-search" class="nav-search-input-default" placeholder="Search by anything">
                             <button type="submit" class="nav-search-button">
 
                                 <i class="fa fa-search" aria-hidden="true"></i>
                             </button>
 
-                        <button class="nav-search-button snd-nav-srch-btn d-none"
+                        <div  class="nav-search-button snd-nav-srch-btn d-none"
                         onclick="document.getElementById('n-srch-hidden').classList.toggle('d-none')">
 
                             <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
+                        </div>
 
                         <div class="search-result-suggestion d-none" id="s-r-s">
                             <ul id="s-list">
@@ -104,14 +104,24 @@
 
 
 
-
-                <a href="{% url 'wishlist' %}">
+                {% if request.user.is_authenticated %}
+                 <a href="{% url 'wishlist' %}">
 
                     <div class="only-navicons ">
                         <i class="fas fa-heart" aria-hidden="true"></i>
                     </div>
 
+                 </a>
+                {% else %}
+                <a href="{% url 'account' %}">
+
+                    <div class="only-navicons ">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                    </div>
+
                 </a>
+                {% endif %}
+
 
                 <a href="{% url 'cart' %}">
 
@@ -122,6 +132,8 @@
 
                 </a>
 
+                {% if request.user.is_authenticated %}
+
                 <a href="{% url 'wishlist' %}">
 
                     <button class="nav-btns wishlist-btn">
@@ -129,6 +141,16 @@
                     </button>
 
                 </a>
+
+                {% else %}
+                <a href="{% url 'account' %}">
+
+                    <button class="nav-btns wishlist-btn">
+                        <i class="fas fa-user"></i> Account
+                    </button>
+
+                </a>
+                {% endif %}
 
                 <a href="{% url 'cart' %}">
 
@@ -157,7 +179,7 @@
 
                     <p class="g-icon">></p>
                 </a>
-                <a href="#">
+                <a href="{% url 'products' %}?s=offers">
                     <div >
                         <p>Hot offers</p>
                         <small>Get offer deals</small>
@@ -165,7 +187,7 @@
 
                     <p class="g-icon">></p>
                 </a>
-                <a href="#">
+                <a href="{% url 'products' %}?s=new">
                     <div >
                         <p>New arrivals</p>
                         <small>See our new products</small>
@@ -197,7 +219,7 @@
 
                     <p class="g-icon">></p>
                 </a>
-                <a href="#">
+                <a href="{% url 'transaction' %}">
                     <div >
                         <p class="p-link">Transactions</p>
 
@@ -206,7 +228,7 @@
                     <p class="g-icon">></p>
                 </a>
                 {% if request.user.is_authenticated %}
-                <a href="#">
+                <a href="{% url 'logout' %}">
                     <div >
                         <p class="p-link">Logout</p>
 
@@ -236,9 +258,12 @@
         {% block mobile_filter %}
         {% endblock mobile_filter %}
     </header>
-    <div class="nav-search-hidden d-none" id="n-srch-hidden">
-        <input type="text" class="nav-search-input" placeholder="search by anything">
-    </div>
+    <form action="/products/" method="get">
+        <div class="nav-search-hidden d-none" id="n-srch-hidden">
+            <input type="search" name="s" class="nav-search-input" placeholder="search by anything">
+        </div>
+    </form>
+
 
     {% block nav_2 %}
     <nav class="nav-2">
@@ -398,12 +423,12 @@
 
                                     {% if product.on_discount %}
                                          <div class="price">
-                                            <p class="n-price">$99.99</p>
-                                             <p class="offer-price">$<span id="p_price-{{product.id}}">88.00</span></p>
+                                            <p class="n-price">${{product.product_price}}</p>
+                                             <p class="offer-price">$<span id="p_price-{{product.id}}">{{product.discount_price}}</span></p>
                                          </div>
                                     {% else %}
                                          <div class="price">
-                                            <p>$<span id="p_price-{{product.id}}">88.00</span></p>
+                                            <p>$<span id="p_price-{{product.id}}">{{product.product_price}}</span></p>
 
                                          </div>
                                     {% endif %}

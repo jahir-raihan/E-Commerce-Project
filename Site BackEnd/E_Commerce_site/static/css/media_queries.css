@@ -89,11 +89,13 @@
     display: none;
   }
   .nav-search .snd-nav-srch-btn {
-    display: block !important;
+    display: flex !important;
     background: white !important;
     color: black !important;
     width: 30px !important;
     opacity: 0.8;
+    justify-content:center;
+    align-items:center;
   }
   .nav-search .snd-nav-srch-btn:hover {
     color: #0D6EFD !important;

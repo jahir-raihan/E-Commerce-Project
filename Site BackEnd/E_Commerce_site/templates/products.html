@@ -397,12 +397,12 @@
 
                                 {% if product.on_discount %}
                                      <div class="price">
-                                        <p class="n-price">$99.99</p>
-                                         <p class="offer-price">$<span id="p_price-{{product.id}}">88.00</span></p>
+                                        <p class="n-price">${{product.product_price}}</p>
+                                         <p class="offer-price">$<span id="p_price-{{product.id}}">{{product.discount_price}}</span></p>
                                      </div>
                                 {% else %}
                                      <div class="price">
-                                        <p>$<span id="p_price-{{product.id}}">88.00</span></p>
+                                        <p>$<span id="p_price-{{product.id}}">{{product.product_price}}</span></p>
 
                                      </div>
                                 {% endif %}
