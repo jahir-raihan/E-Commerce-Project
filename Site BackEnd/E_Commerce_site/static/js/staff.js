@@ -1,7 +1,10 @@
 // JS for staff panels
 
 
+// Function for order action
 function order_action(action, order_id){
+
+    // Sending request
     let req = $.ajax({
         type:'post',
         url:'/account/pending-order-action/',
@@ -11,10 +14,15 @@ function order_action(action, order_id){
             order_id:order_id
         }
     });
+
+    // On success
     req.done(function(response){
+
+        // Resetting csrf_token
         var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
         token.value = response['token']
 
+        // Changing buttons / Order item appearance according to action response
         var cancelled_btn = document.getElementById('cancelled-btn'+order_id)
         var confirm_btn = document.getElementById('confirm-btn'+order_id)
         var status = document.getElementById('order-status'+order_id)
@@ -33,13 +41,15 @@ function order_action(action, order_id){
     })
 }
 
-// Search pending orders
 
+// Search pending orders
 
 $(document).on('submit', '#search_pending_order', function(e){
 
     e.preventDefault()
     document.getElementById('search-loader-staff-main').style.display = 'block'
+
+    // Sending request
     let req = $.ajax({
         type:'post',
         url: '/account/pending-orders/',
@@ -49,10 +59,18 @@ $(document).on('submit', '#search_pending_order', function(e){
         }
 
     })
+
+    // On success
     req.done(function(response){
+
+        // Updating template
         $('#pending-orders-container').html(response.template)
+
+        // Resetting csrf token
         var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
         token.value = response['token']
+
+        // Hiding loader
         document.getElementById('search-loader-staff-main').style.display = 'none'
 
     })

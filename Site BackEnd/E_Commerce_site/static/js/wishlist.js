@@ -1,10 +1,15 @@
 // Constantly update is stock status of a wishlist product
 var dc = document
 
-
+// Items that are in wishlist can be out of stock , so we need a seemless connection between frontEnd and backEnd to
+// Verify if the product is available. This function does the heavy lifting for us.
 function check_availability_wishlist(){
     var items = dc.querySelectorAll('.status')
+
+    // Looping through each wishlist item
     items.forEach( (item) => {
+
+        // Sending request with product id to be checked
         let req = $.ajax({
             type:'get',
             url: '/account/check-wishlist-item-availability/',
@@ -13,7 +18,11 @@ function check_availability_wishlist(){
             }
         });
 
+        // On Success
         req.done(function(response){
+
+            // Action depends on status of the product
+
             if (response.status){
                 var btn = dc.getElementById('wishlist-cart-btn-'+item.getAttribute('id'))
                 btn.disabled = false
@@ -39,6 +48,8 @@ function check_availability_wishlist(){
 
 }
 
+// And we are calling the backEnd after every 5 seconds for updating product status
+
 setInterval(() => {
     try{
         check_availability_wishlist()
@@ -47,12 +58,16 @@ setInterval(() => {
 
 
 
-// Load wishlist items local users
+// Load wishlist items local users -> Account page (Local: Unregistered Users) -> Tracked by IP Address
 
 function load_wishlist_items(){
     try{
+
+        // Parsing local storage wishlist data
         var ls = localStorage
         var items = JSON.parse(ls.wishlist)
+
+        // Looping through all of them and appending wishlist items to wishlist items list in the template
         items.forEach( (item) => {
             var ele = document.createElement('div')
             ele.classList.add('item')
@@ -94,17 +109,20 @@ function load_wishlist_items(){
             wishlist_container.appendChild(ele)
         })
 
+        // If there's no wishlist item in local storage show this message instead
         if (JSON.parse(ls.wishlist_items).length === 0){
             dc.getElementById('load-wishlist-items').innerHTML = '<p class="title" style="text-align:center;"> Wishlist is empty ! </p>'
         }
     }catch{}
 }
+
+// Initially loading wishlist items while loading
 load_wishlist_items()
+
 
 // Remove wishlist items
 
-// For registered users
-
+// For registered users -> Remove from backEnd Database
 function remove_wishlist_item(id){
     let req = $.ajax({
         type:'get',
@@ -124,8 +142,7 @@ function remove_wishlist_item(id){
     })
 }
 
-// For local users
-
+// For local users -> Remove from local Storage data instance
 function remove_wishlist_item_local(id){
     var wish_items = JSON.parse(ls.wishlist)
     var wish_items_ids = JSON.parse(ls.wishlist_items)

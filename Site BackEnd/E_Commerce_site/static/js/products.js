@@ -1,9 +1,9 @@
-// Root vars 
+// Root vars
 
 var  gt = document
-// Price Range 
 
 
+// Price Range
 let rangeMin = 100;
 const range = document.querySelectorAll(".range-selected");
 const rangeInput = document.querySelectorAll(".range-input input");
@@ -12,6 +12,8 @@ const rangePrice = document.querySelectorAll(".range-price input");
 
 let current_price_range = [0, 10000]; // For tracking current price range
 
+
+// If price range input is changed , update current_price_range accordingly
 rangeInput.forEach((input) => {
   input.addEventListener("input", (e) => {
     let minRange1 = parseInt(rangeInput[0].value);
@@ -73,7 +75,11 @@ rangePrice.forEach((input) => {
 // End Price Range
 
 
-// Hidden filter 
+// Hidden filter -> Process was simple
+// step1 -> If current screen size <= 775px we just cut and paste desktop filter section to mobile filter section
+// Again -> If current screen size > 775px we cut mobile filter section and paste it to desktop filter section
+
+// The reason we're cutting because it will cause error if two elements are having save ids
 
 function enable_hidden_filter(action){
 
@@ -179,13 +185,12 @@ function del_refinements(id){
       item.children[2].checked = false
     }
 
-    // solved
-
   })
   trigger()
 
 }
 
+// Function for clearing refinements
 function clear_refinements(){
 
   var refinements = gt.querySelectorAll('.refinements-p')
@@ -305,6 +310,8 @@ offerings.forEach( (item) => {
 
 })
 
+
+// Function to delete tags
 function del_tags(id){
   var tmp_txt = gt.getElementById('tag-'+id).children[0].textContent.trim()
   gt.getElementById('tag-'+id).remove()
@@ -326,6 +333,7 @@ function del_tags(id){
 
 // End offerings
 
+
 // Search query from other pages
 
 var search_query = search_query;
@@ -345,6 +353,7 @@ function del_s_q(){
 function trigger(){
     gt.getElementById('loader-product-page').style.display = 'block'
 
+    // Sending request
     let req = $.ajax({
         type:'post',
         url:'/products/',
@@ -362,14 +371,18 @@ function trigger(){
         }
 
     })
+
+    // On success
     req.done(function(response){
+        // Update product template
         gt.getElementById('loader-product-page').style.display = 'none'
         $('#products-grid').html(response.template)
 
+        // Resetting csrf token
         var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
         token.value = response['token']
     })
-  // Do anything here.
+
 }
 
 // End Trigger section

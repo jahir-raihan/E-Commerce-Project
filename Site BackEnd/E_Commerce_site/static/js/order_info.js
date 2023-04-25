@@ -1,12 +1,14 @@
 let dc = document;
 
-// Load saved addresses if in the memory
+// Load saved addresses if it is in Localstorage
 
 function load_saved_address(){
     ls = localStorage
     try{
         var ele = dc.getElementById('saved-addresses')
         var addresses = JSON.parse(ls.addresses)
+
+        // Looping through each address
         addresses.forEach( (adrs) => {
             console.log(address)
             var address = dc.createElement('div')
@@ -20,23 +22,27 @@ function load_saved_address(){
 
             address.innerHTML = template
 
+            // Appending the address
             ele.appendChild(address)
         })
 
     }catch{
 
-    // Like a maze
-
+        // Like a maze -> it was causing error , so i've decided to ignore it instead fix it :)
         try{
             dc.getElementById('saved-addresses-container-local').style.display = 'none'
         }catch{}
     }
 }
+
+// Loading once when page is loaded
 load_saved_address()
 
 
 
 // Guest checkout functionalities
+// If guest checkout is checked -> Mark all user inputs as required
+// Else -> Mark them as not required and disable them
 
 var is_guest_checkout = false
 function toggle_g_d(){
@@ -71,17 +77,23 @@ function toggle_g_d(){
 
 }
 
-// Selected payment method
+// Selected payment method -> It's showed as cards in frontEnd
 
-let payment_method = 'cod';
+
+// We've hided out bkash because we didn't got an approval from bkash as merchant which required to setup a payment
+// System using bkash
+
+let payment_method = 'cod'; // Default payment method
 
 let cod = dc.getElementById('cod')
-//let bksh = dc.getElementById('bkash')
+
+//  let bksh = dc.getElementById('bkash')
+
 let sslcom = dc.getElementById('sslcom')
 let choices = dc.querySelectorAll('.choice-card')
+
 choices.forEach ( (choice) => {
     choice.addEventListener( 'click', function(){
-
         if (choice.id == 'cod'){
             payment_method = 'cod';
             cod.classList.add('choice-selected')
@@ -111,8 +123,8 @@ choices.forEach ( (choice) => {
 
 // Selected Saved address , if saved
 
+// This one selects saved address from localstorage if user is not registered
 let saved_address_selected = null
-
 let addresses = dc.querySelectorAll('.address')
 let address_info = dc.querySelectorAll('.address-info')
 
@@ -136,8 +148,9 @@ addresses.forEach( (address) => {
     })
 })
 
-// Disable / Enable address input if saved address is selected / di-selected
+// Disable / Enable address input if saved address is selected / not selected
 
+// Disable
 function disable_address_input(){
     var inputs = dc.querySelectorAll('.a-f-btm input')
     var a_f_btm = dc.querySelectorAll('.a-f-btm')
@@ -150,6 +163,7 @@ function disable_address_input(){
     })
 }
 
+// Enable
 function enable_address_input(){
     var inputs = dc.querySelectorAll('.a-f-btm input')
     var a_f_btm = dc.querySelectorAll('.a-f-btm')
@@ -164,7 +178,7 @@ function enable_address_input(){
 
 // End selected saved address
 
-// load cart items
+// load cart items --> Checkout page -> Tiny version with little information
 
 function load_cart_items(){
     var ls = localStorage
@@ -175,18 +189,11 @@ function load_cart_items(){
         var ele = document.createElement('div')
         ele.classList.add('item')
         ele.setAttribute('id', 'check_out_cart_item-'+item.p_id)
-        var template = ` <div class="img">
-                            <img src="${item.p_img}" alt="${item.p_title}">
-                            <div class="cnt">
-                                <p>${item.quantity}</p>
-                            </div>
-                         </div>
-
-                         <div class="info">
-                            <p class="title">${item.p_title}</p>
-                            <small>Total : $ ${item.p_total_price}</small>
-                         </div>`
+        var template = ` <div class="img"><img src="${item.p_img}" alt="${item.p_title}"><div class="cnt"><p>${item.quantity}</p></div></div><div class="info">
+                         <p class="title">${item.p_title}</p><small>Total : $ ${item.p_total_price}</small></div>`
         ele.innerHTML = template
+
+        // Appending tiny cart items
         item_container.appendChild(ele)
 
     })
@@ -194,36 +201,44 @@ function load_cart_items(){
 
 }
 
+// Loading cart items only once while page is loading
 load_cart_items()
 
-// Calculate total prices
-
+// Calculate total prices of cart items
 function calculate_total_price(){
 
     var total = 0
+    // Parsing cart items
+
     var items = JSON.parse(ls.cart)
+
+    // Looping through each of them and calculating total
     items.forEach((p)=>{
         total += Number(p.p_total_price)
     })
 
+    // Adding tax and discount amount
     var cal_tax = tax_percentage/100*total
     var cal_discount = discount_amount/100*total
 
+    // Updating prices in the Html template
     $('#unit-price').text(total)
     $('#dicount-amount').text(discount_amount)
     $('#shipping-amount').text(shipping_fee)
     $('#tax-amount').text(cal_tax)
     $('#items_total_amount').text(total + cal_tax + shipping_fee - cal_discount)
 }
+
+// Calling while page is loaded once
 calculate_total_price()
 
 
-// Submit form section
+// Confirm Checkout request form
 
 $(document).on('submit', '#shipping-and-address-form', function(e){
 
     e.preventDefault();
-    // Get the fucking address
+    // Getting address
 
     if (saved_address_selected === null){
         var address = {
@@ -277,6 +292,8 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
 
     // End Address
 
+
+    // D-Compressing cart items data for fast run time and  and accessible
     var items_ids = []
     var items_quantities = []
     var items_prices = [];
@@ -290,8 +307,9 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
 
     })
 
-    // End cart items
+    // End d-compress cart items
 
+    // Sending request
     let req = $.ajax({
         type:'post',
         url:'/order/checkout/',
@@ -314,9 +332,16 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
             save_address: dc.getElementById('save-this-address').checked
         }
     });
+
+    // On success
     req.done(function(response){
+        // Resetting cart items
         ls.setItem('cart', '[]')
         ls.setItem('cart_items', '[]')
+
+        // Redirecting to response url , it can be payment page or order history page , depends on action and payment
+        // Type
+
         window.location.href = response.url
     })
 

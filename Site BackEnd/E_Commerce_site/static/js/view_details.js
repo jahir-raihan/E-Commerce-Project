@@ -2,6 +2,7 @@ let dc = document
 // Image gallery 
 
 
+// Image gallery -> This function is responsible for showing images in products detials page
 function showImage(imageId) {
     // Get all the images in the gallery
     var images = document.getElementsByClassName("img-gallery-img");
@@ -47,11 +48,11 @@ stars.forEach((star, index1) => {
 // End review stars
 
 
-let quantity = 1;
+// For updating quantity
 
+let quantity = 1; // Default value is 1
 let q_btns = dc.querySelectorAll('.q-input button')
 q_btns.forEach( (btn) => {
-
   btn.addEventListener( 'click', function(){
 
     if (btn.classList[0] == 'plus' && quantity < 20){
@@ -67,21 +68,24 @@ q_btns.forEach( (btn) => {
 
 // Reviews and rating section
 
+
+// Writing review section
 function write_review(value, user, id){
+
+    // Only allow registered users to write review
     if ((user !== 'AnonymousUser') && (!users_reviewed.includes(id))){
         dc.getElementById('w-a-r-p-s').style.display='block'
     }
-    else{
-        // Do something here man
-    }
+
 }
 
 
-// Reviews
+// Reviews request
 
 $(document).on('submit', '#review_form', function(e){
     e.preventDefault();
-    console.log('whats the problem')
+
+    // Sending request
     let req = $.ajax({
         type:'post',
         url: '/review/'+$(this).attr('p_id')+'/',
@@ -92,19 +96,26 @@ $(document).on('submit', '#review_form', function(e){
 
         }
     });
+
+    // On success
     req.done(function(response){
+
+        // Updating html
         dc.getElementById('w-a-r-p-s').style.display='none'
         $('#review_section').html(response.template)
+
+        // Resetting token
         var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
         token.value = response['token']
     })
 })
 
-// Replays
+// Reviews Replays
 
 $(document).on('submit', '#write-reply', function(e){
     e.preventDefault();
 
+    // Sending request
     let req = $.ajax({
         type:'post',
         url: '/replay/'+$(this).attr('r_id')+'/',
@@ -114,9 +125,15 @@ $(document).on('submit', '#write-reply', function(e){
 
         }
     });
+
+    // On success
     req.done(function(response){
+
+        // Updating template
         dc.getElementById('write-reply').style.display='none'
         $('#review_section').html(response.template)
+
+        // Resetting csrf token
         var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
         token.value = response['token']
     })
@@ -134,6 +151,8 @@ function show_all_reviews(id){
     })
 
     req.done(function(response){
+
+        // Replacing review section of a products
         $('#review_section').html(response)
     })
 }
