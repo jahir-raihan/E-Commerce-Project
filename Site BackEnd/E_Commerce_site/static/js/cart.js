@@ -72,9 +72,21 @@ function load_cart_items(){
 
         })
         calculate_total_price()
+
+        if (cart_items_ids == 0){
+            var ele_btn = document.getElementById('checkout_btn')
+
+            ele_btn.children[0].disabled = true
+            ele_btn.children[0].style.background = 'gray'
+            ele_btn.children[0].style.opacity = '.6'
+            ele_btn.children[0].style.cursor = 'not-allowed'
+
+
+        }
     }catch{
         document.getElementById('item-container-item').innerHTML = 'Cart is empty !'
     }
+
 
 }
 load_cart_items()
