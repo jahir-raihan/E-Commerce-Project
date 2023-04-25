@@ -18,6 +18,9 @@ def get_client_ip(request):
 # Product on discount
 
 def on_discount(data, product):
+
+    """Function to mark a product on discount"""
+
     product.on_discount = True
     product.discount_percentage = int(data['discount_percentage'])
     product.discount_price = int(int(data['price']) - (int(data['discount_percentage'])/100)*int(data['price']))
@@ -36,6 +39,9 @@ def on_discount(data, product):
 
 
 def save_product_images(product, alt_texts, images):
+
+    """Saves product images"""
+
     for i in range(len(images)):
         try:
             alt_txt = alt_texts[i]
@@ -48,6 +54,9 @@ def save_product_images(product, alt_texts, images):
 # Edit product
 
 def save_edited_product(product, data):
+
+    """Saves edited products details, it is linked with user that's why it's here inside user app"""
+
     files = data.FILES
     data = data.POST
 

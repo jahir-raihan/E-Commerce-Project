@@ -40,7 +40,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
 
-    """Abstracting BaseUser model to add custom fields to user model for System Quest."""
+    """Abstracting BaseUser model to add custom fields as per requirements"""
+
     first_name = models.CharField(verbose_name='first_name', max_length=22, blank=True, null=True)
     last_name = models.CharField(verbose_name='last_name', max_length=22, blank=True, null=True)
     name = models.CharField(verbose_name='Name', max_length=22)
@@ -84,11 +85,12 @@ class User(AbstractBaseUser):
 
 # Model for profile picture
 
+
 class Profile(models.Model):
     picture = models.ImageField(upload_to='profile-images/')
 
 
-# Model for saving addresses
+# Address model for saving addresses
 
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
