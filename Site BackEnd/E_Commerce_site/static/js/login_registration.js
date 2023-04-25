@@ -3,7 +3,6 @@ let dc = document
 
 
 // Login Request
-
 $(document).on('submit', '#login-form', function(e){
 
     e.preventDefault();
@@ -23,7 +22,6 @@ $(document).on('submit', '#login-form', function(e){
 
 
     // Checking for local storage data
-
     const keys = Object.keys(ls);
 
     if (keys.includes('wishlist_items')){
@@ -34,8 +32,7 @@ $(document).on('submit', '#login-form', function(e){
     }
 
 
-    // Request
-
+    // Sending Request
     let req = $.ajax({
         type:'post',
         url:'/account/login/',
@@ -50,7 +47,7 @@ $(document).on('submit', '#login-form', function(e){
     setTimeout(() => {l_t.innerHTML = 'Logging in . .' }, 300);
 
 
-
+    // On success
     req.done(function(data){
         if ('success' in data){
             // reinitializing login button
@@ -65,9 +62,7 @@ $(document).on('submit', '#login-form', function(e){
 
         }
         else if ('error' in data) {
-
             // If Account not found , show some alert on the window and reset the buttons
-
             l_t.innerHTML = 'Login'
             dc.getElementById('l-i').classList.add('d-none')
             login_btn.disabled = false
@@ -81,7 +76,7 @@ $(document).on('submit', '#login-form', function(e){
 })
 
 
-// Register Request
+// Register
 
 $(document).on('submit', '#register-form', function(e){
 
@@ -90,7 +85,7 @@ $(document).on('submit', '#register-form', function(e){
     let redirect_url, cart_items, wishlist_items;
     let register_btn = dc.querySelector('.login-btn')
 
-    // Login btn React on submit
+    // Register btn React on submit
 
     register_btn.disabled =  true
     register_btn.style.cursor = 'progress'
@@ -113,8 +108,7 @@ $(document).on('submit', '#register-form', function(e){
     }
 
 
-    // Request
-
+    // Register Request
     let req = $.ajax({
         type:'post',
         url:'/account/register/',
@@ -132,7 +126,7 @@ $(document).on('submit', '#register-form', function(e){
     setTimeout(() => {r_t.innerHTML = 'Registering' }, 300);
 
 
-
+    // On success
     req.done(function(data){
         if ('success' in data){
             // reinitializing login button
@@ -156,8 +150,6 @@ $(document).on('submit', '#register-form', function(e){
             register_btn.style.cursor = 'pointer'
             alert('Account Not Found!') ? "" : location.reload();
         }
-
     })
-
 
 })

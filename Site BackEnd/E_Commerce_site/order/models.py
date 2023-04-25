@@ -7,6 +7,7 @@ User = get_user_model()
 
 class Order(models.Model):
 
+    """Order Table model"""
     # Order items and person details
 
     order_items = models.CharField(max_length=1500)
@@ -43,10 +44,13 @@ class Order(models.Model):
 
 
 class OrderID(models.Model):
+    """Order ID model"""
     order_id = models.BigIntegerField(default=1000)
 
 
 class Transaction(models.Model):
+
+    """Transactions Model"""
     # All transaction information goes here
     transaction_id = models.CharField(max_length=34)
     transaction_amount = models.FloatField()

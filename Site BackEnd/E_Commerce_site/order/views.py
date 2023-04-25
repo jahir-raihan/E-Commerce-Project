@@ -7,13 +7,17 @@ import json
 from django.conf import settings
 from sslcommerz_lib import SSLCOMMERZ
 import shortuuid
-# Checkout
 
 
 def checkout(request):
+
+    """Checkout view if there's items in the cart"""
+
     if request.method == 'POST':
         data = request.POST
-        print(data)
+
+        # Saving  Address Data if save address is checked in frontEnd, and user is registered.
+
         if request.user.is_authenticated and data['save_address'] == 'true':
             adrs = Address(
                 address=data['address[address]'],
@@ -23,9 +27,9 @@ def checkout(request):
             )
             adrs.save()
 
-        # Drilling out address from anywhere
+        # Getting Address Data
+
         address = ''
-        city = ''
         if 'address' in data:
             tmp_address = Address.objects.get(pk=data['address'])
             city = tmp_address.city
@@ -35,7 +39,8 @@ def checkout(request):
                        data['address[zipcode]']
             city = data['address[city]']
 
-        # Taking phone number and fucking user data (registered or unregistered)
+        # Retrieving user data (Registered / Unregistered)
+
         user = None
         phone = data['phone']
 
@@ -51,18 +56,19 @@ def checkout(request):
         if request.user.is_authenticated:
             user = request.user
 
-        # Calculating asshole price of shitty cart items
+        # Calculating items quantity -> tity -> tits :)
+
         items_count = 0
         for i in map(int, data.getlist('items_quantity[]')):
             items_count += i
 
-        # Generating naughty order id
+        # Generating  order id
 
         order_id = OrderID.objects.get(id=1)
         order_id.order_id += 1
         order_id.save()
 
-        # Gathering items data to scoot them
+        # Gathering items data to store them as compressed string json data
 
         items = {
             "ids": data.getlist('items_ids[]'),
@@ -70,7 +76,8 @@ def checkout(request):
             "sizes": data.getlist('items_sizes[]'),
             "quantities": data.getlist('items_quantities[]')
         }
-        tran_id = shortuuid.ShortUUID('1234567890WqQZzLlSsXx').random(15)
+
+        tran_id = shortuuid.ShortUUID('1234567890WqQZzLlSsXxYyTtEeBbQqPpNnMmSs').random(25)
 
         # Creating order instance
 
@@ -90,20 +97,23 @@ def checkout(request):
 
         order.save()
 
-        print('Amount ', data['total_price'])
+        # Payment method
 
-        # Payment method stuff
-
-        # If Cash on delivery (I don't trust you bitch) Do your job here -- Redirect user to account page
+        # If Cash on delivery (User doesn't trust you) --> Redirect user to account page
 
         if data['payment_method'] == 'cod':
             return JsonResponse({'url': f"{request.META['HTTP_ORIGIN']}/account/order-history/"})
 
-        # If bkash do it here , what the fuck is this
+        # If sslcommerze or bkash , Redirect them to payment page
 
-        #  We'll do bkash lately
-        # If sslcommerze do your naughty work here bitch
+        # Actually We'll do bkash lately
+
+        # If sslcommerze
+
         if data['payment_method'] == 'sslcom':
+
+            # Initiating payment
+
             setting = {'store_id': settings.STORE_ID, 'store_pass': settings.STORE_PASS, 'issandbox': True}
             sslcz = SSLCOMMERZ(setting)
             post_body = {'total_amount': data['total_price'], 'currency': "BDT", 'tran_id': f'{tran_id}',
