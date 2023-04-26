@@ -1,3 +1,5 @@
+from django.shortcuts import redirect
+
 from products.models import *
 from django.utils.timezone import datetime
 
@@ -89,3 +91,35 @@ def save_edited_product(product, data):
 
     product.save()
 
+
+# Router
+
+def router(request, accept):
+
+    """Determine user permission label and redirect them to their destination page,
+        Check if they are verified to access a particular page.
+        Conditions : -> If user is Normal user only allow normal user functionalities,
+                     -> If user is Staff , allow him to access staff functionality only, (Two types of staff)
+                     -> If user is Admin , allow him to access admin panel, nothing else , only admin panel.
+                     -> Keep pages isolated from each other , such that the database behaves as multi tenet database"""
+    user = request.user
+    if user.is_authenticated:
+        if accept['is_order_handler'] and user.is_order_handler:
+            return [True]
+        elif accept['is_product_adder'] and user.is_product_adder:
+            return [True]
+        if accept['is_admin'] and user.is_admin:
+            return [True]
+        elif accept['is_user'] and not (user.is_admin or user.is_product_adder or user.is_order_handler):
+            return [True]
+        else:
+            if user.is_order_handler:
+                return [False, 'staff_main1']
+            elif user.is_product_adder:
+                return [False, 'staff_main2']
+            elif user.is_admin:
+                return [False, 'admin_dashboard']
+            else:
+                return [False, 'account']
+    else:
+        return [False, 'account', 1]

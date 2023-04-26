@@ -11,6 +11,7 @@ class UserAdmin(BaseUserAdmin):
         ('Permissions', {'fields': (
             'is_active',
             'is_staff',
+            'is_admin',
             'is_superuser',
             'is_order_handler',
             'is_product_adder'

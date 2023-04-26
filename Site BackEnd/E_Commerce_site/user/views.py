@@ -77,6 +77,8 @@ def login_user(request):
 def logout_user(request):
 
     """Logs out a user and redirects to login page"""
+    if not request.user.is_authenticated:
+        return redirect('login')
 
     logout(request)
     return redirect('login')
@@ -98,6 +100,12 @@ def staff_main1(request):
 
     """Product Handler Account main page, -> If the request is made for query then filter out the Orders and return
         filtered orders to frontEnd"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': True, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # Checking if the request is a query request
     if request.method == 'POST':
@@ -165,6 +173,12 @@ def staff_main2(request):
 
     """Product adder Account main page"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': True, 'is_admin': False,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
+
     products = Product.objects.filter(product_added_by=request.user)
 
     return render(request, 'staff2_main.html', {'products': products})
@@ -175,6 +189,12 @@ def pending_orders(request):
 
     """Returns list of pending orders only for Order Handler staff view,
         There's a functionality for querying the orders by get or post request. It depends on the request type"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': True, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # If request is for query or there is a search string in request GET
     if request.method == 'POST' or 's' in request.GET:
@@ -234,6 +254,12 @@ def pending_order_action(request):
 
     """Accept or cancel an order, -> Depends on action data from post request"""
 
+    # # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    # request_action = router(request, {'is_order_handler': True, 'is_product_adder': False, 'is_admin': False,
+    #                                   'is_user': False})
+    # if not request_action[0]:
+    #     return redirect(request_action[1])
+
     action = request.POST['action']
 
     # Getting the order
@@ -266,6 +292,12 @@ def pending_order_action(request):
 def add_products(request):
 
     """Add a new product to the database with images and information """
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': True, 'is_admin': False,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # Product add reqeust
     if request.method == 'POST':
@@ -325,6 +357,12 @@ def edit_products(request, pk):
 
     """Edits a product details and images"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': True, 'is_admin': False,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
+
     # If edit product reqeust
     if request.method == 'POST':
 
@@ -355,8 +393,15 @@ def account(request):
 
     """Account main page for users (Registered or Unregistered)"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
+
     # If registered filter out recent orders by user
     if request.user.is_authenticated:
+
         orders = Order.objects.filter(order_person=request.user).order_by('-order_date')
     else:
         # Else filter out by IP Address
@@ -396,6 +441,12 @@ def order_history(request):
 
     """This view is like a multipurpose kind, we're using it as order history of a user, also using it
         as return request or redirect request which is POST, from online payment service"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
 
     # If the request is from online payment gateway
     if request.method == 'POST':
@@ -586,6 +637,12 @@ def wishlist(request):
     """Returns wishlist items if user is registered , else just renders out the template, and the whole work
         is done on front end"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
+
     items = []
     try:
         # Getting wishlist instance
@@ -603,7 +660,7 @@ def wishlist(request):
     return render(request, 'wishlist.html', context)
 
 
-# Responsible for checking a product availability
+# Responsible for checking a product availability -> Simultaneous request
 def check_product_availability(request):
 
     """Responsible for checking a product availability"""
@@ -622,6 +679,12 @@ def check_product_availability(request):
 def transactions(request):
 
     """Returns transaction list of a user"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
 
     # If registered then filter by user
     if request.user.is_authenticated:
@@ -647,6 +710,12 @@ def dashboard(request):
     """Dashboard of admin, includes total earning , orders, products, Earning change log graph, and visiting traffic
         . Yah I know I haven't implemented all of them , but I will do them shortly """
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
+
     total_earnings = Order.objects.filter(order_is_confirmed=True).aggregate(Sum('order_total_price'))['order_total_price__sum']
     total_orders = Order.objects.filter(order_is_confirmed=True).count()
     total_products = Product.objects.all().count()
@@ -666,6 +735,12 @@ def dashboard(request):
 def admin_product_list(request):
 
     """Admin products list, here admin can view query and edit a product details just as Product Adder functionality"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # Query through products
     if request.method == 'POST':
@@ -703,6 +778,12 @@ def admin_product_list(request):
 def admin_add_product(request):
 
     """Admin add a product view, from here admin can add a new product."""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # Adding reqeust
     if request.method == 'POST':
@@ -762,6 +843,12 @@ def admin_edit_product(request, pk):
 
     """Admin edit a product, functionality is same as Product adder"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
+
     # Edit request
     if request.method == 'POST':
 
@@ -790,6 +877,12 @@ def admin_edit_product(request, pk):
 def admin_orders(request):
 
     """Admin orders page, can view query or take actions to orders that are in pending status"""
+    print(request.POST)
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # Query request
     if request.method == 'POST' or 's' in request.GET:
@@ -849,6 +942,12 @@ def admin_orders(request):
 def admin_transactions(request):
 
     """Admin transactions page, admin can view transaction order, user, amount and can query through all of them"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
+                                      'is_user': False})
+    if not request_action[0]:
+        return redirect(request_action[1])
 
     # Querying transactions
     if request.method == 'POST':

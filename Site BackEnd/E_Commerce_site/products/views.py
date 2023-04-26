@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
+from user.algorithms import router
 from .algorithms import *
 from django.db.models import Q
 from django.middleware.csrf import get_token
@@ -12,6 +13,13 @@ from django.middleware.csrf import get_token
 def home(request):
 
     """Landing page view, with new arrival products on display"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    print(request_action)
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
 
     products = Product.objects.filter(product_in_stock=True).order_by('product_last_update')[:20]
     categories = Category.objects.all()
@@ -26,6 +34,12 @@ def home(request):
 def products(request):
 
     """Products page view , with filtering and searching capability"""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
 
     # If request method is post filter out products by search query
     if request.method == 'POST':
@@ -79,6 +93,15 @@ def products(request):
 
 # View a product details Page
 def view_details(request, pk):
+
+    """Returns full details of a product and it's Reviews."""
+
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
+
     product = Product.objects.get(pk=pk)
     query = product.product_title
     search_keywords = Product.objects.all()
@@ -129,7 +152,7 @@ def review(request, pk):
 # Review Reply
 def replay(request, pk):
 
-    """Review reply"""
+    """Reply on a Review"""
 
     rev = Review.objects.get(pk=pk)
     product = rev.product
@@ -170,6 +193,12 @@ def cart(request):
 
     """Cart functionalities is handled on the frontEnd side"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
+
     return render(request, 'cart.html')
 
 
@@ -178,16 +207,12 @@ def wishlist(request):
 
     """Wishlist functionalities is handled on the frontEnd side"""
 
+    # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
+    request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
+                                      'is_user': True})
+    if not request_action[0] and len(request_action) < 3:
+        return redirect(request_action[1])
+
     return render(request, 'wishlist.html')
 
-
-# Check product availability --> Simultaneous request
-def check_product_availability(request, pk):
-
-    """Returns product status"""
-
-    product = Product.objects.get(pk=pk)
-    if product.product_in_stock:
-        return True
-    return False
 

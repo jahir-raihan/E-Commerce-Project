@@ -23,22 +23,26 @@
     {% block nav_search %} {% endblock nav_search %}
 
     {% block nav_buttons %}
-        <button class="nav-btns">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-        </button>
+        <a href="{% url 'logout' %}">
+            <button class="nav-btns">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+            </button>
+        </a>
 
-        <div class="only-navicons">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-        </div>
+        <a href="{% url 'logout' %}">
+            <div class="only-navicons">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </a>
     {% endblock nav_buttons %}
 
     {% block toggle_nav_user_part %}
     {% endblock toggle_nav_user_part %}
 
     {% block toggle_nav_staff_part %}
-         <ul>
+        <ul>
 
-            <a href="#">
+            <a href="{% url 'admin_dashboard' %}">
                 <div >
                     <p class="p-link" >Dashboard</p>
 
@@ -46,7 +50,7 @@
 
                 <p class="g-icon">></p>
             </a>
-            <a href="#">
+            <a href="{% url 'admin_product_list' %}">
                 <div  >
                     <p class="p-link">Products</p>
 
@@ -54,7 +58,17 @@
 
                 <p class="g-icon">></p>
             </a>
-            <a href="#">
+
+            <a href="{% url 'admin_add_product' %}">
+                <div  >
+                    <p class="p-link">Add | Edit Products</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+
+            <a href="{% url 'admin_orders' %}">
                 <div >
                     <p class="p-link">Orders</p>
 
@@ -62,7 +76,7 @@
 
                 <p class="g-icon">></p>
             </a>
-            <a href="#">
+            <a href="{% url 'admin_transactions' %}">
                 <div >
                     <p class="p-link">Transactions</p>
 
@@ -70,7 +84,7 @@
 
                 <p class="g-icon">></p>
             </a>
-            <a href="#">
+            <a href="{% url 'logout' %}">
                 <div >
                     <p class="p-link">Logout</p>
 
@@ -133,7 +147,7 @@
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <i class="fas fa-sign-out"></i>
                         <li class="">Log out</li>
                     </a>

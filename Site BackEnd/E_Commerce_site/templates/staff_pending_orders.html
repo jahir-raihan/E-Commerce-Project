@@ -52,7 +52,7 @@
                 <p class="g-icon">></p>
             </a>
 
-            <a href="#">
+            <a href="{% url 'logout' %}">
                 <div >
                     <p class="p-link">Logout</p>
 
@@ -95,7 +95,7 @@
                 <ul>
                     <a href="{% url 'staff_main1' %}"><li class="">Main</li></a>
                     <a href="{% url 'pending_orders' %}"><li class="current-tab-profile">Pending Orders</li></a>
-                    <a href="#"><li class="">Log out</li></a>
+                    <a href="{% url 'logout' %}"><li class="">Log out</li></a>
                 </ul>
 
             </div>

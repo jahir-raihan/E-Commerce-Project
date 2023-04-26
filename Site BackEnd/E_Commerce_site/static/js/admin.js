@@ -52,3 +52,39 @@ $(document).on('submit', '#admin-transaction-search', function(e){
         token.value = response['token']
     })
 })
+
+// Admin search pending orders
+
+
+$(document).on('submit', '#admin_search_pending_order', function(e){
+
+    e.preventDefault()
+    document.getElementById('search-loader-staff-main').style.display = 'block'
+
+    // Sending request
+    let req = $.ajax({
+        type:'post',
+        url: '/account/admin/orders/',
+        data:{
+            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            query:$('#query').val()
+        }
+
+    })
+
+    // On success
+    req.done(function(response){
+
+        // Updating template
+        $('#pending-orders-container-admin').html(response.template)
+
+        // Resetting csrf token
+        var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+        token.value = response['token']
+
+        // Hiding loader
+        document.getElementById('search-loader-staff-main').style.display = 'none'
+
+    })
+
+})

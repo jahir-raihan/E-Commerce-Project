@@ -21,64 +21,76 @@
     {% endblock nav_search %}
 
     {% block nav_buttons %}
+        <a href="{% url 'logout' %}">
+            <button class="nav-btns">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+            </button>
+        </a>
 
-        <button class="nav-btns">
-            <i class="fa fa-sign-in" aria-hidden="true"></i> Sign in
-        </button>
-
-        <div class="only-navicons">
-            <i class="fa fa-sign-in" aria-hidden="true"></i>
-        </div>
-
+        <a href="{% url 'logout' %}">
+            <div class="only-navicons">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </a>
     {% endblock nav_buttons %}
 
     {% block toggle_nav_user_part %}
     {% endblock toggle_nav_user_part %}
 
     {% block toggle_nav_staff_part %}
-       <ul>
+        <ul>
 
-                <a href="#">
-                    <div >
-                        <p class="p-link" >Dashboard</p>
+            <a href="{% url 'admin_dashboard' %}">
+                <div >
+                    <p class="p-link" >Dashboard</p>
 
-                    </div>
+                </div>
 
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div  >
-                        <p class="p-link">Products</p>
+                <p class="g-icon">></p>
+            </a>
+            <a href="{% url 'admin_product_list' %}">
+                <div  >
+                    <p class="p-link">Products</p>
 
-                    </div>
+                </div>
 
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p class="p-link">Orders</p>
+                <p class="g-icon">></p>
+            </a>
 
-                    </div>
+            <a href="{% url 'admin_add_product' %}">
+                <div  >
+                    <p class="p-link">Add | Edit Products</p>
 
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p class="p-link">Transactions</p>
+                </div>
 
-                    </div>
+                <p class="g-icon">></p>
+            </a>
 
-                    <p class="g-icon">></p>
-                </a>
-                <a href="#">
-                    <div >
-                        <p class="p-link">Logout</p>
+            <a href="{% url 'admin_orders' %}">
+                <div >
+                    <p class="p-link">Orders</p>
 
-                    </div>
+                </div>
 
-                    <p class="g-icon">></p>
-                </a>
-            </ul>
+                <p class="g-icon">></p>
+            </a>
+            <a href="{% url 'admin_transactions' %}">
+                <div >
+                    <p class="p-link">Transactions</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+            <a href="{% url 'logout' %}">
+                <div >
+                    <p class="p-link">Logout</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+        </ul>
     {% endblock toggle_nav_staff_part %}
 
     {% block nav_2 %}
@@ -134,7 +146,7 @@
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
-                    <a href="#">
+                    <a href="{% url 'logout' %}">
                         <i class="fas fa-sign-out"></i>
                         <li class="">Log out</li>
                     </a>
@@ -150,8 +162,8 @@
             <div class="profile-content">
                 <div class="current-orders admin-orders">
 
-                    <form id="search_pending_order">
-
+                    <form id="admin_search_pending_order">
+                        {% csrf_token %}
                         <div class="search-facility">
                             <input type="search" id="query" placeholder="search by anything">
                             <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -165,8 +177,8 @@
                     </form>
 
                     <p class="title"> Pending orders</p>
-                    {% csrf_token %}
-                    <div id="pending-orders-container">
+
+                    <div id="pending-orders-container-admin">
                     {% for order in orders %}
                         {% if order.order.order_is_pending %}
                             <div class="order pending-order">
@@ -175,7 +187,7 @@
                                     <div class="o-id-date">
                                         <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d M, Y'}}</span></p>
 
-                                        <p class="status status-pending">Pending</p>
+                                        <p class="status status-pending" id="order-status{{order.order.id}}">Pending</p>
 
                                     </div>
 
@@ -415,7 +427,6 @@
                     {% endfor %}
                     </div>
 
-
                 </div>
 
             </div>
@@ -438,4 +449,5 @@
 
     {% block js_bottom %}
     <script src="{% static 'js/staff.js' %}"></script>
+    <script src="{% static 'js/admin.js' %}"></script>
     {% endblock js_bottom %}

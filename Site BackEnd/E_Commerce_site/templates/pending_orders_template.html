@@ -8,7 +8,7 @@
                 <div class="o-id-date">
                     <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d M, Y'}}</span></p>
 
-                    <p class="status status-pending">Pending</p>
+                    <p class="status status-pending" id="order-status{{order.order.id}}">Pending</p>
 
                 </div>
 
@@ -92,7 +92,7 @@
             <div class="order-top">
 
                 <div class="o-id-date">
-                    <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d, m, Y'}}</span></p>
+                    <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d m, Y'}}</span></p>
                         <p class="status status-cancelled">Cancelled</p>
                 </div>
 
@@ -170,7 +170,7 @@
             <div class="order-top">
 
                 <div class="o-id-date">
-                    <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d, M, Y'}}</span></p>
+                    <p>Order ID : {{order.order.order_id}} <span>{{order.order.order_date|date:'d M, Y'}}</span></p>
                         <p class="status">Confirmed</p>
                 </div>
 

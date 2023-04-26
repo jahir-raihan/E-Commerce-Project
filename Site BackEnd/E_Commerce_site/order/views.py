@@ -13,6 +13,8 @@ def checkout(request):
 
     """Checkout view if there's items in the cart"""
 
+    # No need to check this page for routing , cz it's already in stealth mode
+
     if request.method == 'POST':
         data = request.POST
 
