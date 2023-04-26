@@ -136,7 +136,6 @@ function set_cart_item_count(){
     try{
         if (keys.includes('cart_items')){
             var item_count = JSON.parse(localStorage.cart_items).length
-            console.log(item_count)
             document.getElementById('cart-item-count').innerHTML = item_count
             document.getElementById('cart-item-count1').innerHTML = item_count
         }
@@ -239,11 +238,11 @@ function add_to_wishlist(product_id, user, user_id=null){
 
             if ( !wishlist_items.includes(p_id)){
                 var items = JSON.parse(ls.wishlist)
-                console.log(items)
+
                 var data = {'p_id':p_id, 'p_title': $('#p_title-'+p_id).text(), 'p_price': $('#p_price-'+p_id).text(),
                             'p_img': $('#p_img-'+p_id).attr('src')}
                 items.push(data)
-                console.log(items)
+
                 ls.setItem('wishlist', JSON.stringify(items))
 
 
@@ -307,7 +306,7 @@ function load_saved_address_local(){
 
         // Looping through each address object
         addresses.forEach( (adrs) => {
-            console.log(address)
+
             var address = document.createElement('div')
             address.classList.add('address')
             address.setAttribute('id', adrs.address_id)

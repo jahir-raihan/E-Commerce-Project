@@ -94,8 +94,6 @@ function remove_cart_item(id){
             cart_items_ids.splice(cart_items_ids.indexOf(id), 1)
             $('#cart_item-'+id).remove()
             $('#line-'+id).remove()
-            console.log('removed')
-            console.log(cart_items)
         }
     })
 

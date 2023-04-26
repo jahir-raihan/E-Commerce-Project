@@ -95,7 +95,6 @@ function enable_hidden_filter(action){
       if (action==true){
         obj.style.display = 'block';
         obj.appendChild(filter_contents)
-        console.log(main_filter_container.children)
         obj3.classList.add('fade-out')
         close_filter.classList.remove('d-none')
       }

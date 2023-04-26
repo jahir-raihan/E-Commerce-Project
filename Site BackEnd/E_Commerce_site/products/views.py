@@ -17,7 +17,7 @@ def home(request):
     # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
     request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': False,
                                       'is_user': True})
-    print(request_action)
+
     if not request_action[0] and len(request_action) < 3:
         return redirect(request_action[1])
 

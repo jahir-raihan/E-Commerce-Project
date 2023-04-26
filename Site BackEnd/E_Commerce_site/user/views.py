@@ -877,7 +877,7 @@ def admin_edit_product(request, pk):
 def admin_orders(request):
 
     """Admin orders page, can view query or take actions to orders that are in pending status"""
-    print(request.POST)
+
     # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
     request_action = router(request, {'is_order_handler': False, 'is_product_adder': False, 'is_admin': True,
                                       'is_user': False})

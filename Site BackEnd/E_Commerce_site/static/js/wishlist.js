@@ -138,7 +138,6 @@ function remove_wishlist_item(id){
             $('#wishlist-item-title').text('Wishlist is empty !')
             dc.getElementById('wishlist-item-title').style.textAlign = 'center'
         }
-        console.log(response.items_count)
     })
 }
 

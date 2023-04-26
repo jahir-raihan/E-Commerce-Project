@@ -10,7 +10,7 @@ function load_saved_address(){
 
         // Looping through each address
         addresses.forEach( (adrs) => {
-            console.log(address)
+
             var address = dc.createElement('div')
             address.classList.add('address')
             address.setAttribute('id', adrs.address_id)
@@ -277,7 +277,7 @@ $(document).on('submit', '#shipping-and-address-form', function(e){
     else{
         var address = {
         }
-        console.log($('#user').val())
+
         if ($('#user').val() === 'AnonymousUser'){
             var address_list = JSON.parse(ls.addresses)
             address_list.forEach((adrs) => {
