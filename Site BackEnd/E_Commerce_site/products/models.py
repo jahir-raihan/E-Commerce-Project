@@ -75,7 +75,7 @@ class ProductImages(models.Model):
 class Cart(models.Model):
 
     """Cart model, I've covered cart functionality in front end , so this model is unused,
-        but still i'm keeping it for future reference"""
+        but still I'm keeping it for future reference"""
 
     cart_items = models.CharField(max_length=400)
     cart_person_ip = models.GenericIPAddressField()

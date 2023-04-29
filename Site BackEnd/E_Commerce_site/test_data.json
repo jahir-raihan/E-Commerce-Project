@@ -1,0 +1,414 @@
+[
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "order.order",
+    "pk": 50,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"1554\"], \"sizes\": [\"M\"], \"quantities\": [\"1\"]}",
+        "order_id": 10000046,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "jahir raihan joy",
+        "order_person_email": "raihandevbd@gmail.com",
+        "order_person_phone": "01720988071",
+        "order_person_ip": "127.0.0.1",
+        "order_person": 1,
+        "order_date": "2023-04-26T15:56:18.298Z",
+        "order_handle_date": "2023-04-28T14:16:21.807Z",
+        "order_handled_by": 1,
+        "order_is_cancelled": false,
+        "order_is_confirmed": true,
+        "order_is_pending": false,
+        "order_is_delivered": false,
+        "order_total_price": 1859.4,
+        "order_payment_method": "sslcom",
+        "note_msg": null
+    }
+},
+{
+    "model": "order.order",
+    "pk": 51,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"7770\"], \"sizes\": [\"XL\"], \"quantities\": [\"5\"]}",
+        "order_id": 10000047,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "jahir raihan joy",
+        "order_person_email": "raihandevbd@gmail.com",
+        "order_person_phone": "01720988071",
+        "order_person_ip": "127.0.0.1",
+        "order_person": 1,
+        "order_date": "2023-04-26T15:57:37.208Z",
+        "order_handle_date": "2023-04-26T18:15:06.032Z",
+        "order_handled_by": 1,
+        "order_is_cancelled": false,
+        "order_is_confirmed": true,
+        "order_is_pending": false,
+        "order_is_delivered": false,
+        "order_total_price": 8697.0,
+        "order_payment_method": "cash_on_delivery",
+        "note_msg": null
+    }
+},
+{
+    "model": "order.order",
+    "pk": 52,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"6216\"], \"sizes\": [\"XXL\"], \"quantities\": [\"4\"]}",
+        "order_id": 10000048,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "jahir raihan joy",
+        "order_person_email": "raihandevbd@gmail.com",
+        "order_person_phone": "01720988071",
+        "order_person_ip": "127.0.0.1",
+        "order_person": 1,
+        "order_date": "2023-04-28T16:44:55.814Z",
+        "order_handle_date": "2023-04-29T11:08:18.360Z",
+        "order_handled_by": 1,
+        "order_is_cancelled": false,
+        "order_is_confirmed": true,
+        "order_is_pending": false,
+        "order_is_delivered": false,
+        "order_total_price": 6987.6,
+        "order_payment_method": "sslcom",
+        "note_msg": null
+    }
+},
+{
+    "model": "order.order",
+    "pk": 53,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"1554\"], \"sizes\": [\"M\"], \"quantities\": [\"1\"]}",
+        "order_id": 10000049,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "jahir raihan joy",
+        "order_person_email": "raihandevbd@gmail.com",
+        "order_person_phone": "01720988071",
+        "order_person_ip": "127.0.0.1",
+        "order_person": 1,
+        "order_date": "2023-04-29T08:13:52.138Z",
+        "order_handle_date": "2023-04-29T11:09:05.608Z",
+        "order_handled_by": 1,
+        "order_is_cancelled": false,
+        "order_is_confirmed": true,
+        "order_is_pending": false,
+        "order_is_delivered": false,
+        "order_total_price": 1859.4,
+        "order_payment_method": "cod",
+        "note_msg": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 54,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"6216\"], \"sizes\": [\"XL\"], \"quantities\": [\"4\"]}",
+        "order_id": 10000050,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "Majibur Rahman",
+        "order_person_email": "funny@gmail.com",
+        "order_person_phone": "01720988075",
+        "order_person_ip": "127.0.0.1",
+        "order_person": null,
+        "order_date": "2023-04-29T10:14:12.469Z",
+        "order_handle_date": null,
+        "order_handled_by": 0,
+        "order_is_cancelled": false,
+        "order_is_confirmed": false,
+        "order_is_pending": true,
+        "order_is_delivered": false,
+        "order_total_price": 6987.6,
+        "order_payment_method": "cod",
+        "note_msg": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 55,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"7770\"], \"sizes\": [\"XXL\"], \"quantities\": [\"5\"]}",
+        "order_id": 10000051,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan d City: Fenid, Zip: 3900",
+        "order_person_name": "Majibur Rahman",
+        "order_person_email": "funny@gmail.com",
+        "order_person_phone": "01720988076",
+        "order_person_ip": "127.0.0.1",
+        "order_person": null,
+        "order_date": "2023-04-29T10:15:08.049Z",
+        "order_handle_date": null,
+        "order_handled_by": 0,
+        "order_is_cancelled": false,
+        "order_is_confirmed": false,
+        "order_is_pending": true,
+        "order_is_delivered": false,
+        "order_total_price": 8697.0,
+        "order_payment_method": "cod",
+        "note_msg": ""
+    }
+},
+{
+    "model": "order.orderid",
+    "pk": 1,
+    "fields": {
+        "order_id": 10000051
+    }
+},
+{
+    "model": "order.orderid",
+    "pk": 2,
+    "fields": {
+        "order_id": 10000000
+    }
+},
+{
+    "model": "order.transaction",
+    "pk": 7,
+    "fields": {
+        "transaction_id": "4eTp4LpxnmTne4bZ8mYyZtLXY",
+        "transaction_amount": 1859.4,
+        "transaction_method": "sslcom",
+        "bank_tran_id": "2304262156570mMoTCgQrWpC95W",
+        "transaction_date": "2023-04-26T15:56:59.901Z",
+        "transaction_person": 1,
+        "transaction_person_name": "jahir raihan joy",
+        "transaction_person_phone": "01720988071",
+        "transaction_person_email": "raihandevbd@gmail.com",
+        "transaction_person_ip": "127.0.0.1",
+        "order": 50
+    }
+},
+{
+    "model": "order.transaction",
+    "pk": 8,
+    "fields": {
+        "transaction_id": "tsn03NEeE637X2q50y4T40Wlx",
+        "transaction_amount": 6987.6,
+        "transaction_method": "sslcom",
+        "bank_tran_id": "230428224513lREiEK2jZZg071I",
+        "transaction_date": "2023-04-28T16:45:16.358Z",
+        "transaction_person": 1,
+        "transaction_person_name": "jahir raihan joy",
+        "transaction_person_phone": "01720988071",
+        "transaction_person_email": "raihandevbd@gmail.com",
+        "transaction_person_ip": "127.0.0.1",
+        "order": 52
+    }
+},
+{
+    "model": "products.category",
+    "pk": 34,
+    "fields": {
+        "category_name": "Winter Collection"
+    }
+},
+{
+    "model": "products.category",
+    "pk": 35,
+    "fields": {
+        "category_name": "Summer Collection"
+    }
+},
+{
+    "model": "products.discountreason",
+    "pk": 14,
+    "fields": {
+        "discount_reason": "Eid Offer"
+    }
+},
+{
+    "model": "products.discountreason",
+    "pk": 15,
+    "fields": {
+        "discount_reason": "Gorom er Offer"
+    }
+},
+{
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+        "product_title": "Fabrilife best ever designed t-shirt with red chimp - Edited",
+        "product_code": "product code",
+        "product_price": 1554,
+        "product_category": 34,
+        "color_type": "Red whine , chillie, don't knwo man",
+        "yarn_type": "don't know",
+        "yarn_count": 26,
+        "brand": "SF",
+        "product_in_stock": true,
+        "product_tags": "t-shirts half sleeve",
+        "product_added_by": 1,
+        "product_last_update": "2023-04-10T11:40:26.122Z",
+        "product_type": "t-shirt",
+        "product_primary_image": "product_primary_images/test_image_tCU9Mpt.jpeg",
+        "product_more_information": "nothing to give , nothing to hide",
+        "product_search_keyword": "T-shirt, fabrilife shirt, 5 star t-shirt",
+        "on_discount": false,
+        "discount_percentage": 0,
+        "discount_price": 0,
+        "discount_reason": null,
+        "discount_expiry": null,
+        "wish_count": 4
+    }
+},
+{
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+        "product_title": "This is new product title with new more stuffs just like before",
+        "product_code": "product code",
+        "product_price": 4585,
+        "product_category": 35,
+        "color_type": "yello",
+        "yarn_type": "don't know",
+        "yarn_count": 27,
+        "brand": "SF",
+        "product_in_stock": false,
+        "product_tags": "anything, you, like, man,",
+        "product_added_by": 1,
+        "product_last_update": "2023-04-10T11:54:32.196Z",
+        "product_type": "shirt",
+        "product_primary_image": "product_primary_images/shirt-draw.jpeg",
+        "product_more_information": "Ideal for cozy evenings and year-round lounging and sleeping. Two pockets are featured for convenience, as is a drawstring for a great fit. The waistband is made of 100% cotton material for comfortabl",
+        "product_search_keyword": "Wahhh",
+        "on_discount": true,
+        "discount_percentage": 10,
+        "discount_price": 3500,
+        "discount_reason": 15,
+        "discount_expiry": "2023-04-12T14:00:42Z",
+        "wish_count": 5
+    }
+},
+{
+    "model": "products.wishlist",
+    "pk": 1,
+    "fields": {
+        "wishlist_items": "[]",
+        "wisher_person_ip": "127.0.0.1",
+        "wisher_person": 1
+    }
+},
+{
+    "model": "products.review",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "product": 2,
+        "review_text": "Hello who is there",
+        "rating": 4
+    }
+},
+{
+    "model": "products.review",
+    "pk": 7,
+    "fields": {
+        "user": 1,
+        "product": 2,
+        "review_text": "asdfasdfasdf",
+        "rating": 5
+    }
+},
+{
+    "model": "products.review",
+    "pk": 8,
+    "fields": {
+        "user": 1,
+        "product": 2,
+        "review_text": "Very much good, i good, like it too much good",
+        "rating": 3
+    }
+},
+{
+    "model": "products.review",
+    "pk": 9,
+    "fields": {
+        "user": 1,
+        "product": 2,
+        "review_text": "Very much good, i good, like it too much good",
+        "rating": 5
+    }
+},
+{
+    "model": "products.reviewreply",
+    "pk": 2,
+    "fields": {
+        "review": 6,
+        "replay_text": "What the heck is going on here",
+        "user": 1
+    }
+},
+{
+    "model": "products.reviewreply",
+    "pk": 6,
+    "fields": {
+        "review": 6,
+        "replay_text": "Hey",
+        "user": 1
+    }
+},
+{
+    "model": "products.reviewreply",
+    "pk": 7,
+    "fields": {
+        "review": 6,
+        "replay_text": "what the heck",
+        "user": 1
+    }
+},
+{
+    "model": "user.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$cA8Y8YhRmmFnzBXT1FA9lA$KhF9JjFX9/X97PIYDILGLezd5qDYy6nFHhqY6fBoYXE=",
+        "last_login": "2023-04-29T17:39:14.329Z",
+        "first_name": null,
+        "last_name": null,
+        "name": "jahir raihan joy",
+        "email": "raihandevbd@gmail.com",
+        "phone": "01720988071",
+        "ip": null,
+        "profile_pic": "profile_pics/profile.jpg",
+        "is_active": true,
+        "is_staff": true,
+        "is_admin": false,
+        "is_superuser": true,
+        "is_order_handler": true,
+        "is_product_adder": false
+    }
+},
+{
+    "model": "user.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$tDsWHq86OWOpqDp0j8ElIQ$GkhVVz9Pe6MCgYzA4WVzgPzIqcUuru7noLwPIa8760c=",
+        "last_login": "2023-04-29T16:05:49.904Z",
+        "first_name": null,
+        "last_name": null,
+        "name": "test-user",
+        "email": "funny@gmail.com",
+        "phone": "01720988074",
+        "ip": null,
+        "profile_pic": "",
+        "is_active": true,
+        "is_staff": false,
+        "is_admin": false,
+        "is_superuser": false,
+        "is_order_handler": false,
+        "is_product_adder": false
+    }
+},
+{
+    "model": "user.address",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "city": "Feni",
+        "address": "Chandrapur - Sindurpur - Dagonbhuiyan",
+        "zipcode": 3900
+    }
+}
+]

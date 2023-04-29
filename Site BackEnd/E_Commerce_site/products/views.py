@@ -73,6 +73,8 @@ def products(request):
 
     )
 
+    products_list = products_list.filter(product_in_stock=True)
+
     # Search keywords for search suggestions
     search_keywords = Product.objects.all()
 
@@ -143,6 +145,9 @@ def review(request, pk):
         'limiter': True
     }
     rev.save()
+
+    # We can add chatGPT here to automatically generate a review replay with concise context -> But now forget it
+
     template = render_to_string('review_template.html', context=context, request=request)
     new_token = get_token(request)
 

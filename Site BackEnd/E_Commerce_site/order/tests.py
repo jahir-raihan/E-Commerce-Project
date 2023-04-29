@@ -9,7 +9,7 @@ User = get_user_model()
 
 class OrderModelTests(TestCase):
 
-    """A single Order should only have one status at any moment, it can be pending, confirmed , cancelled or delivered,
+    """Tests includes: A single Order should only have one status at any moment, it can be pending, confirmed , cancelled or delivered,
         We are ignoring delivered , as we'll not use this status anyway.
 
        -> If order is confirmed, order_handled_date should be > order_date
@@ -21,7 +21,7 @@ class OrderModelTests(TestCase):
             -> transaction_date > order_date"""
 
     # Using fixtures to load data from real database
-    fixtures = ['order/test_data.json']
+    fixtures = ['test_data.json']
 
     # Setting up dummy test data
     def setUp(self):
@@ -107,7 +107,7 @@ class CheckOutViewTests(TestCase):
                 -> Status should be confirmed"""
 
     # Using fixtures to load data from real database
-    fixtures = ['order/test_data.json']
+    fixtures = ['test_data.json']
 
     def test_checkout_passed_data_with_saved_address(self):
 
@@ -200,11 +200,3 @@ class CheckOutViewTests(TestCase):
 
         # Check redirect url, -> if no redirect url, it will cause test failure
         redirect_url = response.json()['url']
-
-
-
-
-
-
-
-
