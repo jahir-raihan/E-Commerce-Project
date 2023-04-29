@@ -58,7 +58,7 @@ def checkout(request):
         if request.user.is_authenticated:
             user = request.user
 
-        # Calculating items quantity -> tity -> tits :)
+        # Calculating items quantity -> tity ->
 
         items_count = 0
         for i in map(int, data.getlist('items_quantity[]')):
@@ -104,7 +104,10 @@ def checkout(request):
         # If Cash on delivery (User doesn't trust you) --> Redirect user to account page
 
         if data['payment_method'] == 'cod':
-            return JsonResponse({'url': f"{request.META['HTTP_ORIGIN']}/account/order-history/"})
+            try:
+                return JsonResponse({'url': f"{request.META['HTTP_ORIGIN']}/account/order-history/"})
+            except:
+                return JsonResponse({'response': 'Cash on delivery was successful'})
 
         # If sslcommerze or bkash , Redirect them to payment page
 
@@ -118,14 +121,18 @@ def checkout(request):
 
             setting = {'store_id': settings.STORE_ID, 'store_pass': settings.STORE_PASS, 'issandbox': True}
             sslcz = SSLCOMMERZ(setting)
+
             post_body = {'total_amount': data['total_price'], 'currency': "BDT", 'tran_id': f'{tran_id}',
-                         'success_url': f"{request.META['HTTP_ORIGIN']}/account/order-history/",
-                         'fail_url': f"{request.META['HTTP_ORIGIN']}/cart/",
-                         'cancel_url': f"{request.META['HTTP_ORIGIN']}/cart/",
+
+                         # Extra check only for testing purpose -> cz META is not available in django client request
+                         'success_url': 'test_url' if 'test' in data else f"{request.META['HTTP_ORIGIN']}/account/order-history/",
+                         'fail_url': 'test_url' if 'test' in data else f"{request.META['HTTP_ORIGIN']}/cart/",
+                         'cancel_url': 'test_url' if 'test' in data else f"{request.META['HTTP_ORIGIN']}/cart/",
+
                          'emi_option': 0,
                          'cus_name': name,
                          'cus_email': email, 'cus_phone': phone, 'cus_add1': "Null",
-                         'cus_city': city, 'cus_country': "Bangladesh", 'shipping_method': "NO", 'multi_card_name': "",
+                         'cus_city': city, 'cus_country': "Bangladesh", 'shipping_method': "NO", 'multi_card_name':"",
                          'num_of_item': items_count, 'product_name': 'Cloths', 'product_category': "Cloths",
                          'product_profile': "general", 'value_a': [order.id]
                          }

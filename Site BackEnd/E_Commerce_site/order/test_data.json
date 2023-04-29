@@ -56,10 +56,106 @@
     }
 },
 {
+    "model": "order.order",
+    "pk": 52,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"6216\"], \"sizes\": [\"XXL\"], \"quantities\": [\"4\"]}",
+        "order_id": 10000048,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "jahir raihan joy",
+        "order_person_email": "raihandevbd@gmail.com",
+        "order_person_phone": "01720988071",
+        "order_person_ip": "127.0.0.1",
+        "order_person": 1,
+        "order_date": "2023-04-28T16:44:55.814Z",
+        "order_handle_date": "2023-04-29T11:08:18.360Z",
+        "order_handled_by": 1,
+        "order_is_cancelled": false,
+        "order_is_confirmed": true,
+        "order_is_pending": false,
+        "order_is_delivered": false,
+        "order_total_price": 6987.6,
+        "order_payment_method": "sslcom",
+        "note_msg": null
+    }
+},
+{
+    "model": "order.order",
+    "pk": 53,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"1554\"], \"sizes\": [\"M\"], \"quantities\": [\"1\"]}",
+        "order_id": 10000049,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "jahir raihan joy",
+        "order_person_email": "raihandevbd@gmail.com",
+        "order_person_phone": "01720988071",
+        "order_person_ip": "127.0.0.1",
+        "order_person": 1,
+        "order_date": "2023-04-29T08:13:52.138Z",
+        "order_handle_date": "2023-04-29T11:09:05.608Z",
+        "order_handled_by": 1,
+        "order_is_cancelled": false,
+        "order_is_confirmed": true,
+        "order_is_pending": false,
+        "order_is_delivered": false,
+        "order_total_price": 1859.4,
+        "order_payment_method": "cod",
+        "note_msg": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 54,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"6216\"], \"sizes\": [\"XL\"], \"quantities\": [\"4\"]}",
+        "order_id": 10000050,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan City: Feni, Zip: 3900",
+        "order_person_name": "Majibur Rahman",
+        "order_person_email": "funny@gmail.com",
+        "order_person_phone": "01720988075",
+        "order_person_ip": "127.0.0.1",
+        "order_person": null,
+        "order_date": "2023-04-29T10:14:12.469Z",
+        "order_handle_date": null,
+        "order_handled_by": 0,
+        "order_is_cancelled": false,
+        "order_is_confirmed": false,
+        "order_is_pending": true,
+        "order_is_delivered": false,
+        "order_total_price": 6987.6,
+        "order_payment_method": "cod",
+        "note_msg": ""
+    }
+},
+{
+    "model": "order.order",
+    "pk": 55,
+    "fields": {
+        "order_items": "{\"ids\": [\"1\"], \"prices\": [\"7770\"], \"sizes\": [\"XXL\"], \"quantities\": [\"5\"]}",
+        "order_id": 10000051,
+        "delivery_location": "Chandrapur - Sindurpur - Dagonbhuiyan d City: Fenid, Zip: 3900",
+        "order_person_name": "Majibur Rahman",
+        "order_person_email": "funny@gmail.com",
+        "order_person_phone": "01720988076",
+        "order_person_ip": "127.0.0.1",
+        "order_person": null,
+        "order_date": "2023-04-29T10:15:08.049Z",
+        "order_handle_date": null,
+        "order_handled_by": 0,
+        "order_is_cancelled": false,
+        "order_is_confirmed": false,
+        "order_is_pending": true,
+        "order_is_delivered": false,
+        "order_total_price": 8697.0,
+        "order_payment_method": "cod",
+        "note_msg": ""
+    }
+},
+{
     "model": "order.orderid",
     "pk": 1,
     "fields": {
-        "order_id": 10000047
+        "order_id": 10000051
     }
 },
 {
@@ -84,6 +180,23 @@
         "transaction_person_email": "raihandevbd@gmail.com",
         "transaction_person_ip": "127.0.0.1",
         "order": 50
+    }
+},
+{
+    "model": "order.transaction",
+    "pk": 8,
+    "fields": {
+        "transaction_id": "tsn03NEeE637X2q50y4T40Wlx",
+        "transaction_amount": 6987.6,
+        "transaction_method": "sslcom",
+        "bank_tran_id": "230428224513lREiEK2jZZg071I",
+        "transaction_date": "2023-04-28T16:45:16.358Z",
+        "transaction_person": 1,
+        "transaction_person_name": "jahir raihan joy",
+        "transaction_person_phone": "01720988071",
+        "transaction_person_email": "raihandevbd@gmail.com",
+        "transaction_person_ip": "127.0.0.1",
+        "order": 52
     }
 },
 {
@@ -251,7 +364,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$600000$cA8Y8YhRmmFnzBXT1FA9lA$KhF9JjFX9/X97PIYDILGLezd5qDYy6nFHhqY6fBoYXE=",
-        "last_login": "2023-04-26T15:47:39.740Z",
+        "last_login": "2023-04-29T11:07:11.401Z",
         "first_name": null,
         "last_name": null,
         "name": "jahir raihan joy",
@@ -261,10 +374,20 @@
         "profile_pic": "profile_pics/profile.jpg",
         "is_active": true,
         "is_staff": true,
-        "is_admin": true,
+        "is_admin": false,
         "is_superuser": true,
-        "is_order_handler": false,
+        "is_order_handler": true,
         "is_product_adder": false
+    }
+},
+{
+    "model": "user.address",
+    "pk": 6,
+    "fields": {
+        "user": 1,
+        "city": "Feni",
+        "address": "Chandrapur - Sindurpur - Dagonbhuiyan",
+        "zipcode": 3900
     }
 }
 ]
