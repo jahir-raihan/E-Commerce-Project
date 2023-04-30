@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
-from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from order.models import *
 from .forms import UserRegisterForm
@@ -11,7 +10,7 @@ from django.middleware.csrf import get_token
 from .algorithms import *
 from products.models import *
 from django.db.models import Q
-
+from django.utils import timezone
 from django.db.models import Sum
 import json
 User = get_user_model()
@@ -54,7 +53,7 @@ def login_user(request):
 
     # If user is logged in redirect him or return a bad request
     if request.user.is_authenticated and request.method == 'POST':
-        return JsonResponse({'redirect': False})
+        return JsonResponse({'redirect': False}, status=403)
     if request.user.is_authenticated:
         return redirect('redirect_origin')
 
@@ -215,8 +214,8 @@ def pending_orders(request):
 
     real_orders = []
 
-    # Same as staff main 1 view functionality , parsing products data from order data which was compressed int he first
-    # first place while saving order after checkout
+    # Same as staff main 1 view functionality , parsing products data from order data which was compressed in the first
+    #  place while saving order after checkout
     for order in orders:
         o_items = json.loads(order.order_items)
         items = []
@@ -252,7 +251,7 @@ def pending_orders(request):
 # Pending order action (Order Handler) view
 def pending_order_action(request):
 
-    """Accept or cancel an order, -> Depends on action data from post request"""
+    """Accept or cancel an order, -> Depends on action data from post request, Only admin and order_handler"""
 
     # # Router definition -> It determines user type and tells if the user is authenticated for accessing this page
     # request_action = router(request, {'is_order_handler': True, 'is_product_adder': False, 'is_admin': False,
@@ -265,7 +264,7 @@ def pending_order_action(request):
     # Getting the order
     order = Order.objects.get(pk=request.POST['order_id'])
 
-    # If confirm then mark it confirm and remove pending
+    # If, confirm then mark it confirm and remove pending
     if action == 'confirm':
         order.order_is_confirmed = True
         order.order_is_pending = False
@@ -274,10 +273,8 @@ def pending_order_action(request):
         order.order_is_cancelled = True
         order.order_is_pending = False
 
-    import datetime
-
     # Saving order handle data and who handled it
-    order.order_handle_date = datetime.datetime.now()
+    order.order_handle_date = timezone.now()
     order.order_handled_by = request.user.id
     order.save()
 

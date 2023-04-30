@@ -93,20 +93,22 @@ class ProductAppViewTests(TestCase):
             Algorithm is malfunctioning or something went wrong when registering a user.
             Else All the other views will also function same as home page."""
 
-        # Getting a normal user
+        # Getting a admin or staff user
         user = User.objects.filter(
             Q(is_admin=True) | Q(is_order_handler=True) | Q(is_product_adder=True)
         ).first()
+        if user:
+            # Logging-in the user for test purpose, Anonymous users are not accepted
+            # To test it out , there should be at least one admin or staff in the database
 
-        # Logging-in the user for test purpose, Anonymous users are not accepted
-        # To test it out , there should be at least one admin or staff in the database
+            self.assertTrue(self.client.login(email=user.email, password='jr101525'))
 
-        self.assertTrue(self.client.login(email=user.email, password='jr101525'))
+            response = self.client.get(reverse('home'))
 
-        response = self.client.get(reverse('home'))
-
-        # If user is admin or staff , It should return a 302 status code -> Redirect response
-        self.assertEqual(response.status_code, 302, "Admin and staffs are not allowed to access Home page")
+            # If user is admin or staff , It should return a 302 status code -> Redirect response
+            self.assertEqual(response.status_code, 302, "Admin and staffs are not allowed to access Home page")
+        else:
+            raise Exception("Register a user with admin or staff permission !")
 
     def test_home_context_products(self):
 
