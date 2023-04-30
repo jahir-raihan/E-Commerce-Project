@@ -16,23 +16,31 @@
     {% endblock nav_search %}
 
     {% block nav_buttons %}
-        <button class="nav-btns">
-            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
-        </button>
+         <a href="{% url 'logout' %}">
+            <button class="nav-btns">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+            </button>
+        </a>
 
-        <div class="only-navicons">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-        </div>
+        <a href="{% url 'logout' %}">
+            <div class="only-navicons">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </a>
 
-        <div class="only-navicons">
-            <i class="fas fa-clock-rotate-left"></i>
-            <span class="p-o-cnt d-none">12</span>
-        </div>
+        <a href="{% url 'pending_orders' %}">
+            <div class="only-navicons">
+                <i class="fas fa-clock-rotate-left"></i>
+                <span class="p-o-cnt d-none" id="pending-order-count-o-n-i">{{pending_order_count}}</span>
+            </div>
+        </a>
 
-        <button class="nav-btns pending-orders-btn">
-            <i class="fas fa-clock-rotate-left"></i> Pending Orders
-            <span class="p-o-cnt">12</span>
-        </button>
+        <a href="{% url 'pending_orders' %}">
+            <button class="nav-btns pending-orders-btn">
+                <i class="fas fa-clock-rotate-left"></i> Pending Orders
+                <span class="p-o-cnt" id="pending-order-count">{{pending_order_count}}</span>
+            </button>
+        </a>
 
     {% endblock nav_buttons %}
 
@@ -59,7 +67,7 @@
                 <p class="g-icon">></p>
             </a>
 
-            <a href="#">
+            <a href="{% url 'logout' %}">
                 <div >
                     <p class="p-link">Logout</p>
 
@@ -103,7 +111,7 @@
                 <ul>
                     <a href="{% url 'staff_main1' %}"><li class="current-tab-profile">Main</li></a>
                     <a href="{% url 'pending_orders' %}"><li class="">Pending Orders</li></a>
-                    <a href="#"><li class="">Log out</li></a>
+                    <a href="{% url 'logout' %}"><li class="">Log out</li></a>
                 </ul>
 
             </div>

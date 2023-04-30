@@ -1,5 +1,21 @@
 // JS for staff panels
 
+// Pending orders count
+
+setInterval(() => {
+    var req = $.ajax({
+        type:'get',
+        url:'/order/get-pending-order-count/',
+        data:{}
+
+    })
+
+    req.done(function(response){
+        $('#pending-order-count').html(response.count)
+        $('#pending-order-count-o-n-i').html(response.count)
+    })
+}, 2000)
+
 
 // Function for order action
 function order_action(action, order_id){

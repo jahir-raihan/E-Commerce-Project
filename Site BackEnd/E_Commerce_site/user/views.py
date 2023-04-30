@@ -157,7 +157,8 @@ def staff_main1(request):
         'orders': real_orders,
         'token': token,
         'confirmed_orders': confirmed_orders,
-        'cancelled_orders': cancelled_orders
+        'cancelled_orders': cancelled_orders,
+        'pending_order_count': Order.objects.filter(order_is_pending=True).count()
     }
     if request.method == 'POST':
         template = render_to_string('pending_orders_template.html', request=request, context=context)
@@ -238,6 +239,7 @@ def pending_orders(request):
     token = get_token(request)
     context = {
         'orders': real_orders,
+        'pending_order_count': len(real_orders),
         'token': token
     }
     if request.method == 'POST' or 's' in request.GET:

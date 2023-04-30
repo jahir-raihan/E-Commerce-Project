@@ -17,15 +17,32 @@
 
     {% block nav_buttons %}
 
-        <div class="only-navicons">
-            <i class="fas fa-clock-rotate-left"></i>
-            <span class="p-o-cnt d-none">12</span>
-        </div>
+        <a href="{% url 'logout' %}">
+            <button class="nav-btns">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+            </button>
+        </a>
 
-        <button class="nav-btns pending-orders-btn">
-            <i class="fas fa-clock-rotate-left"></i> Pending Orders
-            <span class="p-o-cnt">12</span>
-        </button>
+        <a href="{% url 'logout' %}">
+            <div class="only-navicons">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </a>
+
+
+        <a href="{% url 'pending_orders' %}">
+            <div class="only-navicons">
+                <i class="fas fa-clock-rotate-left"></i>
+                <span class="p-o-cnt d-none" id="pending-order-count-o-n-i">{{pending_order_count}}</span>
+            </div>
+        </a>
+
+        <a href="{% url 'pending_orders' %}">
+            <button class="nav-btns pending-orders-btn">
+                <i class="fas fa-clock-rotate-left"></i> Pending Orders
+                <span class="p-o-cnt" id="pending-order-count">{{pending_order_count}}</span>
+            </button>
+        </a>
 
     {% endblock nav_buttons %}
 

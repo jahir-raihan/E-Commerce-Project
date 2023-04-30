@@ -541,21 +541,23 @@
                         <p class="title">Similar products</p>
 
                         {% for item in similar_products %}
-                            <div class="item">
+                            <a href="{% url 'view_details' item.id %}" style="text-decoration:none;color:black;">
+                                <div class="item">
 
-                                <div class="left">
-                                    <img src="{{item.product_primary_image.url}}" alt="{{item.product_search_keyword}}">
+                                    <div class="left">
+                                        <img src="{{item.product_primary_image.url}}" alt="{{item.product_search_keyword}}">
+                                    </div>
+                                    <div class="right">
+
+                                        <p class="i-title">
+                                            {{item.product_title}}
+                                        </p>
+
+                                        <p class="price">${{item.product_price}}</p>
+
+                                    </div>
                                 </div>
-                                <div class="right">
-
-                                    <p class="i-title">
-                                        {{item.product_title}}
-                                    </p>
-
-                                    <p class="price">${{item.product_price}}</p>
-
-                                </div>
-                            </div>
+                            </a>
                         {% endfor %}
 
                     </div>

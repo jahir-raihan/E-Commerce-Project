@@ -24,21 +24,29 @@
 
     {% block nav_buttons %}
 
-        <button class="nav-btns">
-            <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
-        </button>
+         <a href="{% url 'logout' %}">
+            <button class="nav-btns">
+                <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+            </button>
+        </a>
 
-        <div class="only-navicons">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-        </div>
+        <a href="{% url 'logout' %}">
+            <div class="only-navicons">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+            </div>
+        </a>
 
-        <div class="only-navicons">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i>
-        </div>
+        <a href="{% url 'add_products' %}">
+            <div class="only-navicons">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            </div>
+        </a>
 
-       <button class="nav-btns">
-            <i class="fa fa-plus-circle" aria-hidden="true"></i> Add a product
-        </button>
+        <a href="{% url 'add_products' %}">
+            <button class="nav-btns">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Add a product
+            </button>
+        </a>
     {% endblock nav_buttons %}
 
 
@@ -66,7 +74,7 @@
                 <p class="g-icon">></p>
             </a>
 
-            <a href="#">
+            <a href="{% url 'logout' %}">
                 <div >
                     <p class="p-link">Logout</p>
 
@@ -110,7 +118,7 @@
                 <ul>
                     <a href="{% url 'staff_main2' %}"><li class="">Main</li></a>
                     <a href="#"><li class="current-tab-profile">Add | Edit a product</li></a>
-                    <a href="#"><li class="">Log out</li></a>
+                    <a href="{% url 'logout' %}"><li class="">Log out</li></a>
                 </ul>
 
             </div>

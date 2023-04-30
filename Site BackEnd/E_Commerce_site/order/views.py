@@ -143,3 +143,10 @@ def checkout(request):
 
     return render(request, 'order_info.html')
 
+
+def get_pending_order_count(request):
+
+    """Returns pending order count"""
+
+    orders = Order.objects.filter(order_is_pending=True).count()
+    return JsonResponse({'count': orders})

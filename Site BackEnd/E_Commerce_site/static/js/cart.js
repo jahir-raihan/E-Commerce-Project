@@ -53,18 +53,6 @@ function load_cart_items(){
         // Calculating total prices of the items with tax
         calculate_total_price()
 
-
-        // If there is not cart Item in localStorage -> Disable checkout button for good.
-        if (cart_items_ids == 0){
-            var ele_btn = document.getElementById('checkout_btn')
-
-            ele_btn.children[0].disabled = true
-            ele_btn.children[0].style.background = 'gray'
-            ele_btn.children[0].style.opacity = '.6'
-            ele_btn.children[0].style.cursor = 'not-allowed'
-
-
-        }
     }catch{
         // If no cart item exists show this message in item container
         document.getElementById('item-container-item').innerHTML = 'Cart is empty !'
@@ -72,6 +60,21 @@ function load_cart_items(){
 
 
 }
+
+// If there is not cart Item in localStorage -> Disable checkout button for good.
+setInterval(() => {
+    var cart_items_ids = JSON.parse(ls.cart_items)
+
+    try{
+    if (cart_items_ids == 0){
+        var ele_btn = document.getElementById('checkout_btn')
+        ele_btn.children[0].disabled = true
+        ele_btn.children[0].style.background = 'gray'
+        ele_btn.children[0].style.opacity = '.6'
+        ele_btn.children[0].style.cursor = 'not-allowed'
+    }}catch{}
+}, 2000)
+
 
 // Calling once when the page is loaded / reloaded
 load_cart_items()
