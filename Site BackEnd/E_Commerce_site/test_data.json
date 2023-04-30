@@ -374,9 +374,9 @@
         "profile_pic": "profile_pics/profile.jpg",
         "is_active": true,
         "is_staff": true,
-        "is_admin": false,
+        "is_admin": true,
         "is_superuser": true,
-        "is_order_handler": true,
+        "is_order_handler": false,
         "is_product_adder": false
     }
 },

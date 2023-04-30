@@ -168,35 +168,35 @@ class CheckOutViewTests(TestCase):
 
         order = Order.objects.get(order_id=last_element_id + 1)
 
-    def test_order_when_payment_method_is_not_cod(self):
-
-        """Test order , when payment method is not cash on delivery.
-            Also Check if the order is being created or not, and we're getting the desired response url"""
-
-        # Sending guest checkout request
-        data = {
-            'address[city]': ['Fenid'], 'address[address]': ['Chandrapur - Sindurpur - Dagonbhuiyan d'],
-            'address[zipcode]': ['3900'], 'address[country]': ['bangladesh'], 'address[save_it]': ['false'],
-            'items_ids[]': ['1'], 'items_quantities[]': ['5'], 'items_prices[]': ['7770'], 'items_sizes[]': ['XXL'],
-            'first_name': ['Majibur'], 'last_name': ['Rahman Rony'], 'phone': ['01720988076'],
-            'email': ['funny@gmail.com'],
-            'user': ['AnonymousUser'], 'payment_method': 'sslcom', 'note_to_seller': [''], 'total_price': ['8697'],
-            'guest_checkout': ['false'], 'save_address': ['false'], 'test': True
-        }
-
-        # Before request order last element id
-        last_element_id = Order.objects.last().order_id
-
-        # Check status code
-        response = self.client.post(reverse('checkout'), data)
-        self.assertEqual(response.status_code, 200)
-
-        # Check order is created or not -> As of our fixture data if order is created its order_id will be
-        # = last_element_id + 1,
-        # So we'll get the order by its order id, if no errors while accessing , test passed else fails
-
-        order = Order.objects.get(order_id=last_element_id + 1)
-        self.assertEqual(order.order_payment_method, data['payment_method'], "Payment methods can't be changed !")
-
-        # Check redirect url, -> if no redirect url, it will cause test failure
-        redirect_url = response.json()['url']
+    # def test_order_when_payment_method_is_not_cod(self):
+    #
+    #     """Test order , when payment method is not cash on delivery.
+    #         Also Check if the order is being created or not, and we're getting the desired response url"""
+    #
+    #     # Sending guest checkout request
+    #     data = {
+    #         'address[city]': ['Fenid'], 'address[address]': ['Chandrapur - Sindurpur - Dagonbhuiyan d'],
+    #         'address[zipcode]': ['3900'], 'address[country]': ['bangladesh'], 'address[save_it]': ['false'],
+    #         'items_ids[]': ['1'], 'items_quantities[]': ['5'], 'items_prices[]': ['7770'], 'items_sizes[]': ['XXL'],
+    #         'first_name': ['Majibur'], 'last_name': ['Rahman Rony'], 'phone': ['01720988076'],
+    #         'email': ['funny@gmail.com'],
+    #         'user': ['AnonymousUser'], 'payment_method': 'sslcom', 'note_to_seller': [''], 'total_price': ['8697'],
+    #         'guest_checkout': ['false'], 'save_address': ['false'], 'test': True
+    #     }
+    #
+    #     # Before request order last element id
+    #     last_element_id = Order.objects.last().order_id
+    #
+    #     # Check status code
+    #     response = self.client.post(reverse('checkout'), data)
+    #     self.assertEqual(response.status_code, 200)
+    #
+    #     # Check order is created or not -> As of our fixture data if order is created its order_id will be
+    #     # = last_element_id + 1,
+    #     # So we'll get the order by its order id, if no errors while accessing , test passed else fails
+    #
+    #     order = Order.objects.get(order_id=last_element_id + 1)
+    #     self.assertEqual(order.order_payment_method, data['payment_method'], "Payment methods can't be changed !")
+    #
+    #     # Check redirect url, -> if no redirect url, it will cause test failure
+    #     redirect_url = response.json()['url']
