@@ -52,7 +52,7 @@ def products(request):
         new_token = get_token(request)
 
         context = {
-            'template': render_to_string('products_filter_template.html',context={'products': products_list},
+            'template': render_to_string('products_filter_template.html', context={'products': products_list},
                                          request=request),
             'token': new_token
         }
@@ -63,6 +63,7 @@ def products(request):
     query = ''
     if 's' in request.GET:
         query = request.GET['s']
+
     category = Category.objects.filter(category_name__icontains=query)
     reasons = DiscountReason.objects.filter(discount_reason__icontains=query)
 
@@ -73,7 +74,9 @@ def products(request):
 
     )
 
-    products_list = products_list.filter(product_in_stock=True)
+    # We want all products by query when query string is given
+    if 's' not in request.GET:
+        products_list = products_list.filter(product_in_stock=True)
 
     # Search keywords for search suggestions
     search_keywords = Product.objects.all()
