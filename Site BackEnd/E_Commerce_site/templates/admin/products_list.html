@@ -50,6 +50,16 @@
 
                 <p class="g-icon">></p>
             </a>
+
+            <a href="{% url 'statistics' %}">
+                <div>
+                    <p class="p-link" >Statistics</p>
+
+                </div>
+
+                <p class="g-icon">></p>
+            </a>
+
             <a href="{% url 'admin_product_list' %}">
                 <div  >
                     <p class="p-link">Products</p>
@@ -126,6 +136,12 @@
                     <a href="{% url 'admin_dashboard' %}" >
                         <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
                         <li >Dashboard</li>
+                    </a>
+
+                    <a href="{% url 'statistics' %}">
+                        <i style="padding-left:.2em;" class="fas fa-chart-simple"></i>
+                        <li>Statistics</li>
+
                     </a>
 
                     <a href="{% url 'admin_product_list' %}" class="current-tab-profile">

@@ -12,6 +12,7 @@ from products.models import *
 from django.db.models import Q
 from django.utils import timezone
 from django.db.models import Sum
+from django.core import serializers
 import json
 User = get_user_model()
 
@@ -720,14 +721,24 @@ def dashboard(request):
     total_products = Product.objects.all().count()
 
     orders = Order.objects.all().order_by('-order_date')[:50]
+    stat_data = get_stat_data()
 
     context = {
         'total_earnings': total_earnings,
         'total_orders': total_orders,
         'total_products': total_products,
-        'orders': orders
+        'orders': orders,
+        'confirmed_order_by_month': stat_data[2],
+        'months': stat_data[0],
+        'total_sales': stat_data[1]
     }
     return render(request, 'admin/dashboard.html', context)
+
+
+# Dashboard analytics
+
+def statistics(request):
+    return render(request, 'admin/statistics.html')
 
 
 # Admin products list view

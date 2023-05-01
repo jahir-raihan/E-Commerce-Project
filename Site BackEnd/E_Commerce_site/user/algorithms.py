@@ -1,7 +1,8 @@
 from django.shortcuts import redirect
-
+from order.models import Order
 from products.models import *
 from django.utils.timezone import datetime
+from django.db.models import Q
 
 
 def get_client_ip(request):
@@ -123,4 +124,16 @@ def router(request, accept):
                 return [False, 'account']
     else:
         return [False, 'account', 1]
+
+
+def get_stat_data():
+    orders = Order.objects.filter(Q(order_is_confirmed=True) & Q(order_handle_date__year=datetime.now().year))
+    months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    sales = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    confirmed_orders_by_month = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    for order in orders:
+        sales[order.order_handle_date.month - 1] += order.order_total_price
+        confirmed_orders_by_month[order.order_handle_date.month - 1] += 1
+    return [months, sales, confirmed_orders_by_month]
+
 

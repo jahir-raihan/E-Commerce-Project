@@ -1,27 +1,26 @@
 {% extends 'index.html' %}
 {% load static %}
 
-
     {% block jsfiles %}
         <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro-v6@44659d9/css/all.min.css" rel="stylesheet" type="text/css" />
     {% endblock jsfiles %}
 
-    {% block title %} Pending Orders {% endblock title %}
-
+    {% block title %}
+        Admin - Statistics
+    {% endblock title %}
 
     {% block cssfiles %}
         <link rel="stylesheet" href="{% static 'css/products.css' %}">
-        <link rel="stylesheet" href="{% static 'css/transactions.css' %}">
-        <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
         <link rel="stylesheet" href="{% static 'css/page_profile.css' %}">
         <link rel="stylesheet" href="{% static 'css/staff_main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+        <link rel="stylesheet" href="{% static 'css/transactions.css' %}">
         <link rel="stylesheet" href="{% static 'css/admin.css' %}">
     {% endblock cssfiles %}
 
-    <!-- Navigation Bar -->
     {% block hclass_names %} class="staff-header" {% endblock hclass_names %}
-    {% block nav_search %}
-    {% endblock nav_search %}
+
+    {% block nav_search %} {% endblock nav_search %}
 
     {% block nav_buttons %}
         <a href="{% url 'logout' %}">
@@ -106,8 +105,7 @@
         </ul>
     {% endblock toggle_nav_staff_part %}
 
-    {% block nav_2 %}
-    {% endblock nav_2 %}
+    {% block nav_2 %}{% endblock nav_2 %}
 
     {% block container %}
 
@@ -115,27 +113,31 @@
 
         <div class="navigator-products">
 
-             <div class="n-p-contents">
+            <div class="n-p-contents">
                 <a href="{% url 'admin_dashboard' %}">Admin > </a>
 
-                <a href="{% url 'admin_transactions' %}" style="color:gray">Transactions</a>
+                <a href="{% url 'admin_dashboard' %}" style="color:gray">Dashboard</a>
             </div>
 
         </div>
 
-        <div class="profile-container admin-dashboard-container " >
+        <!-- End Page Navigator -->
+
+        <!-- Profile Container -->
+
+        <div class="profile-container admin-dashboard-container">
 
             <!-- Profile Navigation -->
 
             <div class="profile-nav">
 
                 <ul>
-                    <a href="{% url 'admin_dashboard' %}">
+                    <a href="{% url 'admin_dashboard' %}" >
                         <i style="padding-left:.2em;" class="fa-sharp fa-solid fa-objects-column"></i>
                         <li >Dashboard</li>
                     </a>
 
-                    <a href="{% url 'statistics' %}">
+                    <a href="{% url 'statistics' %}" class="current-tab-profile">
                         <i style="padding-left:.2em;" class="fas fa-chart-simple"></i>
                         <li>Statistics</li>
 
@@ -156,7 +158,7 @@
                         <li class="">Orders</li>
                     </a>
 
-                    <a href="{% url 'admin_transactions' %}" class="current-tab-profile">
+                    <a href="{% url 'admin_transactions' %}">
                         <i class="fas fa-right-left"></i>
                         <li class="">Transactions</li>
                     </a>
@@ -170,91 +172,34 @@
 
             <!-- End Profile Navigation -->
 
-            <div class="profile-content">
-
-                <div class="current-orders transactions">
-
-                    <form id="admin-transaction-search">
-                        {% csrf_token %}
-                        <div class="search-facility admin-dashboard-products-search">
-                            <input type="search" id="query" placeholder="search by anything">
-                            <button><i class="fa fa-search" aria-hidden="true"></i></button>
-                        </div>
-                    </form>
-
-                    <p class="title"> Transactions </p>
-
-                    <div class="transaction-list" id="transaction-list">
-                        {% for tran in transactions %}
-                            <div class="item">
-
-                                <div class="operator-logo">
-
-                                    <img src="{% static 'img/1656227518bkash-logo-png.png' %}" alt="">
-
-                                </div>
-
-                                <div class="trans-id-and-amount">
-
-                                    <p class="trans-id "> <span>Trans ID:</span> {{tran.transaction_id}}</p>
-                                    <p class="trans-id"><span>Amount:</span> ${{tran.transaction_amount}}</p>
-
-                                </div>
-
-                                <p class="date">{{tran.transaction_date}}</p>
+            <div class="dashboard-contents">
 
 
 
-                                <a href="/account/admin/orders/?s={{tran.order.id}}" style="text-decoration:none">
-                                    <button class="view-order-btn">
-                                        View order
-                                    </button>
-                                </a>
-
-                            </div>
-                        {% endfor %}
-
-
-
-                        <div class="item">
-
-                            <div class="operator-logo">
-
-                                <img src="{% static 'img/sslcom-logo.png' %}" alt="">
-
-                            </div>
-
-                            <div class="trans-id-and-amount">
-
-                                <p class="trans-id "> <span>Trans ID:</span> yehsghses*****45534</p>
-                                <p class="trans-id"><span>Amount:</span> $99.00</p>
-
-                            </div>
-
-                            <p class="date">12:30 PM, 19 July 2022</p>
-
-                            <a href="/account/admin/orders/?s={{tran.order.id}}" style="text-decoration:none">
-                                <button class="view-order-btn">
-                                    View order
-                                </button>
-                            </a>
-
-
-
-
-                        </div>
-
-
+                <div class="sales-statistics">
+                    <div id="pivot-table-container">
+                        <p style="text-align:center;">Statistics goes here !</p>
                     </div>
-
                 </div>
+
+                <div class="visitors">
+                    <div id="pivot-chart-container"></div>
+                </div>
+
+
 
             </div>
 
         </div>
+
+        <!-- End Profile Container -->
 
     {% endblock container %}
     {% block footer_top %}
     {% endblock footer_top %}
     {% block footer_bottom %}
     {% endblock footer_bottom %}
+
+    {% block js_bottom %}
+        <script src="{% static 'js/admin.js' %}"></script>
+    {% endblock js_bottom %}

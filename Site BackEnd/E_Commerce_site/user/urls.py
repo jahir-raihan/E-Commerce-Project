@@ -35,6 +35,7 @@ urlpatterns = [
     # Admin
 
     path('admin/', dashboard, name='admin_dashboard'),
+    path('statistics/', statistics, name='statistics'),
     path('admin/product-list/', admin_product_list, name='admin_product_list'),
     path('admin/orders/', admin_orders, name='admin_orders'),
     path('admin/add-product/', admin_add_product, name='admin_add_product'),
