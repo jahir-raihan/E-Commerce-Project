@@ -489,12 +489,14 @@
 
                                         <small>{{review.review_text}}</small>
 
-                                        <button class="reply" onclick="document.getElementById('write-reply').style.display='flex';">Reply</button>
+                                        {% if request.user.is_authenticated %}
+                                            <button class="reply" onclick="document.getElementById('write-reply{{review.id}}').style.display='flex';">Reply</button>
 
-                                        <form class="write-reply" id="write-reply" r_id="{{review.id}}">
-                                            <input type="text" name="replay_text" id="replay_text" placeholder="Write your reply">
-                                            <button>Submit</button>
-                                        </form>
+                                            <form class="write-reply" id="write-reply{{review.id}}" r_id="{{review.id}}">
+                                                <input type="text" name="replay_text" id="replay_text{{review.id}}" placeholder="Write your reply">
+                                                <button>Submit</button>
+                                            </form>
+                                        {% endif %}
 
                                         <div class="replys-container">
                                             <p class="title">

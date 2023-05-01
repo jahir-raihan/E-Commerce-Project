@@ -112,16 +112,17 @@ $(document).on('submit', '#review_form', function(e){
 
 // Reviews Replays
 
-$(document).on('submit', '#write-reply', function(e){
+$(document).on('submit', '.write-reply', function(e){
     e.preventDefault();
+    var r_id = $(this).attr('r_id')
 
     // Sending request
     let req = $.ajax({
         type:'post',
-        url: '/replay/'+$(this).attr('r_id')+'/',
+        url: '/replay/'+r_id+'/',
         data: {
             csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-            replay_text: $('#replay_text').val()
+            replay_text: $('#replay_text'+r_id).val()
 
         }
     });
@@ -130,7 +131,7 @@ $(document).on('submit', '#write-reply', function(e){
     req.done(function(response){
 
         // Updating template
-        dc.getElementById('write-reply').style.display='none'
+        dc.getElementById('write-reply'+r_id).style.display='none'
         $('#review_section').html(response.template)
 
         // Resetting csrf token
