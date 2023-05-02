@@ -268,8 +268,18 @@
                         <div class="p-status">
                             <p>Status</p>
                             <select name="status" required>
-                                <option value="True">In Stock</option>
-                                <option value="False">Out of Stock</option>
+                                {% if product.product_in_stock %}
+                                    <option value="True" selected>In Stock</option>
+                                    <option value="False">Out of Stock</option>
+                                {% elif product and not product.product_in_stock %}
+                                    <option value="False" selected>Out of Stock</option>
+                                    <option value="True">In Stock</option>
+                                {% else %}
+                                    <option value="True">In Stock</option>
+                                    <option value="False">Out of Stock</option>
+                                {% endif %}
+
+
                             </select>
                         </div>
 
@@ -334,20 +344,27 @@
 
 
                     <div class="on-discount-checkbox m-1">
-                        <input name="on_discount" id="on_discount" type="checkbox"> <span>On Discount</span>
+                        {% if product.on_discount %}
+                            <input name="on_discount" id="on_discount" checked type="checkbox"> <span>On Discount</span>
+                        {% else %}
+                            <input name="on_discount" id="on_discount"  type="checkbox"> <span>On Discount</span>
+                        {% endif %}
                     </div>
 
                     <div class="discount-price-and-expiry m-1">
                         <div class="discount-price m-1">
                             <p>Discount Percentage</p>
-                            <input name="discount_percentage" id="discount_percentage" type="number">
+                            <input name="discount_percentage" id="discount_percentage" value="{{product.discount_percentage}}" type="number">
                         </div>
 
                         <div class="discount-reason">
 
                             <p>Discount reason</p>
                             <select name="discount_reason" id="discount_reason">
-                                <option value="">Select reason</option>
+                                {% if product.on_discount %}
+                                    <option value="{{product.discount_reason.id}}" selected>{{product.discount_reason.discount_reason}}</option>
+                                {% endif %}
+                                <option value="">Select Reason</option>
 
                                 {% for reason in discount_reasons %}
 
@@ -367,7 +384,7 @@
                         <div class="discount-expiry">
                             <p>Discount Expiry</p>
 
-                            <input name="discount_expiry_date" type="date" id="discount_expiry">
+                            <input name="discount_expiry_date" type="date" value="{{product.discount_expiry|date:'Y-m-d'}}" id="discount_expiry">
                         </div>
 
                     </div>
@@ -400,7 +417,7 @@
 
     {% block js_bottom %}
 
-        <script src="{% static 'js/add_a_product.js' %}"></script>
+        <script src="{% static 'js/admin.js' %}"></script>
 
     {% endblock js_bottom %}
 

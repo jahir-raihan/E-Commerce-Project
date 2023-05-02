@@ -89,87 +89,91 @@ $(document).on('submit', '#admin_search_pending_order', function(e){
 
 })
 
+// Admin edit products
 
-//// Analytics
-//
-//const ctx = document.getElementById('myChart');
-//
-//new Chart(ctx, {
-//    type: 'bar',
-//    data: {
-//        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//        datasets: [{
-//            label: '# of Votes',
-//            data: [12, 19, 3, 5, 2, 3],
-//            backgroundColor: [
-//              'rgba(255, 99, 132, 0.2)',
-//              'rgba(255, 159, 64, 0.2)',
-//              'rgba(255, 205, 86, 0.2)',
-//              'rgba(75, 192, 192, 0.2)',
-//              'rgba(54, 162, 235, 0.2)',
-//              'rgba(153, 102, 255, 0.2)',
-//              'rgba(201, 203, 207, 0.2)'
-//            ],
-//            borderColor: [
-//              'rgb(255, 99, 132)',
-//              'rgb(255, 159, 64)',
-//              'rgb(255, 205, 86)',
-//              'rgb(75, 192, 192)',
-//              'rgb(54, 162, 235)',
-//              'rgb(153, 102, 255)',
-//              'rgb(201, 203, 207)'
-//            ],
-//
-//            borderWidth: 1
-//        }]
-//    },
-//    options: {
-//        scales: {
-//            y: {
-//              beginAtZero: true
-//            }
-//        }
-//    }
-//});
-//
-//// Polar area chart
-//
-//const ctx1 = document.getElementById('myChart1');
-//
-//new Chart(ctx1, {
-//    type: 'polarArea',
-//    data: {
-//        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//        datasets: [{
-//            label: '# of Votes',
-//            data: [12, 19, 3, 5, 2, 3],
-//            backgroundColor: [
-//              'rgba(255, 99, 132, 0.2)',
-//              'rgba(255, 159, 64, 0.2)',
-//              'rgba(255, 205, 86, 0.2)',
-//              'rgba(75, 192, 192, 0.2)',
-//              'rgba(54, 162, 235, 0.2)',
-//              'rgba(153, 102, 255, 0.2)',
-//              'rgba(201, 203, 207, 0.2)'
-//            ],
-//            borderColor: [
-//              'rgb(255, 99, 132)',
-//              'rgb(255, 159, 64)',
-//              'rgb(255, 205, 86)',
-//              'rgb(75, 192, 192)',
-//              'rgb(54, 162, 235)',
-//              'rgb(153, 102, 255)',
-//              'rgb(201, 203, 207)'
-//            ],
-//
-//            borderWidth: 1
-//        }]
-//    },
-//    options: {
-//        scales: {
-//            y: {
-//              beginAtZero: true
-//            }
-//        }
-//    }
-//});
+
+try{
+    var product_id = $('#product_id').val()
+}catch{
+    var product_id = ''
+}
+
+// This function is a overloaded function which works on two different criteria if -> Add a product it's sends a add
+// request , if -> Edit a product , it sends a edit product request to the backend.
+
+$(document).on('submit', '#add-a-product'+product_id, function(e){
+
+    // Preventing from  loading  the page on submit
+    e.preventDefault();
+
+    // Getting form data
+    var formData = new FormData($('#add-a-product'+product_id).get(0))
+
+    // Some functional checking ->
+        // If Edit product -> and no category is chosen pop up a required message
+        // If On discount is checked -> Mark all discount inputs as required
+
+    var category = $('#category')
+    var category_new = $('#category_new')
+    var discount = document.getElementById('on_discount')
+    var discount_reason = $('#discount_reason')
+    var discount_reason_new = $('#discount_reason_new')
+    if (category.val() === '' && category_new.val() === ''){
+        alert('Category cannot be empty !')
+    } else if (discount.checked && discount_reason.val() === '' && discount_reason_new.val() === ''){
+        alert('Discount reason cannot be empty !')
+    } else {
+        var btn = document.getElementById('product_save_btn')
+        btn.innerHTML = 'Saving <i id="l-i" class="fa fa-spinner fa-spin"></i>'
+
+        // Determining URL by Edit or Add product behavior
+        let url = '/account/admin/add-edit-product/'
+        if (product_id !== ''){
+            url += product_id+'/'
+        }
+
+        // Sending request
+        let req = $.ajax({
+            type:'post',
+            url: url,
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+
+        });
+
+        // On request success
+        req.done(function(response){
+
+            // Resetting form
+            try{
+                if ('success' in response &&  response['edit'] == false){
+                    $( '#add-a-product' ).each(function(){
+                        this.reset();
+                    });
+
+                    // Resetting image preview
+                    var preview = document.querySelector('#image-preview')
+                    preview.innerHTML = ''
+
+                } else if ('success' in response && response['edit'] == true){
+                    document.getElementById('success-msg-p').innerHTML = 'Updated successfully'
+                }
+            }catch{ location.reload()}
+
+            // Showing message and resetting csrf token
+            btn.innerHTML = 'Save'
+            var msg = document.getElementById('success-msg')
+            msg.style.display = 'block'
+
+            var token  = document.getElementsByName('csrfmiddlewaretoken')[0]
+            token.value = response['token']
+            setTimeout(() => {msg.style.display='none'}, 4000);
+
+        });
+        return
+    }
+
+})
+

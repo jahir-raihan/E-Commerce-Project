@@ -38,8 +38,8 @@ urlpatterns = [
     path('statistics/', statistics, name='statistics'),
     path('admin/product-list/', admin_product_list, name='admin_product_list'),
     path('admin/orders/', admin_orders, name='admin_orders'),
-    path('admin/add-product/', admin_add_product, name='admin_add_product'),
-    path('admin/edit-product/<str:pk>/', admin_edit_product, name='admin_edit_product'),
+    path('admin/add-edit-product/', admin_add_product, name='admin_add_product'),
+    path('admin/add-edit-product/<str:pk>/', admin_edit_product, name='admin_edit_product'),
     path('admin/transactions/', admin_transactions, name='admin_transactions'),
 
 

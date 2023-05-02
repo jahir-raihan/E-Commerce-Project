@@ -63,6 +63,8 @@ def save_edited_product(product, data):
     files = data.FILES
     data = data.POST
 
+    product.product_in_stock = bool(data['status'])
+    product.product_type = data['product_type']
     product.product_title = data['title']
     product.product_code = data['product_code']
     product.product_price = data['price']

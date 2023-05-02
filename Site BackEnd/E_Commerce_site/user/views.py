@@ -316,6 +316,7 @@ def add_products(request):
             product_code=data['product_code'],
             product_price=data['price'],
             product_category=category,
+            product_type=data['product_type'],
             color_type=data['color_type'],
             yarn_type=data['yarn_type'],
             yarn_count=data['yarn_count'],
@@ -377,9 +378,14 @@ def edit_products(request, pk):
 
     product = Product.objects.get(pk=pk)
     product_images = product.productimages_set.all()
+    categories = Category.objects.all()
+    discount_reasons = DiscountReason.objects.all()
     context = {
         'product': product,
-        'product_images': product_images
+        'product_images': product_images,
+        'categories': categories,
+        'discount_reasons': discount_reasons
+
     }
 
     return render(request, 'add_a_product.html', context)
@@ -479,6 +485,7 @@ def order_history(request):
         tran.save()
         order.order_is_pending = False
         order.order_is_confirmed = True
+        order.order_handle_date = datetime.now()
         order.save()
 
     # If not a request from any payment gateway then just return orders of user (Registered or Unregistered)
@@ -589,16 +596,17 @@ def save_wishlist_item(request):
 
     # Getting the product and updating it's wished count -> can be useful for Analysis
     product = Product.objects.get(pk=request.POST['product_id'])
-    product.wish_count += 1
-    product.save()
 
     # Getting or creating wishlist instance for the user, and saving the product to wishlist.
     try:
         wishlist_obj = WishList.objects.get(wisher_person=request.user)
         items = json.loads(wishlist_obj.wishlist_items)
-        items.append(product.id)
-        wishlist_obj.wishlist_items = f'{items}'
-        wishlist_obj.save()
+        if product.id not in items:
+            items.append(product.id)
+            wishlist_obj.wishlist_items = f'{items}'
+            wishlist_obj.save()
+            product.wish_count += 1
+            product.save()
     except:
         wishlist_obj = WishList(wishlist_items=f'[{product.id}]', wisher_person=request.user,
                                 wisher_person_ip=get_client_ip(request))
@@ -811,6 +819,7 @@ def admin_add_product(request):
             product_title=data['title'].lower(),
             product_code=data['product_code'],
             product_price=data['price'],
+            product_type=data['product_type'],
             product_category=category,
             color_type=data['color_type'],
             yarn_type=data['yarn_type'],

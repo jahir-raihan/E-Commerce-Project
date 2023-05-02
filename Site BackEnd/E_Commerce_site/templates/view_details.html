@@ -6,7 +6,7 @@
 
     {% block jsfiles %}
         <script>
-            var users_reviewed = [{% for review in product.review_set.all %} {{review.user.id}}, {% endfor %}];
+            var users_reviewed = [{% for review in product.review_set.all %}'{{review.user.id}}', {% endfor %}];
         </script>
     {% endblock jsfiles %}
 
@@ -185,7 +185,7 @@
                        </button>
                        <button class="love-btn" onclick="add_to_wishlist({{product.id}}, `{{request.user}}`)">
                             <i class="fas fa-heart"></i>
-                            233
+                           {{product.wish_count}}
                        </button>
 
                     </div>
@@ -417,7 +417,7 @@
                             </p>
                         </div>
                         <button class="write-a-review" 
-                        onclick="write_review(true, '{{request.user}}', {{request.user.id}})">
+                        onclick="write_review(true, '{{request.user}}', '{{request.user.id}}')">
                             Write a review
                             <p>+</p>
                         </button>

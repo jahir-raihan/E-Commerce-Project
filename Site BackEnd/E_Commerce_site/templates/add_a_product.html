@@ -184,16 +184,29 @@
 
                     </div>
 
-                    <div class="p-color-and-yarn-type m-1">
+                    <div class="p-color-and-yarn-type p-yarn-brand-status m-1">
 
                         <div class="p-color">
                             <p>Color Type</p>
                             <input type="text" name="color_type" value="{{product.color_type}}" title="Color type can't be empty" pattern="\S(.*\S)?" required>
                         </div>
 
-                        <div class="p-yarn">
+                        <div class="p-yarn m-1">
                             <p>Yarn Type</p>
                             <input type="text" name="yarn_type" value="{{product.yarn_type}}" title="Yarn type can't be empty" pattern="\S(.*\S)?" required>
+                        </div>
+
+                        <div class="p-type p-status">
+                            <p>Product Type</p>
+                            <select name="product_type" required>
+                                {% if product %}
+                                    <option value="{{product.product_type}}" selected>{{product.product_type|title}}</option>
+                                {% endif %}
+                                <option value="t-shirt">T-Shirt</option>
+                                <option value="shirt">Shirt</option>
+                                <option value="pant">Pant</option>
+                                <option value="short">Short</option>
+                            </select>
                         </div>
 
                     </div>
@@ -213,8 +226,16 @@
                         <div class="p-status">
                             <p>Status</p>
                             <select name="status" required>
-                                <option value="True">In Stock</option>
-                                <option value="False">Out of Stock</option>
+                                {% if product.product_in_stock %}
+                                    <option value="True" selected>In Stock</option>
+                                    <option value="False">Out of Stock</option>
+                                {% elif product and not product.product_in_stock %}
+                                    <option value="False" selected>Out of Stock</option>
+                                    <option value="True">In Stock</option>
+                                {% else %}
+                                    <option value="True">In Stock</option>
+                                    <option value="False">Out of Stock</option>
+                                {% endif %}
                             </select>
                         </div>
 
@@ -263,7 +284,7 @@
                         <p>Image alternative texts</p>
 
                         <input type="text" name="image_alt_texts" value="{% for alt in product_images %}{{alt.image_alt_tag}}, {% endfor %}"
-                               placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc" required>
+                               placeholder="Separate with commas. Ex: black hoodie, black hoodie bottom, etc">
                     </div>
 
                     <div class="p-more-info m-1">
@@ -279,20 +300,27 @@
 
 
                     <div class="on-discount-checkbox m-1">
-                        <input name="on_discount" id="on_discount" type="checkbox"> <span>On Discount</span>
+                        {% if product.on_discount %}
+                            <input name="on_discount" id="on_discount" checked type="checkbox"> <span>On Discount</span>
+                        {% else %}
+                            <input name="on_discount" id="on_discount"  type="checkbox"> <span>On Discount</span>
+                        {% endif %}
                     </div>
 
                     <div class="discount-price-and-expiry m-1">
                         <div class="discount-price m-1">
                             <p>Discount Percentage</p>
-                            <input name="discount_percentage" id="discount_percentage" type="number">
+                            <input name="discount_percentage" id="discount_percentage" value="{{product.discount_percentage}}" type="number">
                         </div>
 
                         <div class="discount-reason">
-                            
+
                             <p>Discount reason</p>
                             <select name="discount_reason" id="discount_reason">
-                                <option value="">Select reason</option>
+                                {% if product.on_discount %}
+                                    <option value="{{product.discount_reason.id}}" selected>{{product.discount_reason.discount_reason}}</option>
+                                {% endif %}
+                                <option value="">Select Reason</option>
 
                                 {% for reason in discount_reasons %}
 
@@ -301,7 +329,7 @@
                                 {% endfor %}
 
                             </select>
-                            
+
                         </div>
 
                          <div class="discount-reason m-1">
@@ -312,7 +340,7 @@
                         <div class="discount-expiry">
                             <p>Discount Expiry</p>
 
-                            <input name="discount_expiry_date" type="date" id="discount_expiry">
+                            <input name="discount_expiry_date" type="date" value="{{product.discount_expiry|date:'Y-m-d'}}" id="discount_expiry">
                         </div>
 
                     </div>
@@ -321,6 +349,7 @@
                         <button class="clear">Clear</button>
                         <button class="save" id="product_save_btn" type="submit">Save</button>
                     </div>
+
 
 
 

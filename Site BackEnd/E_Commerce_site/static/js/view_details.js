@@ -73,6 +73,7 @@ q_btns.forEach( (btn) => {
 function write_review(value, user, id){
 
     // Only allow registered users to write review
+
     if ((user !== 'AnonymousUser') && (!users_reviewed.includes(id))){
         dc.getElementById('w-a-r-p-s').style.display='block'
     }
