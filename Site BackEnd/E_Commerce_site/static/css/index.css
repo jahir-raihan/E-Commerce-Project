@@ -649,7 +649,7 @@ header .only-navicons:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 1%;
-  opacity: 0.8;
+  
 }
 .blog-posts .post-list .post {
   transition-duration: 0.5s;
