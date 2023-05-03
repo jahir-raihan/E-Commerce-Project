@@ -73,7 +73,7 @@ setInterval(() => {
         ele_btn.children[0].style.opacity = '.6'
         ele_btn.children[0].style.cursor = 'not-allowed'
     }}catch{}
-}, 2000)
+}, 1000)
 
 
 // Calling once when the page is loaded / reloaded
