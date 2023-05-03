@@ -206,8 +206,10 @@ def cart(request):
                                       'is_user': True})
     if not request_action[0] and len(request_action) < 3:
         return redirect(request_action[1])
+    
+    products = Product.objects.all()
 
-    return render(request, 'cart.html')
+    return render(request, 'cart.html', {'products': products})
 
 
 # Wishlist

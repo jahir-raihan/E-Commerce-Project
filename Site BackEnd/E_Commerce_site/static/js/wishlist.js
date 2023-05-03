@@ -54,7 +54,7 @@ setInterval(() => {
     try{
         check_availability_wishlist()
     }catch{}
-}, 5000)
+}, 2000)
 
 
 
@@ -84,7 +84,7 @@ function load_wishlist_items(){
 
                                 <div>
                                      <p class="wish-item-title" id="p_title-${item.p_id}">${item.p_title}</p>
-                                    <small>$ <span id="p_price-${item.id}">${item.p_price}</span></small>
+                                    <small>$ <span id="p_price-${item.p_id}">${item.p_price}</span></small>
                                 </div>
 
                                 <div class="trash-right">
