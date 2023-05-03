@@ -285,10 +285,7 @@
     transition-duration: 0.5s;
     font-size: 13px !important;
   }
-  .product-card .p-c-img img {
-    transition-duration: 0.5s !important;
-    width: 80% !important;
-  }
+
   .product-card p {
     font-size: 12px !important;
   }
